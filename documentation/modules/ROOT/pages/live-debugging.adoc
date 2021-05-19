@@ -8,7 +8,7 @@ image::images/mrrobot.png[MrRobot, 500]
 
 https://www.usanetwork.com/mrrobot/photos/eps22init1asec[Source: https://www.usanetwork.com/mrrobot/photos/eps22init1asec^]
 
-'''
+
 
 === What is Kibana?
 
@@ -32,7 +32,7 @@ https://docs.openshift.com/container-platform/3.11/install_config/aggregate_logg
 Logs management plays a vital role when we encounter an error in the application. If we do not manage the logs, it will be difficult in any application, especially in microservices architecture to find the error and fix it. For our application with lots of microservices we have to identify interesting traces and Kibana is offering an nice User Interface with search field to explore and to analyze logs files easily. Whenever we get some error in the application(s), we can get the error details and analyze them in a simple way.
 --
 
-'''
+
 
 === Investigate The Bug
 
@@ -75,7 +75,7 @@ on the web interface.
 
 Let's debug the **Inventory Service** to get to the bottom of this!
 
-'''
+
 
 === What is Squash ?
 [sidebar]
@@ -107,7 +107,7 @@ https://squash.solo.io/[Squash^] brings the power of modern popular debuggers to
 pods, services or images you want to debug, and https://squash.solo.io/[Squash^] will let you set breakpoints, step through your code while jumping between microservices, follow variable 
 values on the fly, and change these values during run time. 
 
-'''
+
 
 === Configure your workspace for Squash
 
@@ -120,7 +120,7 @@ In your {{ CHE_URL }}[Workspace^], via the Preference menu (Cmd+Comma (⌘,) on 
 
 image::images/che-squashprocessmatch.png[Che - Open Squash ProcessMatch, 700]
 
-'''
+
 
 === Enable Remote Debugging for Inventory Service Application
 
@@ -149,7 +149,7 @@ inventory-2-l22lz              2/2       Running        2          1m
 
 The status should be **Running** and there should be **2/2** pods in the **Ready** column. 
 
-'''
+
 
 === Debugging with Squash
  
@@ -216,7 +216,7 @@ returned instead of **null**.
 `*Click on the _Resume_ icon*` to continue the code execution and then `*on the _Stop_ icon*` to 
 end the debug session.
 
-'''
+
 
 === Fix the Bug
 
@@ -256,7 +256,7 @@ the inventory status as **Not in Stock**.
 
 image::images/debug-coolstore-bug-fixed.png[Inventory Status Bug Fixed, 800]
 
-'''
+
 
 === CONGRATULATIONS!!!
 

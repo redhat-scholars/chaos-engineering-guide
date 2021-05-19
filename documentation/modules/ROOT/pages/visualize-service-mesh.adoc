@@ -12,7 +12,7 @@ https://ewedit.files.wordpress.com/2019/01/bird_box_018.jpg[Source: https://ewed
 
 Red Hat OpenShift Container Platform provides services to get observability of applications and to understand how different components are interacting with each other.
 
-'''
+
 
 === What is Kiali?
 
@@ -27,7 +27,7 @@ A service mesh can now provide these services on a platform level and frees the 
 https://www.kiali.io[Kiali^] works with Istio, in OpenShift or Kubernetes, to visualize the service mesh topology, to provide visibility into features like circuit breakers, request rates and more. It offers insights about the mesh components at different levels, from abstract Applications to Services and Workloads.
 --
 
-'''
+
 
 === "Kiali, please tell me, how is the application working?"
 
@@ -62,7 +62,7 @@ Indeed, when you check the APIs exposed by the **Gateway Service**, you cannot f
 
 Let's fix it!!
 
-'''
+
 
 === Build and deploy the Quarkus microservice, the Cart Service
 
@@ -123,7 +123,7 @@ Have a look to the log of the **Cart Service** pod by cliking in the dark blue c
 
 **AND YES, IT'S A JAVA APPLICATION!**
 
-'''
+
 
 === Update Gateway Service
 
@@ -150,7 +150,7 @@ In Kiali Graph, the **Gateway Service** is now green and you can see the new **C
 
 image::images/gateway-cart-fixed.png[Gateway Fixed, 700]
 
-'''
+
 
 === CONGRATULATIONS!!!
 

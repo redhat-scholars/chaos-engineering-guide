@@ -2,10 +2,10 @@
 :CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
 :USER_ID: %USER_ID%
 :OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
-:OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/my-project{USER_ID}/graph
+:OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/staging-project{USER_ID}/graph
 
-= Get your Developer Workspace
-:navtitle: Get your Developer Workspace
+= You are not alone
+:navtitle: You are not alone
 
 _10 MINUTE EXERCISE_
 
@@ -17,7 +17,7 @@ and getting familiar with the OpenShift CLI and OpenShift Web Console.
 
 [sidebar]
 --
-[window=_blank, align="center"]
+
 image::codereadyworkspaces-logo.png[CodeReady Workspaces, 400]
 
 https://access.redhat.com/products/red-hat-codeready-workspaces[CodeReady Workspaces^] is a Kubernetes-native IDE and developer collaboration platform.
@@ -59,8 +59,8 @@ to this file.
 
 `*Click on the 'Developer Workspace' button below*`
 
-[link={CHE_URL}/dashboard/#/ide/user{USER_ID}/wksp-cloud-native]
-[window=_blank, align="center"]
+[link={CHE_URL}/dashboard/#/ide/user{USER_ID}/wksp-debugging]
+
 [role='params-link']
 image::developer-workspace-button.svg[Developer Workspace - Button, 300]
 
@@ -71,22 +71,6 @@ image::che-login.png[Che - Login, 500]
 Once completed, you will have a fully functional Browser-based IDE within the source code already imported.
 
 image::che-workspace.png[Che - Workspace, 800]
-
-[#what_is_odo]
-== What is OpenShift Do (odo)?
-
-[sidebar]
-.OpenShift Do (odo)
---
-
-https://docs.openshift.com/container-platform/4.6/cli_reference/developer_cli_odo/understanding-odo.html[OpenShift Do (odo)^] is a CLI tool for creating applications on OpenShift Container Platform and Kubernetes. 
-With https://docs.openshift.com/container-platform/4.6/cli_reference/developer_cli_odo/understanding-odo.html[odo^], you can write, build, and debug applications on a cluster without the need to administer the cluster itself. 
-Creating deployment configurations, build configurations, service routes and other OpenShift Container Platform or Kubernetes elements are all automated by https://docs.openshift.com/container-platform/4.6/cli_reference/developer_cli_odo/understanding-odo.html[odo^].
-
-Existing tools such as https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI (oc)^] are operations-focused and require a deep understanding of Kubernetes and OpenShift Container Platform concepts. 
-https://docs.openshift.com/container-platform/4.6/cli_reference/developer_cli_odo/understanding-odo.html[odo^] abstracts away complex Kubernetes and OpenShift Container Platform concepts allowing developers to focus on what is most important to them: **code**.
-
---
 
 [#connect_your_workspace]
 == Connect Your Workspace to Your OpenShift User
@@ -111,7 +95,7 @@ CLI::
 
 [source,shell,subs="{markup-in-source}",role=copypaste]
 ----
-odo login $(oc whoami --show-server) --username=user{USER_ID} --password={OPENSHIFT_PASSWORD} --insecure-skip-tls-verify
+oc login $(oc whoami --show-server) --username=user{USER_ID} --password={OPENSHIFT_PASSWORD} --insecure-skip-tls-verify
 ----
 
 NOTE: To open a '>_ workshop_tools' terminal window, `*click on 'Terminal' -> 'Open Terminal in specific container' ->  'workshop-tools'*`
@@ -127,46 +111,11 @@ Connecting to the OpenShift cluster
 
 Login successful.
 
-You have one project on this server: "cn-project{USER_ID}"
+You have one project on this server: "staging-project{USER_ID}"
 
-Using project "cn-project{USER_ID}".
+Using project "staging-project{USER_ID}".
 
-Welcome! See 'odo help' to get started.
-----
-
-Then, create your **Development Environment**:
-
-[tabs, subs="attributes+,+macros"]
-====
-
-IDE Task::
-+
--- 
-`*Click on 'Terminal' -> 'Run Task...' ->  'OpenShift - Create Development Project'*`
-
-image::che-runtask.png[Che - RunTask, 500]
---
-
-CLI::
-+
---
-`*Execute the following commands in the '>_ workshop_tools' terminal window*`
-
-[source,shell,subs="{markup-in-source}",role=copypaste]
-----
-odo project create my-project{USER_ID}
-----
-
-NOTE: To open a '>_ workshop_tools' terminal window, `*click on 'Terminal' -> 'Open Terminal in specific container' ->  'workshop-tools'*`
---
-====
-
-The output should be as follows:
-
-[source,shell,subs="{markup-in-source}"]
-----
- ✓  Project 'my-project{USER_ID}' is ready for use
- ✓  New project created and now using project: my-project{USER_ID}
+Welcome! See 'oc help' to get started.
 ----
 
 [#login_to_openshift]
@@ -178,7 +127,7 @@ perform various tasks via a browser.
 `*Click on the 'Developer Console' button below*`
 
 [link={OPENSHIFT_CONSOLE_URL}]
-[window=_blank, align="center"]
+
 [role='params-link']
 image::developer-console-button.png[Developer Workspace - Button, 300]
 
@@ -186,7 +135,7 @@ image::developer-console-button.png[Developer Workspace - Button, 300]
 then log in. After you have authenticated to the web console, you will be presented with a
 list of projects that your user has permission to work with. 
 
-`*Select the 'Developer View' then your 'my-project{USER_ID}'*` to be taken to the project overview page
+`*Select the 'Developer View' then your 'staging-project{USER_ID}'*` to be taken to the project overview page
 which will list all of the routes, services, deployments, and pods that you have
 running as part of your project. There's nothing there now, but that's about to
 change.

@@ -9,7 +9,7 @@ image::images/inception.jpg[Inception, 500]
 [.text-center]
 https://wallpapercave.com/wp/ZDpGHyX.jpg[Source: https://wallpapercave.com/wp/ZDpGHyX.jpg^]
 
-'''
+
 
 === What is Jaeger?
 
@@ -28,7 +28,7 @@ https://www.jaegertracing.io[Jaeger Tracing^], inspired by Dapper and OpenZipkin
 https://www.kiali.io[Kiali^] includes https://www.jaegertracing.io[Jaeger Tracing^] to provide distributed tracing out of the box.
 --
 
-'''
+
 
 === What are you hidding, Mr/Mrs *Application*?
 
@@ -54,7 +54,7 @@ image::images/jaeger-trace-2spans-view.png[Jaeger - Traces View, 800]
 
 As you have called several times the **Gateway Service** through the Web UI, you find much more than 8 spans in Jaeger and you cannot easily observe the entire trace for an end-to-end request.
 
-'''
+
 
 === Enabling Distributed Context Propagation
 
@@ -260,7 +260,7 @@ image::images/jaeger-trace-fixed-detail-view.png[Jaeger - Trace Detail View, 700
 
 Just wonderful! You reduce the response time by a factor of 5!! You should be proud!!
 
-'''
+
 
 === CONGRATULATIONS!!!
 
