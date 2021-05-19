@@ -1,0 +1,35 @@
+runtime:
+  cache_dir: ./.cache/antora
+
+site:
+  title: OpenShift Debugging Workshop
+  url: https://redhat-scholars.github.io/course-template
+  start_page: debugging::index.adoc
+
+content:
+  sources:
+    - url: git@github.com:redhat-scholars/debugging-guide.git
+      tags: []
+      branches: ["5.0"]
+      start_path: documentation
+
+asciidoc:
+  attributes:
+    release-version: master
+    page-pagination: true
+  extensions:
+    - ./lib/tab-block.js
+    - ./lib/remote-include-processor.js
+
+ui:
+  bundle:
+    url: https://github.com/mcouliba/course-ui/releases/download/v0.1.9-custom/ui-bundle.zip
+    snapshot: true
+  supplemental_files:
+    - path: ./supplemental-ui
+    - path: .nojekyll
+    - path: ui.yml
+      contents: "static_files: [ .nojekyll ]"
+
+output:
+  dir: ./gh-pages

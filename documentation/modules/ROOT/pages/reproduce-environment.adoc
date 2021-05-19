@@ -1,0 +1,72 @@
+== "NEW TO BE FIND - Altered Carbon??"
+
+_?? MINUTES PRACTICE_
+
+.https://miro.medium.com/max/1160/1*icFdR5FcLVvYZDnC8PwePw.jpeg[Source: https://miro.medium.com/max/1160/1*icFdR5FcLVvYZDnC8PwePw.jpeg^]
+[caption=" "]
+image::images/castaway.jpg[Cast Away, 500]
+
+'''
+
+=== What is Argo CD?
+
+[sidebar]
+--
+image:{% image_path argocd-logo.png %}[Argo CD Logo, 200]
+
+https://argoproj.github.io/argo-cd/[Argo CD^] is a declarative, GitOps continuous delivery tool for Kubernetes.
+
+It follows the GitOps pattern of using Git repositories as the source of truth for defining 
+the desired application state. 
+
+It automates the deployment of the desired application states in the specified target environments. Application 
+deployments can track updates to branches, tags, or pinned to a specific version of manifests at a Git commit.
+--
+
+'''
+
+=== Log in to Argo CD
+
+`*Click on the below button called 'Developer GitOps'*`
+
+[link={{ GITOPS_URL }}]
+[window=_blank, align="center"]
+image::images/developer-gitops-button.png[Developer GitOps - Button, 300]
+
+Then `*login as user{{USER_ID}}/{{ OPENSHIFT_PASSWORD }}*`, `*click on 'Allow selected permissions'*`
+
+Once completed, you will be redirected to the following page.
+
+image::images/argocd-home.png[Argo CD - Home Page, 500]
+
+'''
+=== Sync/Deploy The GitOps Application
+
+Let's deploy the Coolstore Application into cn-project{{USER_ID}}!
+
+From the **Application menu**, `*Click on 'Sync > Synchronize'*`.
+
+image::{% image_path argocd-sync.png  %}[Argo CD - Sync, 800]
+
+This task retrieves the manifests from the GitOps Repository and performs _kubectl apply_ command of 
+the manifests. Your application is now running and you can now view its resource components, 
+logs, events, and assessed health status.
+
+`*Click on your 'coolstore' application*` and you should see everything in green.
+
+image::{% image_path argocd-synced-application.png  %}[Argo CD - Synced Application, 800]
+
+In the {{OPENSHIFT_CONSOLE_URL}}[OpenShift Web Console^], from the **Developer view**,
+`*Select the 'cn-project{{USER_ID}}'*` to be taken to the project overview page.
+
+image:{% image_path openshift-app-deployed-by-argocd.png %}[OpenShift - Coolstore Project Deployed by Argo CD , 700]
+
+You can see that all resources of your application have been created by Argo CD. 
+None of the services is deployed, up and running as we removed all automatic deployment triggers when exporting the configuration
+and there is no image available on your **cn-project{{USER_ID}}** project. **You are going to fix it in the next lab.**
+
+'''
+
+=== CONGRATULATIONS!!!
+
+You are now ready to tackle all the problem**S**!
