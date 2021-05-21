@@ -7,7 +7,7 @@
 
 = Blindfolded debugging... Not today!!
 
-_15 MINUTES PRACTICE_
+_15 MINUTE PRACTICE_
 
 The **Mysterious Application** in your developer environment is now up and running. It is composed of several components, but so far, you have no clue about how the application is working.
 Going all over this application and debugging it completely blindfolded is time consuming and a crazy bid.

@@ -9,7 +9,7 @@
 = The past is relevant only as data
 :navtitle: The past is relevant only as data
 
-_15 MINUTES PRACTICE_
+_15 MINUTE PRACTICE_
 
 Using **Argo CD**, GitOps continuous delivery tool for Kubernetes, you will be able to reproduce easily the environment of the **Mysterious Apps**.
 

@@ -62,7 +62,7 @@ to this file.
 [link={CHE_URL}/dashboard/#/ide/user{USER_ID}/wksp-debugging]
 
 [role='params-link']
-image::developer-workspace-button.svg[Developer Workspace - Button, 300]
+image::developer-workspace-button.svg[Developer Workspace - Button^, 300]
 
 Then `*login as user{USER_ID}/{OPENSHIFT_PASSWORD}*` and let the magic happens...
 
