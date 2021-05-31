@@ -4,6 +4,7 @@
 :OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
 :OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/staging-project{USER_ID}/graph
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
+:COOLSTORE_HOMEPAGE: http://web-staging-project{USER_ID}.%APPS_HOSTNAME_SUFFIX%
 
 = "Trace Within a Trace"
 
@@ -34,7 +35,7 @@ https://www.kiali.io[Kiali^] includes https://www.jaegertracing.io[Jaeger Tracin
 
 From the {KIALI_URL}[Kiali Console^], `*click on the 'Distributed Tracing'*` in the left navigation.
 
-Then `*login as user{USER_ID}/{OPENSHIFT_PASSWORD}*` and enter the following configuration:
+Then `*login as user{USER_ID}/{OPENSHIFT_PASSWORD} and enter the following configuration*`:
 
 .Jaeger Settings
 [%header,cols=2*]
@@ -110,9 +111,9 @@ This project works with Istio and Kubernetes or Openshift to give you confidence
 
 == Route the traffic on your local workspace
 
-First we have to fix the problem. **Replace the content of the** `**getAll()**` **method** as following:
+First we have to fix the problem. `*Replace the content of the 'getAll()' method*`as following:
 
-[source,java]
+[source,java,subs="{markup-in-source}",role=copypaste]
 .CatalogController.java
 ----
 @ResponseBody
@@ -175,34 +176,24 @@ to the URL of deployed app:
 
 link:{COOLSTORE_HOMEPAGE}/#!/?route=dist_trace[]
 
-NOTE: `**route=lab3**` is not automatically added by Istio Workspace.
+NOTE: `**route=dist_trace**` is not automatically added by Istio Workspace.
 This parameter, like any other should be handled (and appropriately propagated) by the application itself.
 
 From link:{KIALI_URL}[Kiali^], in the **'Graph' view**, `**check the new traffic**`
 
-image::images/kiali-catalog-routed.png[Catalog - Route Ike, 700]
+image::kiali-catalog-routed.png[Catalog - Route Ike, 700]
 
 The traffic is directed to the new version of the Catalog service, but will keep all the other users still relying on the last deployed version.
 Sadly, they will be still affected by the performance regression we just fixed.
 
 We can also see directly in the console of your link:{CHE_URL}[Workspace^], that our service has been accessed, as we are printing a test message every single time `**CatalogController**` is accessed now.
 
-image::images/ike-develop-catalog-hit.png[Accessing new version of Catalog Service in Che, 700]
+image::ike-develop-catalog-hit.png[Accessing new version of Catalog Service in Che, 700]
 
 Moreover, we can see improvements in the response time as well:
 
-image::images/ike-develop-catalog-hit-jaeger.png[New traces, 800]
+image::ike-develop-catalog-hit-jaeger.png[New traces, 800]
 
 Just wonderful! You reduced the response time by a factor of 5! You should be proud!
 
-
-
-== CONGRATULATIONS!!!
-
-You make it but **is the spinning top stopped or not at the end?**
-
-.Inception. Christopher Nolan (Warner Bros. Pictures)
-[caption=" "]
-image::images/spinningtop.jpg[Inception - Spinning Top, 500]
-
-We will never know and now, it is time to go deeper again!!
+Now, it is time to go deeper again!!
