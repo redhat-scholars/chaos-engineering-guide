@@ -124,7 +124,7 @@ oc set env deployment/web COOLSTORE_GW_ENDPOINT=http://istio-ingressgateway-isti
 
 == Testing the application
 
-In the link:{OPENSHIFT_CONSOLE_URL}[OpenShift Web Console^], from the **Developer view**,
+In the link:{OPENSHIFT_CONSOLE_URL}[OpenShift Web Console^, role='params-link'], from the **Developer view**,
 select the `**staging-project{USER_ID}**` to be taken to the project overview page.
 
 

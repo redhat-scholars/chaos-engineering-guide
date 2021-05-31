@@ -2,7 +2,6 @@
 :CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
 :USER_ID: %USER_ID%
 :OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
-:OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/staging-project{USER_ID}/graph
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :COOLSTORE_HOMEPAGE: http://web-staging-project{USER_ID}.%APPS_HOSTNAME_SUFFIX%
 
@@ -33,7 +32,7 @@ https://www.kiali.io[Kiali^] includes https://www.jaegertracing.io[Jaeger Tracin
 
 == What are you hidding, Mr/Mrs *Application*?
 
-From the {KIALI_URL}[Kiali Console^], `*click on the 'Distributed Tracing'*` in the left navigation.
+From the {KIALI_URL}[Kiali Console^, role='params-link'], `*click on the 'Distributed Tracing'*` in the left navigation.
 
 Then `*login as user{USER_ID}/{OPENSHIFT_PASSWORD} and enter the following configuration*`:
 
@@ -171,15 +170,18 @@ image::new-catalog-service.png[New Catalog Deployed, 700]
 == Test the new version
 
 As we have our improved service already up and running, it's time to test the new version.
-You can now access application through web interface by adding `**/?route=dist_trace**` query parameter 
+You can now access application through web interface by adding **/?route=dist_trace** query parameter 
 to the URL of deployed app:
 
-link:{COOLSTORE_HOMEPAGE}/#!/?route=dist_trace[]
+[source,html,subs="{markup-in-source}",role=copypaste]
+----
+{COOLSTORE_HOMEPAGE}/?route=dist_trace
+----
 
-NOTE: `**route=dist_trace**` is not automatically added by Istio Workspace.
+NOTE: **route=dist_trace** is not automatically added by Istio Workspace.
 This parameter, like any other should be handled (and appropriately propagated) by the application itself.
 
-From link:{KIALI_URL}[Kiali^], in the **'Graph' view**, `**check the new traffic**`
+From link:{KIALI_URL}[Kiali^, role='params-link'], in the **'Graph' view**, `**check the new traffic**`
 
 image::kiali-catalog-routed.png[Catalog - Route Ike, 700]
 
