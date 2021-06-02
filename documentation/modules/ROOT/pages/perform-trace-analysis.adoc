@@ -175,7 +175,7 @@ to the URL of deployed app:
 
 [source,html,subs="{markup-in-source}",role=copypaste]
 ----
-{COOLSTORE_HOMEPAGE}/?route=dist_trace
+{COOLSTORE_HOMEPAGE}/#!/?route=dist_trace
 ----
 
 NOTE: **route=dist_trace** is not automatically added by Istio Workspace.

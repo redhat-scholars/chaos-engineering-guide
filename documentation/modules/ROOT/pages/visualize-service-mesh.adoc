@@ -38,7 +38,7 @@ Kiali provides an interactive graph view of your namespace in real time, being a
 `*Click on the 'Developer Observability' button below*`
 
 [link={KIALI_URL}]
-[window=_blank, align="center"]
+[window=_blank]
 [role='params-link']
 image::developer-observability-button.png[Developer Observability - Button, 300]
 

@@ -3,4 +3,4 @@
 * xref:reproduce-environment.adoc[3. The past is relevant only as data]
 * xref:visualize-service-mesh.adoc[4. Blindfolded debugging... Not today]
 * xref:perform-trace-analysis.adoc[5. Trace Within a Trace]
-* xref:live-debugging.adoc[6. Please Help Me!]
+* xref:live-debugging.adoc[6. Debugger, please Help Me!]

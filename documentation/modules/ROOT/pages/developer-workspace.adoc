@@ -60,7 +60,7 @@ to this file.
 `*Click on the 'Developer Workspace' button below*`
 
 [link={CHE_URL}/dashboard/#/ide/user{USER_ID}/wksp-debugging]
-
+[window="_blank"]
 [role='params-link']
 image::developer-workspace-button.svg[Developer Workspace - Button^, 300]
 
@@ -127,7 +127,7 @@ perform various tasks via a browser.
 `*Click on the 'Developer Console' button below*`
 
 [link={OPENSHIFT_CONSOLE_URL}]
-
+[window="_blank"]
 [role='params-link']
 image::developer-console-button.png[Developer Workspace - Button, 300]
 

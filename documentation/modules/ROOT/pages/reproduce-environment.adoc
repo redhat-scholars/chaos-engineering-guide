@@ -35,6 +35,7 @@ deployments can track updates to branches, tags, or pinned to a specific version
 
 [link={GITOPS_URL}]
 [role='params-link']
+[window="_blank"]
 image::developer-gitops-button.png[Developer GitOps - Button, 300]
 
 Then `*log in as user{USER_ID}/{OPENSHIFT_PASSWORD}*`. Once completed, you will be redirected to the following page.
