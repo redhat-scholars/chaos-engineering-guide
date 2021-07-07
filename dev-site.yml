@@ -2,9 +2,9 @@ runtime:
   cache_dir: ./.cache/antora
 
 site:
-  title: OpenShift Debugging Workshop (Dev Mode)
+  title: OpenShift Chaos Engineering Workshop (Dev Mode)
   url: http://localhost:3000/rhs-build-course/index.html
-  start_page: debugging::index.adoc
+  start_page: chaos-engineering::index.adoc
 
 content:
   sources:

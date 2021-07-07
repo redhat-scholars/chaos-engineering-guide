@@ -1,0 +1,98 @@
+:markup-in-source: verbatim,attributes,quotes
+:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
+:USER_ID: %USER_ID%
+:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
+:OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
+:GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
+:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
+:GITOPS_WORKSHOP_GIT_URL: %WORKSHOP_GIT_REPO%/tree/%WORKSHOP_GIT_REF%/gitops
+
+= Get your Chaos environment
+
+_XX MINUTE EXERCISE_
+
+In this section, you will explore OpenShift and deploy the application we would like to evaluate.
+
+== What is Red Hat OpenShift?
+
+[sidebar]
+--
+TODO
+--
+
+== Log in to the OpenShift Web Console
+
+OpenShift ships with a web-based console that will allow users to
+perform various tasks via a browser.
+
+`*Click on the 'Developer Console' button below*`
+
+[link={OPENSHIFT_CONSOLE_URL}]
+[window="_blank"]
+[role='params-link']
+image::developer-console-button.png[Developer Workspace - Button, 300]
+
+`*Enter your username and password (user{USER_ID}/{OPENSHIFT_PASSWORD})*` and 
+then log in. After you have authenticated to the web console, you will be presented with a
+list of projects that your user has permission to work with. 
+
+`*Select the 'Developer View' then your 'chaos-engineering{USER_ID}'*` to be taken to the project overview page
+which will list all of the routes, services, deployments, and pods that you have
+running as part of your project. There's nothing there now, but that's about to
+change.
+
+image::openshift-empty-project.png[OpenShift - Empty Project, 700]
+
+== What is OpenShift GitOps?
+
+[sidebar]
+--
+OpenShift GitOps is a service available on top of OpenShift. 
+--
+
+
+== Log in to OpenShift GitOps (Argo CD)
+
+`*Click on the 'Developer GitOps' button below*`
+
+[link={GITOPS_URL}]
+[role='params-link']
+[window="_blank"]
+image::developer-gitops-button.png[Developer GitOps - Button, 300]
+
+Then `*log in as user{USER_ID}/{OPENSHIFT_PASSWORD}*`. Once completed, you will be redirected to the following page which lists the **Argo CD Applications**.
+
+image::argocd-home.png[Argo CD - Home Page, 500]
+
+An **Argo CD Application** is the Kubernetes resource object representing a deployed application instance in an environment. It is defined by two key pieces of information:
+
+* **source** reference to the desired state in Git (repository, revision, path, environment): **{GITOPS_WORKSHOP_GIT_URL}**
+* **destination** reference to the target cluster and namespace: **'chaos-engineering{USER_ID}' namespace from the current OpenShift cluster (in-cluster)**
+
+The **Argo CD Application** status is initially in yellow, means **OutOfSync** state, since the application has yet to be 
+deployed into **'chaos-engineering{USER_ID}'** namespace, and no Kubernetes resources have been created.
+
+== Sync/Deploy the application
+
+
+To deploy the application, 
+`*click on your 'chaos-engineering{USER_ID}' application box then, click on 'Sync > Synchronize'*`.
+
+image::argocd-sync.png[Argo CD - Sync Application, 900]
+
+This task retrieves the manifests from the Git Repository and performs _kubectl apply_ command of 
+the manifests. Your application is now running. You can now view its resource components,
+logs, events, and assessed health status.
+
+After a couple of seconds, you should see everything in green.
+
+image::argocd-synced-application.png[Argo CD - Synced Application, 800]
+
+In the link:{OPENSHIFT_CONSOLE_URL}[OpenShift Web Console^, role='params-link'], from the **Developer view**,
+select the `**chaos-engineering{USER_ID}**` to be taken to the project overview page.
+
+image::openshift-app-deployed-by-argocd.png[OpenShift - Coolstore Project Deployed by Argo CD , 700]
+
+You can see that all resources of your application have been created by Argo CD. 
+
+Now you are ready to get started with the labs!

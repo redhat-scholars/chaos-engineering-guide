@@ -1,0 +1,173 @@
+:markup-in-source: verbatim,attributes,quotes
+:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
+:USER_ID: %USER_ID%
+:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
+:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
+:GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
+:COOLSTORE_HOMEPAGE: http://web-chaos-engineering{USER_ID}.%APPS_HOSTNAME_SUFFIX%
+
+= Define and monitor Chaos metrics
+
+_XX MINUTE PRACTICE_
+
+
+== What is OpenShift Service Mesh?
+[sidebar]
+--
+OpenShift Service Mesh is also a service available on top of OpenShift. 
+--
+
+
+== Observability with Kiali
+
+**Kiali** provides an interactive graph view of your namespace in real time, being able to display the interactions at several levels (applications, versions, workloads), with contextual information and charts on the selected graph node or edge.
+
+`*Click on the 'Developer Observability' button below*`
+
+[link={KIALI_URL}]
+[window=_blank, align="center"]
+[role='params-link']
+image::developer-observability-button.png[Developer Observability - Button, 300]
+
+Then, `*log in with OpenShift as user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
+
+image::kiali-login.png[Kiali- Log In,300]
+
+In the **'Graph' view**, `*enter the following configuration*`:
+
+.Graph Settings
+[%header,cols=2*]
+|===
+|Parameter
+|Value
+
+|Namespace 
+|**chaos-engineering{USER_ID}**
+
+|Type Graph
+|**Versioned app graph**
+
+|Display
+|**'Response Time'** checked
+
+**'Traffic Animation'** checked
+
+|Hide...
+|**service*=svc.cluster.local**
+
+|===
+
+The outcome is a graph with all the services, connected by the requests going through them. 
+You can see how the services interact with each other. 
+
+image::kiali-graph.png[Kiali- Graph,900]
+
+
+**TODO: EXPLAIN THE APPLICATION**
+
+== Monitoring with Service Mesh Grafana
+
+`*Click on the 'Developer Monitoring' button below*`.
+
+[link={GRAFANA_URL}]
+[window=_blank, align="center"]
+[role='params-link']
+image::developer-monitoring-button.png[Developer Monitoring - Button, 300]
+
+Then, `*log in with OpenShift as 'user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
+
+image::grafana-home.png[Grafana - Home,900]
+
+Now, let's create a dashboard to monitor the Chaos Metrics.
+
+`*Click on  'plus (+) sign' > 'Create Dashboard' in the left hand side menu*`
+
+image::grafana-create-dashboard.png[Grafana - Home,200]
+
+Let's create the first **metric which defines the number of total requests in your namespace**.
+
+`*Click on the 'Add Query'*`
+
+image::grafana-panel-actions.png[Grafana - Home,500]
+
+You are going to define the metric using a query language called PromQL (Prometheus Query Language).
+This language will let you select and aggregate time series data in real time.
+
+You will use the following incremental approach to understand and translate the first metric to PromQL expressions.
+
+`*Enter the following expression into the 'Metrics' field for the Query 'A'*`:
+
+image::grafana-add-query.png[Grafana - Home,700]
+
+.Query Settings
+[%header,cols=3*]
+|===
+|Step
+|PromQL
+|Description
+
+|Step 1
+a|_istio_requests_total_
+|This is an https://istio.io/latest/docs/reference/config/metrics/[Istio standard metric^] exported to Prometheus by default.
+It is a Counter measuring the total number of requests that have come through the Entire Service Mesh. This metric has several 
+dimensions, per time series in a range vector
+
+|Step 2
+|_istio_requests_total{reporter="destination", namespace="chaos-engineering{USER_ID}"}_
+|Filter the metric to use only the inbound requests (_reporter="destination"_) from your environment (_namespace="chaos-engineering{USER_ID}"_)  
+
+|Step 3
+|_increase(istio_requests_total{reporter="destination", namespace="chaos-engineering{USER_ID}"}[1m])_
+|Adding increase(), the query returns the only number of requests as measured over the last minute per time series.
+
+|Step 4
+|_sum(increase(istio_requests_total{reporter="destination", namespace="chaos-engineering{USER_ID}"}[1m]))_
+|Adding sum(), the query returns the total of requests within the namespace
+
+|===
+
+`*Click on 'Choose Visualization'*`
+
+`*Select on 'Singlestat' and enter the following parameters:*`
+
+image::grafana-panel-singlestat.png[Grafana - Home,700]
+
+.Singlestat Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Unit 
+|**Throughput ops/sec (ops)**
+|
+
+|Spark Lines
+|**Show** enabled
+|
+
+|===
+
+`*Click on the 'General Settings' icon and enter the following parameters:*`
+
+.General Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Title 
+|**Global Request Volume**
+|
+
+|===
+
+
+
+== Create a Grafana Dashboard
+
+== Import the Chaos Engineering Dashboard
+
+== Explore the Chaos Engineering Dashboard

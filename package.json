@@ -1,7 +1,7 @@
 {
-  "name": "rhs-openshift-debugging-workshop",
-  "description": "OpenShift Debugging Workshop ",
-  "homepage": "https://redhat-scholars.github.io/debugging-guide",
+  "name": "rhs-openshift-chaos-engineering-workshop",
+  "description": "OpenShift Chaos Engineering Workshop ",
+  "homepage": "https://redhat-scholars.github.io/chaos-engineering-guide",
   "author": {
     "email": "madou@redhat.com",
     "name": "Madou Coulibaly",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/redhat-scholars/debugging-guide.git"
+    "url": "git+https://github.com/redhat-scholars/chaos-engineering-guide.git"
   },
   "license": "Apache-2.0",
   "babel": {

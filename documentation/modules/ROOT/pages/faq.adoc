@@ -1,0 +1,9 @@
+:markup-in-source: verbatim,attributes,quotes
+:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
+:USER_ID: %USER_ID%
+:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
+:KIBANA_URL: https://kibana-openshift-logging.%APPS_HOSTNAME_SUFFIX%
+:JAEGER_URL: https://jaeger-istio-system.%APPS_HOSTNAME_SUFFIX%
+:COOLSTORE_HOMEPAGE: http://web-chaos-engineering{USER_ID}.%APPS_HOSTNAME_SUFFIX%
+
+= FAQ

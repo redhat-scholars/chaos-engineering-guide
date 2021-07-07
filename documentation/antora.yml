@@ -1,5 +1,5 @@
-name: debugging
-title: OpenShift Debugging Workshop
+name: chaos-engineering
+title: OpenShift Chaos Engineering Workshop
 version: "5.0"
 nav:
   - modules/ROOT/nav.adoc
