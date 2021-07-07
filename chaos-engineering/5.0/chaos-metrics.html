@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Define and monitor Chaos metrics :: OpenShift Chaos Engineering Workshop</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/chaos-engineering/5.0/chaos-metrics.html">
+    <link rel="prev" href="chaos-environment.html">
+    <link rel="next" href="chaos-testing.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img
+          src="../../_/img/header_logo.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">OpenShift Chaos Engineering Workshop</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Books</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">CheatSheets</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">CheatSheet A</a>
+            <a class="navbar-item" href="#">CheatSheet B</a>
+            <a class="navbar-item" href="#">CheatSheet C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Upcoming Events</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Event A</a>
+            <a class="navbar-item" href="#">Event B</a>
+            <a class="navbar-item" href="#">Event C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Tutorial A</a>
+            <a class="navbar-item" href="#">Tutorial B</a>
+            <a class="navbar-item" href="#">Tutorial C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="chaos-engineering" data-version="5.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html" class=" query-params-link">OpenShift Chaos Engineering Workshop</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chaos-environment.html">1. Get your Chaos environment</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="chaos-metrics.html">2. Define and monitor Chaos metrics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chaos-testing.html">3. Run Chaos testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="faq.html">4. FAQ</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OpenShift Chaos Engineering Workshop</span>
+    <span class="version">5.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">OpenShift Chaos Engineering Workshop</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">5.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">OpenShift Chaos Engineering Workshop</a></li>
+    <li><a href="chaos-metrics.html">2. Define and monitor Chaos metrics</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/chaos-engineering-guide/edit/5.0/documentation/modules/ROOT/pages/chaos-metrics.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Define and monitor Chaos metrics</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>XX MINUTE PRACTICE</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_openshift_service_mesh"><a class="anchor" href="#_what_is_openshift_service_mesh"></a>What is OpenShift Service Mesh?</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>OpenShift Service Mesh is also a service available on top of OpenShift.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_observability_with_kiali"><a class="anchor" href="#_observability_with_kiali"></a>Observability with Kiali</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Kiali</strong> provides an interactive graph view of your namespace in real time, being able to display the interactions at several levels (applications, versions, workloads), with contextual information and charts on the selected graph node or edge.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on the 'Developer Observability' button below</strong></code></p>
+</div>
+<div class="imageblock text-center params-link">
+<div class="content">
+<a class="image" href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener"><img src="_images/developer-observability-button.png" alt="Developer Observability - Button" width="300"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, <code><strong>log in with OpenShift as user%USER_ID%/%OPENSHIFT_PASSWORD%'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-login.png" alt="Kiali- Log In" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>In the <strong>'Graph' view</strong>, <code><strong>enter the following configuration</strong></code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Graph Settings</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>chaos-engineering%USER_ID%</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type Graph</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Versioned app graph</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>'Response Time'</strong> checked</p>
+<p class="tableblock"><strong>'Traffic Animation'</strong> checked</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hide&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>service*=svc.cluster.local</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The outcome is a graph with all the services, connected by the requests going through them.
+You can see how the services interact with each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-graph.png" alt="Kiali- Graph" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>TODO: EXPLAIN THE APPLICATION</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_monitoring_with_service_mesh_grafana"><a class="anchor" href="#_monitoring_with_service_mesh_grafana"></a>Monitoring with Service Mesh Grafana</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><strong>Click on the 'Developer Monitoring' button below</strong></code>.</p>
+</div>
+<div class="imageblock text-center params-link">
+<div class="content">
+<a class="image" href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener"><img src="_images/developer-monitoring-button.png" alt="Developer Monitoring - Button" width="300"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, <code><strong>log in with OpenShift as 'user%USER_ID%/%OPENSHIFT_PASSWORD%'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-home.png" alt="Grafana - Home" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>Now, let&#8217;s create a dashboard to monitor the Chaos Metrics.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on  'plus (+) sign' &gt; 'Create Dashboard' in the left hand side menu</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-create-dashboard.png" alt="Grafana - Home" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s create the first <strong>metric which defines the number of total requests in your namespace</strong>.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on the 'Add Query'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-panel-actions.png" alt="Grafana - Home" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>You are going to define the metric using a query language called PromQL (Prometheus Query Language).
+This language will let you select and aggregate time series data in real time.</p>
+</div>
+<div class="paragraph">
+<p>You will use the following incremental approach to understand and translate the first metric to PromQL expressions.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>Enter the following expression into the 'Metrics' field for the Query 'A'</strong></code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-add-query.png" alt="Grafana - Home" width="700">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Query Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">PromQL</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Step 1</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>istio_requests_total</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is an <a href="https://istio.io/latest/docs/reference/config/metrics/" target="_blank" rel="noopener">Istio standard metric</a> exported to Prometheus by default.
+It is a Counter measuring the total number of requests that have come through the Entire Service Mesh. This metric has several
+dimensions, per time series in a range vector</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Step 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>istio_requests_total{reporter="destination", namespace="chaos-engineering%USER_ID%"}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter the metric to use only the inbound requests (<em>reporter="destination"</em>) from your environment (<em>namespace="chaos-engineering%USER_ID%"</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Step 3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>increase(istio_requests_total{reporter="destination", namespace="chaos-engineering%USER_ID%"}[1m])</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adding increase(), the query returns the only number of requests as measured over the last minute per time series.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Step 4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>sum(increase(istio_requests_total{reporter="destination", namespace="chaos-engineering%USER_ID%"}[1m]))</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adding sum(), the query returns the total of requests within the namespace</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code><strong>Click on 'Choose Visualization'</strong></code></p>
+</div>
+<div class="paragraph">
+<p><code><strong>Select on 'Singlestat' and enter the following parameters:</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-panel-singlestat.png" alt="Grafana - Home" width="700">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Singlestat Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Throughput ops/sec (ops)</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spark Lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Show</strong> enabled</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code><strong>Click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. General Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Global Request Volume</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_a_grafana_dashboard"><a class="anchor" href="#_create_a_grafana_dashboard"></a>Create a Grafana Dashboard</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_import_the_chaos_engineering_dashboard"><a class="anchor" href="#_import_the_chaos_engineering_dashboard"></a>Import the Chaos Engineering Dashboard</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_explore_the_chaos_engineering_dashboard"><a class="anchor" href="#_explore_the_chaos_engineering_dashboard"></a>Explore the Chaos Engineering Dashboard</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chaos-environment.html" class="query-params-link">1. Get your Chaos environment</a></span>
+  <span class="next"><a href="chaos-testing.html" class="query-params-link">3. Run Chaos testing</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../../_/js/vendor/clipboard.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
