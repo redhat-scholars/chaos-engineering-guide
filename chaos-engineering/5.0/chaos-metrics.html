@@ -310,15 +310,15 @@ dimensions, per time series in a range vector</p></td>
 </tbody>
 </table>
 <div class="paragraph">
-<p><code><strong>Click on 'Choose Visualization'</strong></code></p>
-</div>
-<div class="paragraph">
-<p><code><strong>Select on 'Singlestat' and enter the following parameters:</strong></code></p>
+<p>As result, you should be a time graph similar to the following one:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/grafana-panel-singlestat.png" alt="Grafana - Home" width="700">
+<img src="_images/grafana-number-total-graph.png" alt="Grafana - Home" width="700">
 </div>
+</div>
+<div class="paragraph">
+<p>Then, <code><strong>click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:</strong></code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 3. Singlestat Settings</caption>
@@ -336,8 +336,13 @@ dimensions, per time series in a range vector</p></td>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visualization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Singlestat</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unit</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Throughput ops/sec (ops)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Throughput ops/min (opm)</strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -347,8 +352,13 @@ dimensions, per time series in a range vector</p></td>
 </tr>
 </tbody>
 </table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-visualization-settings.png" alt="Grafana - Home" width="500">
+</div>
+</div>
 <div class="paragraph">
-<p><code><strong>Click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
+<p>Finally, <code><strong>click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 4. General Settings</caption>
@@ -372,24 +382,62 @@ dimensions, per time series in a range vector</p></td>
 </tr>
 </tbody>
 </table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-general-settings.png" alt="Grafana - Home" width="500">
 </div>
 </div>
-<div class="sect1">
-<h2 id="_create_a_grafana_dashboard"><a class="anchor" href="#_create_a_grafana_dashboard"></a>Create a Grafana Dashboard</h2>
-<div class="sectionbody">
-
+<div class="paragraph">
+<p><strong>Congratulations!!!</strong> You just created your first Chaos Metrics in a Grafana dashboard!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-number-total-singlestat.png" alt="Grafana - Home" width="400">
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_import_the_chaos_engineering_dashboard"><a class="anchor" href="#_import_the_chaos_engineering_dashboard"></a>Import the Chaos Engineering Dashboard</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>You just learnt how to create a Grafana Dashboard. Now, let&#8217;s import the full Grafana Dashboard needed to the chaos experiments.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on the following link, <a href="https://raw.githubusercontent.com/mcouliba/chaos-engineering-workshop/%WORKSHOP_GIT_REF%/grafana/chaos-engineering-dashboard.json" target="_blank" rel="noopener">Chaos Engineering Dashboard</a> and copy the content</strong></code></p>
+</div>
+<div class="paragraph">
+<p>In <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener">Grafana</a>, <code><strong>Click on  'plus (+) sign' &gt; 'Import Dashboard' in the left hand side menu</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-import-dashboard.png" alt="Grafana - Home" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p>Then, <code><strong>paste the JSON content and click on 'Load' &gt; 'Import'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-load-dashboard.png" alt="Grafana - Home" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>You have now access the Chaos Engineering Dashboard.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-chaos-engineering-dashboard.png" alt="Grafana - Home" width="500">
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_explore_the_chaos_engineering_dashboard"><a class="anchor" href="#_explore_the_chaos_engineering_dashboard"></a>Explore the Chaos Engineering Dashboard</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>TODO</p>
+</div>
 </div>
 </div>
 <nav class="pagination">
