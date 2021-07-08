@@ -11,61 +11,6 @@
 
 _XX MINUTE PRACTICE_
 
-
-== What is OpenShift Service Mesh?
-[sidebar]
---
-OpenShift Service Mesh is also a service available on top of OpenShift. 
---
-
-
-== Observability with Kiali
-
-**Kiali** provides an interactive graph view of your namespace in real time, being able to display the interactions at several levels (applications, versions, workloads), with contextual information and charts on the selected graph node or edge.
-
-`*Click on the 'Developer Observability' button below*`
-
-[link={KIALI_URL}]
-[window=_blank, align="center"]
-[role='params-link']
-image::developer-observability-button.png[Developer Observability - Button, 300]
-
-Then, `*log in with OpenShift as user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
-
-image::kiali-login.png[Kiali- Log In,300]
-
-In the **'Graph' view**, `*enter the following configuration*`:
-
-.Graph Settings
-[%header,cols=2*]
-|===
-|Parameter
-|Value
-
-|Namespace 
-|**chaos-engineering{USER_ID}**
-
-|Type Graph
-|**Versioned app graph**
-
-|Display
-|**'Response Time'** checked
-
-**'Traffic Animation'** checked
-
-|Hide...
-|**service*=svc.cluster.local**
-
-|===
-
-The outcome is a graph with all the services, connected by the requests going through them. 
-You can see how the services interact with each other. 
-
-image::kiali-graph.png[Kiali- Graph,900]
-
-
-**TODO: EXPLAIN THE APPLICATION**
-
 == Monitoring with Service Mesh Grafana
 
 `*Click on the 'Developer Monitoring' button below*`.
