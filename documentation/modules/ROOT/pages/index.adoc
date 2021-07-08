@@ -24,8 +24,13 @@ In this hands-on workshop, attendees will get familiar with the concept of **Cha
 **Quote :** "Resilience is not about reducing errors. It's about enhancing the positive capabilities of people and organizations that allow them to adapt effectively and safely under pressure." 
 (from Sidney Dekker, David Woods, and Richard Cook)
 
+== Chaos definition 
+Chaos Engineering is steadily transforming from a gimmick to a serious, scientific discipline focused on observing and measuring the effects of the failure in systems of all shapes and sizes, in order to verify their behavior experimentally.
+
+
 [.tiles.browse]
 == Setup and infrastructure used
+The OpenShift environment created for you is running version 4.7 of the OpenShift Container Platform. This deployment is a self-contained environment that provides everything you need to be successful learning the platform. 
 We are using on **Openshift Cluster 4.7** provisioned on RHPDS system in which we installed several operators as pre-requisites for this Workshop : 
 
 * https://www.openshift.com/learn/topics/service-mesh[Openshift Service Mesh]
