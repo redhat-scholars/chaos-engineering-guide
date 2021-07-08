@@ -1,4 +1,5 @@
 :markup-in-source: verbatim,attributes,quotes
+:navtitle: Get your Chaos environment
 :CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
 :USER_ID: %USER_ID%
 :OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
@@ -15,9 +16,12 @@ In this section, you will explore OpenShift and deploy the application we would 
 
 == What is Red Hat OpenShift?
 
+
 [sidebar]
 --
-TODO
+**Red Hat® OpenShift®** enables enterprises to build highly agile, scalable architectures with enhanced cluster security that can be deployed at any location.
+
+**Red Hat® OpenShift®** offers automated installation, upgrades, and lifecycle management throughout the container stack—the operating system, https://www.openshift.com/learn/topics/kubernetes/?hsLang=en-us[Kubernetes] and cluster services, and applications—on any cloud.
 --
 
 == Log in to the OpenShift Web Console
@@ -47,7 +51,9 @@ image::openshift-empty-project.png[OpenShift - Empty Project, 700]
 
 [sidebar]
 --
-OpenShift GitOps is a service available on top of OpenShift. 
+**OpenShift GitOps** is a service available on top of OpenShift. 
+
+**OpenShift GitOps** is an OpenShift add-on which provides Argo CD and other tooling to enable teams to implement GitOps workflows for cluster configuration and application delivery.  **OpenShift GitOps** is available as an operator in the OperatorHub and can be installed with  a simple one-click experience. Once installed, users can deploy Argo CD instances using Kubernetes custom resources.
 --
 
 

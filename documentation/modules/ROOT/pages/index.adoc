@@ -1,7 +1,11 @@
 = Welcome to Chaos Engineering Workshop
+:navtitle: Introduction
 :page-layout: home
 :markup-in-source: verbatim,attributes,quotes
-:!sectids:description of your environment 
+:experimental:
+
+
+include::_attributes.adoc[]
 
 == Workshop explanation
 **Abstract** :
@@ -11,18 +15,19 @@ Bring your laptop and join us to do your **Chaos Experiment** in order to see ho
 
 In this hands-on workshop, attendees will get familiar with the concept of **Chaos Engineering** and will learn how to put it into practice using advanced capabilities of OpenShift like OpenShift Service Mesh.. As a takeaway, attendees will be able to:
 
-* Deploying an application using ArgoCD
-* Visualize and monitor a distributed system using Openshift Service Mesh
-* Define and monitor Chaos metrics using Grafana 
-* Bring chaos by injecting failures and latencies through Kiali Advanced features
+* Deploying an application using **ArgoCD**
+* Visualize and monitor a distributed system using **Openshift Service Mesh**
+* Define and monitor Chaos metrics using **Grafana** 
+* Bring chaos by injecting failures and latencies through **Kiali** advanced features
 * Fix all discovered weaknesses with modern patterns
 
-**Quote : "Resilience is not about reducing errors. It's about enhancing the positive capabilities of people and organizations that allow them to adapt effectively and safely under pressure." (from Sidney Dekker, David Woods, and Richard Cook)**
+**Quote :** "Resilience is not about reducing errors. It's about enhancing the positive capabilities of people and organizations that allow them to adapt effectively and safely under pressure." 
+(from Sidney Dekker, David Woods, and Richard Cook)
 
-
+[.tiles.browse]
 == Setup and infrastructure used
-We are using on **Openshift Cluster 4.7** provisioned on RHPDS system in which we installed several operators: 
+We are using on **Openshift Cluster 4.7** provisioned on RHPDS system in which we installed several operators as pre-requisites for this Workshop : 
 
-* Openshift Service Mesh
-* Openshift GitOps
+* https://www.openshift.com/learn/topics/service-mesh[Openshift Service Mesh]
+* https://www.openshift.com/blog/announcing-openshift-gitops[Openshift GitOps]
  
