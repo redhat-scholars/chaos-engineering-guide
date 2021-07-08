@@ -21,7 +21,7 @@ In this hands-on workshop, attendees will get familiar with the concept of **Cha
 
 
 == Setup and infrastructure used
-We are using on **Openshift Cluster** provisioned on RHPDS system in which we installed several operators: 
+We are using on **Openshift Cluster 4.7** provisioned on RHPDS system in which we installed several operators: 
 
 * Openshift Service Mesh
 * Openshift GitOps
