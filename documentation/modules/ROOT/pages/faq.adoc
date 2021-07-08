@@ -23,4 +23,4 @@ Additionnal contents to go further :
 * https://developers.redhat.com/books/introducing-istio-service-mesh-microservices?extIdCarryOver=true&sc_cid=701f2000001OH7iAAG[Introducing Istio services Mesh for Microservices]
 * https://www.oreilly.com/library/view/chaos-engineering/9781492043850/[Chaos Engineering]
 * https://www.oreilly.com/library/view/learning-chaos-engineering/9781492050995/[Learning Chaos Engineering]
-* https://www.oreilly.com/library/view/implementing-service-level/9781492076803/ [Implementing Service Level Objectives]
+* https://www.oreilly.com/library/view/implementing-service-level/9781492076803/[Implementing Service Level Objectives]
