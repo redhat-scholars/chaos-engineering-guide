@@ -353,7 +353,7 @@ select the <code><strong>chaos-engineering%USER_ID%</strong></code> to be taken 
 <p>The Travels Demo application simulates two business domains organized in different namespaces.</p>
 </div>
 <div class="paragraph">
-<p>In a first namespace called <strong>travel-portal</strong> there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.</p>
+<p>In a first namespace called <strong>'travel-portal%USER_ID%'</strong> there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.</p>
 </div>
 <div class="paragraph">
 <p>The shop applications can behave differently based on request characteristics like channel (web or mobile) or user (new or existing).</p>
@@ -362,13 +362,13 @@ select the <code><strong>chaos-engineering%USER_ID%</strong></code> to be taken 
 <p>These workloads may generate different types of traffic to imitate different real scenarios.</p>
 </div>
 <div class="paragraph">
-<p>All the portals consume a service called travels deployed in the travel-agency namespace.</p>
+<p>All the portals consume a service called travels deployed in the <strong>'travel-agency%USER_ID%'</strong> namespace.</p>
 </div>
 <div class="paragraph">
 <p><strong>Travel Agency namespace</strong></p>
 </div>
 <div class="paragraph">
-<p>A second namespace called <strong>travel-agency</strong> will host a set of services created to provide quotes for travel.</p>
+<p>A second namespace called <strong>'travel-agency%USER_ID%'</strong> will host a set of services created to provide quotes for travel.</p>
 </div>
 <div class="paragraph">
 <p>A main travels service will be the business entry point for the travel agency. It receives a destination city and a user as parameters and it calculates all elements that compose a travel budget: airfare, lodging, car reservation and travel insurance.</p>
@@ -417,7 +417,7 @@ select the <code><strong>chaos-engineering%USER_ID%</strong></code> to be taken 
 <p><strong>Travel Control namespace</strong></p>
 </div>
 <div class="paragraph">
-<p>The <strong>travel-control</strong> namespace runs a <strong>business dashboard</strong> with two key features:</p>
+<p>The <strong>'travel-control%USER_ID%'</strong> namespace runs a <strong>business dashboard</strong> with two key features:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -425,7 +425,7 @@ select the <code><strong>chaos-engineering%USER_ID%</strong></code> to be taken 
 <p>Allow setting changes for every travel shop simulator (traffic ratio, device, user and type of travel).</p>
 </li>
 <li>
-<p>Provide a <strong>business</strong> view of the total requests generated from the <strong>travel-portal</strong> namespace to the <strong>travel-agency</strong> services, organized by business criteria as grouped per shop, per type of traffic and per city.</p>
+<p>Provide a <strong>business</strong> view of the total requests generated from the <strong>'travel-control%USER_ID%'</strong> namespace to the <strong>travel-agency</strong> services, organized by business criteria as grouped per shop, per type of traffic and per city.</p>
 </li>
 </ul>
 </div>
