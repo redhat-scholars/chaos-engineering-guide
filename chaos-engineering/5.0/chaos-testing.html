@@ -136,9 +136,97 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="_what_is_openshift_service_mesh"><a class="anchor" href="#_what_is_openshift_service_mesh"></a>What is OpenShift Service Mesh?</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>OpenShift Service Mesh is also a service available on top of OpenShift.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_observability_with_kiali"><a class="anchor" href="#_observability_with_kiali"></a>Observability with Kiali</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Kiali</strong> provides an interactive graph view of your namespace in real time, being able to display the interactions at several levels (applications, versions, workloads), with contextual information and charts on the selected graph node or edge.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on the 'Developer Observability' button below</strong></code></p>
+</div>
+<div class="imageblock text-center params-link">
+<div class="content">
+<a class="image" href="{KIALI_URL}" target="_blank" rel="noopener"><img src="_images/developer-observability-button.png" alt="Developer Observability - Button" width="300"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, <code><strong>log in with OpenShift as user%USER_ID%/%OPENSHIFT_PASSWORD%'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-login.png" alt="Kiali- Log In" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>In the <strong>'Graph' view</strong>, <code><strong>enter the following configuration</strong></code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Graph Settings</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>chaos-engineering%USER_ID%</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type Graph</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Versioned app graph</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>'Response Time'</strong> checked</p>
+<p class="tableblock"><strong>'Traffic Animation'</strong> checked</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hide&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>service*=svc.cluster.local</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The outcome is a graph with all the services, connected by the requests going through them.
+You can see how the services interact with each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-graph.png" alt="Kiali- Graph" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>TODO: EXPLAIN THE APPLICATION</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_chaos_experiment_1_injecting_latencies"><a class="anchor" href="#_chaos_experiment_1_injecting_latencies"></a>Chaos Experiment 1: Injecting latencies</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>In production, it is very common to have delay services rather than down services.</p>
+</div>
+<div class="paragraph">
+<p><em>How Travels Service will behave when one of its dependant services experiment network latencies?</em></p>
+</div>
 </div>
 </div>
 <div class="sect1">
