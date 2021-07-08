@@ -324,6 +324,118 @@ select the <code><strong>chaos-engineering%USER_ID%</strong></code> to be taken 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_application_description"><a class="anchor" href="#_application_description"></a>Application description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before to continue we will describe the application used in this workshop.</p>
+</div>
+<div class="paragraph">
+<p>This demo application will deploy several services grouped into three namespaces.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>'travel-agency%USER_ID%'</strong> namespace</p>
+</li>
+<li>
+<p><strong>'travel-portal%USER_ID%'</strong> namespace</p>
+</li>
+<li>
+<p><strong>'travel-control%USER_ID%'</strong> namespace</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Travel Portal namespace</strong></p>
+</div>
+<div class="paragraph">
+<p>The Travels Demo application simulates two business domains organized in different namespaces.</p>
+</div>
+<div class="paragraph">
+<p>In a first namespace called <strong>travel-portal</strong> there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.</p>
+</div>
+<div class="paragraph">
+<p>The shop applications can behave differently based on request characteristics like channel (web or mobile) or user (new or existing).</p>
+</div>
+<div class="paragraph">
+<p>These workloads may generate different types of traffic to imitate different real scenarios.</p>
+</div>
+<div class="paragraph">
+<p>All the portals consume a service called travels deployed in the travel-agency namespace.</p>
+</div>
+<div class="paragraph">
+<p><strong>Travel Agency namespace</strong></p>
+</div>
+<div class="paragraph">
+<p>A second namespace called <strong>travel-agency</strong> will host a set of services created to provide quotes for travel.</p>
+</div>
+<div class="paragraph">
+<p>A main travels service will be the business entry point for the travel agency. It receives a destination city and a user as parameters and it calculates all elements that compose a travel budget: airfare, lodging, car reservation and travel insurance.</p>
+</div>
+<div class="paragraph">
+<p>Each service can provide an independent quote and the travels service must then aggregate them into a single response.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, some users, like registered users, can have access to special discounts, managed as well by an external service.</p>
+</div>
+<div class="paragraph">
+<p>Service relations between namespaces can be described in the following diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/travels-demo-design.png" alt="travel-demo-design - Travel demo Project deployed by Argo CD" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Travel Portal and Travel Agency flow</strong></p>
+</div>
+<div class="paragraph">
+<p>A typical flow consists of the following steps:</p>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A portal queries the travels service for available destinations.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Travels service queries the available hotels and returns to the portal shop.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A user selects a destination and a type of travel, which may include a flight and/or a car, hotel and insurance.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Cars, Hotels and Flights may have available discounts depending on user type.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Travel Control namespace</strong></p>
+</div>
+<div class="paragraph">
+<p>The <strong>travel-control</strong> namespace runs a <strong>business dashboard</strong> with two key features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allow setting changes for every travel shop simulator (traffic ratio, device, user and type of travel).</p>
+</li>
+<li>
+<p>Provide a <strong>business</strong> view of the total requests generated from the <strong>travel-portal</strong> namespace to the <strong>travel-agency</strong> services, organized by business criteria as grouped per shop, per type of traffic and per city.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/travels-dashboard.png" alt="travels-dashboard - Business Dashboard" width="800">
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="index.html" class="query-params-link">OpenShift Chaos Engineering Workshop</a></span>
   <span class="next"><a href="chaos-metrics.html" class="query-params-link">2. Define and monitor Chaos metrics</a></span>
