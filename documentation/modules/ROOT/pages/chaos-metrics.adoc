@@ -5,6 +5,7 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 :COOLSTORE_HOMEPAGE: http://web-chaos-engineering{USER_ID}.%APPS_HOSTNAME_SUFFIX%
+:DASHBOARD_GIT_URL: https://raw.githubusercontent.com/mcouliba/chaos-engineering-workshop/%WORKSHOP_GIT_REF%/grafana/chaos-engineering-dashboard.json
 
 = Define and monitor Chaos metrics
 
@@ -126,11 +127,11 @@ dimensions, per time series in a range vector
 
 |===
 
-`*Click on 'Choose Visualization'*`
+As result, you should be a time graph similar to the following one:
 
-`*Select on 'Singlestat' and enter the following parameters:*`
+image::grafana-number-total-graph.png[Grafana - Home,700]
 
-image::grafana-panel-singlestat.png[Grafana - Home,700]
+Then, `*click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:*`
 
 .Singlestat Settings
 [%header,cols=3*]
@@ -139,8 +140,12 @@ image::grafana-panel-singlestat.png[Grafana - Home,700]
 |Value
 |Description
 
+|Visualization 
+|**Singlestat**
+|
+
 |Unit 
-|**Throughput ops/sec (ops)**
+|**Throughput ops/min (opm)**
 |
 
 |Spark Lines
@@ -149,7 +154,9 @@ image::grafana-panel-singlestat.png[Grafana - Home,700]
 
 |===
 
-`*Click on the 'General Settings' icon and enter the following parameters:*`
+image::grafana-visualization-settings.png[Grafana - Home,500]
+
+Finally, `*click on the 'General Settings' icon and enter the following parameters:*`
 
 .General Settings
 [%header,cols=3*]
@@ -164,10 +171,30 @@ image::grafana-panel-singlestat.png[Grafana - Home,700]
 
 |===
 
+image::grafana-general-settings.png[Grafana - Home,500]
 
+**Congratulations!!!** You just created your first Chaos Metrics in a Grafana dashboard!
 
-== Create a Grafana Dashboard
+image::grafana-number-total-singlestat.png[Grafana - Home,400]          
 
 == Import the Chaos Engineering Dashboard
 
+You just learnt how to create a Grafana Dashboard. Now, let's import the full Grafana Dashboard needed to the chaos experiments.
+
+`*Click on the following link, {DASHBOARD_GIT_URL}[Chaos Engineering Dashboard^] and copy the content*`
+
+In {GRAFANA_URL}[Grafana^], `*Click on  'plus (+) sign' > 'Import Dashboard' in the left hand side menu*`
+
+image::grafana-import-dashboard.png[Grafana - Home,200]
+
+Then, `*paste the JSON content and click on 'Load' > 'Import'*`
+
+image::grafana-load-dashboard.png[Grafana - Home,500]
+
+You have now access the Chaos Engineering Dashboard.
+
+image::grafana-chaos-engineering-dashboard.png[Grafana - Home,500]
+
 == Explore the Chaos Engineering Dashboard
+
+TODO
