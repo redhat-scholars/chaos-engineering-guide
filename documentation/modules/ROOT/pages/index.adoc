@@ -1,3 +1,28 @@
 = Welcome to Chaos Engineering Workshop
 :page-layout: home
-:!sectids:
+:markup-in-source: verbatim,attributes,quotes
+:!sectids:description of your environment 
+
+== Workshop explanation
+**Abstract** :
+
+Building large-scale and distributed systems is changing the game for modern software engineering. How do our applications behave in the face of failure? This is the crucial challenge we need to solve as failures are inevitable. We have to identify the weaknesses of our systems before they happen in production. The goal with Chaos Engineering isn't to build tooling to stop issues or to find vulnerabilities. For us it's to push towards a culture of resilience to the unexpected.
+Bring your laptop and join us to do your **Chaos Experiment** in order to see how it withstands turbulent conditions in production and to be prepared.. 
+
+In this hands-on workshop, attendees will get familiar with the concept of **Chaos Engineering** and will learn how to put it into practice using advanced capabilities of OpenShift like OpenShift Service Mesh.. As a takeaway, attendees will be able to:
+
+* Deploying an application using ArgoCD
+* Visualize and monitor a distributed system using Openshift Service Mesh
+* Define and monitor Chaos metrics
+* Bring chaos by injecting failures and latencies
+* Fix all discovered weaknesses with modern patterns
+
+**Quote : "Resilience is not about reducing errors. It's about enhancing the positive capabilities of people and organizations that allow them to adapt effectively and safely under pressure." (from Sidney Dekker, David Woods, and Richard Cook)**
+
+
+== Setup and infrastructure used
+We are using on **Openshift Cluster** provisioned on RHPDS system in which we installed several operators: 
+
+* Openshift Service Mesh
+* Openshift GitOps
+ 
