@@ -54,7 +54,28 @@ image::openshift-empty-project.png[OpenShift - Empty Project, 700]
 **OpenShift GitOps** is a service available on top of OpenShift. 
 
 **OpenShift GitOps** is an OpenShift add-on which provides Argo CD and other tooling to enable teams to implement GitOps workflows for cluster configuration and application delivery.  **OpenShift GitOps** is available as an operator in the OperatorHub and can be installed with  a simple one-click experience. Once installed, users can deploy Argo CD instances using Kubernetes custom resources.
+
 --
+
+image::gitops-model.png[gitops-model - Button, 800]
+
+**Argo CD** features
+
+* Cluster and application configuration versioned in Git
+* Automatically syncs configuration from Git to clusters
+* Drift detection, visualization and correction
+* Granular control over sync order for complex rollouts
+* Rollback and rollforward to any Git commit
+* Manifest templating support (Helm, Kustomize, etc)
+* Visual insight into sync status and history
+
+image::argocd-features.png[argo features- Button, 400]
+
+**Argo CD** mechanism
+
+image::Gitops-Openshift.png[Gitops - Button, 900]
+
+
 
 
 == Log in to OpenShift GitOps (Argo CD)
