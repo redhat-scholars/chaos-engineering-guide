@@ -140,17 +140,17 @@ This demo application will deploy several services grouped into three namespaces
 
 The Travels Demo application simulates two business domains organized in different namespaces.
 
-In a first namespace called **travel-portal** there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.
+In a first namespace called **'travel-portal{USER_ID}'** there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.
 
 The shop applications can behave differently based on request characteristics like channel (web or mobile) or user (new or existing).
 
 These workloads may generate different types of traffic to imitate different real scenarios.
 
-All the portals consume a service called travels deployed in the travel-agency namespace.
+All the portals consume a service called travels deployed in the **'travel-agency{USER_ID}'** namespace.
 
 **Travel Agency namespace**
 
-A second namespace called **travel-agency** will host a set of services created to provide quotes for travel.
+A second namespace called **'travel-agency{USER_ID}'** will host a set of services created to provide quotes for travel.
 
 A main travels service will be the business entry point for the travel agency. It receives a destination city and a user as parameters and it calculates all elements that compose a travel budget: airfare, lodging, car reservation and travel insurance.
 
@@ -176,10 +176,10 @@ A typical flow consists of the following steps:
 
 **Travel Control namespace**
 
-The **travel-control** namespace runs a **business dashboard** with two key features:
+The **'travel-control{USER_ID}'** namespace runs a **business dashboard** with two key features:
 
 * Allow setting changes for every travel shop simulator (traffic ratio, device, user and type of travel).
 
-* Provide a **business** view of the total requests generated from the **travel-portal** namespace to the **travel-agency** services, organized by business criteria as grouped per shop, per type of traffic and per city.
+* Provide a **business** view of the total requests generated from the **'travel-control{USER_ID}'** namespace to the **travel-agency** services, organized by business criteria as grouped per shop, per type of traffic and per city.
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]
