@@ -69,7 +69,7 @@ image::kiali-graph.png[Kiali- Graph,900]
 
 In production, it is very common to have delay services rather than down services.
 
-_How Travels Service will behave when one of its dependant services experiment network latencies?_
+_How does **Travels Service** behave when one of its dependant services experiment network latencies?_
 
 
 == Chaos Experiment 2: Injecting incidents
