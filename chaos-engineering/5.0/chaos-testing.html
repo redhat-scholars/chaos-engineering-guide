@@ -199,7 +199,7 @@
 </div>
 <div class="imageblock text-center params-link">
 <div class="content">
-<a class="image" href="{KIALI_URL}" target="_blank" rel="noopener"><img src="_images/developer-observability-button.png" alt="Developer Observability - Button" width="300"></a>
+<a class="image" href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener"><img src="_images/developer-observability-button.png" alt="Developer Observability - Button" width="300"></a>
 </div>
 </div>
 <div class="paragraph">
@@ -267,6 +267,120 @@ You can see how the services interact with each other.</p>
 </div>
 <div class="paragraph">
 <p><em>How does <strong>Travels Service</strong> behave when one of its dependant services experiment network latencies?</em></p>
+</div>
+<div class="paragraph">
+<p>In the <a href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener">Kiali Console</a>, from the <strong>'Graph' view</strong>, <code><strong>right-click on the 'Hotels' service and select 'Details'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-right-click-hotel-service.png" alt="Kiali - Right Click Service" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>You will be redirected to the Service Details page.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on the 'Actions' &gt; 'Fault Injection'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-add-fault-injection.png" alt="Kiali - Add Fault Injection" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p><code><strong>Add HTTP Delay by entering the following settings:</strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. HTTP Delay Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add HTTP Delay</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enabled</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delay Percentage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>30</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fixed Delayed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>1s</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-configure-latency.png" alt="Kiali - Configure Latency" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on the 'Create' button</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>30% of the traffic of the 'Hotels' service has now 1 second of delay.</strong> Now let&#8217;s see the impact of the application.</p>
+</div>
+<div class="paragraph">
+<p>In the <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%">Chaos Engineering Dashboard</a>, you can see the result of the chaos experiment.
+First, <code><strong>select the following variables on the dashboard</strong></code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Dashboard Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>chaos-engineering%USER_ID%</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>travels</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-chaos-selection.png" alt="Grafana - Chaos Selection" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>From the <strong>'Service Overview'</strong> or <strong>'Request Duration'</strong> panels, you can tell that the "Travels" service is particularly impacted when there is a network latency with one of its dependant services.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-latency-fault-overview.png" alt="Kiali - Lantency Fault Overview" width="900">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-latency-fault-details.png" alt="Kiali - Lantency Fault Overview" width="900">
+</div>
 </div>
 </div>
 </div>
