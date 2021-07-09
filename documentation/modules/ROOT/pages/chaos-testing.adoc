@@ -3,8 +3,9 @@
 :USER_ID: %USER_ID%
 :OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
 :OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
-
 :APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
+:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
+:GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
 = Run Chaos testing
 
@@ -87,7 +88,6 @@ You can see how the services interact with each other.
 
 image::kiali-graph.png[Kiali- Graph,900]
 
-
 **TODO: EXPLAIN THE APPLICATION**
 
 == Chaos Experiment 1: Injecting latencies
@@ -96,6 +96,72 @@ In production, it is very common to have delay services rather than down service
 
 _How does **Travels Service** behave when one of its dependant services experiment network latencies?_
 
+In the {KIALI_URL}[Kiali Console^], from the **'Graph' view**, `*right-click on the 'Hotels' service and select 'Details'*`
+
+image::kiali-right-click-hotel-service.png[Kiali - Right Click Service,400]
+
+You will be redirected to the Service Details page. 
+
+`*Click on the 'Actions' > 'Fault Injection'*`
+
+image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
+
+`*Add HTTP Delay by entering the following settings:*`
+
+.HTTP Delay Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Add HTTP Delay 
+|**Enabled**
+|
+
+|Delay Percentage
+|**30**
+|
+
+|Fixed Delayed
+|**1s**
+|
+
+|===
+
+image::kiali-configure-latency.png[Kiali - Configure Latency,300]
+
+`*Click on the 'Create' button*`. 
+
+**30% of the traffic of the 'Hotels' service has now 1 second of delay.** Now let's see the impact of the application.
+
+In the {GRAFANA_URL}[Chaos Engineering Dashboard], you can see the result of the chaos experiment.
+First, `*select the following variables on the dashboard*`:
+
+.Dashboard Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Namespace 
+|**chaos-engineering{USER_ID}**
+|
+
+|Service
+|**travels**
+|
+
+|===
+
+image::grafana-chaos-selection.png[Grafana - Chaos Selection,400]
+
+From the **'Service Overview'** or **'Request Duration'** panels, you can tell that the "Travels" service is particularly impacted when there is a network latency with one of its dependant services.
+
+image::kiali-latency-fault-overview.png[Kiali - Lantency Fault Overview,900]
+
+image::kiali-latency-fault-details.png[Kiali - Lantency Fault Overview,900]
 
 == Chaos Experiment 2: Injecting incidents
 
