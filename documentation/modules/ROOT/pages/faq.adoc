@@ -1,4 +1,5 @@
 :markup-in-source: verbatim,attributes,quotes
+:navtitle: FAQ
 :CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
 :USER_ID: %USER_ID%
 :OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
@@ -7,3 +8,19 @@
 :COOLSTORE_HOMEPAGE: http://web-chaos-engineering{USER_ID}.%APPS_HOSTNAME_SUFFIX%
 
 = FAQ
+
+Additionnal contents to go further :
+
+== Training and Videos
+* **Openshift Gitops** https://learn.openshift.com/gitops
+* **What's new in OpenShift Pipelines and OpenShift GitOps - Jaafar Chraibi/Christian Hernandez** https://www.youtube.com/watch?v=YvtRXFzRHeI[YouTube Video]
+* **Why Service Mesh?** https://www.youtube.com/watch?v=F_t3WDhMuwU[YouTube Video]
+* **Learn Openshift Service Mesh** https://learn.openshift.com/servicemesh
+* **Monitoring Services like an SRE in OpenShift ServiceMesh** https://www.youtube.com/watch?v=Gu-g_yg0Q1g[YouTube Video]
+* **Kiali Tutorial** https://kiali.io/documentation/latest/tutorial/
+
+== Books 
+* https://developers.redhat.com/books/introducing-istio-service-mesh-microservices?extIdCarryOver=true&sc_cid=701f2000001OH7iAAG[Introducing Istio services Mesh for Microservices]
+* https://www.oreilly.com/library/view/chaos-engineering/9781492043850/[Chaos Engineering]
+* https://www.oreilly.com/library/view/learning-chaos-engineering/9781492050995/[Learning Chaos Engineering]
+* https://www.oreilly.com/library/view/implementing-service-level/9781492076803/[Implementing Service Level Objectives]

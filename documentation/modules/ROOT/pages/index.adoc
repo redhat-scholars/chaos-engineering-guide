@@ -1,3 +1,43 @@
 = Welcome to Chaos Engineering Workshop
+:navtitle: Introduction
 :page-layout: home
-:!sectids:
+:markup-in-source: verbatim,attributes,quotes
+:experimental:
+
+
+include::_attributes.adoc[]
+
+== Workshop explanation
+**Abstract** :
+
+Building large-scale and distributed systems is changing the game for modern software engineering. How do our applications behave in the face of failure? This is the crucial challenge we need to solve as failures are inevitable. 
+
+We have to identify the weaknesses of our systems before they happen in production. 
+
+The goal with Chaos Engineering isn't to build tooling to stop issues or to find vulnerabilities. For us it's to push towards a culture of resilience to the unexpected.
+
+Bring your laptop and join us to do your **Chaos Experiment** in order to see how it withstands turbulent conditions in production and to be prepared.. 
+
+In this hands-on workshop, attendees will get familiar with the concept of **Chaos Engineering** and will learn how to put it into practice using advanced capabilities of OpenShift like OpenShift Service Mesh.. As a takeaway, attendees will be able to:
+
+* Deploying an application using **ArgoCD**
+* Visualize and monitor a distributed system using **Openshift Service Mesh**
+* Define and monitor Chaos metrics using **Grafana** 
+* Bring chaos by injecting failures and latencies through **Kiali** advanced features
+* Fix all discovered weaknesses with modern patterns
+
+**Quote :** "Resilience is not about reducing errors. It's about enhancing the positive capabilities of people and organizations that allow them to adapt effectively and safely under pressure." 
+(from Sidney Dekker, David Woods, and Richard Cook)
+
+== Chaos definition 
+Chaos Engineering is steadily transforming from a gimmick to a serious, scientific discipline focused on observing and measuring the effects of the failure in systems of all shapes and sizes, in order to verify their behavior experimentally.
+
+
+[.tiles.browse]
+== Setup and infrastructure used
+The OpenShift environment created for you is running version 4.7 of the OpenShift Container Platform. This deployment is a self-contained environment that provides everything you need to be successful learning the platform. 
+We are using on **Openshift Cluster 4.7** provisioned on RHPDS system in which we installed several operators as pre-requisites for this Workshop : 
+
+* https://www.openshift.com/learn/topics/service-mesh[Openshift Service Mesh]
+* https://www.openshift.com/blog/announcing-openshift-gitops[Openshift GitOps]
+ 
