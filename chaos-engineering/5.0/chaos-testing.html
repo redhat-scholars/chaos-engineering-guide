@@ -374,24 +374,149 @@ First, <code><strong>select the following variables on the dashboard</strong></c
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/kiali-latency-fault-overview.png" alt="Kiali - Lantency Fault Overview" width="900">
+<img src="_images/kiali-latency-fault-overview.png" alt="Kiali - Latency Fault Overview" width="900">
 </div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/kiali-latency-fault-details.png" alt="Kiali - Lantency Fault Overview" width="900">
+<img src="_images/kiali-latency-fault-details.png" alt="Kiali - Latency Fault Details" width="900">
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_chaos_experiment_2_injecting_incidents"><a class="anchor" href="#_chaos_experiment_2_injecting_incidents"></a>Chaos Experiment 2: Injecting incidents</h2>
+<h2 id="_chaos_experiment_1_solving_detected_issues"><a class="anchor" href="#_chaos_experiment_1_solving_detected_issues"></a>Chaos Experiment 1: Solving detected issues</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>To minimize the latency impact, you can use the <strong>timeout pattern</strong> which is probably the most common resilience pattern for distributed systems.
+The goal is to fail a request after a certain period of time to avoid code and resources locking when the service is waiting for a response that takes too long or that might never arrive.</p>
+</div>
+<div class="paragraph">
+<p>In the <a href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener">Kiali Console</a>, from the <strong>'Services' view</strong>, <code><strong>click on the 'travels' &gt; 'Actions' &gt; 'Request Timeouts'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-request-timeout-actions.png" alt="Kiali - Request Timeout Actions" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p><code><strong>Add HTTP Timeout by entering the following settings:</strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. HTTP Timeout Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add HTTP Timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enabled</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>50ms</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-configure-timeout.png" alt="Kiali - Configure Timeout" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>In <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener">Grafana</a>, from the <strong>Chaos Engineering Dashboard</strong>, <code><strong>scroll down and see the latency metrics</strong></code></p>
+</div>
+<div class="paragraph">
+<p>After a while, you can see the impact of our configuration. Indeed, the latency on <strong>Travels</strong> service has reduced and
+the latency metrics become green again.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-timeout-details-1.png" alt="Grafana - Timeout Details" width="900">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-timeout-details-2.png" alt="Grafana - Timeout Details" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>The latency issues have been fixed but the timeout pattern introduces errors for the requests which exceeds the threshold.
+<code><strong>Scroll up and see the error rate metrics</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-timeout-error.png" alt="Grafana - Timeout Error" width="900">
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_solve_detected_issues"><a class="anchor" href="#_solve_detected_issues"></a>Solve detected issues</h2>
+<h2 id="_todo"><a class="anchor" href="#_todo"></a>TODO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You have implemented timeouts for the travels service.
+Let&#8217;s implementing a strategy of retry to mitigate these transient errors.</p>
+</div>
+<div class="paragraph">
+<p>In the <a href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener">Kiali Console</a>, from the <strong>'Services' view</strong>,
+<code><strong>click on the 'travels' &gt; 'Actions' &gt; 'Request Timeouts' and add HTTP Retry by entering the following settings:</strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. HTTP Retry Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add HTTP Retry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enabled</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attempts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>3</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per Try Timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>10ms</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-configure-retry.png" alt="Kiali - Configure Retry" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p><code><strong>Back to <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener">Grafana</a></strong></code>, you can tell the retry pattern reduces the error rates without impacting the latency.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_todo_2"><a class="anchor" href="#_todo_2"></a>TODO</h2>
 <div class="sectionbody">
 
 </div>
