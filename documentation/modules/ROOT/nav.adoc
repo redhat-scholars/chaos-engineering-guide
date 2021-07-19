@@ -1,6 +1,6 @@
 * xref:chaos-environment.adoc[1. Get your Chaos environment]
 * xref:chaos-design.adoc[2. Design Chaos experiments]
 * xref:chaos-metrics.adoc[3. Define and monitor Chaos metrics]
-* xref:chaos-latency.adoc[4. Run Chaos Experiment 1: Injecting Latency]
-* xref:chaos-error.adoc[5. Run Chaos Experiment 2: Injecting Errors]
+* xref:chaos-latency.adoc[4. Chaos Experiment 1: Injecting Latency]
+* xref:chaos-error.adoc[5. Chaos Experiment 2: Injecting Errors]
 * xref:faq.adoc[4. FAQ]
