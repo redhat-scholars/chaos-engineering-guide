@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Welcome to Chaos Engineering Workshop :: OpenShift Chaos Engineering Workshop</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/chaos-engineering/5.0/index.html">
-    <link rel="next" href="chaos-environment.html">
+    <title>Run Chaos Experiment 2: Injecting Errors :: OpenShift Chaos Engineering Workshop</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/chaos-engineering/5.0/chaos-error.html">
+    <link rel="prev" href="chaos-latency.html">
+    <link rel="next" href="faq.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -82,7 +83,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chaos-latency.html">4. Chaos Experiment 1: Injecting Latency</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="chaos-error.html">5. Chaos Experiment 2: Injecting Errors</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -115,93 +116,27 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Chaos Engineering Workshop</a></li>
-    <li><a href="index.html">Welcome to Chaos Engineering Workshop</a></li>
+    <li><a href="chaos-error.html">5. Chaos Experiment 2: Injecting Errors</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/chaos-engineering-guide/edit/5.0/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/chaos-engineering-guide/edit/5.0/documentation/modules/ROOT/pages/chaos-error.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Welcome to Chaos Engineering Workshop</h1>
+<h1 class="page">Run Chaos Experiment 2: Injecting Errors</h1>
 <div class="sect1">
-<h2 id="_workshop_explanation"><a class="anchor" href="#_workshop_explanation"></a>Workshop explanation</h2>
+<h2 id="_todo"><a class="anchor" href="#_todo"></a>TODO</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><strong>Abstract</strong> :</p>
-</div>
-<div class="paragraph">
-<p>Building large-scale and distributed systems is changing the game for modern software engineering. How do our applications behave in the face of failure? This is the crucial challenge we need to solve as failures are inevitable.</p>
-</div>
-<div class="paragraph">
-<p>We have to identify the weaknesses of our systems before they happen in production.</p>
-</div>
-<div class="paragraph">
-<p>The goal with Chaos Engineering isn&#8217;t to build tooling to stop issues or to find vulnerabilities. For us it&#8217;s to push towards a culture of resilience to the unexpected.</p>
-</div>
-<div class="paragraph">
-<p>Bring your laptop and join us to do your <strong>Chaos Experiment</strong> in order to see how it withstands turbulent conditions in production and to be prepared..</p>
-</div>
-<div class="paragraph">
-<p>In this hands-on workshop, attendees will get familiar with the concept of <strong>Chaos Engineering</strong> and will learn how to put it into practice using advanced capabilities of OpenShift like OpenShift Service Mesh.. As a takeaway, attendees will be able to:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Deploying an application using <strong>ArgoCD</strong></p>
-</li>
-<li>
-<p>Visualize and monitor a distributed system using <strong>Openshift Service Mesh</strong></p>
-</li>
-<li>
-<p>Define and monitor Chaos metrics using <strong>Grafana</strong></p>
-</li>
-<li>
-<p>Bring chaos by injecting failures and latencies through <strong>Kiali</strong> advanced features</p>
-</li>
-<li>
-<p>Fix all discovered weaknesses with modern patterns</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Quote :</strong> "Resilience is not about reducing errors. It&#8217;s about enhancing the positive capabilities of people and organizations that allow them to adapt effectively and safely under pressure."
-(from Sidney Dekker, David Woods, and Richard Cook)</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_chaos_definition"><a class="anchor" href="#_chaos_definition"></a>Chaos definition</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Chaos Engineering is steadily transforming from a gimmick to a serious, scientific discipline focused on observing and measuring the effects of the failure in systems of all shapes and sizes, in order to verify their behavior experimentally.</p>
-</div>
-</div>
-</div>
-<div class="sect1 tiles browse">
-<h2 id="_setup_and_infrastructure_used"><a class="anchor" href="#_setup_and_infrastructure_used"></a>Setup and infrastructure used</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The OpenShift environment created for you is running version 4.7 of the OpenShift Container Platform. This deployment is a self-contained environment that provides everything you need to be successful learning the platform.
-We are using on <strong>Openshift Cluster 4.7</strong> provisioned on RHPDS system in which we installed several operators as pre-requisites for this Workshop :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.openshift.com/learn/topics/service-mesh">Openshift Service Mesh</a></p>
-</li>
-<li>
-<p><a href="https://www.openshift.com/blog/announcing-openshift-gitops">Openshift GitOps</a></p>
-</li>
-</ul>
-</div>
+
 </div>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="chaos-environment.html" class="query-params-link">1. Get your Chaos environment</a></span>
+  <span class="prev"><a href="chaos-latency.html" class="query-params-link">4. Chaos Experiment 1: Injecting Latency</a></span>
+  <span class="next"><a href="faq.html" class="query-params-link">4. FAQ</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
