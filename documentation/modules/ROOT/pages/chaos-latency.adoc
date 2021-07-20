@@ -7,17 +7,106 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Chaos Experiment 1: Injecting latencies
+= Chaos Experiment 1: Injecting latency
 
 _XX MINUTE PRACTICE_
 
-In production, it is very common to have delay services rather than down services.
+In production, it is very common to have delay services rather than down services. For this first experiment, we will test the following hypothesis:
 
-_How does **Travels Service** behave when one of its dependant services experiment network latencies?_
+_**A small network latency should not impact the Service Level Objective (SLO) of the Travel Service**_
 
-== Add Latency
+== Define the steady state
 
-In the {KIALI_URL}[Kiali Console^], from the **'Graph' view**, `*right-click on the 'Hotels' service and select 'Details'*`
+
+In the {GRAFANA_URL}[Chaos Engineering Dashboard, role='params-link'], you can analyze the different metrics and define the Steady State for our chaos experiment.
+First, `*select the following variables on the dashboard*`:
+
+.Dashboard Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Namespace 
+|**chaos-engineering{USER_ID}**
+|
+
+|Service
+|**travels.chaos-engineering{USER_ID}.svc.cluster.local**
+|
+
+|===
+
+From the **Namespace section**, you can tell that **99% of requests are successful and served within 50 ms**  
+
+image::grafana-steady-state-latency.png[Grafana - Steady State Latency,900]
+
+So we will define this SLO as "steady-state".
+
+`*Click on 'Service Overview' > Edit*`
+
+image::grafana-edit-service-overview.png[Grafana - Edit Service Overview,300]
+
+Then, `*click on 'Visualization Settings' icon on the left hand sidebar, scroll down to find the 'P99 Latency (Value #D)' rule and enter the following information for Thresholds*`
+
+.P99 Latency Thresholds Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Thresholds 
+|**50,100**
+|
+
+|Color Mode
+|**Cell**
+|
+
+|Colors
+|**Green/Yellow/Red** (click on the 'invert' button if needed)
+|
+
+|===
+
+image::grafana-p99-latency-threholds.png[Grafana - P99 Latency Threholds,700]
+
+`*Scroll down again and to find the 'Success Rate (Value #E)' rule and enter the following information for Thresholds*`
+
+.Success Rate Thresholds Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Thresholds 
+|**0.95,0.99**
+|
+
+|Color Mode
+|**Cell**
+|
+
+|Colors
+|**Red/Yellow/Green** (click on the 'invert' button if needed)
+|
+
+|===
+
+image::grafana-success-rate-threholds.png[Grafana - Sucess Rate Threholds,700]
+
+Once done, you should have the following outcome (all green).
+
+image::grafana-service-overview-configured.png[Grafana - Service Overview Configured,700]
+
+`*Click on the 'Disk' icon to save and go back to the Dashboard.*`
+
+== Run the Chaos experiment
+
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'Discount' service and select 'Details'*`
 
 image::kiali-right-click-hotel-service.png[Kiali - Right Click Service,400]
 
@@ -84,82 +173,5 @@ image::kiali-latency-fault-overview.png[Kiali - Latency Fault Overview,900]
 
 image::kiali-latency-fault-details.png[Kiali - Latency Fault Details,900]
 
-== Chaos Experiment 1: Solving detected issues
-
-To minimize the latency impact, you can use the **timeout pattern** which is probably the most common resilience pattern for distributed systems.
-The goal is to fail a request after a certain period of time to avoid code and resources locking when the service is waiting for a response that takes too long or that might never arrive.
-
-In the {KIALI_URL}[Kiali Console^], from the **'Services' view**, `*click on the 'travels' > 'Actions' > 'Request Timeouts'*`
-
-image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
-
-`*Add HTTP Timeout by entering the following settings:*`
-
-.HTTP Timeout Settings
-[%header,cols=3*]
-|===
-|Parameter
-|Value
-|Description
-
-|Add HTTP Timeout 
-|**Enabled**
-|
-
-|Timeout
-|**50ms**
-|
-
-|===
-
-image::kiali-configure-timeout.png[Kiali - Configure Timeout,400]
-
-In {GRAFANA_URL}[Grafana^], from the **Chaos Engineering Dashboard**, `*scroll down and see the latency metrics*`
-
-After a while, you can see the impact of our configuration. Indeed, the latency on **Travels** service has reduced and
-the latency metrics become green again.
-
-image::grafana-timeout-details-1.png[Grafana - Timeout Details,900]
-
-image::grafana-timeout-details-2.png[Grafana - Timeout Details,900]
-
-The latency issues have been fixed but the timeout pattern introduces errors for the requests which exceeds the threshold.
-`*Scroll up and see the error rate metrics*`
-
-image::grafana-timeout-error.png[Grafana - Timeout Error,900]
-
-== TODO
-
-You have implemented timeouts for the travels service. 
-Let's implementing a strategy of retry to mitigate these transient errors.
-
-In the {KIALI_URL}[Kiali Console^], from the **'Services' view**, 
-`*click on the 'travels' > 'Actions' > 'Request Timeouts' and add HTTP Retry by entering the following settings:*`
-
-.HTTP Retry Settings
-[%header,cols=3*]
-|===
-|Parameter
-|Value
-|Description
-
-|Add HTTP Retry 
-|**Enabled**
-|
-
-|Attempts
-|**3**
-|
-
-|Per Try Timeout
-|**10ms**
-|
-
-|===
-
-image::kiali-configure-retry.png[Kiali - Configure Retry,400]
-
-`*Back to {GRAFANA_URL}[Grafana^]*`, you can tell the retry pattern reduces the error rates without impacting the latency.
-
-== TODO
+== Analyze the Chaos outcome
 
