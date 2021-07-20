@@ -5,7 +5,6 @@
 :OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
 :OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
 :GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
-:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GITOPS_WORKSHOP_GIT_URL: %WORKSHOP_GIT_REPO%/tree/%WORKSHOP_GIT_REF%/gitops
 
 = Get your Chaos environment

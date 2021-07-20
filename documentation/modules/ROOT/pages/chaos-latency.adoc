@@ -11,7 +11,7 @@
 
 _XX MINUTE PRACTICE_
 
-In production, it is very common to have delay services rather than down services. For this first experiment, we will test the following hypothesis:
+In production, it is very common to have delay services rather than down services. **Latency** measures the delay between an action and a response. For this first experiment, we will test the following hypothesis:
 
 _**A small network latency should not impact the Service Level Objective (SLO) of the Travel Service**_
 
@@ -37,6 +37,8 @@ First, `*select the following variables on the dashboard*`:
 |
 
 |===
+
+image::grafana-chaos-selection.png[Grafana - Chaos Selection,400]
 
 From the **Namespace section**, you can tell that **99% of requests are successful and served within 50 ms**  
 
@@ -108,7 +110,7 @@ image::grafana-service-overview-configured.png[Grafana - Service Overview Config
 
 In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'Discount' service and select 'Details'*`
 
-image::kiali-right-click-hotel-service.png[Kiali - Right Click Service,400]
+image::kiali-right-click-service.png[Kiali - Right Click Service,400]
 
 You will be redirected to the Service Details page. 
 
@@ -143,35 +145,21 @@ image::kiali-configure-latency.png[Kiali - Configure Latency,300]
 
 `*Click on the 'Create' button*`. 
 
-**30% of the traffic of the 'Hotels' service has now 1 second of delay.** Now let's see the impact of the application.
-
-In the {GRAFANA_URL}[Chaos Engineering Dashboard], you can see the result of the chaos experiment.
-First, `*select the following variables on the dashboard*`:
-
-.Dashboard Settings
-[%header,cols=3*]
-|===
-|Parameter
-|Value
-|Description
-
-|Namespace 
-|**chaos-engineering{USER_ID}**
-|
-
-|Service
-|**travels**
-|
-
-|===
-
-image::grafana-chaos-selection.png[Grafana - Chaos Selection,400]
-
-From the **'Service Overview'** or **'Request Duration'** panels, you can tell that the "Travels" service is particularly impacted when there is a network latency with one of its dependant services.
-
-image::kiali-latency-fault-overview.png[Kiali - Latency Fault Overview,900]
-
-image::kiali-latency-fault-details.png[Kiali - Latency Fault Details,900]
+**30% of the traffic of the 'Discounts' service has now 1 second of delay.** Now let's see the impact of the application.
 
 == Analyze the Chaos outcome
 
+In the {GRAFANA_URL}[Chaos Engineering Dashboard], you can see the result of the chaos experiment.
+
+image::kiali-latency-fault-overview.png[Kiali - Latency Fault Overview,900]
+
+From the **'Service Overview'** or **'Request Duration'** panels, you can tell the following about the small network latency based on our hypothesis:
+
+- there is no impact on the Success Rate of the overall requests (100%)
+- there is a huge impact on the performance of the application. 
+
+Indeed, just 1 second of delay on 30% of the traffic of one dependant service induces **a latency propagation of more than 2 seconds across the system**.
+
+image::kiali-latency-fault-details.png[Kiali - Latency Fault Details,900]
+
+In conclusion, you can tell the **application is not resilient to a small network latency**. To reduce or fix this phenomenon, you could configure an autoscaling or implement a cache mechanism across the different services of the applications.
