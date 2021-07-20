@@ -14,12 +14,23 @@ _XX MINUTE PRACTICE_
 According to the Principles of Chaos Engineering (
     https://principlesofchaos.org/[https://principlesofchaos.org/])
     
-**Chaos Engineering** is the discipline of experimenting on a system in order to build confidence in the system's capability t withstand turbulent conditions in production.
+**Chaos Engineering** is the discipline of experimenting on a system in order to build confidence in the system's capability to withstand turbulent conditions in production.
 **Chaos engineering**'s sole purpose is to provide evidence of system weaknesses (sometimes called https://snafucatchers.github.io/#4_6_Dark_Debt[Dark Debt])
 
 Take an example where you have two services that communicate with each other. 
 
+image::simple-2-service.png[simple-2-service - A simple two-service system, 800]
+
+
+What should happen if **Service Y** dies ? What will happen to **Service X** if **Service Y** starts to respond slowly ? what happens if **Service Y** comes back after going away for a period of time? what happens is the connection between **Service X** and Y becomes increasingly busy ? What happens if the CPU that is being used by **Service Y** is maxed out ? and most importanlty, what does this all men to the user ?
+
+You might believe you've designed the services and the infrastructure perfectly to accomodate all of these cases, but how to you know ? Even in such a simple system it is likely tere might be some surprises --some **dark debt** -- present. **Chaos engineering** provides a way of exploring these uncertainties to find out whether your assumptions of the system's resiliency hold water in the real world.
+
+
 == Plan an Experiment
+
+
+
 
 == What is OpenShift Service Mesh?
 [sidebar]
