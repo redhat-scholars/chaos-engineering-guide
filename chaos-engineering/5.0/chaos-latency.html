@@ -134,7 +134,7 @@
 <p><em>XX MINUTE PRACTICE</em></p>
 </div>
 <div class="paragraph">
-<p>In production, it is very common to have delay services rather than down services. For this first experiment, we will test the following hypothesis:</p>
+<p>In production, it is very common to have delay services rather than down services. <strong>Latency</strong> measures the delay between an action and a response. For this first experiment, we will test the following hypothesis:</p>
 </div>
 <div class="paragraph">
 <p><em><strong>A small network latency should not impact the Service Level Objective (SLO) of the Travel Service</strong></em></p>
@@ -175,6 +175,11 @@ First, <code><strong>select the following variables on the dashboard</strong></c
 </tr>
 </tbody>
 </table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-chaos-selection.png" alt="Grafana - Chaos Selection" width="400">
+</div>
+</div>
 <div class="paragraph">
 <p>From the <strong>Namespace section</strong>, you can tell that <strong>99% of requests are successful and served within 50 ms</strong></p>
 </div>
@@ -295,7 +300,7 @@ First, <code><strong>select the following variables on the dashboard</strong></c
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/kiali-right-click-hotel-service.png" alt="Kiali - Right Click Service" width="400">
+<img src="_images/kiali-right-click-service.png" alt="Kiali - Right Click Service" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -353,63 +358,45 @@ First, <code><strong>select the following variables on the dashboard</strong></c
 <p><code><strong>Click on the 'Create' button</strong></code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>30% of the traffic of the 'Hotels' service has now 1 second of delay.</strong> Now let&#8217;s see the impact of the application.</p>
-</div>
-<div class="paragraph">
-<p>In the <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%">Chaos Engineering Dashboard</a>, you can see the result of the chaos experiment.
-First, <code><strong>select the following variables on the dashboard</strong></code>:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Dashboard Settings</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>chaos-engineering%USER_ID%</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Service</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>travels</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-<div class="imageblock">
-<div class="content">
-<img src="_images/grafana-chaos-selection.png" alt="Grafana - Chaos Selection" width="400">
-</div>
-</div>
-<div class="paragraph">
-<p>From the <strong>'Service Overview'</strong> or <strong>'Request Duration'</strong> panels, you can tell that the "Travels" service is particularly impacted when there is a network latency with one of its dependant services.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/kiali-latency-fault-overview.png" alt="Kiali - Latency Fault Overview" width="900">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/kiali-latency-fault-details.png" alt="Kiali - Latency Fault Details" width="900">
-</div>
+<p><strong>30% of the traffic of the 'Discounts' service has now 1 second of delay.</strong> Now let&#8217;s see the impact of the application.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_analyze_the_chaos_outcome"><a class="anchor" href="#_analyze_the_chaos_outcome"></a>Analyze the Chaos outcome</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>In the <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%">Chaos Engineering Dashboard</a>, you can see the result of the chaos experiment.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-latency-fault-overview.png" alt="Kiali - Latency Fault Overview" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>From the <strong>'Service Overview'</strong> or <strong>'Request Duration'</strong> panels, you can tell the following about the small network latency based on our hypothesis:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>there is no impact on the Success Rate of the overall requests (100%)</p>
+</li>
+<li>
+<p>there is a huge impact on the performance of the application.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Indeed, just 1 second of delay on 30% of the traffic of one dependant service induces <strong>a latency propagation of more than 2 seconds across the system</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-latency-fault-details.png" alt="Kiali - Latency Fault Details" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>In conclusion, you can tell the <strong>application is not resilient to a small network latency</strong>. To reduce or fix this phenomenon, you could configure an autoscaling or implement a cache mechanism across the different services of the applications.</p>
+</div>
 </div>
 </div>
 <nav class="pagination">
