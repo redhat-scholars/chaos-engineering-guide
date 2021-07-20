@@ -3,7 +3,7 @@ runtime:
 
 site:
   title: OpenShift Chaos Engineering Workshop (Dev Mode)
-  url: http://localhost:3000/rhs-build-course/index.html
+  url: http://localhost:3000/rhs-build-course/index.html                                                                                       
   start_page: chaos-engineering::index.adoc
 
 content:
