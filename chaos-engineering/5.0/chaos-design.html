@@ -160,7 +160,47 @@
 <div class="sect1">
 <h2 id="_plan_an_experiment"><a class="anchor" href="#_plan_an_experiment"></a>Plan an Experiment</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Chaos Engineering begins by asking the question :</p>
+</div>
+<div class="paragraph">
+<p><strong>"Do we know what the system might do in this case ?"</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/process-chaos.png" alt="process-chaos" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The general process for chaos engineering looks as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Define a steady-state hypothesis:</strong> You need to start with an idea of what can go awry. Start with a failure to inject and predict an outcome for when it is running live.</p>
+</li>
+<li>
+<p><strong>Confirm the steady-state and simulate some real-world events:</strong> Perform tests using real-world scenarios to see how your system behaves under particular stress conditions or circumstances.</p>
+</li>
+<li>
+<p><strong>Confirm the steady-state again:</strong> We need to confirm what changes occurred, so checking it again gives us insights into system behavior.</p>
+</li>
+<li>
+<p><strong>Collect metrics and observe dashboards:</strong> You need to measure your system’s durability and availability. It is best practice to use key performance metrics that correlate with customer success or usage. We want to measure the failure against our hypothesis by looking at factors like impact on latency or requests per second.</p>
+</li>
+<li>
+<p><strong>Make changes and fix issues:</strong> After running an experiment, you should have a good idea of what is working and what needs to be altered. Now we can identify what will lead to an outage, and we know exactly what breaks the system. So, go fix it, and try again with a new experiment.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/chaos-engineering-process.png" alt="chaos-engineering-process" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Later on this workshop we will use <strong>Openshift Service Mesh</strong> to inject failures in our <strong>Expriment</strong></p>
+</div>
 </div>
 </div>
 <div class="sect1">
