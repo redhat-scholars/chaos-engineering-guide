@@ -29,8 +29,30 @@ You might believe you've designed the services and the infrastructure perfectly 
 
 == Plan an Experiment
 
+Chaos Engineering begins by asking the question : 
+
+**"Do we know what the system might do in this case ?"**
 
 
+image::process-chaos.png[process-chaos, 800]
+
+The general process for chaos engineering looks as follows:
+
+* **Define a steady-state hypothesis:** You need to start with an idea of what can go awry. Start with a failure to inject and predict an outcome for when it is running live.
+
+* **Confirm the steady-state and simulate some real-world events:** Perform tests using real-world scenarios to see how your system behaves under particular stress conditions or circumstances.
+
+* **Confirm the steady-state again:** We need to confirm what changes occurred, so checking it again gives us insights into system behavior.
+
+* **Collect metrics and observe dashboards:** You need to measure your system’s durability and availability. It is best practice to use key performance metrics that correlate with customer success or usage. We want to measure the failure against our hypothesis by looking at factors like impact on latency or requests per second.
+
+* **Make changes and fix issues:** After running an experiment, you should have a good idea of what is working and what needs to be altered. Now we can identify what will lead to an outage, and we know exactly what breaks the system. So, go fix it, and try again with a new experiment.
+
+
+image::chaos-engineering-process.png[chaos-engineering-process, 800]
+
+
+Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Expriment**
 
 == What is OpenShift Service Mesh?
 [sidebar]
