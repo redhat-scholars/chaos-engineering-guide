@@ -145,7 +145,7 @@ Inside the **'chaos-engineering{USER_ID}' namespace** we can discover 3 parts
 
 * Travel-portal
 * Travel-agency
-* Travel-portal 
+* Travel-control 
 
 image::Application-travel-description.png[Application Travel Description- Graph,900]
 
