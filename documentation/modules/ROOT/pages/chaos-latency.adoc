@@ -162,4 +162,4 @@ Indeed, just 1 second of delay on 30% of the traffic of one dependant service in
 
 image::kiali-latency-fault-details.png[Kiali - Latency Fault Details,900]
 
-In conclusion, you can tell the **application is not resilient to a small network latency**. To reduce or fix this phenomenon, you could configure an autoscaling or implement a cache mechanism across the different services of the applications.
+In conclusion, you can tell the **application is not resilient to a small network latency**. To reduce or fix this phenomenon, you could configure the autoscaling or implement a cache mechanism across the different services of the applications.

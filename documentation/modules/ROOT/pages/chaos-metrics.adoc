@@ -59,15 +59,15 @@ It is a Counter measuring the total number of requests that have come through th
 dimensions, per time series in a range vector
 
 |Step 2
-|_istio_requests_total{reporter="destination", namespace="chaos-engineering{USER_ID}"}_
-|Filter the metric to use only the inbound requests (_reporter="destination"_) from your environment (_namespace="chaos-engineering{USER_ID}"_)  
+|_istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}_
+|Filter the metric to use only the inbound requests (_reporter="source"_) from your environment (_namespace="chaos-engineering{USER_ID}"_)  
 
 |Step 3
-|_increase(istio_requests_total{reporter="destination", namespace="chaos-engineering{USER_ID}"}[1m])_
+|_increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])_
 |Adding increase(), the query returns the only number of requests as measured over the last minute per time series.
 
 |Step 4
-|_sum(increase(istio_requests_total{reporter="destination", namespace="chaos-engineering{USER_ID}"}[1m]))_
+|_sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))_
 |Adding sum(), the query returns the total of requests within the namespace
 
 |===
