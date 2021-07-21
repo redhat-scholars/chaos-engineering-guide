@@ -217,17 +217,17 @@ dimensions, per time series in a range vector</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Step 2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>istio_requests_total{reporter="destination", namespace="chaos-engineering%USER_ID%"}</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter the metric to use only the inbound requests (<em>reporter="destination"</em>) from your environment (<em>namespace="chaos-engineering%USER_ID%"</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter the metric to use only the inbound requests (<em>reporter="source"</em>) from your environment (<em>namespace="chaos-engineering%USER_ID%"</em>)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Step 3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>increase(istio_requests_total{reporter="destination", namespace="chaos-engineering%USER_ID%"}[1m])</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m])</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Adding increase(), the query returns the only number of requests as measured over the last minute per time series.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Step 4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>sum(increase(istio_requests_total{reporter="destination", namespace="chaos-engineering%USER_ID%"}[1m]))</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Adding sum(), the query returns the total of requests within the namespace</p></td>
 </tr>
 </tbody>
