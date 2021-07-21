@@ -254,6 +254,9 @@
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>In this Workshop we are focusing on <strong>KIALI</strong> - The VISUALIZATION part of <strong> Red Hat Openshift Service Mesh</strong></p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -331,29 +334,41 @@ You can see how the services interact with each other.</p>
 <p>Before to continue we will describe the application used in this workshop.</p>
 </div>
 <div class="paragraph">
-<p>This demo application will deploy several services grouped into three namespaces.</p>
+<p>This demo application will deploy several services into 1 namespace.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>'travel-agency%USER_ID%'</strong> namespace</p>
-</li>
-<li>
-<p><strong>'travel-portal%USER_ID%'</strong> namespace</p>
-</li>
-<li>
-<p><strong>'travel-control%USER_ID%'</strong> namespace</p>
+<p><strong>'chaos-engineering%USER_ID%'</strong> namespace</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Travel Portal namespace</strong></p>
+<p>Inside the <strong>'chaos-engineering%USER_ID%' namespace</strong> we can discover 3 parts</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Travel-portal</p>
+</li>
+<li>
+<p>Travel-agency</p>
+</li>
+<li>
+<p>Travel-portal</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/Application-travel-description.png" alt="Application Travel Description- Graph" width="900">
+</div>
 </div>
 <div class="paragraph">
-<p>The Travels Demo application simulates two business domains organized in different namespaces.</p>
+<p>The Travels Demo application simulates two business domains</p>
 </div>
 <div class="paragraph">
-<p>In a first namespace called <strong>'travel-portal%USER_ID%'</strong> there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.</p>
+<p>In a first part called <strong>Travel-portal</strong> there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.</p>
 </div>
 <div class="paragraph">
 <p>The shop applications can behave differently based on request characteristics like channel (web or mobile) or user (new or existing).</p>
@@ -362,13 +377,13 @@ You can see how the services interact with each other.</p>
 <p>These workloads may generate different types of traffic to imitate different real scenarios.</p>
 </div>
 <div class="paragraph">
-<p>All the portals consume a service called travels deployed in the <strong>'travel-agency%USER_ID%'</strong> namespace.</p>
+<p>All the portals consume a service called travels.</p>
 </div>
 <div class="paragraph">
-<p><strong>Travel Agency namespace</strong></p>
+<p><strong>Travel Agency </strong></p>
 </div>
 <div class="paragraph">
-<p>A second namespace called <strong>'travel-agency%USER_ID%'</strong> will host a set of services created to provide quotes for travel.</p>
+<p>A second part called <strong>travel-agency</strong> will host a set of services created to provide quotes for travel.</p>
 </div>
 <div class="paragraph">
 <p>A main travels service will be the business entry point for the travel agency. It receives a destination city and a user as parameters and it calculates all elements that compose a travel budget: airfare, lodging, car reservation and travel insurance.</p>
@@ -380,7 +395,7 @@ You can see how the services interact with each other.</p>
 <p>Additionally, some users, like registered users, can have access to special discounts, managed as well by an external service.</p>
 </div>
 <div class="paragraph">
-<p>Service relations between namespaces can be described in the following diagram:</p>
+<p>Service relations between services of the applications can be described in the following diagram:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -414,10 +429,10 @@ You can see how the services interact with each other.</p>
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Travel Control namespace</strong></p>
+<p><strong>Travel Control</strong></p>
 </div>
 <div class="paragraph">
-<p>The <strong>'travel-control%USER_ID%'</strong> namespace runs a <strong>business dashboard</strong> with two key features:</p>
+<p>The <strong>Travel-Control</strong>  runs a <strong>business dashboard</strong> with two key features:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -425,7 +440,7 @@ You can see how the services interact with each other.</p>
 <p>Allow setting changes for every travel shop simulator (traffic ratio, device, user and type of travel).</p>
 </li>
 <li>
-<p>Provide a <strong>business</strong> view of the total requests generated from the <strong>'travel-control%USER_ID%'</strong> namespace to the <strong>travel-agency</strong> services, organized by business criteria as grouped per shop, per type of traffic and per city.</p>
+<p>Provide a <strong>business</strong> view of the total requests generated from the <strong>travel-control</strong> service to the <strong>travel-agency</strong> services, organized by business criteria as grouped per shop, per type of traffic and per city.</p>
 </li>
 </ul>
 </div>
