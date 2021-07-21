@@ -86,6 +86,9 @@ Visualization helps users see communication pathways between services, how theyâ
 --
 ====
 
+
+In this Workshop we are focusing on **KIALI** - The VISUALIZATION part of ** Red Hat Openshift Service Mesh**
+
 == Observability with Kiali
 
 **Kiali** provides an interactive graph view of your namespace in real time, being able to display the interactions at several levels (applications, versions, workloads), with contextual information and charts on the selected graph node or edge.
@@ -134,27 +137,32 @@ image::kiali-graph.png[Kiali- Graph,900]
 
 Before to continue we will describe the application used in this workshop.
 
-This demo application will deploy several services grouped into three namespaces.
+This demo application will deploy several services into 1 namespace.
 
-* **'travel-agency{USER_ID}'** namespace
-* **'travel-portal{USER_ID}'** namespace
-* **'travel-control{USER_ID}'** namespace
+* **'chaos-engineering{USER_ID}'** namespace
 
-**Travel Portal namespace**
+Inside the **'chaos-engineering{USER_ID}' namespace** we can discover 3 parts 
 
-The Travels Demo application simulates two business domains organized in different namespaces.
+* Travel-portal
+* Travel-agency
+* Travel-portal 
 
-In a first namespace called **'travel-portal{USER_ID}'** there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.
+image::Application-travel-description.png[Application Travel Description- Graph,900]
+
+
+The Travels Demo application simulates two business domains 
+
+In a first part called **Travel-portal** there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.
 
 The shop applications can behave differently based on request characteristics like channel (web or mobile) or user (new or existing).
 
 These workloads may generate different types of traffic to imitate different real scenarios.
 
-All the portals consume a service called travels deployed in the **'travel-agency{USER_ID}'** namespace.
+All the portals consume a service called travels.
 
-**Travel Agency namespace**
+**Travel Agency **
 
-A second namespace called **'travel-agency{USER_ID}'** will host a set of services created to provide quotes for travel.
+A second part called **travel-agency** will host a set of services created to provide quotes for travel.
 
 A main travels service will be the business entry point for the travel agency. It receives a destination city and a user as parameters and it calculates all elements that compose a travel budget: airfare, lodging, car reservation and travel insurance.
 
@@ -162,7 +170,7 @@ Each service can provide an independent quote and the travels service must then 
 
 Additionally, some users, like registered users, can have access to special discounts, managed as well by an external service.
 
-Service relations between namespaces can be described in the following diagram:
+Service relations between services of the applications can be described in the following diagram:
 
 image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed by Argo CD , 800]
 
@@ -178,12 +186,12 @@ A typical flow consists of the following steps:
 
 <.> Cars, Hotels and Flights may have available discounts depending on user type.
 
-**Travel Control namespace**
+**Travel Control**
 
-The **'travel-control{USER_ID}'** namespace runs a **business dashboard** with two key features:
+The **Travel-Control**  runs a **business dashboard** with two key features:
 
 * Allow setting changes for every travel shop simulator (traffic ratio, device, user and type of travel).
 
-* Provide a **business** view of the total requests generated from the **'travel-control{USER_ID}'** namespace to the **travel-agency** services, organized by business criteria as grouped per shop, per type of traffic and per city.
+* Provide a **business** view of the total requests generated from the **travel-control** service to the **travel-agency** services, organized by business criteria as grouped per shop, per type of traffic and per city.
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]
