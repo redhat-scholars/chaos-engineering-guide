@@ -133,11 +133,20 @@
 <div class="paragraph">
 <p><em>XX MINUTE PRACTICE</em></p>
 </div>
+<div class="paragraph">
+<p>As described in the <strong>Chaos Engineering process</strong> we are currently in a <strong>Steady-state hypothesis</strong>. It means we have to set <strong>METRICS</strong> to indicate that the system is working in an expected way from a business perspective, and within a given set of tolerances.</p>
+</div>
+<div class="paragraph">
+<p><strong>Steady state</strong> means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its <strong>SLOs</strong> ( <strong>S</strong>ervice <strong>L</strong>evel <strong>O</strong>bjective)</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_monitoring_with_service_mesh_grafana"><a class="anchor" href="#_monitoring_with_service_mesh_grafana"></a>Monitoring with Service Mesh Grafana</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Creating a simple <strong>METRIC</strong></p>
+</div>
 <div class="paragraph">
 <p><code><strong>Click on the 'Developer Monitoring' button below</strong></code>.</p>
 </div>
@@ -177,7 +186,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>You are going to define the metric using a query language called PromQL (Prometheus Query Language).
+<p>You are going to define the metric using a query language called <strong>PromQL</strong> (Prometheus Query Language).
 This language will let you select and aggregate time series data in real time.</p>
 </div>
 <div class="paragraph">
@@ -209,7 +218,7 @@ This language will let you select and aggregate time series data in real time.</
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Step 1</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><em>istio_requests_total</em></p>
+<p><strong><em>istio_requests_total</em></strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This is an <a href="https://istio.io/latest/docs/reference/config/metrics/" target="_blank" rel="noopener">Istio standard metric</a> exported to Prometheus by default.
 It is a Counter measuring the total number of requests that have come through the Entire Service Mesh. This metric has several
@@ -217,17 +226,17 @@ dimensions, per time series in a range vector</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Step 2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>istio_requests_total</strong>{reporter="source", namespace="chaos-engineering%USER_ID%"}</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Filter the metric to use only the inbound requests (<em>reporter="source"</em>) from your environment (<em>namespace="chaos-engineering%USER_ID%"</em>)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Step 3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m])</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>increase(<strong>istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%</strong>"}[1m])</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Adding increase(), the query returns the only number of requests as measured over the last minute per time series.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Step 4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>sum(<strong>increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%</strong>"}[1m]))</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Adding sum(), the query returns the total of requests within the namespace</p></td>
 </tr>
 </tbody>
@@ -342,7 +351,15 @@ dimensions, per time series in a range vector</p></td>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/grafana-load-dashboard.png" alt="Grafana - Home" width="500">
+<img src="_images/grafana-load-dashboard.png" alt="Grafana - Home" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>If you are receiving an error mentioning <strong> A dashboard in this folder with the same name already exists</strong>  add  'user%USER_ID%'in the Name</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/error-import-grafana.png" alt="Grafana import Error - Home" width="900">
 </div>
 </div>
 <div class="paragraph">
