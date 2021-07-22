@@ -52,7 +52,7 @@ The general process for chaos engineering looks as follows:
 image::chaos-engineering-process.png[chaos-engineering-process, 800]
 
 
-Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Expriment**
+Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Experiment**
 
 == What is OpenShift Service Mesh?
 [sidebar]
