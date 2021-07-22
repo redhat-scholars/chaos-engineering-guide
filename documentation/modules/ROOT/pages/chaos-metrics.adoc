@@ -11,7 +11,15 @@
 
 _XX MINUTE PRACTICE_
 
+As described in the **Chaos Engineering process** we are currently in a **Steady-state hypothesis**. It means we have to set **METRICS** to indicate that the system is working in an expected way from a business perspective, and within a given set of tolerances.
+
+
+**Steady state** means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its **SLOs** ( **S**ervice **L**evel **O**bjective)
+
+
 == Monitoring with Service Mesh Grafana
+
+Creating a simple **METRIC**
 
 `*Click on the 'Developer Monitoring' button below*`.
 
@@ -36,7 +44,7 @@ Let's create the first **metric which defines the number of total requests in yo
 
 image::grafana-panel-actions.png[Grafana - Home,500]
 
-You are going to define the metric using a query language called PromQL (Prometheus Query Language).
+You are going to define the metric using a query language called **PromQL** (Prometheus Query Language).
 This language will let you select and aggregate time series data in real time.
 
 You will use the following incremental approach to understand and translate the first metric to PromQL expressions.
@@ -53,21 +61,21 @@ image::grafana-add-query.png[Grafana - Home,700]
 |Description
 
 |Step 1
-a|_istio_requests_total_
+a|**_istio_requests_total_**
 |This is an https://istio.io/latest/docs/reference/config/metrics/[Istio standard metric^] exported to Prometheus by default.
 It is a Counter measuring the total number of requests that have come through the Entire Service Mesh. This metric has several 
 dimensions, per time series in a range vector
 
 |Step 2
-|_istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}_
+|**_istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}_
 |Filter the metric to use only the inbound requests (_reporter="source"_) from your environment (_namespace="chaos-engineering{USER_ID}"_)  
 
 |Step 3
-|_increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])_
+|_increase(**istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}**"}[1m])_
 |Adding increase(), the query returns the only number of requests as measured over the last minute per time series.
 
 |Step 4
-|_sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))_
+|_sum(**increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}**"}[1m]))_
 |Adding sum(), the query returns the total of requests within the namespace
 
 |===
@@ -134,7 +142,11 @@ image::grafana-import-dashboard.png[Grafana - Home,200]
 
 Then, `*paste the JSON content and click on 'Load' > 'Import'*`
 
-image::grafana-load-dashboard.png[Grafana - Home,500]
+image::grafana-load-dashboard.png[Grafana - Home,700]
+
+If you are receiving an error mentioning ** A dashboard in this folder with the same name already exists**  add  'user{USER_ID}'in the Name 
+
+image::error-import-grafana.png[Grafana import Error - Home,900]
 
 You have now access the Chaos Engineering Dashboard.
 
