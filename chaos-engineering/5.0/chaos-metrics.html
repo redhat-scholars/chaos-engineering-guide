@@ -137,7 +137,42 @@
 <p>As described in the <strong>Chaos Engineering process</strong> we are currently in a <strong>Steady-state hypothesis</strong>. It means we have to set <strong>METRICS</strong> to indicate that the system is working in an expected way from a business perspective, and within a given set of tolerances.</p>
 </div>
 <div class="paragraph">
-<p><strong>Steady state</strong> means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its <strong>SLOs</strong> ( <strong>S</strong>ervice <strong>L</strong>evel <strong>O</strong>bjective)</p>
+<p><strong>Steady state</strong> means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its <strong>SLOs</strong> ( <strong>S</strong>ervice <strong>L</strong>evel <strong>O</strong>bjective).</p>
+</div>
+<div class="paragraph">
+<p>Instead of asking the question: is the service up or down?
+We ask the question: how many requests are we successfully serving?</p>
+</div>
+<div class="paragraph">
+<p>Service Level Indicator (<strong>SLI</strong>):</p>
+</div>
+<div class="paragraph">
+<p>A set of agreed upon observable and measurable characteristics that determine whether a request is successful.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP Code not equal 5xx</p>
+</li>
+<li>
+<p>Latency lower than X</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Service Level Objective (<strong>SLO</strong>):</p>
+</div>
+<div class="paragraph">
+<p>A target ratio of successful requests over the total number of requests (Different from the more traditional available time/servicing time).</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="paragraph">
+<p>99.99% of the requests will be successful.</p>
 </div>
 </div>
 </div>
@@ -326,6 +361,24 @@ dimensions, per time series in a range vector</p></td>
 <div class="content">
 <img src="_images/grafana-number-total-singlestat.png" alt="Grafana - Home" width="400">
 </div>
+</div>
+<div class="paragraph">
+<p>Optional :
+After creating the METRIC of all requests we can define a METRIC of all SUCCESSFUL REQUESTS :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Total Requests: sum(increase(istio_requests_total{}[$time_interval]))</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Successful requests: sum(increase(istio_requests_total{response_code!~"5.*"}[$time_interval]))
+in our case :</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))</em></p>
 </div>
 </div>
 </div>
