@@ -151,7 +151,7 @@ image::grafana-general-settings.png[Grafana - Home,500]
 image::grafana-number-total-singlestat.png[Grafana - Home,400]     
 
 Optional : 
-After creating the METRIC of all requests we can define a METRIC of all SUCCESSFUL REQUESTS :
+After creating the METRIC of all requests we can define a METRIC of all SUCCESSFUL REQUESTS (~ error code 5XX) :
 
  Total Requests: sum(increase(istio_requests_total{}[$time_interval]))
 
