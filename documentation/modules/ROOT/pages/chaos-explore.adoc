@@ -89,7 +89,7 @@ image::kiali-graph.png[Kiali- Graph,900]
 The outcome is a graph with all the services, connected by the requests going through them. 
 You can see how the services interact with each other. 
 
-== Application description
+== Understand the Application
 
 Before to continue we will describe the application used in this workshop.
 
@@ -104,7 +104,6 @@ Inside the **'chaos-engineering{USER_ID}' namespace** we can discover 3 parts
 * Travel-control 
 
 image::Application-travel-description.png[Application Travel Description- Graph,900]
-
 
 The Travels Demo application simulates two business domains 
 
@@ -150,6 +149,7 @@ The **Travel-Control**  runs a **business dashboard** with two key features:
 
 * Provide a **business** view of the total requests generated from the **travel-control** service to the **travel-agency** services, organized by business criteria as grouped per shop, per type of traffic and per city.
 
+== Access the Application
 
 To access to the dashboard (UI) of the application, we will need to create a specific Istio Ingress component.
 
