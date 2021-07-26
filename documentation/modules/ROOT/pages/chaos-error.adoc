@@ -7,7 +7,103 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Run Chaos Experiment 2: Injecting Errors
+= Chaos Experiment 2: Injecting Errors
 
-== TODO
+_XX MINUTE PRACTICE_
+
+For this second experiment, we will test the following hypothesis:
+
+_**Unavailable services should not impact the Service Level Objective (SLO) of the Travel Service**_
+
+== Define the steady state
+
+Like in the previous lab, we will keep the same steady state 
+
+**99% of requests are successful and served within 50 ms** 
+
+image::grafana-service-overview-configured-2.png[Grafana - Service Overview Configured,700]
+
+We will be able to see how a different type of failure of the same service could impact the behaviour of our application.
+
+== Run the Chaos experiment
+
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'discounts' service and select 'Details'*`
+
+image::kiali-right-click-service.png[Kiali - Right Click Service,400]
+
+You will be redirected to the Service Details page. 
+
+`*Click on the 'Actions' > 'Fault Injection'*`
+
+image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
+
+`*Add HTTP Abort by entering the following settings:*`
+
+.HTTP Abort Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Add HTTP Delay 
+|**Disabled**
+|
+
+|Add HTTP Abort 
+|**Enabled**
+|
+
+|Abort Percentage
+|**10**
+|
+
+|HTTP Status Code
+|**503**
+|
+
+|===
+
+image::kiali-configure-error.png[Kiali - Configure Error,300]
+
+`*Click on the 'Update' button*`. 
+
+**10% of the traffic of the 'discounts' service is failing with a 503 HTTP code**. Now let's see the impact of the application.
+
+== Analyze the Chaos outcome
+
+In the {GRAFANA_URL}[Chaos Engineering Dashboard], you can see the result of the chaos experiment.
+
+image::kiali-error-fault-overview.png[Kiali - Latency Fault Overview,900]
+
+All services, except for the 'discounts' service, performs very well without any errors (100%). You could increase the pourcentage of error injection but you will discover that the application is resilient. So your hypothesis is validated.
+
+== Rollback the Chaos experiment
+
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'discounts' service and select 'Details'*`
+
+image::kiali-right-click-service.png[Kiali - Right Click Service,400]
+
+You will be redirected to the Service Details page. 
+
+`*Click on the 'Actions' > 'Fault Injection'*`
+
+image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
+
+`*Disable HTTP Abort by entering the following settings:*`
+
+.HTTP Delay Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Add HTTP Abort 
+|**Disabled**
+|
+
+|===
+
+`*Click on the 'Update' button*`.
 
