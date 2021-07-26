@@ -183,7 +183,7 @@ We ask the question: how many requests are we successfully serving?</p>
 <h2 id="_monitoring_with_service_mesh_grafana"><a class="anchor" href="#_monitoring_with_service_mesh_grafana"></a>Monitoring with Service Mesh Grafana</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Creating a simple <strong>METRIC</strong></p>
+<p>Creating a simple <strong>METRIC</strong> called <strong>Global Request Volume</strong></p>
 </div>
 <div class="paragraph">
 <p><code><strong>Click on the 'Developer Monitoring' button below</strong></code>.</p>
@@ -366,8 +366,10 @@ dimensions, per time series in a range vector</p></td>
 </div>
 </div>
 <div class="paragraph">
-<p>Optional :
-After creating the METRIC of all requests we can define a METRIC of all SUCCESSFUL REQUESTS (~ error code 5XX) :</p>
+<p>Creating an additional <strong>METRIC</strong> called <strong>Global Success Rate (non 5xx responses) </strong></p>
+</div>
+<div class="paragraph">
+<p>After creating the METRIC of all requests we can define a METRIC of all SUCCESSFULL REQUESTS (~ error code 5XX) :</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -381,7 +383,144 @@ in our case :</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><em>sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))</em></p>
+<p><em>sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</em></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-global-success-rate-step-1.png" alt="Grafana - Home" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s create this new <strong>Global Success Rate (non 5xx responses) </strong> METRIC value</p>
+</div>
+<div class="paragraph">
+<p><code>*Click on the  (1) 'Add Panel' button *</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-add-panel.png" alt="Grafana - Add Panel" width="100">
+</div>
+</div>
+<div class="paragraph">
+<p>and</p>
+</div>
+<div class="paragraph">
+<p><code>*Click on the  (2) 'Add Query' icon *</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-add-query-step1.png" alt="Grafana - Add Query" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p><code><strong>Enter the following expression into the 'Metrics' field for the Query 'A'</strong></code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-add-query.png" alt="Grafana - Home" width="700">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Query Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">PromQL</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Step 1</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Global Success Rate</strong>  is a ratio betwen the number of successfull request and the number of http requests.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Then, <code><strong>click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:</strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Singlestat Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visualization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Singlestat</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>percent (0.0-1.0)</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thresholds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>95,99,99.5</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spark Lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Show</strong> and <strong>Full height</strong> enabled</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-gsr-step2.png" alt="Grafana - GSR setup" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, <code><strong>click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. General Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Global Success Rate (non 5xx responses)</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-general-settings-step3.png" alt="Grafana - Home" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Congratulations!!!</strong> You just created your second Chaos Metrics <strong>Global Success Rate (non 5xx responses)</strong> in a Grafana dashboard!</p>
 </div>
 </div>
 </div>
@@ -432,7 +571,93 @@ in our case :</pre>
 <h2 id="_explore_the_chaos_engineering_dashboard"><a class="anchor" href="#_explore_the_chaos_engineering_dashboard"></a>Explore the Chaos Engineering Dashboard</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TODO</p>
+<p>Find here the full Grafana Dashboard imported</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/full-grafana-dashboard.png" alt="Grafana - Home" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>To explore this Dashboard we can see it as :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[Red] one filter selection block in which we are selecting a namespace [Pink] here chaos-engineering%USER_ID% and a service [Cyan] of the Travel application</p>
+</li>
+<li>
+<p>[Blue] Block A all metrics relative to the namespace on which the application is deployed</p>
+</li>
+<li>
+<p>[Yellow] Block B all metrics relative to a specified service</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/dashboard-explained.png" alt="Grafana - Home" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>If we are zooming in Block A relative to the <strong>NAMESPACE chaos-engineering%USER_ID%</strong> we can see :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[Red] Global Request Volume &#8658; the total number of requests</p>
+</li>
+<li>
+<p>[Yellow] Global Success Rate &#8658; A target ratio of successful requests over the total number of requests .</p>
+</li>
+<li>
+<p>[Blue] 4xx and 5xx &#8658; Total of requests in Error HTTP 4xx and 5xx</p>
+</li>
+<li>
+<p>[Cyan] list of all services name available in the namespace chaos-engineering%USER_ID%</p>
+</li>
+<li>
+<p>[Pink] Number of requests by services</p>
+</li>
+<li>
+<p>[Brown] Latency per services</p>
+</li>
+<li>
+<p>[Green] Success of requests per services &#8658; Ratio of successful request associated to the service</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-block-A.png" alt="Grafana - Home" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>If we are zooming in Block B relative to the <strong>SERVICE</strong> selected we can see :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[Brown] Error Rate in the service selected &#8658; Ratio of error associated to the service selected</p>
+</li>
+<li>
+<p>[Pink]  Success Rate &#8658; to identify WHEN HTTP error occur in the service call</p>
+</li>
+<li>
+<p>[Blue] Latency value for the service</p>
+</li>
+<li>
+<p>[Green] Request Duration for the service</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-block-B.png" alt="Grafana - Home" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Important Note</strong> : all metrics have to be measured over a time window (typically a month) but especially for this Workshop here we are taking the minute [1m] to see some change in the Dashboard.</p>
 </div>
 </div>
 </div>
