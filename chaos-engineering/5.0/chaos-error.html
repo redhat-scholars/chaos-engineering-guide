@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Run Chaos Experiment 2: Injecting Errors :: OpenShift Chaos Engineering Workshop</title>
+    <title>Chaos Experiment 2: Unavailable Service :: OpenShift Chaos Engineering Workshop</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/course-template/chaos-engineering/5.0/chaos-error.html">
     <link rel="prev" href="chaos-latency.html">
     <link rel="next" href="faq.html">
@@ -72,22 +72,25 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chaos-environment.html">1. Get your Chaos environment</a>
+    <a class="nav-link" href="chaos-design.html">1. Design Chaos experiments</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chaos-design.html">2. Design Chaos experiments</a>
+    <a class="nav-link" href="chaos-environment.html">2. Get your Chaos environment</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chaos-metrics.html">3. Define and monitor Chaos metrics</a>
+    <a class="nav-link" href="chaos-explore.html">3. Explore the Application</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chaos-latency.html">4. Chaos Experiment 1: Injecting Latency</a>
+    <a class="nav-link" href="chaos-metrics.html">4. Define and monitor Chaos metrics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chaos-latency.html">5. Chaos Experiment 1: Network latency</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="chaos-error.html">5. Chaos Experiment 2: Injecting Errors</a>
+    <a class="nav-link" href="chaos-error.html">6. Chaos Experiment 2: Unavailable Service</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="faq.html">4. FAQ</a>
+    <a class="nav-link" href="faq.html">7. FAQ</a>
   </li>
 </ul>
   </li>
@@ -120,23 +123,251 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Chaos Engineering Workshop</a></li>
-    <li><a href="chaos-error.html">5. Chaos Experiment 2: Injecting Errors</a></li>
+    <li><a href="chaos-error.html">6. Chaos Experiment 2: Unavailable Service</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/redhat-scholars/chaos-engineering-guide/edit/5.0/documentation/modules/ROOT/pages/chaos-error.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Run Chaos Experiment 2: Injecting Errors</h1>
-<div class="sect1">
-<h2 id="_todo"><a class="anchor" href="#_todo"></a>TODO</h2>
+<h1 class="page">Chaos Experiment 2: Unavailable Service</h1>
+<div id="preamble">
 <div class="sectionbody">
-
+<div class="paragraph">
+<p><em>XX MINUTE PRACTICE</em></p>
+</div>
+<div class="paragraph">
+<p>Previously, you have seen how big the impact is on the application when a small network latency problem occurs on one non-critital services.
+Let&#8217;s see how the application will occur when this same service is unavailable. For this second experiment, we will test the following hypothesis:</p>
+</div>
+<div class="paragraph">
+<p><em><strong>Unavailable services should NOT impact the Service Level Objective (SLO) of the Travel Service</strong></em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_define_the_steady_state"><a class="anchor" href="#_define_the_steady_state"></a>Define the steady state</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Like in the previous lab, we will keep the same steady state</p>
+</div>
+<div class="paragraph">
+<p><strong>99% of requests are successful and served within 50 ms</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-service-overview-configured-2.png" alt="Grafana - Service Overview Configured" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>We will be able to see how a different type of failure of the same service could impact the behaviour of our application.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_run_the_chaos_experiment"><a class="anchor" href="#_run_the_chaos_experiment"></a>Run the Chaos experiment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the <a href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" class="params-link" target="_blank" rel="noopener">Kiali Console</a>, from the <strong>'Graph' view</strong>, <code><strong>right-click on the 'discounts' service and select 'Details'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-right-click-service.png" alt="Kiali - Right Click Service" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>You will be redirected to the Service Details page.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on the 'Actions' &gt; 'Fault Injection'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-add-fault-injection.png" alt="Kiali - Add Fault Injection" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p><code><strong>Add HTTP Abort by entering the following settings:</strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. HTTP Abort Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add HTTP Delay</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Disabled</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add HTTP Abort</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enabled</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abort Percentage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>10</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP Status Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>503</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-configure-error.png" alt="Kiali - Configure Error" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on the 'Update' button</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>10% of the traffic of the 'discounts' service is failing with a 503 HTTP code</strong>. Now let&#8217;s see the impact of the application.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analyze_the_chaos_outcome"><a class="anchor" href="#_analyze_the_chaos_outcome"></a>Analyze the Chaos outcome</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%">Chaos Engineering Dashboard</a>, you can see the result of the chaos experiment.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-error-fault-overview.png" alt="Grafana - Error Fault Overview" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>All services, except for the 'discounts' service, performs very well without any errors (100% success)</strong>.</p>
+</div>
+<div class="paragraph">
+<p>You can increase the pourcentage of error injection until making the 'discounts' service completely unavailable.</p>
+</div>
+<div class="paragraph">
+<p>In the <a href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" class="params-link" target="_blank" rel="noopener">Kiali Console</a>, <code><strong>update the HTTP Abort strategy of the 'discounts' service as follows:</strong></code></p>
+</div>
+<div class="paragraph">
+<p><code><strong>Add HTTP Abort by entering the following settings:</strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. HTTP Abort Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add HTTP Delay</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add HTTP Abort</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enabled</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abort Percentage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>100</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP Status Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">503</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-error-fault-overview-2.png" alt="Grafana - Error Fault Overview" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>Contrary to the outcome with the Latency experiment, you tell the application is resilient when the 'discounts' service is completely down (unavailable).
+So your hypothesis is validated:</p>
+</div>
+<div class="paragraph">
+<p><em><strong>Unavailable 'discounts' services DO NOT impact the Service Level Objective (SLO) of the Travel Service</strong></em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rollback_the_chaos_experiment"><a class="anchor" href="#_rollback_the_chaos_experiment"></a>Rollback the Chaos experiment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the <a href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" class="params-link" target="_blank" rel="noopener">Kiali Console</a>, from the <strong>'Graph' view</strong>, <code><strong>right-click on the 'discounts' service and select 'Details'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-right-click-service.png" alt="Kiali - Right Click Service" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>You will be redirected to the Service Details page.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>Click on the 'Actions' &gt; 'Fault Injection'</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-add-fault-injection.png" alt="Kiali - Add Fault Injection" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p><code><strong>Disable HTTP Abort by entering the following settings:</strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. HTTP Delay Settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add HTTP Abort</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Disabled</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code><strong>Click on the 'Update' button</strong></code>.</p>
+</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="chaos-latency.html" class="query-params-link">4. Chaos Experiment 1: Injecting Latency</a></span>
-  <span class="next"><a href="faq.html" class="query-params-link">4. FAQ</a></span>
+  <span class="prev"><a href="chaos-latency.html" class="query-params-link">5. Chaos Experiment 1: Network latency</a></span>
+  <span class="next"><a href="faq.html" class="query-params-link">7. FAQ</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

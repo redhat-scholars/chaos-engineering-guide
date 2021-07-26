@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Design Chaos experiments :: OpenShift Chaos Engineering Workshop</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/course-template/chaos-engineering/5.0/chaos-design.html">
-    <link rel="prev" href="chaos-environment.html">
-    <link rel="next" href="chaos-metrics.html">
+    <link rel="prev" href="index.html">
+    <link rel="next" href="chaos-environment.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -71,23 +71,26 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chaos-environment.html">1. Get your Chaos environment</a>
-  </li>
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="chaos-design.html">2. Design Chaos experiments</a>
+    <a class="nav-link" href="chaos-design.html">1. Design Chaos experiments</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chaos-metrics.html">3. Define and monitor Chaos metrics</a>
+    <a class="nav-link" href="chaos-environment.html">2. Get your Chaos environment</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chaos-latency.html">4. Chaos Experiment 1: Injecting Latency</a>
+    <a class="nav-link" href="chaos-explore.html">3. Explore the Application</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chaos-error.html">5. Chaos Experiment 2: Injecting Errors</a>
+    <a class="nav-link" href="chaos-metrics.html">4. Define and monitor Chaos metrics</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="faq.html">4. FAQ</a>
+    <a class="nav-link" href="chaos-latency.html">5. Chaos Experiment 1: Network latency</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chaos-error.html">6. Chaos Experiment 2: Unavailable Service</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="faq.html">7. FAQ</a>
   </li>
 </ul>
   </li>
@@ -120,7 +123,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Chaos Engineering Workshop</a></li>
-    <li><a href="chaos-design.html">2. Design Chaos experiments</a></li>
+    <li><a href="chaos-design.html">1. Design Chaos experiments</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/redhat-scholars/chaos-engineering-guide/edit/5.0/documentation/modules/ROOT/pages/chaos-design.adoc">Edit this Page</a></div>
@@ -199,261 +202,13 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Later on this workshop we will use <strong>Openshift Service Mesh</strong> to inject failures in our <strong>Experiment</strong></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_is_openshift_service_mesh"><a class="anchor" href="#_what_is_openshift_service_mesh"></a>What is OpenShift Service Mesh?</h2>
-<div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>OpenShift Service Mesh</strong> is also a service available on top of OpenShift.</p>
-</div>
-<div class="paragraph">
-<p>As applications evolve into collections of decentralized services, managing communications and security between those services becomes more difficult.</p>
-</div>
-<div class="paragraph">
-<p><strong>Red Hat OpenShift Service Mesh</strong> provides a uniform way to connect, manage, and observe microservices-based applications.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>What’s in <strong>Red Hat OpenShift Service Mesh</strong> ?</p>
-</div>
-<div class="tabset is-loading">
-<div class="ulist tabs">
-<ul>
-<li>
-<p><a id="tabset1_istio"></a>Istio</p>
-</li>
-<li>
-<p><a id="tabset1_tracing"></a>Tracing</p>
-</li>
-<li>
-<p><a id="tabset1_visualization"></a>Visualization</p>
-</li>
-</ul>
-</div>
-<div class="content">
-<div class="tab-pane" aria-labelledby="tabset1_istio">
-<div class="paragraph">
-<p><strong>Istio</strong> is an open-source project for integrating and managing traffic flow across services. It works in concert with an underlying cluster manager (like Kubernetes). Centralized components, sidecar proxies, and node agents work together to create the data and control planes over a distributed application.</p>
-</div>
-</div>
-<div class="tab-pane" aria-labelledby="tabset1_tracing">
-<div class="paragraph">
-<p>Tracing allows you to track a single request as it makes its way between different services - or even inside a service - providing insight into the entire request process from start to finish. OpenShift service mesh uses <strong>Jaeger</strong>, an open, distributed tracing system.</p>
-</div>
-</div>
-<div class="tab-pane" aria-labelledby="tabset1_visualization">
-<div class="paragraph">
-<p>Visualization helps users see communication pathways between services, how they’re being managed, and how traffic is flowing in near-real time for easier management and troubleshooting. OpenShift service mesh uses <strong>Kiali</strong>, an open source project, to view configuration, monitor traffic, and analyze traces.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>In this Workshop we are focusing on <strong>KIALI</strong> - The VISUALIZATION part of <strong> Red Hat Openshift Service Mesh</strong></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_observability_with_kiali"><a class="anchor" href="#_observability_with_kiali"></a>Observability with Kiali</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Kiali</strong> provides an interactive graph view of your namespace in real time, being able to display the interactions at several levels (applications, versions, workloads), with contextual information and charts on the selected graph node or edge.</p>
-</div>
-<div class="paragraph">
-<p><code><strong>Click on the 'Developer Observability' button below</strong></code></p>
-</div>
-<div class="imageblock text-center params-link">
-<div class="content">
-<a class="image" href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener"><img src="_images/developer-observability-button.png" alt="Developer Observability - Button" width="300"></a>
-</div>
-</div>
-<div class="paragraph">
-<p>Then, <code><strong>log in with OpenShift as user%USER_ID%/%OPENSHIFT_PASSWORD%'</strong></code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/kiali-login.png" alt="Kiali- Log In" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p>In the <strong>'Graph' view</strong>, <code><strong>enter the following configuration</strong></code>:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Graph Settings</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>chaos-engineering%USER_ID%</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type Graph</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Versioned app graph</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>'Response Time'</strong> checked</p>
-<p class="tableblock"><strong>'Traffic Animation'</strong> checked</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hide&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>service*=svc.cluster.local</strong></p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>The outcome is a graph with all the services, connected by the requests going through them.
-You can see how the services interact with each other.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/kiali-graph.png" alt="Kiali- Graph" width="900">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_application_description"><a class="anchor" href="#_application_description"></a>Application description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Before to continue we will describe the application used in this workshop.</p>
-</div>
-<div class="paragraph">
-<p>This demo application will deploy several services into 1 namespace.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>'chaos-engineering%USER_ID%'</strong> namespace</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Inside the <strong>'chaos-engineering%USER_ID%' namespace</strong> we can discover 3 parts</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Travel-portal</p>
-</li>
-<li>
-<p>Travel-agency</p>
-</li>
-<li>
-<p>Travel-control</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/Application-travel-description.png" alt="Application Travel Description- Graph" width="900">
-</div>
-</div>
-<div class="paragraph">
-<p>The Travels Demo application simulates two business domains</p>
-</div>
-<div class="paragraph">
-<p>In a first part called <strong>Travel-portal</strong> there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.</p>
-</div>
-<div class="paragraph">
-<p>The shop applications can behave differently based on request characteristics like channel (web or mobile) or user (new or existing).</p>
-</div>
-<div class="paragraph">
-<p>These workloads may generate different types of traffic to imitate different real scenarios.</p>
-</div>
-<div class="paragraph">
-<p>All the portals consume a service called travels.</p>
-</div>
-<div class="paragraph">
-<p><strong>Travel Agency </strong></p>
-</div>
-<div class="paragraph">
-<p>A second part called <strong>travel-agency</strong> will host a set of services created to provide quotes for travel.</p>
-</div>
-<div class="paragraph">
-<p>A main travels service will be the business entry point for the travel agency. It receives a destination city and a user as parameters and it calculates all elements that compose a travel budget: airfare, lodging, car reservation and travel insurance.</p>
-</div>
-<div class="paragraph">
-<p>Each service can provide an independent quote and the travels service must then aggregate them into a single response.</p>
-</div>
-<div class="paragraph">
-<p>Additionally, some users, like registered users, can have access to special discounts, managed as well by an external service.</p>
-</div>
-<div class="paragraph">
-<p>Service relations between services of the applications can be described in the following diagram:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/travels-demo-design.png" alt="travel-demo-design - Travel demo Project deployed by Argo CD" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Travel Portal and Travel Agency flow</strong></p>
-</div>
-<div class="paragraph">
-<p>A typical flow consists of the following steps:</p>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>A portal queries the travels service for available destinations.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Travels service queries the available hotels and returns to the portal shop.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>A user selects a destination and a type of travel, which may include a flight and/or a car, hotel and insurance.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Cars, Hotels and Flights may have available discounts depending on user type.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Travel Control</strong></p>
-</div>
-<div class="paragraph">
-<p>The <strong>Travel-Control</strong>  runs a <strong>business dashboard</strong> with two key features:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Allow setting changes for every travel shop simulator (traffic ratio, device, user and type of travel).</p>
-</li>
-<li>
-<p>Provide a <strong>business</strong> view of the total requests generated from the <strong>travel-control</strong> service to the <strong>travel-agency</strong> services, organized by business criteria as grouped per shop, per type of traffic and per city.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/travels-dashboard.png" alt="travels-dashboard - Business Dashboard" width="800">
-</div>
+<p>Later on this workshop we will use <strong>Openshift Service Mesh</strong> to inject failures in our <strong>Expriment</strong></p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="chaos-environment.html" class="query-params-link">1. Get your Chaos environment</a></span>
-  <span class="next"><a href="chaos-metrics.html" class="query-params-link">3. Define and monitor Chaos metrics</a></span>
+  <span class="prev"><a href="index.html" class="query-params-link">OpenShift Chaos Engineering Workshop</a></span>
+  <span class="next"><a href="chaos-environment.html" class="query-params-link">2. Get your Chaos environment</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
