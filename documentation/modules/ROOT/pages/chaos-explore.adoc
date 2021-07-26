@@ -43,7 +43,6 @@ Visualization helps users see communication pathways between services, how theyâ
 --
 ====
 
-
 In this Workshop we are focusing on **KIALI** - The VISUALIZATION part of ** Red Hat Openshift Service Mesh**
 
 == Observability with Kiali
@@ -85,10 +84,10 @@ In the **'Graph' view**, `*enter the following configuration*`:
 
 |===
 
+image::kiali-graph.png[Kiali- Graph,900]
+
 The outcome is a graph with all the services, connected by the requests going through them. 
 You can see how the services interact with each other. 
-
-image::kiali-graph.png[Kiali- Graph,900]
 
 == Application description
 
@@ -150,5 +149,40 @@ The **Travel-Control**  runs a **business dashboard** with two key features:
 * Allow setting changes for every travel shop simulator (traffic ratio, device, user and type of travel).
 
 * Provide a **business** view of the total requests generated from the **travel-control** service to the **travel-agency** services, organized by business criteria as grouped per shop, per type of traffic and per city.
+
+
+To access to the dashboard (UI) of the application, we will need to create a specific Istio Ingress component.
+
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'control' service > 'Actions' > 'Request Routing'*`
+
+image::kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
+
+`*Click on 'Add Rule' button*` to redirect all the ingress traffic to the 'control' service*`:
+
+image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
+
+Then `*click on 'Show Advanced Options' and entering the following information*`:
+
+.Gateways Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Add Gateway 
+|**Enabled**
+|
+
+|Gateway Hosts
+|**control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}**
+|
+
+|===
+
+image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
+
+
+Finally, `*click on the 'Create' button*`. You can now access the Travel Control Dashboard using the following URL, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]

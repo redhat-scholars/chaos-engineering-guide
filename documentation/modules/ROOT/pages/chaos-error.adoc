@@ -7,13 +7,14 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Chaos Experiment 2: Injecting Errors
+= Chaos Experiment 2: Unavailable Service
 
 _XX MINUTE PRACTICE_
 
-For this second experiment, we will test the following hypothesis:
+Previously, you have seen how big the impact is on the application when a small network latency problem occurs on one non-critital services.
+Let's see how the application will occur when this same service is unavailable. For this second experiment, we will test the following hypothesis:
 
-_**Unavailable services should not impact the Service Level Objective (SLO) of the Travel Service**_
+_**Unavailable services should NOT impact the Service Level Objective (SLO) of the Travel Service**_
 
 == Define the steady state
 
@@ -74,9 +75,47 @@ image::kiali-configure-error.png[Kiali - Configure Error,300]
 
 In the {GRAFANA_URL}[Chaos Engineering Dashboard], you can see the result of the chaos experiment.
 
-image::kiali-error-fault-overview.png[Kiali - Latency Fault Overview,900]
+image::grafana-error-fault-overview.png[Grafana - Error Fault Overview,900]
 
-All services, except for the 'discounts' service, performs very well without any errors (100%). You could increase the pourcentage of error injection but you will discover that the application is resilient. So your hypothesis is validated.
+**All services, except for the 'discounts' service, performs very well without any errors (100% success)**. 
+
+You can increase the pourcentage of error injection until making the 'discounts' service completely unavailable. 
+
+In the {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort strategy of the 'discounts' service as follows:*`
+
+`*Add HTTP Abort by entering the following settings:*`
+
+.HTTP Abort Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Add HTTP Delay 
+|Disabled
+|
+
+|Add HTTP Abort 
+|Enabled
+|
+
+|Abort Percentage
+|**100**
+|
+
+|HTTP Status Code
+|503
+|
+
+|===
+
+image::grafana-error-fault-overview-2.png[Grafana - Error Fault Overview,900]
+
+Contrary to the outcome with the Latency experiment, you tell the application is resilient when the 'discounts' service is completely down (unavailable).
+So your hypothesis is validated:
+
+_**Unavailable 'discounts' services DO NOT impact the Service Level Objective (SLO) of the Travel Service**_
 
 == Rollback the Chaos experiment
 
