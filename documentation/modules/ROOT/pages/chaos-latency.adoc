@@ -7,7 +7,7 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Chaos Experiment 1: Injecting latency
+= Chaos Experiment 1: Network latency
 
 _XX MINUTE PRACTICE_
 
@@ -108,7 +108,7 @@ image::grafana-service-overview-configured.png[Grafana - Service Overview Config
 
 == Run the Chaos experiment
 
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'Discount' service and select 'Details'*`
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'discounts' service and select 'Details'*`
 
 image::kiali-right-click-service.png[Kiali - Right Click Service,400]
 
@@ -145,7 +145,7 @@ image::kiali-configure-latency.png[Kiali - Configure Latency,300]
 
 `*Click on the 'Create' button*`. 
 
-**30% of the traffic of the 'Discounts' service has now 1 second of delay.** Now let's see the impact of the application.
+**30% of the traffic of the 'discounts' service has now 1 second of delay.** Now let's see the impact of the application.
 
 == Analyze the Chaos outcome
 
@@ -163,3 +163,33 @@ Indeed, just 1 second of delay on 30% of the traffic of one dependant service in
 image::kiali-latency-fault-details.png[Kiali - Latency Fault Details,900]
 
 In conclusion, you can tell the **application is not resilient to a small network latency**. To reduce or fix this phenomenon, you could configure the autoscaling or implement a cache mechanism across the different services of the applications.
+
+
+== Rollback the Chaos experiment
+
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'discounts' service and select 'Details'*`
+
+image::kiali-right-click-service.png[Kiali - Right Click Service,400]
+
+You will be redirected to the Service Details page. 
+
+`*Click on the 'Actions' > 'Fault Injection'*`
+
+image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
+
+`*Disable HTTP Delay by entering the following settings:*`
+
+.HTTP Delay Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Add HTTP Delay 
+|**Disabled**
+|
+
+|===
+
+`*Click on the 'Update' button*`.
