@@ -11,6 +11,8 @@
 
 _XX MINUTE PRACTICE_
 
+image::explore-discover.png[explore-discover, 700]
+
 == What is OpenShift Service Mesh?
 [sidebar]
 --

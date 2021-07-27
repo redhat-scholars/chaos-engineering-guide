@@ -13,6 +13,8 @@ _XX MINUTE EXERCISE_
 
 In this section, you will explore OpenShift and deploy the application we would like to evaluate.
 
+image::explore-discover.png[explore-discover, 700]
+
 == What is Red Hat OpenShift?
 
 

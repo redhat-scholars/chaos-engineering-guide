@@ -11,6 +11,9 @@
 
 _XX MINUTE PRACTICE_
 
+image::explore-discover.png[explore-discover, 700]
+
+
 As described in the **Chaos Engineering process** we are currently in a **Steady-state hypothesis**. It means we have to set **METRICS** to indicate that the system is working in an expected way from a business perspective, and within a given set of tolerances.
 
 
@@ -40,6 +43,8 @@ For example:
 == Monitoring with Service Mesh Grafana
 
 Creating a simple **METRIC** called **Global Request Volume**
+
+**Travel application** deployed exposes metrics for Prometheus through the standard endpoint /metrics
 
 `*Click on the 'Developer Monitoring' button below*`.
 

@@ -52,4 +52,13 @@ The general process for chaos engineering looks as follows:
 image::chaos-engineering-process.png[chaos-engineering-process, 800]
 
 
-Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Expriment**
+Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Expriment** .
+
+
+image::chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
+
+Following the Chaos Engineering Learning Loop the initial step is to **Explore** the target system, in our case the application we will use, to attempt to surface or **Discover** any weaknesses. The experiment we will use are already written for you, using (Lab 5) and (Lab 6).
+
+**Kiali** and **Openshift Developer Console** (Lab 3) will allow you to **explore** and to **discover** the application. **Grafana** (Lab 4) is part of the Discovery of the application too. 
+
+When you will be ready to execute your experiment (Lab 5) and (Lab 6) you will see how the target system is reacting. You will enter the **discovery** and **analysis** phases of the Chaos Engineering Loop.
