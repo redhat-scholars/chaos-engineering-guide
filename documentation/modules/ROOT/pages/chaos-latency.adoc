@@ -11,6 +11,8 @@
 
 _XX MINUTE PRACTICE_
 
+image::discover-analyze.png[discover-analyze, 700]
+
 In production, it is very common to have delay services rather than down services. **Latency** measures the delay between an action and a response. For this first experiment, we will test the following hypothesis:
 
 _**A small network latency should not impact the Service Level Objective (SLO) of the Travel Service**_

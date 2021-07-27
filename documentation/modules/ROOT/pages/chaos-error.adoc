@@ -11,6 +11,10 @@
 
 _XX MINUTE PRACTICE_
 
+
+image::discover-analyze.png[discover-analyze, 700]
+
+
 Previously, you have seen how big the impact is on the application when a small network latency problem occurs on one non-critital services.
 Let's see how the application will occur when this same service is unavailable. For this second experiment, we will test the following hypothesis:
 

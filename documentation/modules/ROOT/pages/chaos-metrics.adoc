@@ -290,6 +290,8 @@ image::dashboard-explained.png[Grafana - Home,900]
 
 If we are zooming in Block A relative to the **NAMESPACE chaos-engineering{USER_ID}** we can see :
 
+image::grafana-block-A.png[Grafana - Home,900]
+
 * [Red] Global Request Volume => the total number of requests
 * [Yellow] Global Success Rate => A target ratio of successful requests over the total number of requests .
 * [Blue] 4xx and 5xx => Total of requests in Error HTTP 4xx and 5xx
@@ -298,16 +300,18 @@ If we are zooming in Block A relative to the **NAMESPACE chaos-engineering{USER_
 * [Brown] Latency per services
 * [Green] Success of requests per services => Ratio of successful request associated to the service
  
-image::grafana-block-A.png[Grafana - Home,900]
+
 
 
 If we are zooming in Block B relative to the **SERVICE** selected we can see : 
+
+image::grafana-block-B.png[Grafana - Home,900]
 
 * [Brown] Error Rate in the service selected => Ratio of error associated to the service selected
 * [Pink]  Success Rate => to identify WHEN HTTP error occur in the service call
 * [Blue] Latency value for the service 
 * [Green] Request Duration for the service
 
-image::grafana-block-B.png[Grafana - Home,900]
+
 
 **Important Note** : all metrics have to be measured over a time window (typically a month) but especially for this Workshop here we are taking the minute [1m] to see some change in the Dashboard. 

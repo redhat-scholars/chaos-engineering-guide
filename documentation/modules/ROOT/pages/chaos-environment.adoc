@@ -14,6 +14,8 @@ _10 MINUTE EXERCISE_
 As Chaos engineer, you will need an environment to deploy any application we have to evaluate
 In this section, you will explore OpenShift and deploy an application using Argo CD
 
+image::explore-discover.png[explore-discover, 700]
+
 == What is Red Hat OpenShift?
 
 [sidebar]
