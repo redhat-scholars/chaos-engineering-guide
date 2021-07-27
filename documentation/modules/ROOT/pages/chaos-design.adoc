@@ -27,9 +27,17 @@ Take an example where you have two services that communicate with each other.
 
 image::simple-2-service.png[simple-2-service - A simple two-service system, 600]
 
-What should happen if **Service Y** dies ? What will happen to **Service X** if **Service Y** starts to respond slowly ? What happens if **Service Y** comes back after going away for a period of time? what happens is the connection between **Service X** and Y becomes increasingly busy ? What happens if the CPU that is being used by **Service Y** is maxed out ? and most importanlty, what does this all men to the user ?
+* What should happen if **Service Y** dies ? 
 
-You might believe you've designed the services and the infrastructure perfectly to accomodate all of these cases, but how to you know ? Even in such a simple system it is likely tere might be some surprises --some **dark debt** -- present. 
+* What will happen to **Service X** if **Service Y** starts to respond slowly ? 
+
+* What happens if **Service Y** comes back after going away for a period of time? 
+
+* what happens is the connection between **Service X** and Y becomes increasingly busy ? 
+
+* What happens if the CPU that is being used by **Service Y** is maxed out ? and most importanlty, what does this all mean to the user ?
+
+You might believe you've designed the services and the infrastructure perfectly to accomodate all of these cases, but _**how to you know**_ ? Even in such a simple system it is likely tere might be some surprises --some **dark debt** -- present. 
 
 **Chaos engineering provides a way of exploring these uncertainties to find out whether your assumptions of the system's resiliency hold water in the real world.** 
 
@@ -55,16 +63,19 @@ The general process for chaos engineering looks as follows:
 5. **Make changes and fix issues:** After running an experiment, you should have a good idea of what is working and what needs to be altered. Now we can identify what will lead to an outage, and we know exactly what breaks the system. So, go fix it, and try again with a new experiment.
 
 
+=======
+image::chaos-engineering-process.png[chaos-engineering-process, 600]
+=======
+
 Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Expriment** .
 
 
 image::chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
 
-Following the Chaos Engineering Learning Loop the initial step is to **Explore** the target system, in our case the application we will use, to attempt to surface or **Discover** any weaknesses. The experiment we will use are already written for you, using (Lab 5) and (Lab 6).
+Following the **Chaos Engineering Learning Loop** the initial step is to **Explore** the target system, in our case the application we will use, to attempt to surface or **Discover** any weaknesses. The experiment we will use are already written for you, using (Lab 5) and (Lab 6).
 
 **Kiali** and **Openshift Developer Console** (Lab 3) will allow you to **explore** and to **discover** the application. **Grafana** (Lab 4) is part of the Discovery of the application too. 
 
-When you will be ready to execute your experiment (Lab 5) and (Lab 6) you will see how the target system is reacting. You will enter the **discovery** and **analysis** phases of the Chaos Engineering Loop.
-=======
-image::chaos-engineering-process.png[chaos-engineering-process, 600]
+When you will be ready to execute your experiment (Lab 5) and (Lab 6) you will see how the target system is reacting. You will enter the **discovery** and **analysis** phases of the **Chaos Engineering Learning Loop**.
+
 
