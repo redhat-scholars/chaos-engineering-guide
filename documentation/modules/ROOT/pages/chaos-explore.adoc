@@ -9,41 +9,63 @@
 
 = Explore the Application
 
-_XX MINUTE PRACTICE_
+_10 MINUTE PRACTICE_
 
 == What is OpenShift Service Mesh?
+
 [sidebar]
---
+.OpenShift Service Mesh
+****
+
 **OpenShift Service Mesh** is also a service available on top of OpenShift.
 
 As applications evolve into collections of decentralized services, managing communications and security between those services becomes more difficult. 
 
-**Red Hat OpenShift Service Mesh** provides a uniform way to connect, manage, and observe microservices-based applications.
---
+**Red Hat OpenShift Service Mesh** is a service that provides behavioral insight and operational control over the Service Mesh, providing a uniform way to connect, secure, and monitor microservice applications.
 
-What’s in **Red Hat OpenShift Service Mesh** ?
-
+What’s in it?
 
 [tabs]
 ====
-Istio::
+Service Mesh::
 +
 --
+image::istio-logo.png[Istio, 200]
+
 **Istio** is an open-source project for integrating and managing traffic flow across services. It works in concert with an underlying cluster manager (like Kubernetes). Centralized components, sidecar proxies, and node agents work together to create the data and control planes over a distributed application.
 --
+
+Observability::
++
+--
+image::kiali-logo.png[Kiali, 200]
+
+Observability helps users see communication pathways between services, how they’re being managed, and how traffic is flowing in near-real time for easier management and troubleshooting. 
+
+OpenShift Service Mesh uses **Kiali**, an open source project, to view configuration, monitor traffic, and analyze traces.
+--
+
+Monitoring::
++
+--
+image:grafana-logo.png[Grafana, 200]
+image:prometheus-logo.png[Prometheus, 200]
+
+OpenShift Service Mesh uses **Grafana** and **Prometheus** to provide out of the box metrics and monitoring for all services.
+--
+
 Tracing::
 +
 --
-Tracing allows you to track a single request as it makes its way between different services - or even inside a service - providing insight into the entire request process from start to finish. OpenShift service mesh uses **Jaeger**, an open, distributed tracing system.
---
-Visualization::
-+
---
-Visualization helps users see communication pathways between services, how they’re being managed, and how traffic is flowing in near-real time for easier management and troubleshooting. OpenShift service mesh uses **Kiali**, an open source project, to view configuration, monitor traffic, and analyze traces.
+image:jaeger-logo.png[Istio, 200]
+image:elastic-search-logo-color-horizontal.png[Elastic Search, 200]
+
+Tracing allows you to track a single request as it makes its way between different services - or even inside a service - providing insight into the entire request process from start to finish. 
+OpenShift Service Mesh uses **Jaeger**, an open, distributed tracing system and **Elasticsearch**, a distributed, free and open search and analytics engine to capture distributed traces providing a “per request” view  for isolating bottlenecks between services.
 --
 ====
 
-In this Workshop we are focusing on **KIALI** - The VISUALIZATION part of ** Red Hat Openshift Service Mesh**
+****
 
 == Observability with Kiali
 
@@ -105,9 +127,11 @@ Inside the **'chaos-engineering{USER_ID}' namespace** we can discover 3 parts
 
 image::Application-travel-description.png[Application Travel Description- Graph,900]
 
-The Travels Demo application simulates two business domains 
+The Travels Demo application simulates two business domains:
 
-In a first part called **Travel-portal** there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.
+=== Travel Portal
+
+In a first part called **travel-portal** there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.
 
 The shop applications can behave differently based on request characteristics like channel (web or mobile) or user (new or existing).
 
@@ -115,7 +139,7 @@ These workloads may generate different types of traffic to imitate different rea
 
 All the portals consume a service called travels.
 
-**Travel Agency **
+=== Travel Agency
 
 A second part called **travel-agency** will host a set of services created to provide quotes for travel.
 
@@ -129,7 +153,7 @@ Service relations between services of the applications can be described in the f
 
 image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed by Argo CD , 800]
 
-**Travel Portal and Travel Agency flow**
+=== Travel Portal and Travel Agency flow
 
 A typical flow consists of the following steps:
 
@@ -141,9 +165,9 @@ A typical flow consists of the following steps:
 
 <.> Cars, Hotels and Flights may have available discounts depending on user type.
 
-**Travel Control**
+=== Travel Control
 
-The **Travel-Control**  runs a **business dashboard** with two key features:
+The **travel-control**  runs a **business dashboard** with two key features:
 
 * Allow setting changes for every travel shop simulator (traffic ratio, device, user and type of travel).
 

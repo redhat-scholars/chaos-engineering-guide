@@ -9,25 +9,31 @@
 
 = Design Chaos experiments
 
-_XX MINUTE PRACTICE_
+_2 MINUTE PRACTICE_
 
-According to the Principles of Chaos Engineering (
-    https://principlesofchaos.org/[https://principlesofchaos.org/])
-    
-**Chaos Engineering** is the discipline of experimenting on a system in order to build confidence in the system's capability to withstand turbulent conditions in production.
-**Chaos engineering**'s sole purpose is to provide evidence of system weaknesses (sometimes called https://snafucatchers.github.io/#4_6_Dark_Debt[Dark Debt])
+
+== What is Chaos Engineering?
+
+[sidebar]
+.Principles of Chaos Engineering
+--
+According to the Principles of Chaos Engineering (https://principlesofchaos.org/[https://principlesofchaos.org/^]), 
+
+* **Chaos Engineering** is the discipline of experimenting on a system in order to build confidence in the system's capability to withstand turbulent conditions in production.
+* **Chaos engineering**'s sole purpose is to provide evidence of system weaknesses (sometimes called https://snafucatchers.github.io/#4_6_Dark_Debt[Dark Debt^])
+--
 
 Take an example where you have two services that communicate with each other. 
 
-image::simple-2-service.png[simple-2-service - A simple two-service system, 800]
+image::simple-2-service.png[simple-2-service - A simple two-service system, 600]
 
+What should happen if **Service Y** dies ? What will happen to **Service X** if **Service Y** starts to respond slowly ? What happens if **Service Y** comes back after going away for a period of time? what happens is the connection between **Service X** and Y becomes increasingly busy ? What happens if the CPU that is being used by **Service Y** is maxed out ? and most importanlty, what does this all men to the user ?
 
-What should happen if **Service Y** dies ? What will happen to **Service X** if **Service Y** starts to respond slowly ? what happens if **Service Y** comes back after going away for a period of time? what happens is the connection between **Service X** and Y becomes increasingly busy ? What happens if the CPU that is being used by **Service Y** is maxed out ? and most importanlty, what does this all men to the user ?
+You might believe you've designed the services and the infrastructure perfectly to accomodate all of these cases, but how to you know ? Even in such a simple system it is likely tere might be some surprises --some **dark debt** -- present. 
 
-You might believe you've designed the services and the infrastructure perfectly to accomodate all of these cases, but how to you know ? Even in such a simple system it is likely tere might be some surprises --some **dark debt** -- present. **Chaos engineering** provides a way of exploring these uncertainties to find out whether your assumptions of the system's resiliency hold water in the real world.
+**Chaos engineering provides a way of exploring these uncertainties to find out whether your assumptions of the system's resiliency hold water in the real world.** 
 
-
-== Plan an Experiment
+== Plan a Chaos Experiment
 
 Chaos Engineering begins by asking the question : 
 
@@ -38,18 +44,14 @@ image::process-chaos.png[process-chaos, 800]
 
 The general process for chaos engineering looks as follows:
 
-* **Define a steady-state hypothesis:** You need to start with an idea of what can go awry. Start with a failure to inject and predict an outcome for when it is running live.
+1. **Define a steady-state hypothesis:** You need to start with an idea of what can go awry. Start with a failure to inject and predict an outcome for when it is running live.
 
-* **Confirm the steady-state and simulate some real-world events:** Perform tests using real-world scenarios to see how your system behaves under particular stress conditions or circumstances.
+2. **Confirm the steady-state and simulate some real-world events:** Perform tests using real-world scenarios to see how your system behaves under particular stress conditions or circumstances.
 
-* **Confirm the steady-state again:** We need to confirm what changes occurred, so checking it again gives us insights into system behavior.
+3.  **Confirm the steady-state again:** We need to confirm what changes occurred, so checking it again gives us insights into system behavior.
 
-* **Collect metrics and observe dashboards:** You need to measure your system’s durability and availability. It is best practice to use key performance metrics that correlate with customer success or usage. We want to measure the failure against our hypothesis by looking at factors like impact on latency or requests per second.
+4.  **Collect metrics and observe dashboards:** You need to measure your system’s durability and availability. It is best practice to use key performance metrics that correlate with customer success or usage. We want to measure the failure against our hypothesis by looking at factors like impact on latency or requests per second.
 
-* **Make changes and fix issues:** After running an experiment, you should have a good idea of what is working and what needs to be altered. Now we can identify what will lead to an outage, and we know exactly what breaks the system. So, go fix it, and try again with a new experiment.
+5. **Make changes and fix issues:** After running an experiment, you should have a good idea of what is working and what needs to be altered. Now we can identify what will lead to an outage, and we know exactly what breaks the system. So, go fix it, and try again with a new experiment.
 
-
-image::chaos-engineering-process.png[chaos-engineering-process, 800]
-
-
-Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Expriment**
+image::chaos-engineering-process.png[chaos-engineering-process, 600]

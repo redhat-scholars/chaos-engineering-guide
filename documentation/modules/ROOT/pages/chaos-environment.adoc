@@ -9,15 +9,18 @@
 
 = Get your Chaos environment
 
-_XX MINUTE EXERCISE_
+_10 MINUTE EXERCISE_
 
-In this section, you will explore OpenShift and deploy the application we would like to evaluate.
+As Chaos engineer, you will need an environment to deploy any application we have to evaluate
+In this section, you will explore OpenShift and deploy an application using Argo CD
 
 == What is Red Hat OpenShift?
 
-
 [sidebar]
 --
+
+image::Logo-Red_Hat-OpenShift.png[Red Hat OpenShift, 300]
+
 **Red Hat® OpenShift®** enables enterprises to build highly agile, scalable architectures with enhanced cluster security that can be deployed at any location.
 
 **Red Hat® OpenShift®** offers automated installation, upgrades, and lifecycle management throughout the container stack—the operating system, https://www.openshift.com/learn/topics/kubernetes/?hsLang=en-us[Kubernetes] and cluster services, and applications—on any cloud.
@@ -50,17 +53,21 @@ image::openshift-empty-project.png[OpenShift - Empty Project, 700]
 
 [sidebar]
 --
+
+image::argocd-logo.png[Argo CD, 200]
+
 **OpenShift GitOps** is a service available on top of OpenShift. 
 
 **OpenShift GitOps** is an OpenShift add-on which provides Argo CD and other tooling to enable teams to implement GitOps workflows for cluster configuration and application delivery. 
 
 **OpenShift GitOps** is available as an operator in the OperatorHub and can be installed with  a simple one-click experience. Once installed, users can deploy Argo CD instances using Kubernetes custom resources.
 
+image::gitops-model.png[gitops-model, 500]
 --
 
-image::gitops-model.png[gitops-model - Button, 800]
 
-**Argo CD** features
+
+=== Argo CD features
 
 * Cluster and application configuration versioned in Git
 * Automatically syncs configuration from Git to clusters
@@ -72,12 +79,9 @@ image::gitops-model.png[gitops-model - Button, 800]
 
 image::argocd-features.png[argo features- Button, 400]
 
-**Argo CD** mechanism
+=== Argo CD mechanism
 
 image::Gitops-Openshift.png[Gitops - Button, 900]
-
-
-
 
 == Log in to OpenShift GitOps (Argo CD)
 
@@ -102,19 +106,19 @@ deployed into **'chaos-engineering{USER_ID}'** namespace, and no Kubernetes reso
 
 == Sync/Deploy the application
 
-
-To deploy the application, 
-`*click on your 'chaos-engineering{USER_ID}' application box then, click on 'Sync > Synchronize'*`.
+To deploy the application, `*click on your 'chaos-engineering{USER_ID}' application box then, click on 'Sync > Synchronize'*`.
 
 image::argocd-sync.png[Argo CD - Sync Application, 900]
 
+[TIP]
+====
 This task retrieves the manifests from the Git Repository and performs _kubectl apply_ command of 
-the manifests. Your application is now running. You can now view its resource components,
-logs, events, and assessed health status.
+the manifests. 
+====
 
-After a couple of seconds, you should see everything in green.
+After a couple of seconds, you should see **everything in green**. Your application is now running. You can now view its resource components,logs, events, and assessed health status.
 
-image::argocd-synced-application.png[Argo CD - Synced Application, 800]
+image::argocd-synced-application.png[Argo CD - Synced Application, 600]
 
 In the link:{OPENSHIFT_CONSOLE_URL}[OpenShift Web Console^, role='params-link'], from the **Developer view**,
 select the `**chaos-engineering{USER_ID}**` to be taken to the project overview page.
