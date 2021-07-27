@@ -67,10 +67,11 @@ The general process for chaos engineering looks as follows:
 image::chaos-engineering-process.png[chaos-engineering-process, 600]
 =======
 
-Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Expriment** .
+Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Experiment** .
 
 
 image::chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
+
 
 Following the **Chaos Engineering Learning Loop** the initial step is to **Explore** the target system, in our case the application we will use, to attempt to surface or **Discover** any weaknesses. The experiment we will use are already written for you, using (Lab 5) and (Lab 6).
 
