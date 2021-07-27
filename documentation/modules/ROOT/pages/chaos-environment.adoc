@@ -31,12 +31,11 @@ image::Logo-Red_Hat-OpenShift.png[Red Hat OpenShift, 300]
 OpenShift ships with a web-based console that will allow users to
 perform various tasks via a browser.
 
-`*Click on the 'Developer Console' button below*`
+`*Click on the 'OpenShift Console' button below*`
 
 [link={OPENSHIFT_CONSOLE_URL}]
-[window="_blank"]
 [role='params-link']
-image::developer-console-button.png[Developer Workspace - Button, 300]
+image::openshift-console-button.png[OpenShift Console - Button, 300]
 
 `*Enter your username and password (user{USER_ID}/{OPENSHIFT_PASSWORD})*` and 
 then log in. After you have authenticated to the web console, you will be presented with a
@@ -85,12 +84,11 @@ image::Gitops-Openshift.png[Gitops - Button, 900]
 
 == Log in to OpenShift GitOps (Argo CD)
 
-`*Click on the 'Developer GitOps' button below*`
+`*Click on the 'OpenShift GitOps' button below*`
 
 [link={GITOPS_URL}]
 [role='params-link']
-[window="_blank"]
-image::developer-gitops-button.png[Developer GitOps - Button, 300]
+image::openshift-gitops-button.png[OpenShift GitOps - Button, 300]
 
 Then `*log in as user{USER_ID}/{OPENSHIFT_PASSWORD}*`. Once completed, you will be redirected to the following page which lists the **Argo CD Applications**.
 

@@ -11,42 +11,48 @@
 
 _XX MINUTE PRACTICE_
 
-As described in the **Chaos Engineering process** we are currently in a **Steady-state hypothesis**. It means we have to set **METRICS** to indicate that the system is working in an expected way from a business perspective, and within a given set of tolerances.
 
+== Why do you Need Metrics?
+
+As described in the **Chaos Engineering process** we are currently in a **Steady-state hypothesis**. It means we have to set **metrics** to indicate that the system is working in an expected way from a business perspective, and within a given set of tolerances.
 
 **Steady state** means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its **SLOs** ( **S**ervice **L**evel **O**bjective). 
 
 Instead of asking the question: is the service up or down?
 We ask the question: how many requests are we successfully serving?
 
-Service Level Indicator (**SLI**):
-
+[tabs]
+====
+Service Level Indicator (SLI)::
++
+--
 A set of agreed upon observable and measurable characteristics that determine whether a request is successful.
 
 For example:
 
 * HTTP Code not equal 5xx
 * Latency lower than X
+--
 
-Service Level Objective (**SLO**):
-
+Service Level Objective (SLO)::
++
+--
 A target ratio of successful requests over the total number of requests (Different from the more traditional available time/servicing time).
 
 For example: 
 
 99.99% of the requests will be successful. 
+--
 
+====
 
 == Monitoring with Service Mesh Grafana
 
-Creating a simple **METRIC** called **Global Request Volume**
-
-`*Click on the 'Developer Monitoring' button below*`.
+`*Click on the 'Grafana' button below*`.
 
 [link={GRAFANA_URL}]
-[window=_blank, align="center"]
 [role='params-link']
-image::developer-monitoring-button.png[Developer Monitoring - Button, 300]
+image::grafana-button.png[Grafana- Button, 300]
 
 Then, `*log in with OpenShift as 'user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
 

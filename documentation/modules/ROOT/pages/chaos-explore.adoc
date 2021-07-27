@@ -5,7 +5,6 @@
 :OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
 :APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
-:GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
 = Explore the Application
 
@@ -71,12 +70,11 @@ OpenShift Service Mesh uses **Jaeger**, an open, distributed tracing system and 
 
 **Kiali** provides an interactive graph view of your namespace in real time, being able to display the interactions at several levels (applications, versions, workloads), with contextual information and charts on the selected graph node or edge.
 
-`*Click on the 'Developer Observability' button below*`
+`*Click on the 'Kiali' button below*`
 
 [link={KIALI_URL}]
-[window=_blank, align="center"]
 [role='params-link']
-image::developer-observability-button.png[Developer Observability - Button, 300]
+image::kiali-button.png[Kiali - Button, 300]
 
 Then, `*log in with OpenShift as user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
 
