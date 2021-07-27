@@ -39,7 +39,7 @@ For example:
 
 == Monitoring with Service Mesh Grafana
 
-Creating a simple **METRIC**
+Creating a simple **METRIC** called **Global Request Volume**
 
 `*Click on the 'Developer Monitoring' button below*`.
 
@@ -150,15 +150,101 @@ image::grafana-general-settings.png[Grafana - Home,500]
 
 image::grafana-number-total-singlestat.png[Grafana - Home,400]     
 
-Optional : 
-After creating the METRIC of all requests we can define a METRIC of all SUCCESSFUL REQUESTS (~ error code 5XX) :
+
+Creating an additional **METRIC** called **Global Success Rate (non 5xx responses) **
+
+After creating the METRIC of all requests we can define a METRIC of all SUCCESSFULL REQUESTS (~ error code 5XX) :
 
  Total Requests: sum(increase(istio_requests_total{}[$time_interval]))
 
  Successful requests: sum(increase(istio_requests_total{response_code!~"5.*"}[$time_interval])) 
  in our case :
 
-_sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))_
+_sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))_
+
+image::grafana-global-success-rate-step-1.png[Grafana - Home,900]
+
+Now let's create this new **Global Success Rate (non 5xx responses) ** METRIC value 
+
+`*Click on the  (1) 'Add Panel' button *`
+
+image::grafana-add-panel.png[Grafana - Add Panel,100]
+
+and 
+
+`*Click on the  (2) 'Add Query' icon *`
+
+image::grafana-add-query-step1.png[Grafana - Add Query,200]
+
+`*Enter the following expression into the 'Metrics' field for the Query 'A'*`:
+
+image::grafana-add-query.png[Grafana - Home,700]
+
+.Query Settings
+[%header,cols=3*]
+|===
+|Step
+|PromQL
+|Description
+
+|Step 1
+a|_sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))_
+| **Global Success Rate**  is a ratio betwen the number of successfull request and the number of http requests.
+
+|===
+
+
+
+Then, `*click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:*`
+
+.Singlestat Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Visualization 
+|**Singlestat**
+|
+
+|Unit 
+|**percent (0.0-1.0)**
+|
+
+|Thresholds 
+|**95,99,99.5**
+|
+
+|Spark Lines
+|**Show** and **Full height** enabled
+|
+
+
+|===
+
+image::grafana-gsr-step2.png[Grafana - GSR setup ,900]
+
+Finally, `*click on the 'General Settings' icon and enter the following parameters:*`
+
+.General Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Title 
+|**Global Success Rate (non 5xx responses)**
+|
+
+|===
+
+image::grafana-general-settings-step3.png[Grafana - Home,700]
+
+**Congratulations!!!** You just created your second Chaos Metrics **Global Success Rate (non 5xx responses)** in a Grafana dashboard!
+
+
 
 == Import the Chaos Engineering Dashboard
 
@@ -184,4 +270,38 @@ image::grafana-chaos-engineering-dashboard.png[Grafana - Home,500]
 
 == Explore the Chaos Engineering Dashboard
 
-TODO
+Find here the full Grafana Dashboard imported 
+
+image::full-grafana-dashboard.png[Grafana - Home,900]
+
+To explore this Dashboard we can see it as : 
+
+* [Red] one filter selection block in which we are selecting a namespace [Pink] here chaos-engineering{USER_ID} and a service [Cyan] of the Travel application 
+* [Blue] Block A all metrics relative to the namespace on which the application is deployed
+* [Yellow] Block B all metrics relative to a specified service
+
+image::dashboard-explained.png[Grafana - Home,900]
+
+If we are zooming in Block A relative to the **NAMESPACE chaos-engineering{USER_ID}** we can see :
+
+* [Red] Global Request Volume => the total number of requests
+* [Yellow] Global Success Rate => A target ratio of successful requests over the total number of requests .
+* [Blue] 4xx and 5xx => Total of requests in Error HTTP 4xx and 5xx
+* [Cyan] list of all services name available in the namespace chaos-engineering{USER_ID}
+* [Pink] Number of requests by services
+* [Brown] Latency per services
+* [Green] Success of requests per services => Ratio of successful request associated to the service
+ 
+image::grafana-block-A.png[Grafana - Home,900]
+
+
+If we are zooming in Block B relative to the **SERVICE** selected we can see : 
+
+* [Brown] Error Rate in the service selected => Ratio of error associated to the service selected
+* [Pink]  Success Rate => to identify WHEN HTTP error occur in the service call
+* [Blue] Latency value for the service 
+* [Green] Request Duration for the service
+
+image::grafana-block-B.png[Grafana - Home,900]
+
+**Important Note** : all metrics have to be measured over a time window (typically a month) but especially for this Workshop here we are taking the minute [1m] to see some change in the Dashboard. 
