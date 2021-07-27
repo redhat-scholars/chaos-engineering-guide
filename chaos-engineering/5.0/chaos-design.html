@@ -134,34 +134,52 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>XX MINUTE PRACTICE</em></p>
+<p><em>2 MINUTE PRACTICE</em></p>
 </div>
-<div class="paragraph">
-<p>According to the Principles of Chaos Engineering (
-    <a href="https://principlesofchaos.org/">https://principlesofchaos.org/</a>)</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_chaos_engineering"><a class="anchor" href="#_what_is_chaos_engineering"></a>What is Chaos Engineering?</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Principles of Chaos Engineering</div>
 <div class="paragraph">
-<p><strong>Chaos Engineering</strong> is the discipline of experimenting on a system in order to build confidence in the system&#8217;s capability to withstand turbulent conditions in production.
-<strong>Chaos engineering</strong>'s sole purpose is to provide evidence of system weaknesses (sometimes called <a href="https://snafucatchers.github.io/#4_6_Dark_Debt">Dark Debt</a>)</p>
+<p>According to the Principles of Chaos Engineering (<a href="https://principlesofchaos.org/" target="_blank" rel="noopener">https://principlesofchaos.org/</a>),</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Chaos Engineering</strong> is the discipline of experimenting on a system in order to build confidence in the system&#8217;s capability to withstand turbulent conditions in production.</p>
+</li>
+<li>
+<p><strong>Chaos engineering</strong>'s sole purpose is to provide evidence of system weaknesses (sometimes called <a href="https://snafucatchers.github.io/#4_6_Dark_Debt" target="_blank" rel="noopener">Dark Debt</a>)</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Take an example where you have two services that communicate with each other.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/simple-2-service.png" alt="simple-2-service - A simple two-service system" width="800">
+<img src="_images/simple-2-service.png" alt="simple-2-service - A simple two-service system" width="600">
 </div>
 </div>
 <div class="paragraph">
-<p>What should happen if <strong>Service Y</strong> dies ? What will happen to <strong>Service X</strong> if <strong>Service Y</strong> starts to respond slowly ? what happens if <strong>Service Y</strong> comes back after going away for a period of time? what happens is the connection between <strong>Service X</strong> and Y becomes increasingly busy ? What happens if the CPU that is being used by <strong>Service Y</strong> is maxed out ? and most importanlty, what does this all men to the user ?</p>
+<p>What should happen if <strong>Service Y</strong> dies ? What will happen to <strong>Service X</strong> if <strong>Service Y</strong> starts to respond slowly ? What happens if <strong>Service Y</strong> comes back after going away for a period of time? what happens is the connection between <strong>Service X</strong> and Y becomes increasingly busy ? What happens if the CPU that is being used by <strong>Service Y</strong> is maxed out ? and most importanlty, what does this all men to the user ?</p>
 </div>
 <div class="paragraph">
-<p>You might believe you&#8217;ve designed the services and the infrastructure perfectly to accomodate all of these cases, but how to you know ? Even in such a simple system it is likely tere might be some surprises --some <strong>dark debt</strong>&#8201;&#8212;&#8201;present. <strong>Chaos engineering</strong> provides a way of exploring these uncertainties to find out whether your assumptions of the system&#8217;s resiliency hold water in the real world.</p>
+<p>You might believe you&#8217;ve designed the services and the infrastructure perfectly to accomodate all of these cases, but how to you know ? Even in such a simple system it is likely tere might be some surprises --some <strong>dark debt</strong>&#8201;&#8212;&#8201;present.</p>
+</div>
+<div class="paragraph">
+<p><strong>Chaos engineering provides a way of exploring these uncertainties to find out whether your assumptions of the system&#8217;s resiliency hold water in the real world.</strong></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_plan_an_experiment"><a class="anchor" href="#_plan_an_experiment"></a>Plan an Experiment</h2>
+<h2 id="_plan_a_chaos_experiment"><a class="anchor" href="#_plan_a_chaos_experiment"></a>Plan a Chaos Experiment</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Chaos Engineering begins by asking the question :</p>
@@ -177,8 +195,8 @@
 <div class="paragraph">
 <p>The general process for chaos engineering looks as follows:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p><strong>Define a steady-state hypothesis:</strong> You need to start with an idea of what can go awry. Start with a failure to inject and predict an outcome for when it is running live.</p>
 </li>
@@ -194,15 +212,12 @@
 <li>
 <p><strong>Make changes and fix issues:</strong> After running an experiment, you should have a good idea of what is working and what needs to be altered. Now we can identify what will lead to an outage, and we know exactly what breaks the system. So, go fix it, and try again with a new experiment.</p>
 </li>
-</ul>
+</ol>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/chaos-engineering-process.png" alt="chaos-engineering-process" width="800">
+<img src="_images/chaos-engineering-process.png" alt="chaos-engineering-process" width="600">
 </div>
-</div>
-<div class="paragraph">
-<p>Later on this workshop we will use <strong>Openshift Service Mesh</strong> to inject failures in our <strong>Expriment</strong></p>
 </div>
 </div>
 </div>

@@ -134,10 +134,11 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>XX MINUTE EXERCISE</em></p>
+<p><em>10 MINUTE EXERCISE</em></p>
 </div>
 <div class="paragraph">
-<p>In this section, you will explore OpenShift and deploy the application we would like to evaluate.</p>
+<p>As Chaos engineer, you will need an environment to deploy any application we have to evaluate
+In this section, you will explore OpenShift and deploy an application using Argo CD</p>
 </div>
 </div>
 </div>
@@ -146,6 +147,11 @@
 <div class="sectionbody">
 <div class="sidebarblock">
 <div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="_images/Logo-Red_Hat-OpenShift.png" alt="Red Hat OpenShift" width="300">
+</div>
+</div>
 <div class="paragraph">
 <p><strong>Red Hat® OpenShift®</strong> enables enterprises to build highly agile, scalable architectures with enhanced cluster security that can be deployed at any location.</p>
 </div>
@@ -194,6 +200,11 @@ change.</p>
 <div class="sectionbody">
 <div class="sidebarblock">
 <div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="_images/argocd-logo.png" alt="Argo CD" width="200">
+</div>
+</div>
 <div class="paragraph">
 <p><strong>OpenShift GitOps</strong> is a service available on top of OpenShift.</p>
 </div>
@@ -203,16 +214,15 @@ change.</p>
 <div class="paragraph">
 <p><strong>OpenShift GitOps</strong> is available as an operator in the OperatorHub and can be installed with  a simple one-click experience. Once installed, users can deploy Argo CD instances using Kubernetes custom resources.</p>
 </div>
-</div>
-</div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/gitops-model.png" alt="gitops-model - Button" width="800">
+<img src="_images/gitops-model.png" alt="gitops-model" width="500">
 </div>
 </div>
-<div class="paragraph">
-<p><strong>Argo CD</strong> features</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_argo_cd_features"><a class="anchor" href="#_argo_cd_features"></a>Argo CD features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -243,12 +253,13 @@ change.</p>
 <img src="_images/argocd-features.png" alt="argo features- Button" width="400">
 </div>
 </div>
-<div class="paragraph">
-<p><strong>Argo CD</strong> mechanism</p>
 </div>
+<div class="sect2">
+<h3 id="_argo_cd_mechanism"><a class="anchor" href="#_argo_cd_mechanism"></a>Argo CD mechanism</h3>
 <div class="imageblock">
 <div class="content">
 <img src="_images/Gitops-Openshift.png" alt="Gitops - Button" width="900">
+</div>
 </div>
 </div>
 </div>
@@ -295,25 +306,34 @@ deployed into <strong>'chaos-engineering%USER_ID%'</strong> namespace, and no Ku
 <h2 id="_syncdeploy_the_application"><a class="anchor" href="#_syncdeploy_the_application"></a>Sync/Deploy the application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To deploy the application,
-<code><strong>click on your 'chaos-engineering%USER_ID%' application box then, click on 'Sync &gt; Synchronize'</strong></code>.</p>
+<p>To deploy the application, <code><strong>click on your 'chaos-engineering%USER_ID%' application box then, click on 'Sync &gt; Synchronize'</strong></code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="_images/argocd-sync.png" alt="Argo CD - Sync Application" width="900">
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>This task retrieves the manifests from the Git Repository and performs <em>kubectl apply</em> command of
-the manifests. Your application is now running. You can now view its resource components,
-logs, events, and assessed health status.</p>
+the manifests.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>After a couple of seconds, you should see everything in green.</p>
+<p>After a couple of seconds, you should see <strong>everything in green</strong>. Your application is now running. You can now view its resource components,logs, events, and assessed health status.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/argocd-synced-application.png" alt="Argo CD - Synced Application" width="800">
+<img src="_images/argocd-synced-application.png" alt="Argo CD - Synced Application" width="600">
 </div>
 </div>
 <div class="paragraph">
