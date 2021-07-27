@@ -20,7 +20,7 @@ _2 MINUTE PRACTICE_
 According to the Principles of Chaos Engineering (https://principlesofchaos.org/[https://principlesofchaos.org/^]), 
 
 * **Chaos Engineering** is the discipline of experimenting on a system in order to build confidence in the system's capability to withstand turbulent conditions in production.
-* **Chaos engineering**'s sole purpose is to provide evidence of system weaknesses (sometimes called https://snafucatchers.github.io/#4_6_Dark_Debt[Dark Debt^])
+* **Chaos Engineering**'s sole purpose is to provide evidence of system weaknesses (sometimes called https://snafucatchers.github.io/#4_6_Dark_Debt[Dark Debt^])
 --
 
 Take an example where you have two services that communicate with each other. 
