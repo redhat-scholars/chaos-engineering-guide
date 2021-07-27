@@ -167,11 +167,27 @@
 <img src="_images/simple-2-service.png" alt="simple-2-service - A simple two-service system" width="600">
 </div>
 </div>
-<div class="paragraph">
-<p>What should happen if <strong>Service Y</strong> dies ? What will happen to <strong>Service X</strong> if <strong>Service Y</strong> starts to respond slowly ? What happens if <strong>Service Y</strong> comes back after going away for a period of time? what happens is the connection between <strong>Service X</strong> and Y becomes increasingly busy ? What happens if the CPU that is being used by <strong>Service Y</strong> is maxed out ? and most importanlty, what does this all men to the user ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What should happen if <strong>Service Y</strong> dies ?</p>
+</li>
+<li>
+<p>What will happen to <strong>Service X</strong> if <strong>Service Y</strong> starts to respond slowly ?</p>
+</li>
+<li>
+<p>What happens if <strong>Service Y</strong> comes back after going away for a period of time?</p>
+</li>
+<li>
+<p>what happens is the connection between <strong>Service X</strong> and Y becomes increasingly busy ?</p>
+</li>
+<li>
+<p>What happens if the CPU that is being used by <strong>Service Y</strong> is maxed out ? and most importanlty, what does this all mean to the user ?</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>You might believe you&#8217;ve designed the services and the infrastructure perfectly to accomodate all of these cases, but how to you know ? Even in such a simple system it is likely tere might be some surprises --some <strong>dark debt</strong>&#8201;&#8212;&#8201;present.</p>
+<p>You might believe you&#8217;ve designed the services and the infrastructure perfectly to accomodate all of these cases, but <em><strong>how to you know</strong></em> ? Even in such a simple system it is likely tere might be some surprises --some <strong>dark debt</strong>&#8201;&#8212;&#8201;present.</p>
 </div>
 <div class="paragraph">
 <p><strong>Chaos engineering provides a way of exploring these uncertainties to find out whether your assumptions of the system&#8217;s resiliency hold water in the real world.</strong></p>
@@ -214,6 +230,15 @@
 </li>
 </ol>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="_images/chaos-engineering-process.png" alt="chaos-engineering-process" width="600">
+</div>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Later on this workshop we will use <strong>Openshift Service Mesh</strong> to inject failures in our <strong>Expriment</strong> .</p>
 </div>
@@ -223,22 +248,13 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Following the Chaos Engineering Learning Loop the initial step is to <strong>Explore</strong> the target system, in our case the application we will use, to attempt to surface or <strong>Discover</strong> any weaknesses. The experiment we will use are already written for you, using (Lab 5) and (Lab 6).</p>
+<p>Following the <strong>Chaos Engineering Learning Loop</strong> the initial step is to <strong>Explore</strong> the target system, in our case the application we will use, to attempt to surface or <strong>Discover</strong> any weaknesses. The experiment we will use are already written for you, using (Lab 5) and (Lab 6).</p>
 </div>
 <div class="paragraph">
 <p><strong>Kiali</strong> and <strong>Openshift Developer Console</strong> (Lab 3) will allow you to <strong>explore</strong> and to <strong>discover</strong> the application. <strong>Grafana</strong> (Lab 4) is part of the Discovery of the application too.</p>
 </div>
 <div class="paragraph">
-<p>When you will be ready to execute your experiment (Lab 5) and (Lab 6) you will see how the target system is reacting. You will enter the <strong>discovery</strong> and <strong>analysis</strong> phases of the Chaos Engineering Loop.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="imageblock">
-<div class="content">
-<img src="_images/chaos-engineering-process.png" alt="chaos-engineering-process" width="600">
-</div>
-</div>
-</div>
+<p>When you will be ready to execute your experiment (Lab 5) and (Lab 6) you will see how the target system is reacting. You will enter the <strong>discovery</strong> and <strong>analysis</strong> phases of the <strong>Chaos Engineering Learning Loop</strong>.</p>
 </div>
 </div>
 </div>
