@@ -136,13 +136,13 @@
 <div class="paragraph">
 <p><em>XX MINUTE PRACTICE</em></p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/explore-discover.png" alt="explore-discover" width="700">
 </div>
 </div>
+<div class="sect1">
+<h2 id="_why_do_you_need_metrics"><a class="anchor" href="#_why_do_you_need_metrics"></a>Why do you Need Metrics?</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>As described in the <strong>Chaos Engineering process</strong> we are currently in a <strong>Steady-state hypothesis</strong>. It means we have to set <strong>METRICS</strong> to indicate that the system is working in an expected way from a business perspective, and within a given set of tolerances.</p>
+<p>As described in the <strong>Chaos Engineering process</strong> we are currently in a <strong>Steady-state hypothesis</strong>. It means we have to set <strong>metrics</strong> to indicate that the system is working in an expected way from a business perspective, and within a given set of tolerances.</p>
 </div>
 <div class="paragraph">
 <p><strong>Steady state</strong> means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its <strong>SLOs</strong> ( <strong>S</strong>ervice <strong>L</strong>evel <strong>O</strong>bjective).</p>
@@ -151,9 +151,19 @@
 <p>Instead of asking the question: is the service up or down?
 We ask the question: how many requests are we successfully serving?</p>
 </div>
-<div class="paragraph">
-<p>Service Level Indicator (<strong>SLI</strong>):</p>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_service-level-indicator-sli"></a>Service Level Indicator (SLI)</p>
+</li>
+<li>
+<p><a id="tabset1_service-level-objective-slo"></a>Service Level Objective (SLO)</p>
+</li>
+</ul>
 </div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_service-level-indicator-sli">
 <div class="paragraph">
 <p>A set of agreed upon observable and measurable characteristics that determine whether a request is successful.</p>
 </div>
@@ -170,9 +180,8 @@ We ask the question: how many requests are we successfully serving?</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Service Level Objective (<strong>SLO</strong>):</p>
 </div>
+<div class="tab-pane" aria-labelledby="tabset1_service-level-objective-slo">
 <div class="paragraph">
 <p>A target ratio of successful requests over the total number of requests (Different from the more traditional available time/servicing time).</p>
 </div>
@@ -184,21 +193,18 @@ We ask the question: how many requests are we successfully serving?</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_monitoring_with_service_mesh_grafana"><a class="anchor" href="#_monitoring_with_service_mesh_grafana"></a>Monitoring with Service Mesh Grafana</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Creating a simple <strong>METRIC</strong> called <strong>Global Request Volume</strong></p>
+<p><code><strong>Click on the 'Grafana' button below</strong></code>.</p>
 </div>
-<div class="paragraph">
-<p><strong>Travel application</strong> deployed exposes metrics for Prometheus through the standard endpoint /metrics</p>
-</div>
-<div class="paragraph">
-<p><code><strong>Click on the 'Developer Monitoring' button below</strong></code>.</p>
-</div>
-<div class="imageblock text-center params-link">
+<div class="imageblock params-link">
 <div class="content">
-<a class="image" href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener"><img src="_images/developer-monitoring-button.png" alt="Developer Monitoring - Button" width="300"></a>
+<a class="image" href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%"><img src="_images/grafana-button.png" alt="Grafana- Button" width="300"></a>
 </div>
 </div>
 <div class="paragraph">
