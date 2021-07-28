@@ -75,6 +75,7 @@ OpenShift Service Mesh uses **Jaeger**, an open, distributed tracing system and 
 `*Click on the 'Kiali' button below*`
 
 [link={KIALI_URL}]
+[window="_blank"]
 [role='params-link']
 image::kiali-button.png[Kiali - Button, 300]
 

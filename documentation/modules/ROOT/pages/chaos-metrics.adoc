@@ -51,6 +51,7 @@ For example:
 `*Click on the 'Grafana' button below*`.
 
 [link={GRAFANA_URL}]
+[window="_blank"]
 [role='params-link']
 image::grafana-button.png[Grafana- Button, 300]
 

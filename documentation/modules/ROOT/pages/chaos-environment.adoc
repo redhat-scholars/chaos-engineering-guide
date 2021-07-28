@@ -36,6 +36,7 @@ perform various tasks via a browser.
 `*Click on the 'OpenShift Console' button below*`
 
 [link={OPENSHIFT_CONSOLE_URL}]
+[window="_blank"]
 [role='params-link']
 image::openshift-console-button.png[OpenShift Console - Button, 300]
 
@@ -89,8 +90,9 @@ image::Gitops-Openshift.png[Gitops - Button, 900]
 `*Click on the 'OpenShift GitOps' button below*`
 
 [link={GITOPS_URL}]
+[window="_blank"]
 [role='params-link']
-image::openshift-gitops-button.png[OpenShift GitOps - Button, 300]
+image::openshift-gitops-button.png[OpenShift GitOps - Button^, 300]
 
 Then `*log in as user{USER_ID}/{OPENSHIFT_PASSWORD}*`. Once completed, you will be redirected to the following page which lists the **Argo CD Applications**.
 
