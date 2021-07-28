@@ -134,7 +134,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>XX MINUTE PRACTICE</em></p>
+<p><em>20 MINUTE PRACTICE</em></p>
 </div>
 </div>
 </div>
@@ -197,7 +197,7 @@ We ask the question: how many requests are we successfully serving?</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_monitoring_with_service_mesh_grafana"><a class="anchor" href="#_monitoring_with_service_mesh_grafana"></a>Monitoring with Service Mesh Grafana</h2>
+<h2 id="_create_a_grafana_dashboard"><a class="anchor" href="#_create_a_grafana_dashboard"></a>Create a Grafana Dashboard</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code><strong>Click on the 'Grafana' button below</strong></code>.</p>
@@ -226,6 +226,11 @@ We ask the question: how many requests are we successfully serving?</p>
 <img src="_images/grafana-create-dashboard.png" alt="Grafana - Home" width="200">
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_the_global_request_volume_metric"><a class="anchor" href="#_create_the_global_request_volume_metric"></a>Create the Global Request Volume Metric</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Let&#8217;s create the first <strong>metric which defines the number of total requests in your namespace</strong>.</p>
 </div>
@@ -245,54 +250,87 @@ This language will let you select and aggregate time series data in real time.</
 <p>You will use the following incremental approach to understand and translate the first metric to PromQL expressions.</p>
 </div>
 <div class="paragraph">
-<p><code><strong>Enter the following expression into the 'Metrics' field for the Query 'A'</strong></code>:</p>
+<p><code><strong>Create incrementally the PromQL expression by following the 4 next steps and enter the expression into the 'Metrics' field for the Query 'A'</strong></code>:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="_images/grafana-add-query.png" alt="Grafana - Home" width="700">
 </div>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Query Settings</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Step</th>
-<th class="tableblock halign-left valign-top">PromQL</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Step 1</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong><em>istio_requests_total</em></strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is an <a href="https://istio.io/latest/docs/reference/config/metrics/" target="_blank" rel="noopener">Istio standard metric</a> exported to Prometheus by default.
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_step1"></a>Step1</p>
+</li>
+<li>
+<p><a id="tabset2_step2"></a>Step2</p>
+</li>
+<li>
+<p><a id="tabset2_step3"></a>Step3</p>
+</li>
+<li>
+<p><a id="tabset2_step4"></a>Step4</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_step1">
+<div class="listingblock copypaste">
+<div class="title">PromQL</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-promql hljs" data-lang="promql"><strong>istio_requests_total</strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is an <a href="https://istio.io/latest/docs/reference/config/metrics/" target="_blank" rel="noopener">Istio standard metric</a> exported to Prometheus by default.
 It is a Counter measuring the total number of requests that have come through the Entire Service Mesh. This metric has several
-dimensions, per time series in a range vector</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Step 2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>istio_requests_total</strong>{reporter="source", namespace="chaos-engineering%USER_ID%"}</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter the metric to use only the inbound requests (<em>reporter="source"</em>) from your environment (<em>namespace="chaos-engineering%USER_ID%"</em>)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Step 3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>increase(<strong>istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%</strong>"}[1m])</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Adding increase(), the query returns the only number of requests as measured over the last minute per time series.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Step 4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>sum(<strong>increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%</strong>"}[1m]))</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Adding sum(), the query returns the total of requests within the namespace</p></td>
-</tr>
-</tbody>
-</table>
+dimensions, per time series in a range vector</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_step2">
+<div class="listingblock copypaste">
+<div class="title">PromQL</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-promql hljs" data-lang="promql">istio_requests_total<strong>{reporter="source", namespace="chaos-engineering%USER_ID%"}</strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Filter the metric to use only the inbound requests (<em>reporter="source"</em>) from your environment (<em>namespace="chaos-engineering%USER_ID%"</em>)</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_step3">
+<div class="listingblock copypaste">
+<div class="title">PromQL</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-promql hljs" data-lang="promql"><strong>increase(</strong>istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}<strong>[1m])</strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adding <strong>increase()</strong> function, the query returns the only number of requests as measured over the last minute per time series.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_step4">
+<div class="listingblock copypaste">
+<div class="title">PromQL</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-promql hljs" data-lang="promql"><strong>sum(</strong>increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m])<strong>)</strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adding <strong>sum()</strong> function, the query returns the total of requests within the namespace</p>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>At the end, you should have the following expression in the the 'Metrics' field for the Query 'A'.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-number-total-promql.png" alt="Grafana - Number Total Request PromQL" width="900">
+</div>
+</div>
 <div class="paragraph">
 <p>As result, you should be a time graph similar to the following one:</p>
 </div>
@@ -305,7 +343,7 @@ dimensions, per time series in a range vector</p></td>
 <p>Then, <code><strong>click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:</strong></code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Singlestat Settings</caption>
+<caption class="title">Table 1. Singlestat Settings</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -345,7 +383,7 @@ dimensions, per time series in a range vector</p></td>
 <p>Finally, <code><strong>click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. General Settings</caption>
+<caption class="title">Table 2. General Settings</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -372,18 +410,20 @@ dimensions, per time series in a range vector</p></td>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Congratulations!!!</strong> You just created your first Chaos Metrics in a Grafana dashboard!</p>
+<p><strong>Congratulations!!!</strong> You just created your first Chaos Metric in a Grafana dashboard!</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="_images/grafana-number-total-singlestat.png" alt="Grafana - Home" width="400">
 </div>
 </div>
-<div class="paragraph">
-<p>Creating an additional <strong>METRIC</strong> called <strong>Global Success Rate (non 5xx responses) </strong></p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_create_the_global_success_rate_metric"><a class="anchor" href="#_create_the_global_success_rate_metric"></a>Create the Global Success Rate Metric</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>After creating the METRIC of all requests we can define a METRIC of all SUCCESSFULL REQUESTS (~ error code 5XX) :</p>
+<p>After creating the metric of all requests, you are going to define a <strong>metric of all successfull requests</strong> (~ error code 5XX) :</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -408,7 +448,7 @@ in our case :</pre>
 <p>Now let&#8217;s create this new <strong>Global Success Rate (non 5xx responses) </strong> METRIC value</p>
 </div>
 <div class="paragraph">
-<p><code>*Click on the  (1) 'Add Panel' button *</code></p>
+<p><code><strong>Click on the (1) 'Add Panel' button</strong></code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -419,7 +459,7 @@ in our case :</pre>
 <p>and</p>
 </div>
 <div class="paragraph">
-<p><code>*Click on the  (2) 'Add Query' icon *</code></p>
+<p><code><strong>Click on the (2) 'Add Query' icon</strong></code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -434,35 +474,31 @@ in our case :</pre>
 <img src="_images/grafana-add-query.png" alt="Grafana - Home" width="700">
 </div>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Query Settings</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
+<div class="listingblock copypaste">
+<div class="title">PromQL</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-promql hljs" data-lang="promql">sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
 <tr>
-<th class="tableblock halign-left valign-top">Step</th>
-<th class="tableblock halign-left valign-top">PromQL</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Global Success Rate</strong>  is a ratio betwen the number of successfull request and the number of http requests.</p>
+</div>
+</td>
 </tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Step 1</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><em>sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Global Success Rate</strong>  is a ratio betwen the number of successfull request and the number of http requests.</p></td>
-</tr>
-</tbody>
 </table>
+</div>
 <div class="paragraph">
 <p>Then, <code><strong>click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:</strong></code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Singlestat Settings</caption>
+<caption class="title">Table 3. Singlestat Settings</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -507,7 +543,7 @@ in our case :</pre>
 <p>Finally, <code><strong>click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. General Settings</caption>
+<caption class="title">Table 4. General Settings</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -534,7 +570,7 @@ in our case :</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Congratulations!!!</strong> You just created your second Chaos Metrics <strong>Global Success Rate (non 5xx responses)</strong> in a Grafana dashboard!</p>
+<p><strong>Congratulations!</strong> You just created your second Chaos Metric <strong>Global Success Rate (non 5xx responses)</strong> in a Grafana dashboard!</p>
 </div>
 </div>
 </div>
@@ -545,10 +581,10 @@ in our case :</pre>
 <p>You just learnt how to create a Grafana Dashboard. Now, let&#8217;s import the full Grafana Dashboard needed to the chaos experiments.</p>
 </div>
 <div class="paragraph">
-<p><code><strong>Click on the following link, <a href="https://raw.githubusercontent.com/mcouliba/chaos-engineering-workshop/%WORKSHOP_GIT_REF%/grafana/chaos-engineering-dashboard.json" target="_blank" rel="noopener">Chaos Engineering Dashboard</a> and copy the content</strong></code></p>
+<p><code><strong>Click on the following link, <a href="https://raw.githubusercontent.com/mcouliba/chaos-engineering-workshop/%WORKSHOP_GIT_REF%/grafana/chaos-engineering-dashboard.json" class="params-link" target="_blank" rel="noopener">Chaos Engineering Dashboard</a> and copy the content</strong></code></p>
 </div>
 <div class="paragraph">
-<p>In <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%" target="_blank" rel="noopener">Grafana</a>, <code><strong>Click on  'plus (+) sign' &gt; 'Import Dashboard' in the left hand side menu</strong></code></p>
+<p>In <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%" class="params-link" target="_blank" rel="noopener">Grafana</a>, <code><strong>Click on  'plus (+) sign' &gt; 'Import Dashboard' in the left hand side menu</strong></code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -576,7 +612,7 @@ in our case :</pre>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/grafana-chaos-engineering-dashboard.png" alt="Grafana - Home" width="500">
+<img src="_images/grafana-chaos-engineering-dashboard.png" alt="Grafana - Home" width="700">
 </div>
 </div>
 </div>
@@ -670,8 +706,19 @@ in our case :</pre>
 </li>
 </ul>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p><strong>Important Note</strong> : all metrics have to be measured over a time window (typically a month) but especially for this Workshop here we are taking the minute [1m] to see some change in the Dashboard.</p>
+<p>All metrics have to be measured over a time window (typically a month) but especially for this Workshop here we are taking the minute [1m] to see some change in the Dashboard.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
