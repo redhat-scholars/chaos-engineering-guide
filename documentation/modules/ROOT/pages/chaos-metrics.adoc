@@ -9,7 +9,7 @@
 
 = Define and monitor Chaos metrics
 
-_XX MINUTE PRACTICE_
+_20 MINUTE PRACTICE_
 
 
 == Why do you Need Metrics?
@@ -46,7 +46,7 @@ For example:
 
 ====
 
-== Monitoring with Service Mesh Grafana
+== Create a Grafana Dashboard
 
 `*Click on the 'Grafana' button below*`.
 
@@ -64,6 +64,8 @@ Now, let's create a dashboard to monitor the Chaos Metrics.
 
 image::grafana-create-dashboard.png[Grafana - Home,200]
 
+== Create the Global Request Volume Metric
+
 Let's create the first **metric which defines the number of total requests in your namespace**.
 
 `*Click on the 'Add Query'*`
@@ -75,36 +77,71 @@ This language will let you select and aggregate time series data in real time.
 
 You will use the following incremental approach to understand and translate the first metric to PromQL expressions.
 
-`*Enter the following expression into the 'Metrics' field for the Query 'A'*`:
+`*Create incrementally the PromQL expression by following the 4 next steps and enter the expression into the 'Metrics' field for the Query 'A'*`:
 
 image::grafana-add-query.png[Grafana - Home,700]
 
-.Query Settings
-[%header,cols=3*]
-|===
-|Step
-|PromQL
-|Description
+[tabs]
+====
+Step1::
++
+--
 
-|Step 1
-a|**_istio_requests_total_**
-|This is an https://istio.io/latest/docs/reference/config/metrics/[Istio standard metric^] exported to Prometheus by default.
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
+**istio_requests_total**
+----
+
+This is an https://istio.io/latest/docs/reference/config/metrics/[Istio standard metric^] exported to Prometheus by default.
 It is a Counter measuring the total number of requests that have come through the Entire Service Mesh. This metric has several 
 dimensions, per time series in a range vector
+--
 
-|Step 2
-|**_istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}_
-|Filter the metric to use only the inbound requests (_reporter="source"_) from your environment (_namespace="chaos-engineering{USER_ID}"_)  
+Step2::
++
+--
 
-|Step 3
-|_increase(**istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}**"}[1m])_
-|Adding increase(), the query returns the only number of requests as measured over the last minute per time series.
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
+istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}**
+----
 
-|Step 4
-|_sum(**increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}**"}[1m]))_
-|Adding sum(), the query returns the total of requests within the namespace
+Filter the metric to use only the inbound requests (_reporter="source"_) from your environment (_namespace="chaos-engineering{USER_ID}"_)
+--
 
-|===
+Step3::
++
+--
+
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
+**increase(**istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}**[1m])**
+----
+
+Adding **increase()** function, the query returns the only number of requests as measured over the last minute per time series.
+--
+
+Step4::
++
+--
+
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
+**sum(**increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])**)**
+----
+
+Adding **sum()** function, the query returns the total of requests within the namespace
+--
+
+====
+
+At the end, you should have the following expression in the the 'Metrics' field for the Query 'A'.
+
+image::grafana-number-total-promql.png[Grafana - Number Total Request PromQL,900]
 
 As result, you should be a time graph similar to the following one:
 
@@ -152,14 +189,13 @@ Finally, `*click on the 'General Settings' icon and enter the following paramete
 
 image::grafana-general-settings.png[Grafana - Home,500]
 
-**Congratulations!!!** You just created your first Chaos Metrics in a Grafana dashboard!
+**Congratulations!!!** You just created your first Chaos Metric in a Grafana dashboard!
 
 image::grafana-number-total-singlestat.png[Grafana - Home,400]     
 
+== Create the Global Success Rate Metric
 
-Creating an additional **METRIC** called **Global Success Rate (non 5xx responses) **
-
-After creating the METRIC of all requests we can define a METRIC of all SUCCESSFULL REQUESTS (~ error code 5XX) :
+After creating the metric of all requests, you are going to define a **metric of all successfull requests** (~ error code 5XX) :
 
  Total Requests: sum(increase(istio_requests_total{}[$time_interval]))
 
@@ -172,13 +208,13 @@ image::grafana-global-success-rate-step-1.png[Grafana - Home,900]
 
 Now let's create this new **Global Success Rate (non 5xx responses) ** METRIC value 
 
-`*Click on the  (1) 'Add Panel' button *`
+`*Click on the (1) 'Add Panel' button*`
 
 image::grafana-add-panel.png[Grafana - Add Panel,100]
 
 and 
 
-`*Click on the  (2) 'Add Query' icon *`
+`*Click on the (2) 'Add Query' icon*`
 
 image::grafana-add-query-step1.png[Grafana - Add Query,200]
 
@@ -186,18 +222,17 @@ image::grafana-add-query-step1.png[Grafana - Add Query,200]
 
 image::grafana-add-query.png[Grafana - Home,700]
 
-.Query Settings
-[%header,cols=3*]
-|===
-|Step
-|PromQL
-|Description
 
-|Step 1
-a|_sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))_
-| **Global Success Rate**  is a ratio betwen the number of successfull request and the number of http requests.
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
+sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))
+----
 
-|===
+[TIP]
+====
+**Global Success Rate**  is a ratio betwen the number of successfull request and the number of http requests.
+====
 
 
 
@@ -248,17 +283,16 @@ Finally, `*click on the 'General Settings' icon and enter the following paramete
 
 image::grafana-general-settings-step3.png[Grafana - Home,700]
 
-**Congratulations!!!** You just created your second Chaos Metrics **Global Success Rate (non 5xx responses)** in a Grafana dashboard!
-
+**Congratulations!** You just created your second Chaos Metric **Global Success Rate (non 5xx responses)** in a Grafana dashboard!
 
 
 == Import the Chaos Engineering Dashboard
 
 You just learnt how to create a Grafana Dashboard. Now, let's import the full Grafana Dashboard needed to the chaos experiments.
 
-`*Click on the following link, {DASHBOARD_GIT_URL}[Chaos Engineering Dashboard^] and copy the content*`
+`*Click on the following link, {DASHBOARD_GIT_URL}[Chaos Engineering Dashboard^, role='params-link'] and copy the content*`
 
-In {GRAFANA_URL}[Grafana^], `*Click on  'plus (+) sign' > 'Import Dashboard' in the left hand side menu*`
+In {GRAFANA_URL}[Grafana^, role='params-link'], `*Click on  'plus (+) sign' > 'Import Dashboard' in the left hand side menu*`
 
 image::grafana-import-dashboard.png[Grafana - Home,200]
 
@@ -272,7 +306,7 @@ image::error-import-grafana.png[Grafana import Error - Home,900]
 
 You have now access the Chaos Engineering Dashboard.
 
-image::grafana-chaos-engineering-dashboard.png[Grafana - Home,500]
+image::grafana-chaos-engineering-dashboard.png[Grafana - Home,700]
 
 == Explore the Chaos Engineering Dashboard
 
@@ -313,5 +347,7 @@ image::grafana-block-B.png[Grafana - Home,900]
 * [Green] Request Duration for the service
 
 
-
-**Important Note** : all metrics have to be measured over a time window (typically a month) but especially for this Workshop here we are taking the minute [1m] to see some change in the Dashboard. 
+[IMPORTANT]
+====
+All metrics have to be measured over a time window (typically a month) but especially for this Workshop here we are taking the minute [1m] to see some change in the Dashboard. 
+====

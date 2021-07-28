@@ -9,7 +9,7 @@
 
 = Chaos Experiment 2: Unavailable Service
 
-_XX MINUTE PRACTICE_
+_10 MINUTE PRACTICE_
 
 
 image::discover-analyze.png[discover-analyze, 700]
