@@ -136,17 +136,12 @@
 <div class="paragraph">
 <p><em>10 MINUTE PRACTICE</em></p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/discover-analyze.png" alt="discover-analyze" width="700">
-</div>
-</div>
 <div class="paragraph">
 <p>Previously, you have seen how big the impact is on the application when a small network latency problem occurs on one non-critital services.
 Let&#8217;s see how the application will occur when this same service is unavailable. For this second experiment, we will test the following hypothesis:</p>
 </div>
 <div class="paragraph">
-<p><em><strong>Unavailable services should NOT impact the Service Level Objective (SLO) of the Travel Service</strong></em></p>
+<p><em><strong>Unavailable 'discount' service should NOT impact the Service Level Objective (SLO) of the Travel Service</strong></em></p>
 </div>
 </div>
 </div>
@@ -322,7 +317,7 @@ So your hypothesis is validated:</p>
 <h2 id="_rollback_the_chaos_experiment"><a class="anchor" href="#_rollback_the_chaos_experiment"></a>Rollback the Chaos experiment</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In {GITOPS_URL}[Argo CD^, role='params-link'], <code><strong>click on 'Sync &gt; Synchronize'</strong></code>.</p>
+<p>In <a href="https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%" class="params-link" target="_blank" rel="noopener">Argo CD</a>, <code><strong>click on 'Sync &gt; Synchronize'</strong></code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
