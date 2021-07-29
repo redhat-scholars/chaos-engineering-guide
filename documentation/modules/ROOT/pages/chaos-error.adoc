@@ -123,30 +123,10 @@ _**Unavailable 'discounts' services DO NOT impact the Service Level Objective (S
 
 == Rollback the Chaos experiment
 
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'discounts' service and select 'Details'*`
+In {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*`.
 
-image::kiali-right-click-service.png[Kiali - Right Click Service,400]
+image::argocd-rollback-sync.png[Argo CD - Sync Application, 900]
 
-You will be redirected to the Service Details page. 
+Finally, in the {GRAFANA_URL}[Chaos Engineering Dashboard], `*please check the application is back in the steady state.
 
-`*Click on the 'Actions' > 'Fault Injection'*`
-
-image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
-
-`*Disable HTTP Abort by entering the following settings:*`
-
-.HTTP Delay Settings
-[%header,cols=3*]
-|===
-|Parameter
-|Value
-|Description
-
-|Add HTTP Abort 
-|**Disabled**
-|
-
-|===
-
-`*Click on the 'Update' button*`.
-
+image::grafana-steady-state.png[Grafana - Steady State,700]
