@@ -6,14 +6,13 @@
 :APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
+:GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
 
 = Chaos Experiment 1: Network latency
 
-_10 MINUTE PRACTICE_
+_30 MINUTE PRACTICE_
 
-image::discover-analyze.png[discover-analyze, 700]
-
-In production, it is very common to have delay services rather than down services. **Latency** measures the delay between an action and a response. For this first experiment, we will test the following hypothesis:
+In production, it is more common to have slow services than broken services. **Latency** measures the delay between an action and a response. For this first experiment, we will test the following hypothesis:
 
 _**A small network latency should not impact the Service Level Objective (SLO) of the Travel Service**_
 
@@ -134,7 +133,7 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 |
 
 |Delay Percentage
-|**30**
+|**5**
 |
 
 |Fixed Delayed
@@ -143,55 +142,194 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
 |===
 
-image::kiali-configure-latency.png[Kiali - Configure Latency,300]
+image::kiali-configure-latency.png[Kiali - Configure Latency,400]
 
-`*Click on the 'Create' button*`. 
+`*Click on the 'Update' button*`. 
 
-**30% of the traffic of the 'discounts' service has now 1 second of delay.** Now let's see the impact of the application.
+**5% of the traffic of the 'discounts' service has now 1 second of delay.**
 
 == Analyze the Chaos outcome
 
+Now let's see the impact of the application.
+
 In the {GRAFANA_URL}[Chaos Engineering Dashboard], you can see the result of the chaos experiment.
 
-image::kiali-latency-fault-overview.png[Kiali - Latency Fault Overview,900]
+image::grafana-latency-fault-overview.png[Grafana - Latency Fault Overview,900]
 
-From the **'Service Overview'** or **'Request Duration'** panels, you can tell the following about the small network latency based on our hypothesis:
+From the **'Service Overview'** panel or **'Request Duration'** for the 'travels' service, you can tell the following about the small network latency based on our hypothesis:
 
 - there is no impact on the Success Rate of the overall requests (100%)
 - there is a huge impact on the performance of the application. 
 
-Indeed, just 1 second of delay on 30% of the traffic of one dependant service induces **a latency propagation of more than 2 seconds across the system**.
+Indeed, just 1 second of delay on 5% of the traffic of one dependant service induces **a latency propagation of ~2 seconds across the entire system**.
 
-image::kiali-latency-fault-details.png[Kiali - Latency Fault Details,900]
+image::grafana-latency-fault-details.png[Grafana - Latency Fault Details,900]
 
-In conclusion, you can tell the **application is not resilient to a small network latency**. To reduce or fix this phenomenon, you could configure the autoscaling or implement a cache mechanism across the different services of the applications.
+In conclusion, you can tell **the application is not resilient to a small network latency**. To reduce or fix this phenomenon, you could configure the autoscaling or implement a cache mechanism across the different services of the applications.
 
+== Improve the Resiliency
 
-== Rollback the Chaos experiment
+To contain this latency propagation, you are going to apply the *Retry* pattern to all services calling the delayed 'discounts' services.
 
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'discounts' service and select 'Details'*`
+Retries can improve the application resiliency against transcient problems such as  a temporarily overloaded service or network like we simulate in our experiment.
 
-image::kiali-right-click-service.png[Kiali - Right Click Service,400]
+Instead of failing directly or waiting too long, we could retry N number of times to get the desired output with the desired response time before considering as failed.
 
-You will be redirected to the Service Details page. 
+`*Configure the Retry pattern for the following services*`
 
-`*Click on the 'Actions' > 'Fault Injection'*`
+[tabs]
+====
+cars::
++
+--
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'cars' service > 'Actions' > 'Request Timeouts'*`
 
-image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
+`*Add HTTP Retry by entering the following settings:*`
 
-`*Disable HTTP Delay by entering the following settings:*`
-
-.HTTP Delay Settings
+.HTTP Retry Settings
 [%header,cols=3*]
 |===
 |Parameter
 |Value
 |Description
 
-|Add HTTP Delay 
-|**Disabled**
+|Add HTTP Retry 
+|**Enabled**
+|
+
+|Attempts
+|**5**
+|
+
+|Per Try Timeout
+|**20ms**
 |
 
 |===
 
+image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
+
 `*Click on the 'Update' button*`.
+--
+
+flights::
++
+--
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'flights' service > 'Actions' > 'Request Timeouts'*`
+
+`*Add HTTP Retry by entering the following settings:*`
+
+.HTTP Retry Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Add HTTP Retry 
+|**Enabled**
+|
+
+|Attempts
+|**5**
+|
+
+|Per Try Timeout
+|**20ms**
+|
+
+|===
+
+image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
+
+`*Click on the 'Update' button*`.
+--
+
+hotels::
++
+--
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'hotels' service > 'Actions' > 'Request Timeouts'*`
+
+`*Add HTTP Retry by entering the following settings:*`
+
+.HTTP Retry Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Add HTTP Retry 
+|**Enabled**
+|
+
+|Attempts
+|**5**
+|
+
+|Per Try Timeout
+|**20ms**
+|
+
+|===
+
+image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
+
+`*Click on the 'Update' button*`.
+--
+
+insurances::
++
+--
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'insurances' service > 'Actions' > 'Request Timeouts'*`
+
+`*Add HTTP Retry by entering the following settings:*`
+
+.HTTP Retry Settings
+[%header,cols=3*]
+|===
+|Parameter
+|Value
+|Description
+
+|Add HTTP Retry 
+|**Enabled**
+|
+
+|Attempts
+|**5**
+|
+
+|Per Try Timeout
+|**20ms**
+|
+
+|===
+
+image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
+
+`*Click on the 'Update' button*`.
+--
+====
+
+== Validate the Improvement
+
+Back into the {GRAFANA_URL}[Chaos Engineering Dashboard], you can tell that we manage to contain the Latency propagation by **not exceeding 100 ms in general** using the Retry pattern while the 'discounts' service still has the 1s latency issue.
+
+image::grafana-latency-contained-overview.png[Grafana - Latency Contained Overview,900]
+
+You can see more detail on the 'Request Duration' panel for the 'travels' service
+
+image::grafana-latency-contained-details.png[Grafana - Latency Contained Details,900]
+
+== Rollback the Chaos experiment
+
+There is nothing more simple than rollbacking all configurations you have done during this lab with Argo CD.
+
+In {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*`.
+
+image::argocd-rollback-sync.png[Argo CD - Sync Application, 900]
+
+Finally, in the {GRAFANA_URL}[Chaos Engineering Dashboard], `*please check the application is back in the steady state.
+
+image::grafana-steady-state.png[Grafana - Steady State,700]
