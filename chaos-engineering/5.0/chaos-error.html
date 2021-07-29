@@ -322,51 +322,20 @@ So your hypothesis is validated:</p>
 <h2 id="_rollback_the_chaos_experiment"><a class="anchor" href="#_rollback_the_chaos_experiment"></a>Rollback the Chaos experiment</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the <a href="https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%" class="params-link" target="_blank" rel="noopener">Kiali Console</a>, from the <strong>'Graph' view</strong>, <code><strong>right-click on the 'discounts' service and select 'Details'</strong></code></p>
+<p>In {GITOPS_URL}[Argo CD^, role='params-link'], <code><strong>click on 'Sync &gt; Synchronize'</strong></code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/kiali-right-click-service.png" alt="Kiali - Right Click Service" width="400">
+<img src="_images/argocd-rollback-sync.png" alt="Argo CD - Sync Application" width="900">
 </div>
 </div>
 <div class="paragraph">
-<p>You will be redirected to the Service Details page.</p>
-</div>
-<div class="paragraph">
-<p><code><strong>Click on the 'Actions' &gt; 'Fault Injection'</strong></code></p>
+<p>Finally, in the <a href="https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%">Chaos Engineering Dashboard</a>, `*please check the application is back in the steady state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/kiali-add-fault-injection.png" alt="Kiali - Add Fault Injection" width="900">
+<img src="_images/grafana-steady-state.png" alt="Grafana - Steady State" width="700">
 </div>
-</div>
-<div class="paragraph">
-<p><code><strong>Disable HTTP Abort by entering the following settings:</strong></code></p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. HTTP Delay Settings</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add HTTP Abort</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Disabled</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><code><strong>Click on the 'Update' button</strong></code>.</p>
 </div>
 </div>
 </div>
