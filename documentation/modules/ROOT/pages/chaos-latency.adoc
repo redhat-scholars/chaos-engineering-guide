@@ -330,6 +330,6 @@ In {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*`
 
 image::argocd-rollback-sync.png[Argo CD - Sync Application, 900]
 
-Finally, in the {GRAFANA_URL}[Chaos Engineering Dashboard], `*please check the application is back in the steady state.
+Finally, in the {GRAFANA_URL}[Chaos Engineering Dashboard], `*please check the application is back in the steady state*`.
 
 image::grafana-steady-state.png[Grafana - Steady State,700]
