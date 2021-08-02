@@ -138,7 +138,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/explore-discover.png" alt="explore-discover" width="700">
+<img src="_images/explore-discover.png" alt="explore-discover" width="800">
 </div>
 </div>
 </div>
@@ -250,7 +250,16 @@ OpenShift Service Mesh uses <strong>Jaeger</strong>, an open, distributed tracin
 </div>
 </div>
 <div class="paragraph">
-<p>In the <strong>'Graph' view</strong>, <code><strong>enter the following configuration</strong></code>:</p>
+<p>Select the  <strong>'Graph' view</strong>, from the side menu bar and <code><strong>enter the following configuration</strong></code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-graph.png" alt="Kiali- Graph" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>The outcome is a graph with all the services, connected by the requests going through them.
+You can see how the services interact with each other.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Graph Settings</caption>
@@ -284,25 +293,16 @@ OpenShift Service Mesh uses <strong>Jaeger</strong>, an open, distributed tracin
 </tr>
 </tbody>
 </table>
-<div class="imageblock">
-<div class="content">
-<img src="_images/kiali-graph.png" alt="Kiali- Graph" width="900">
-</div>
-</div>
-<div class="paragraph">
-<p>The outcome is a graph with all the services, connected by the requests going through them.
-You can see how the services interact with each other.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_understand_the_application"><a class="anchor" href="#_understand_the_application"></a>Understand the Application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before to continue we will describe the application used in this workshop.</p>
+<p>Before continuing we will describe the application used in this workshop.</p>
 </div>
 <div class="paragraph">
-<p>This demo application will deploy several services into 1 namespace.</p>
+<p>This demo application deploys several services into 1 namespace.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -312,7 +312,7 @@ You can see how the services interact with each other.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Inside the <strong>'chaos-engineering%USER_ID%' namespace</strong> we can discover 3 parts</p>
+<p>Inside the <strong>'chaos-engineering%USER_ID%' namespace</strong> we see 3 parts</p>
 </div>
 <div class="ulist">
 <ul>
@@ -442,6 +442,11 @@ You can see how the services interact with each other.</p>
 <div class="paragraph">
 <p>Then <code><strong>click on 'Show Advanced Options' and entering the following information</strong></code>:</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kiali-control-create-ingress.png" alt="Kiali - Control Create Ingress" width="500">
+</div>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Gateways Settings</caption>
 <colgroup>
@@ -469,9 +474,13 @@ You can see how the services interact with each other.</p>
 </tr>
 </tbody>
 </table>
-<div class="imageblock">
+<div class="paragraph">
+<p>You can use this COPY/PASTE value to avoid Error</p>
+</div>
+<div class="listingblock copypaste">
+<div class="title">kiali</div>
 <div class="content">
-<img src="_images/kiali-control-create-ingress.png" alt="Kiali - Control Create Ingress" width="500">
+<pre class="highlightjs highlight"><code class="language-kiali hljs" data-lang="kiali">control-chaos-engineering%USER_ID%.%APPS_HOSTNAME_SUFFIX%</code></pre>
 </div>
 </div>
 <div class="paragraph">

@@ -148,8 +148,10 @@
 <p><strong>Steady state</strong> means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its <strong>SLOs</strong> ( <strong>S</strong>ervice <strong>L</strong>evel <strong>O</strong>bjective).</p>
 </div>
 <div class="paragraph">
-<p>Instead of asking the question: is the service up or down?
-We ask the question: how many requests are we successfully serving?</p>
+<p>Instead of asking the question: is the service up or down?</p>
+</div>
+<div class="paragraph">
+<p>We ask the question: <strong>how many requests are we successfully serving for a given time ? </strong></p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -164,6 +166,9 @@ We ask the question: how many requests are we successfully serving?</p>
 </div>
 <div class="content">
 <div class="tab-pane" aria-labelledby="tabset1_service-level-indicator-sli">
+<div class="paragraph">
+<p>An <strong>SLI</strong> is a service level indicator—a carefully defined quantitative measure of some aspect of the level of service that is provided. We recommend to read this great SRE book later <a href="https://sre.google/sre-book/service-level-objectives/">Chapter 4- Service Level objectives (Google SRE book)</a></p>
+</div>
 <div class="paragraph">
 <p>A set of agreed upon observable and measurable characteristics that determine whether a request is successful.</p>
 </div>
@@ -183,13 +188,25 @@ We ask the question: how many requests are we successfully serving?</p>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_service-level-objective-slo">
 <div class="paragraph">
-<p>A target ratio of successful requests over the total number of requests (Different from the more traditional available time/servicing time).</p>
+<p>An <strong>SLO</strong> is a service level objective: a target value or range of values for a service level that is measured by an <strong>SLI</strong>.</p>
+</div>
+<div class="paragraph">
+<p>For example, we might decide that we will return Shakespeare search results "quickly," adopting an SLO that our average search request latency should be less than 100 milliseconds.</p>
+</div>
+<div class="paragraph">
+<p>Choosing an appropriate <strong>SLO</strong> is complex.</p>
+</div>
+<div class="paragraph">
+<p>Choosing and publishing <strong>SLOs</strong> to users sets expectations about how a service will perform. This strategy can reduce unfounded complaints to service owners about, for example, the service being slow.</p>
+</div>
+<div class="paragraph">
+<p>For our Wprkshop&#8217;s Application we will use SLO based on target ratio of successful requests over the total number of requests (Different from the more traditional available time/servicing time).</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
 </div>
 <div class="paragraph">
-<p>99.99% of the requests will be successful.</p>
+<p>99.99% of the requests will be successful for a given time.</p>
 </div>
 </div>
 </div>
@@ -243,7 +260,7 @@ We ask the question: how many requests are we successfully serving?</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You are going to define the metric using a query language called <strong>PromQL</strong> (Prometheus Query Language).
+<p>You are going to define the metric using a query language called Prometheus Query Language (<strong>PromQL</strong>).
 This language will let you select and aggregate time series data in real time.</p>
 </div>
 <div class="paragraph">
@@ -417,27 +434,30 @@ dimensions, per time series in a range vector</p>
 <img src="_images/grafana-number-total-singlestat.png" alt="Grafana - Home" width="400">
 </div>
 </div>
+<div class="paragraph">
+<p><strong>Grafana</strong> allows to use <a href="https://prometheus.io/docs/prometheus/latest/querying/functions/#functions">Functions like rate or increase, etc&#8230;&#8203;</a></p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_create_the_global_success_rate_metric"><a class="anchor" href="#_create_the_global_success_rate_metric"></a>Create the Global Success Rate Metric</h2>
+<h2 id="_create_the_global_success_rate_metric_optional"><a class="anchor" href="#_create_the_global_success_rate_metric_optional"></a>Create the Global Success Rate Metric (Optional)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>After creating the metric of all requests, you are going to define a <strong>metric of all successfull requests</strong> (~ error code 5XX) :</p>
+<p>After creating the metric of all requests, you are going to define a <strong>metric of all successfull requests</strong> (~ error code 5XX) for 1 minute :</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Total Requests: sum(increase(istio_requests_total{}[$time_interval]))</pre>
+<pre>Total Requests: sum(rate(istio_requests_total{}[$time_interval]))</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Successful requests: sum(increase(istio_requests_total{response_code!~"5.*"}[$time_interval]))
+<pre>Successful requests: sum(rate(istio_requests_total{response_code!~"5.*"}[$time_interval]))
 in our case :</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><em>sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</em></p>
+<p><em>sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</em></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -477,7 +497,7 @@ in our case :</pre>
 <div class="listingblock copypaste">
 <div class="title">PromQL</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-promql hljs" data-lang="promql">sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</code></pre>
+<pre class="highlightjs highlight"><code class="language-promql hljs" data-lang="promql">sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering%USER_ID%"}[1m]))</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
