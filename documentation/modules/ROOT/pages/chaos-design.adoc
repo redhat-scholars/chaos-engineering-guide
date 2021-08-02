@@ -29,11 +29,11 @@ image::simple-2-service.png[simple-2-service - A simple two-service system, 600]
 
 * What should happen if **Service Y** dies ? 
 
-* What will happen to **Service X** if **Service Y** starts to respond slowly ? 
+* What will happen to **Service X** if **Service Y** starts responding slowly ? 
 
 * What happens if **Service Y** comes back after going away for a period of time? 
 
-* what happens is the connection between **Service X** and Y becomes increasingly busy ? 
+* What happens is the connection between **Service X** and **Service Y** becomes increasingly busy ? 
 
 * What happens if the CPU that is being used by **Service Y** is maxed out ? and most importanlty, what does this all mean to the user ?
 
@@ -73,7 +73,7 @@ Later on this workshop we will use **Openshift Service Mesh** to inject failures
 image::chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
 
 
-Following the **Chaos Engineering Learning Loop** the initial step is to **Explore** the target system, in our case the application we will use, to attempt to surface or **Discover** any weaknesses. The experiment we will use are already written for you, using (Lab 5) and (Lab 6).
+Following the **Chaos Engineering Learning Loop** the initial step is to **Explore** the target system, in our case the application we will use, to attempt to surface or **Discover** any weaknesses. The **Experiments** we will use are already written for you, using (Lab 5) and (Lab 6).
 
 **Kiali** and **Openshift Developer Console** (Lab 3) will allow you to **explore** and to **discover** the application. **Grafana** (Lab 4) is part of the Discovery of the application too. 
 

@@ -16,15 +16,15 @@ We have to identify the weaknesses of our systems before they happen in producti
 
 The goal with Chaos Engineering isn't to build tooling to stop issues or to find vulnerabilities. For us it's to push towards a culture of resilience to the unexpected.
 
-Bring your laptop and join us to do your **Chaos Experiment** in order to see how it withstands turbulent conditions in production and to be prepared.. 
+Bring your laptop and join us to do your **Chaos Experiment** in order to see how it withstands turbulent conditions in production and to be prepared when it happens. 
 
 In this hands-on workshop, attendees will get familiar with the concept of **Chaos Engineering** and will learn how to put it into practice using advanced capabilities of OpenShift like OpenShift Service Mesh.. As a takeaway, attendees will be able to:
 
 * Deploying an application using **ArgoCD**
 * Visualize and monitor a distributed system using **Openshift Service Mesh**
 * Define and monitor Chaos metrics using **Grafana** 
-* Bring chaos by injecting failures and latencies through **Kiali** advanced features
-* Fix all discovered weaknesses with modern patterns
+* Bring chaos by injecting failures and latencies through **Kiali's** advanced features
+* Find and fix the weaknesses discovered in the modern patterns used here today
 
 [quote, from Sidney Dekker, David Woods, and Richard Cook]
 ____
