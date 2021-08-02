@@ -11,10 +11,10 @@
 
 _10 MINUTE EXERCISE_
 
-As Chaos engineer, you will need an environment to deploy any application we have to evaluate
-In this section, you will explore OpenShift and deploy an application using Argo CD
+As a Chaos Engineer, you will need an environment to deploy applications to evaluate
+In this section, you will explore OpenShift and deploy an application using **Argo CD**.
 
-image::explore-discover.png[explore-discover, 700]
+image::explore-discover.png[explore-discover, 800]
 
 == What is Red Hat OpenShift?
 
@@ -81,9 +81,6 @@ image::gitops-model.png[gitops-model, 500]
 
 image::argocd-features.png[argo features- Button, 400]
 
-=== Argo CD mechanism
-
-image::Gitops-Openshift.png[Gitops - Button, 900]
 
 == Log in to OpenShift GitOps (Argo CD)
 
@@ -98,13 +95,13 @@ Then `*log in as user{USER_ID}/{OPENSHIFT_PASSWORD}*`. Once completed, you will 
 
 image::argocd-home.png[Argo CD - Home Page, 500]
 
-An **Argo CD Application** is the Kubernetes resource object representing a deployed application instance in an environment. It is defined by two key pieces of information:
+An **Argo CD Application** represents a deployed application instance in a given environment. It is defined by two key pieces of information:
 
 * **source** reference to the desired state in Git (repository, revision, path, environment): **{GITOPS_WORKSHOP_GIT_URL}**
 * **destination** reference to the target cluster and namespace: **'chaos-engineering{USER_ID}' namespace from the current OpenShift cluster (in-cluster)**
 
 The **Argo CD Application** status is initially in yellow, means **OutOfSync** state, since the application has yet to be 
-deployed into **'chaos-engineering{USER_ID}'** namespace, and no Kubernetes resources have been created.
+deployed into the **'chaos-engineering{USER_ID}'** namespace, and no Kubernetes resources have been created.
 
 == Sync/Deploy the application
 

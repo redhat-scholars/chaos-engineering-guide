@@ -80,7 +80,7 @@ image::grafana-error-fault-overview.png[Grafana - Error Fault Overview,900]
 
 **All services, except for the 'discounts' service, performs very well without any errors (100% success)**. 
 
-You can increase the pourcentage of error injection until making the 'discounts' service completely unavailable. 
+You can increase the percentage of error injection until making the 'discounts' service completely unavailable. 
 
 In the {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort strategy of the 'discounts' service as follows:*`
 

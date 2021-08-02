@@ -19,13 +19,16 @@ As described in the **Chaos Engineering process** we are currently in a **Steady
 **Steady state** means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its **SLOs** ( **S**ervice **L**evel **O**bjective). 
 
 Instead of asking the question: is the service up or down?
-We ask the question: how many requests are we successfully serving?
+
+We ask the question: **how many requests are we successfully serving for a given time ? **
 
 [tabs]
 ====
 Service Level Indicator (SLI)::
 +
 --
+An **SLI** is a service level indicator—a carefully defined quantitative measure of some aspect of the level of service that is provided. We recommend to read this great SRE book later https://sre.google/sre-book/service-level-objectives/[Chapter 4- Service Level objectives (Google SRE book)]
+
 A set of agreed upon observable and measurable characteristics that determine whether a request is successful.
 
 For example:
@@ -37,11 +40,20 @@ For example:
 Service Level Objective (SLO)::
 +
 --
-A target ratio of successful requests over the total number of requests (Different from the more traditional available time/servicing time).
+An **SLO** is a service level objective: a target value or range of values for a service level that is measured by an **SLI**. 
+
+For example, we might decide that we will return Shakespeare search results "quickly," adopting an SLO that our average search request latency should be less than 100 milliseconds.
+
+Choosing an appropriate **SLO** is complex. 
+
+Choosing and publishing **SLOs** to users sets expectations about how a service will perform. This strategy can reduce unfounded complaints to service owners about, for example, the service being slow.
+
+
+For our Wprkshop's Application we will use SLO based on target ratio of successful requests over the total number of requests (Different from the more traditional available time/servicing time).
 
 For example: 
 
-99.99% of the requests will be successful. 
+99.99% of the requests will be successful for a given time. 
 --
 
 ====
@@ -73,7 +85,7 @@ Let's create the first **metric which defines the number of total requests in yo
 
 image::grafana-panel-actions.png[Grafana - Home,500]
 
-You are going to define the metric using a query language called **PromQL** (Prometheus Query Language).
+You are going to define the metric using a query language called Prometheus Query Language (**PromQL**).
 This language will let you select and aggregate time series data in real time.
 
 You will use the following incremental approach to understand and translate the first metric to PromQL expressions.
@@ -192,18 +204,20 @@ image::grafana-general-settings.png[Grafana - Home,500]
 
 **Congratulations!!!** You just created your first Chaos Metric in a Grafana dashboard!
 
-image::grafana-number-total-singlestat.png[Grafana - Home,400]     
+image::grafana-number-total-singlestat.png[Grafana - Home,400]    
 
-== Create the Global Success Rate Metric
+**Grafana** allows to use https://prometheus.io/docs/prometheus/latest/querying/functions/#functions[Functions like rate or increase, etc...]
 
-After creating the metric of all requests, you are going to define a **metric of all successfull requests** (~ error code 5XX) :
+== Create the Global Success Rate Metric (Optional)
 
- Total Requests: sum(increase(istio_requests_total{}[$time_interval]))
+After creating the metric of all requests, you are going to define a **metric of all successfull requests** (~ error code 5XX) for 1 minute :
 
- Successful requests: sum(increase(istio_requests_total{response_code!~"5.*"}[$time_interval])) 
+ Total Requests: sum(rate(istio_requests_total{}[$time_interval]))
+
+ Successful requests: sum(rate(istio_requests_total{response_code!~"5.*"}[$time_interval])) 
  in our case :
 
-_sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))_
+_sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))_
 
 image::grafana-global-success-rate-step-1.png[Grafana - Home,900]
 
@@ -227,7 +241,7 @@ image::grafana-add-query.png[Grafana - Home,700]
 [source,promql,subs="{markup-in-source}",role=copypaste]
 .PromQL
 ----
-sum(increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))
+sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))
 ----
 
 [TIP]

@@ -10,7 +10,7 @@
 
 _10 MINUTE PRACTICE_
 
-image::explore-discover.png[explore-discover, 700]
+image::explore-discover.png[explore-discover, 800]
 
 == What is OpenShift Service Mesh?
 
@@ -83,7 +83,13 @@ Then, `*log in with OpenShift as user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
 
 image::kiali-login.png[Kiali- Log In,300]
 
-In the **'Graph' view**, `*enter the following configuration*`:
+Select the  **'Graph' view**, from the side menu bar and `*enter the following configuration*`:
+
+
+image::kiali-graph.png[Kiali- Graph,900]
+The outcome is a graph with all the services, connected by the requests going through them. 
+You can see how the services interact with each other. 
+
 
 .Graph Settings
 [%header,cols=2*]
@@ -107,20 +113,18 @@ In the **'Graph' view**, `*enter the following configuration*`:
 
 |===
 
-image::kiali-graph.png[Kiali- Graph,900]
 
-The outcome is a graph with all the services, connected by the requests going through them. 
-You can see how the services interact with each other. 
+
 
 == Understand the Application
 
-Before to continue we will describe the application used in this workshop.
+Before continuing we will describe the application used in this workshop.
 
-This demo application will deploy several services into 1 namespace.
+This demo application deploys several services into 1 namespace.
 
 * **'chaos-engineering{USER_ID}'** namespace
 
-Inside the **'chaos-engineering{USER_ID}' namespace** we can discover 3 parts 
+Inside the **'chaos-engineering{USER_ID}' namespace** we see 3 parts 
 
 * Travel-portal
 * Travel-agency
@@ -188,6 +192,9 @@ image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 
 Then `*click on 'Show Advanced Options' and entering the following information*`:
 
+image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
+
+
 .Gateways Settings
 [%header,cols=3*]
 |===
@@ -199,14 +206,20 @@ Then `*click on 'Show Advanced Options' and entering the following information*`
 |**Enabled**
 |
 
+
 |Gateway Hosts
 |**control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}**
 |
-
 |===
 
-image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
+
+You can use this COPY/PASTE value to avoid Error
+[source,kiali,subs="{markup-in-source}",role=copypaste]
+.kiali
+----
+control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}
+----
 
 Finally, `*click on the 'Create' button*`. You can now access the Travel Control Dashboard using the following URL, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
 
