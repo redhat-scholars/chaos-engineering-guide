@@ -25,7 +25,7 @@ According to the Principles of Chaos Engineering (https://principlesofchaos.org/
 
 Take an example where you have two services that communicate with each other. 
 
-image::simple-2-service.png[simple-2-service - A simple two-service system, 600]
+image::simple-2-service.png[simple-2-service - A simple two-service system, 700]
 
 * What should happen if **Service Y** dies ? 
 
@@ -43,7 +43,7 @@ You might believe you've designed the services and the infrastructure perfectly 
 
 == Plan a Chaos Experiment
 
-Chaos Engineering begins by asking the question : 
+**Chaos Engineering** begins by asking the question : 
 
 **"Do we know what the system might do in this case ?"**
 
@@ -70,13 +70,13 @@ image::chaos-engineering-process.png[chaos-engineering-process, 600]
 Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Experiment** .
 
 
-image::chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
+image::Chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
 
 
-Following the **Chaos Engineering Learning Loop** the initial step is to **Explore** the target system, in our case the application we will use, to attempt to surface or **Discover** any weaknesses. The **Experiments** we will use are already written for you, using (Lab 5) and (Lab 6).
+Following the **Chaos Engineering Learning Loop** the initial step is to **Explore** the target system, i.e our application, to attempt to surface or **discover** any weaknesses. The **Experiments** we will use are already written for you, using (xref:chaos-latency.adoc[5. Chaos Experiment 1: Network latency]) and (xref:chaos-error.adoc[6. Chaos Experiment 2: Unavailable Service]).
 
-**Kiali** and **Openshift Developer Console** (Lab 3) will allow you to **explore** and to **discover** the application. **Grafana** (Lab 4) is part of the Discovery of the application too. 
+**Kiali** and **Openshift Developer Console** (xref:chaos-explore.adoc[3. Explore the Application]) will allow you to **explore** and to **discover** the application. **Grafana** (xref:chaos-metrics.adoc[4. Define and monitor Chaos metrics] is part of the Discovery of the application too. 
 
-When you will be ready to execute your experiment (Lab 5) and (Lab 6) you will see how the target system is reacting. You will enter the **discovery** and **analysis** phases of the **Chaos Engineering Learning Loop**.
+When you will be ready to execute your experiment (xref:chaos-latency.adoc[5. Chaos Experiment 1: Network latency]) and (xref:chaos-error.adoc[6. Chaos Experiment 2: Unavailable Service]) you will see how the target system is reacting. You will enter the **discovery** and **analysis** phases of the **Chaos Engineering Learning Loop** and after the **analysis** you will **Improve** and **Validate** the correction made.
 
 
