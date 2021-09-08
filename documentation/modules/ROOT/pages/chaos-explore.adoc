@@ -192,9 +192,6 @@ image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 
 Then `*click on 'Show Advanced Options' and entering the following information*`:
 
-image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
-
-
 .Gateways Settings
 [%header,cols=3*]
 |===
@@ -212,7 +209,7 @@ image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 |
 |===
 
-
+image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
 You can use this COPY/PASTE value to avoid Error
 [source,kiali,subs="{markup-in-source}",role=copypaste]

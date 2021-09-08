@@ -305,7 +305,13 @@ image::grafana-general-settings-step3.png[Grafana - Home,700]
 
 You just learnt how to create a Grafana Dashboard. Now, let's import the full Grafana Dashboard needed to the chaos experiments.
 
-`*Click on the following link, {DASHBOARD_GIT_URL}[Chaos Engineering Dashboard^, role='params-link'] and copy the content*`
+`*Click on the following button and copy the content*`
+
+[link={DASHBOARD_GIT_URL}]
+[window="_blank"]
+[role='params-link']
+image::chaos-dashboard-button.png[Chaos Dashboard - Button, 300]
+
 
 In {GRAFANA_URL}[Grafana^, role='params-link'], `*Click on  'plus (+) sign' > 'Import Dashboard' in the left hand side menu*`
 

@@ -109,9 +109,9 @@ image::grafana-service-overview-configured.png[Grafana - Service Overview Config
 
 == Run the Chaos experiment
 
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'discounts' service and select 'Details'*`
+In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'discounts' service (triangle symbol) and select 'Details'*`
 
-image::kiali-right-click-service.png[Kiali - Right Click Service,400]
+image::kiali-right-click-service.png[Kiali - Right Click Service,600]
 
 You will be redirected to the Service Details page. 
 
