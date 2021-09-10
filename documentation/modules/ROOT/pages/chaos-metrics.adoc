@@ -152,6 +152,11 @@ Adding **sum()** function, the query returns the total of requests within the na
 
 ====
 
+[TIP]
+====
+**Grafana** allows to use https://prometheus.io/docs/prometheus/latest/querying/functions/#functions[Functions like rate or increase, etc...]
+====
+
 At the end, you should have the following expression in the the 'Metrics' field for the Query 'A'.
 
 image::grafana-number-total-promql.png[Grafana - Number Total Request PromQL,900]
@@ -185,7 +190,7 @@ Then, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 
 image::grafana-visualization-settings.png[Grafana - Home,500]
 
-Finally, `*click on the 'General Settings' icon and enter the following parameters:*`
+Next, `*click on the 'General Settings' icon and enter the following parameters:*`
 
 .General Settings
 [%header,cols=3*]
@@ -202,11 +207,15 @@ Finally, `*click on the 'General Settings' icon and enter the following paramete
 
 image::grafana-general-settings.png[Grafana - Home,500]
 
+Finally, `*click on the 'back arrow' icon at the top left-hand corner*`
+
+image::grafana-back-arrow.png[Grafana - Home,700]
+
 **Congratulations!!!** You just created your first Chaos Metric in a Grafana dashboard!
 
-image::grafana-number-total-singlestat.png[Grafana - Home,400]    
+image::grafana-number-total-singlestat.png[Grafana - Home,700]    
 
-**Grafana** allows to use https://prometheus.io/docs/prometheus/latest/querying/functions/#functions[Functions like rate or increase, etc...]
+`*Click on the 'disk' icon*` to save your work.
 
 == Create the Global Success Rate Metric (Optional)
 
@@ -281,7 +290,7 @@ Then, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 
 image::grafana-gsr-step2.png[Grafana - GSR setup ,900]
 
-Finally, `*click on the 'General Settings' icon and enter the following parameters:*`
+Next, `*click on the 'General Settings' icon and enter the following parameters:*`
 
 .General Settings
 [%header,cols=3*]
@@ -297,6 +306,8 @@ Finally, `*click on the 'General Settings' icon and enter the following paramete
 |===
 
 image::grafana-general-settings-step3.png[Grafana - Home,700]
+
+Finally, `*click on the 'back arrow' icon at the top left-hand corner then on the 'disk' icon*` to save your work.
 
 **Congratulations!** You just created your second Chaos Metric **Global Success Rate (non 5xx responses)** in a Grafana dashboard!
 
@@ -321,9 +332,13 @@ Then, `*paste the JSON content and click on 'Load' > 'Import'*`
 
 image::grafana-load-dashboard.png[Grafana - Home,700]
 
-If you are receiving an error mentioning ** A dashboard in this folder with the same name already exists**  add  'user{USER_ID}'in the Name 
+
+[WARNING]
+====
+If you are receiving an error mentioning **"A dashboard in this folder with the same name already exists"**, `*please add 'user{USER_ID}' in the name*`. 
 
 image::error-import-grafana.png[Grafana import Error - Home,900]
+====
 
 You have now access the Chaos Engineering Dashboard.
 

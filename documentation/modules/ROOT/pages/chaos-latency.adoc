@@ -314,7 +314,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 
 == Validate the Improvement
 
-Back into the {GRAFANA_URL}[Chaos Engineering Dashboard], you can tell that we manage to contain the Latency propagation by **not exceeding 100 ms in general** using the Retry pattern while the 'discounts' service still has the 1s latency issue.
+Back into the {GRAFANA_URL}[Chaos Engineering Dashboard], you can tell that we manage to contain the latency propagation by **not exceeding 100 ms in general** using the Retry pattern while the 'discounts' service still has the 1s latency issue.
 
 image::grafana-latency-contained-overview.png[Grafana - Latency Contained Overview,900]
 

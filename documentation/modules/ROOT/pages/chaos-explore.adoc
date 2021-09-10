@@ -162,13 +162,10 @@ image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed
 
 A typical flow consists of the following steps:
 
-<.> A portal queries the travels service for available destinations.
-
-<.> Travels service queries the available hotels and returns to the portal shop.
-
-<.> A user selects a destination and a type of travel, which may include a flight and/or a car, hotel and insurance.
-
-<.> Cars, Hotels and Flights may have available discounts depending on user type.
+. A portal queries the travels service for available destinations.
+. Travels service queries the available hotels and returns to the portal shop.
+. A user selects a destination and a type of travel, which may include a flight and/or a car, hotel and insurance.
+. Cars, Hotels and Flights may have available discounts depending on user type.
 
 === Travel Control
 
@@ -210,13 +207,6 @@ Then `*click on 'Show Advanced Options' and entering the following information*`
 |===
 
 image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
-
-You can use this COPY/PASTE value to avoid Error
-[source,kiali,subs="{markup-in-source}",role=copypaste]
-.kiali
-----
-control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}
-----
 
 Finally, `*click on the 'Create' button*`. You can now access the Travel Control Dashboard using the following URL, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
 
