@@ -340,6 +340,20 @@ dimensions, per time series in a range vector</p>
 </div>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Grafana</strong> allows to use <a href="https://prometheus.io/docs/prometheus/latest/querying/functions/#functions">Functions like rate or increase, etc&#8230;&#8203;</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>At the end, you should have the following expression in the the 'Metrics' field for the Query 'A'.</p>
 </div>
@@ -397,7 +411,7 @@ dimensions, per time series in a range vector</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Finally, <code><strong>click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
+<p>Next, <code><strong>click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. General Settings</caption>
@@ -427,15 +441,23 @@ dimensions, per time series in a range vector</p>
 </div>
 </div>
 <div class="paragraph">
+<p>Finally, <code><strong>click on the 'back arrow' icon at the top left-hand corner</strong></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grafana-back-arrow.png" alt="Grafana - Home" width="700">
+</div>
+</div>
+<div class="paragraph">
 <p><strong>Congratulations!!!</strong> You just created your first Chaos Metric in a Grafana dashboard!</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/grafana-number-total-singlestat.png" alt="Grafana - Home" width="400">
+<img src="_images/grafana-number-total-singlestat.png" alt="Grafana - Home" width="700">
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Grafana</strong> allows to use <a href="https://prometheus.io/docs/prometheus/latest/querying/functions/#functions">Functions like rate or increase, etc&#8230;&#8203;</a></p>
+<p><code><strong>Click on the 'disk' icon</strong></code> to save your work.</p>
 </div>
 </div>
 </div>
@@ -560,7 +582,7 @@ in our case :</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Finally, <code><strong>click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
+<p>Next, <code><strong>click on the 'General Settings' icon and enter the following parameters:</strong></code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 4. General Settings</caption>
@@ -588,6 +610,9 @@ in our case :</pre>
 <div class="content">
 <img src="_images/grafana-general-settings-step3.png" alt="Grafana - Home" width="700">
 </div>
+</div>
+<div class="paragraph">
+<p>Finally, <code><strong>click on the 'back arrow' icon at the top left-hand corner then on the 'disk' icon</strong></code> to save your work.</p>
 </div>
 <div class="paragraph">
 <p><strong>Congratulations!</strong> You just created your second Chaos Metric <strong>Global Success Rate (non 5xx responses)</strong> in a Grafana dashboard!</p>
@@ -624,13 +649,24 @@ in our case :</pre>
 <img src="_images/grafana-load-dashboard.png" alt="Grafana - Home" width="700">
 </div>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>If you are receiving an error mentioning <strong> A dashboard in this folder with the same name already exists</strong>  add  'user%USER_ID%'in the Name</p>
+<p>If you are receiving an error mentioning <strong>"A dashboard in this folder with the same name already exists"</strong>, <code><strong>please add 'user%USER_ID%' in the name</strong></code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="_images/error-import-grafana.png" alt="Grafana import Error - Home" width="900">
 </div>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>You have now access the Chaos Engineering Dashboard.</p>
