@@ -49,7 +49,7 @@ So we will define this SLO as "steady-state".
 
 `*Click on 'Service Overview' > Edit*`
 
-image::grafana-edit-service-overview.png[Grafana - Edit Service Overview,300]
+image::grafana-edit-service-overview.png[Grafana - Edit Service Overview,900]
 
 Then, `*click on 'Visualization Settings' icon on the left hand sidebar, scroll down to find the 'P99 Latency (Value #D)' rule and enter the following information for Thresholds*`
 
