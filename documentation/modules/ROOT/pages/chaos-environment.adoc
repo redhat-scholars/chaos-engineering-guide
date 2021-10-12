@@ -11,7 +11,8 @@
 
 _10 MINUTE EXERCISE_
 
-As a Chaos Engineer, you will need an environment to deploy applications to evaluate
+As a Chaos Engineer, you will need an environment to deploy applications to evaluate.
+
 In this section, you will explore OpenShift and deploy an application using **Argo CD**.
 
 image::explore-discover.png[explore-discover, 800]
