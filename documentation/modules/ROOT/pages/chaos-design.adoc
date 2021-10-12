@@ -33,11 +33,11 @@ image::simple-2-service.png[simple-2-service - A simple two-service system, 700]
 
 * What happens if **Service Y** comes back after going away for a period of time? 
 
-* What happens is the connection between **Service X** and **Service Y** becomes increasingly busy ? 
+* What happens if the connection between **Service X** and **Service Y** becomes increasingly busy ? 
 
-* What happens if the CPU that is being used by **Service Y** is maxed out ? and most importanlty, what does this all mean to the user ?
+* What happens if the CPU that is being used by **Service Y** is maxed out? and most importantly, what does this all mean to the user?
 
-You might believe you've designed the services and the infrastructure perfectly to accomodate all of these cases, but _**how to you know**_ ? Even in such a simple system it is likely tere might be some surprises --some **dark debt** -- present. 
+You might believe you've designed the services and the infrastructure perfectly to accomodate all of these cases, but _**how to you know**_ ? Even in such a simple system it is likely there might be some surprises --some **dark debt** -- present. 
 
 **Chaos engineering provides a way of exploring these uncertainties to find out whether your assumptions of the system's resiliency hold water in the real world.** 
 
