@@ -4,7 +4,7 @@ runtime:
 site:
   title: OpenShift Chaos Engineering Workshop
   url: https://redhat-scholars.github.io/course-template
-  start_page: chaos-engineering::index.adoc
+  start_page: chaos-engineering::index_fr.adoc
 
 content:
   sources:
