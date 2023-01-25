@@ -41,7 +41,7 @@ image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
 image::kiali-configure-timeout.png[Kiali - Configure Timeout,400]
 
-Dans {GRAFANA_URL}[Grafana^], à partir du tableau de bord ** de l'Ingénierie de Chaos**, `* faire défiler et voir les métriques de latence* `
+Dans {GRAFANA_URL}[Grafana^], à partir du tableau de bord **de l'Ingénierie de Chaos**, `* faire défiler et voir les métriques de latence* `
 
 Après un certain temps, vous pouvez voir l'impact de notre configuration. En effet, la latence du service **Voyages** a diminué et
 les métriques de latence deviennent vertes à nouveau.
@@ -86,6 +86,6 @@ Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
 
 image::kiali-configure-retry.png[Kiali - Configure Retry,400]
 
-< < Retour à {GRAFANA_URL}[Grafana^]* > > , vous pouvez indiquer que le motif de rentrée réduit les taux d ' erreur sans affecter la latence.
+< < Retour à {GRAFANA_URL}[Grafana^]* > > , vous pouvez indiquer que le motif de rentrée réduit les taux d'erreur sans affecter la latence.
 
 .

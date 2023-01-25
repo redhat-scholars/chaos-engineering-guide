@@ -14,13 +14,11 @@ _20 MINUTE PRACTICE_
 
 == Pourquoi tu as besoin de Métrique ?
 
-Comme décrit dans le processus d'ingénierie du chaos ** nous sommes actuellement dans une hypothèse de l'état normal**. Cela signifie que nous devons définir **mesures** pour indiquer que le système fonctionne d'une manière prévue du point de vue commercial, et dans un ensemble donné de tolérances.
-
-**État normal** signifie que vous pouvez mesurer que le système fonctionne d'une manière prévue. Dans ce cas, ce comportement normal est que le système rencontrera son **SLO** ( **S**ervice **L**evel **O**bjective).
+Comme décrit dans le processus d'ingénierie du chaos **nous sommes actuellement dans une hypothèse de l'état normal**. Cela signifie que nous devons définir **mesures** pour indiquer que le système fonctionne d'une manière prévue du point de vue commercial, et dans un ensemble donné de tolérances.**État normal**signifie que vous pouvez mesurer que le système fonctionne d'une manière prévue. Dans ce cas, ce comportement normal est que le système rencontrera son **SLO** ( **S**ervice **L**evel **O**bjective).
 
 Au lieu de poser la question: le service est-il en place ou en bas?
 
-Nous posons la question: ** combien de demandes sommes-nous efficaces pour un temps donné? **
+Nous posons la question: **combien de demandes sommes-nous efficaces pour un temps donné? **
 
 [tabs]
 =
@@ -238,7 +236,7 @@ image::grafana-add-panel.png[Grafana - Add Panel,100]
 
 et
 
-< < *Cliquez sur l ' icône Ajouter une requête > >
+< < *Cliquez sur l'icône Ajouter une requête > >
 
 image::grafana-add-query-step1.png[Grafana - Add Query,200]
 
@@ -300,7 +298,7 @@ Ensuite, cliquez sur l'icône « Paramètres généraux » et saisissez les para
 |MISUMI
 
 |Title
-|**Global Success Rate (non 5xx responses)* *
+|**Global Success Rate (non 5xx responses)**
 |MISUMI|
 
 |MISUMI

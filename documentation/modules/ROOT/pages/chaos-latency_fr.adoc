@@ -14,7 +14,7 @@ _30 MINUTE PRACTICE_
 
 En production, il est plus fréquent d'avoir des services lents que des services rompus. **Latence** mesure le retard entre une action et une réponse. Pour cette première expérience, nous allons tester l'hypothèse suivante:
 
-_** Une petite latence de réseau ne devrait pas affecter l'objectif de niveau de service (SLO) du Service de voyage**_
+_**Une petite latence de réseau ne devrait pas affecter l'objectif de niveau de service (SLO) du Service de voyage**_
 
 == Définir l'état stable
 
@@ -41,7 +41,7 @@ En premier lieu, sélectionner les variables suivantes sur le tableau de bord*:
 
 image::grafana-chaos-selection.png[Grafana - Chaos Selection,400]
 
-De la section **Namespace**, vous pouvez dire que **99% des demandes sont réussies et servies dans les 50 ms* *
+De la section **Namespace**, vous pouvez dire que **99% des demandes sont réussies et servies dans les 50 ms**
 
 image::grafana-steady-state-latency.png[Grafana - Steady State Latency,900]
 
@@ -161,11 +161,11 @@ Depuis le panel **'Service Aperçu'** ou **'Request Durée'** pour le service 'v
 - il n'y a pas d'impact sur le taux de réussite des demandes globales (100%)
 - il y a un impact énorme sur la performance de l'application.
 
-En effet, seulement 1 seconde de retard sur 5% du trafic d'un service à charge induit ** une propagation de latence de ~2 secondes dans l'ensemble du système**.
+En effet, seulement 1 seconde de retard sur 5% du trafic d'un service à charge induit **une propagation de latence de ~2 secondes dans l'ensemble du système**.
 
 image::grafana-latency-fault-details.png[Grafana - Latency Fault Details,900]
 
-En conclusion, vous pouvez dire ** l'application n'est pas résiliente à une petite latence réseau**. Pour réduire ou réparer ce phénomène, vous pouvez configurer l'autoscaling ou mettre en place un mécanisme de cache dans les différents services des applications.
+En conclusion, vous pouvez dire **l'application n'est pas résiliente à une petite latence réseau**. Pour réduire ou réparer ce phénomène, vous pouvez configurer l'autoscaling ou mettre en place un mécanisme de cache dans les différents services des applications.
 
 == Améliorer la résilience
 
@@ -314,7 +314,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 
 == Valider l'amélioration
 
-Retour dans le {GRAFANA_URL}[Chaos Engineering Dashboard], vous pouvez dire que nous parvenons à contenir la propagation de latence de ** ne dépassant pas 100 ms en général** en utilisant le modèle Retry tandis que le service 'discounts' a toujours le problème de latence 1s.
+Retour dans le {GRAFANA_URL}[Chaos Engineering Dashboard], vous pouvez dire que nous parvenons à contenir la propagation de latence de **ne dépassant pas 100 ms en général** en utilisant le modèle Retry tandis que le service 'discounts' a toujours le problème de latence 1s.
 
 image::grafana-latency-contained-overview.png[Grafana - Latency Contained Overview,900]
 

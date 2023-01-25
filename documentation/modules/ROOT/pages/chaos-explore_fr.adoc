@@ -122,7 +122,7 @@ Avant de poursuivre, nous décrivons l'application utilisée dans cet atelier.
 
 Cette application de démonstration déploie plusieurs services dans 1 espace de nom.
 
-* **'chaos-engineering{USER_ID}** namespace
+***'chaos-engineering{USER_ID}** namespace
 
 A l'intérieur de l'espace de nom ** 'chaos-engineering{USER_ID}', nous voyons 3 parties
 
@@ -183,7 +183,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services'*
 
 image::kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
 
-< < *Cliquez sur le bouton > > pour rediriger tout le trafic d ' entrée vers le service de contrôle*:
+< < *Cliquez sur le bouton > > pour rediriger tout le trafic d'entrée vers le service de contrôle*:
 
 image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 

@@ -7,8 +7,8 @@
 
 include::_attributes_fr.adoc[]
 
-== Explication de l ' atelier
-** Résumé** :
+== Explication de l'atelier
+**Résumé** :
 
 La construction de systèmes à grande échelle et distribués change le jeu pour l'ingénierie logicielle moderne. Comment nos applications se comportent-elles face à l'échec? C'est le défi crucial que nous devons résoudre car les échecs sont inévitables.
 

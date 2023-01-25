@@ -21,7 +21,7 @@ _**Un service de décompte disponible ne devrait pas avoir d'incidence sur l'obj
 
 Comme dans le laboratoire précédent, nous garderons le même état stable
 
-**99 % des demandes sont satisfaites et servies dans les 50 ms* *
+**99 % des demandes sont satisfaites et servies dans les 50 ms**
 
 image::grafana-service-overview-configured-2.png[Grafana - Service Overview Configured,700]
 
@@ -49,7 +49,7 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 |MISUMI
 
 |Add HTTP Delay
-|**Disabled* *
+|**Disabled**
 |MISUMI|
 
 |Add HTTP Abort
@@ -116,7 +116,7 @@ image::grafana-error-fault-overview-2.png[Grafana - Error Fault Overview,900]
 Contrairement à l'issue de l'expérience Latency, vous dites que l'application est résiliente lorsque le service 'discounts' est complètement en panne (non disponible).
 Donc votre hypothèse est validée:
 
-_** Les services « décomptes » non disponibles n'ont pas d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
+_**Les services « décomptes » non disponibles n'ont pas d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
 
 == Retourner l'expérience Chaos
 

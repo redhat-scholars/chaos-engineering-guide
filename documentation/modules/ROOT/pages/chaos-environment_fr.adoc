@@ -24,9 +24,7 @@ image::explore-discover.png[explore-discover, 800]
 
 image::Logo-Red_Hat-OpenShift.png[Red Hat OpenShift, 300]
 
-**Red Hat® OpenShift®** permet aux entreprises de construire des architectures très agiles et évolutives avec une sécurité de cluster améliorée qui peut être déployée à n'importe quel endroit.
-
-**Red Hat® OpenShift®** propose une installation automatisée, des mises à niveau et la gestion du cycle de vie dans toute la pile de conteneurs – le système d'exploitation, https://www.openshift.com/learn/topics/kubernetes/?hsLang=en-us[Kubernetes] et les services de cluster et applications – sur tout nuage.
+**Red Hat® OpenShift®** permet aux entreprises de construire des architectures très agiles et évolutives avec une sécurité de cluster améliorée qui peut être déployée à n'importe quel endroit.**Red Hat® OpenShift®** propose une installation automatisée, des mises à niveau et la gestion du cycle de vie dans toute la pile de conteneurs – le système d'exploitation, https://www.openshift.com/learn/topics/kubernetes/?hsLang=en-us[Kubernetes] et les services de cluster et applications – sur tout nuage.
 --
 
 == Connectez-vous à la console Web OpenShift
@@ -41,7 +39,7 @@ effectuer diverses tâches via un navigateur.
 [role='params-link']
 image::openshift-console-button.png[OpenShift Console - Button, 300]
 
-`*Entrez votre nom d'utilisateur et votre mot de passe (utilisateur{USER_ID}/{OPENSHIFT_PASSWORD})* ' et
+`*Entrez votre nom d'utilisateur et votre mot de passe (utilisateur{USER_ID}/{OPENSHIFT_PASSWORD})*'et
 puis connectez-vous. Après avoir authentifié la console web, vous serez présenté avec une
 liste des projets avec lesquels votre utilisateur a la permission de travailler.
 
@@ -59,11 +57,7 @@ image::openshift-empty-project.png[OpenShift - Empty Project, 700]
 
 image::argocd-logo.png[Argo CD, 200]
 
-**OpenShift GitOps** est un service disponible sur OpenShift.
-
-**OpenShift GitOps** est un add-on OpenShift qui fournit un CD Argo et d'autres outils pour permettre aux équipes de mettre en œuvre des workflows GitOps pour la configuration des clusters et la livraison des applications.
-
-**OpenShift GitOps** est disponible en tant qu'opérateur dans l'opérateurHub et peut être installé avec une simple expérience en un clic. Une fois installé, les utilisateurs peuvent déployer des instances Argo CD en utilisant des ressources personnalisées Kubernetes.
+**OpenShift GitOps** est un service disponible sur OpenShift.**OpenShift GitOps**est un add-on OpenShift qui fournit un CD Argo et d'autres outils pour permettre aux équipes de mettre en œuvre des workflows GitOps pour la configuration des clusters et la livraison des applications.**OpenShift GitOps** est disponible en tant qu'opérateur dans l'opérateurHub et peut être installé avec une simple expérience en un clic. Une fois installé, les utilisateurs peuvent déployer des instances Argo CD en utilisant des ressources personnalisées Kubernetes.
 
 image::gitops-model.png[gitops-model, 500]
 --
@@ -96,10 +90,7 @@ Puis `*log in as user{ USER_ID}/{OPENSHIFT_PASSWORD}* Une fois terminé, vous se
 
 image::argocd-home.png[Argo CD - Home Page, 500]
 
-Une application CD **Argo** représente une instance d'application déployée dans un environnement donné. Elle est définie par deux éléments clés d'information :
-
-* **source** référence à l'état désiré dans Git (répositoire, révision, chemin, environnement): ** {GITOPS_WORKSHOP_GIT_URL}**
-* **destination** référence au cluster cible et à l'espace de nom : **'chaos-engineering{USER_ID}'' namespace from the current OpenShift cluster (in-cluster)* *
+Une application CD **Argo** représente une instance d'application déployée dans un environnement donné. Elle est définie par deux éléments clés d'information :***source**référence à l'état désiré dans Git (répositoire, révision, chemin, environnement): ** {GITOPS_WORKSHOP_GIT_URL}*****destination**référence au cluster cible et à l'espace de nom : **'chaos-engineering{USER_ID}'' namespace from the current OpenShift cluster (in-cluster)**
 
 Le statut **Argo CD Application** est d'abord en jaune, moyen **OutOfSync** état, puisque la demande n'a pas encore été présentée
 déployé dans l'espace de nom **'chaos-engineering{USER_ID}'**, et aucune ressource Kubernetes n'a été créée.
