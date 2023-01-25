@@ -1,0 +1,26 @@
+:markup-in-source: verbatim,attributes,quotes
+:navtitle: FAQ
+:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
+:USER_ID: %USER_ID%
+:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
+:KIBANA_URL: https://kibana-openshift-logging.%APPS_HOSTNAME_SUFFIX%
+:JAEGER_URL: https://jaeger-istio-system.%APPS_HOSTNAME_SUFFIX%
+:COOLSTORE_HOMEPAGE: http://web-chaos-engineering{USER_ID}.%APPS_HOSTNAME_SUFFIX%
+
+= FAQ
+
+Contenu supplémentaire pour aller plus loin :
+
+== Formation et vidéos
+* **Openshift Gitops** https://learn.openshift.com/gitops
+* **Ce qui est nouveau dans OpenShift Pipelines et OpenShift GitOps - Jaafar Chraibi/Christian Hernandez** https://www.youtube.com/watch?v=YvtRXFzRHeI[YouTube Video]
+Pourquoi Service Mesh ? https://www.youtube.com/watch?v=F_t3WDhMuwU[YouTube Video]
+* **Apprendre Openshift Service Mesh** https://learn.openshift.com/servicemesh
+* ** Services de surveillance comme un SRE dans OpenShift ServiceMesh** https://www.youtube.com/watch?v=Gu-g_yg0Q1g[YouTube Video]
+* * Tutoriel de Kali** https://kiali.io/documentation/latest/tutorial/
+
+== Livres
+* https://developers.redhat.com/books/introducing-istio-service-mesh-microservices?extIdCarryOver=true écartsc_cid=701f2000001OH7iAAG[Introducing Services Istio Maille pour Microservices]
+* https://www.oreilly.com/library/view/chaos-engineering/9781492043850/[Chaos Ingénierie]
+* https://www.oreilly.com/library/view/learning-chaos-engineering/9781492050995/[Learning] Chaos Engineering]
+* https://www.oreilly.com/library/view/implementing-service-level/9781492076803/[Implementing Objectifs du niveau de service]

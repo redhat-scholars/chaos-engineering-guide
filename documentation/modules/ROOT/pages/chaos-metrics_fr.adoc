@@ -1,0 +1,389 @@
+:markup-in-source: verbatim,attributes,quotes
+:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
+:USER_ID: %USER_ID%
+:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
+:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
+:GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
+:COOLSTORE_HOMEPAGE: http://web-chaos-engineering{USER_ID}.%APPS_HOSTNAME_SUFFIX%
+:DASHBOARD_GIT_URL: https://raw.githubusercontent.com/mcouliba/chaos-engineering-workshop/%WORKSHOP_GIT_REF%/grafana/chaos-engineering-dashboard.json
+
+= Définir et surveiller les paramètres de Chaos
+
+_20 MINUTE PRACTICE_
+
+
+== Pourquoi tu as besoin de Métrique ?
+
+Comme décrit dans le processus d'ingénierie du chaos ** nous sommes actuellement dans une hypothèse de l'état normal**. Cela signifie que nous devons définir **mesures** pour indiquer que le système fonctionne d'une manière prévue du point de vue commercial, et dans un ensemble donné de tolérances.
+
+**État normal** signifie que vous pouvez mesurer que le système fonctionne d'une manière prévue. Dans ce cas, ce comportement normal est que le système rencontrera son **SLO** ( **S**ervice **L**evel **O**bjective).
+
+Au lieu de poser la question: le service est-il en place ou en bas?
+
+Nous posons la question: ** combien de demandes sommes-nous efficaces pour un temps donné? **
+
+[Tabs]
+=
+Indicateur de niveau de service (SLI):
++
+--
+Un **SLI** est un indicateur de niveau de service – une mesure quantitative soigneusement définie de certains aspects du niveau de service qui est fourni. Nous recommandons de lire ce grand livre SRE plus tard https://sre.google/sre-book/service-level-objectives/[Chapter 4- Objectifs du niveau de service (livre de Google SRE)
+
+Un ensemble de caractéristiques observables et mesurables convenues qui déterminent si une demande est réussie.
+
+Par exemple :
+
+* Code HTTP pas égal 5xx
+* Latence inférieure à X
+--
+
+Objectif du niveau de service :
++
+--
+Un **SLO** est un objectif de niveau de service : une valeur cible ou une gamme de valeurs pour un niveau de service mesuré par un **SLI**.
+
+Par exemple, nous pourrions décider que nous retournerons les résultats de recherche de Shakespeare "quirement", en adoptant un SLO que notre demande moyenne de latence devrait être inférieure à 100 millisecondes.
+
+Choisir un approprié **SLO** est complexe.
+
+Choisir et publier **SLOs** pour les utilisateurs indique des attentes quant à la façon dont un service sera exécuté. Cette stratégie peut réduire les plaintes infondées pour les propriétaires de services, par exemple, le service étant lent.
+
+
+Dans la demande de notre atelier, nous utiliserons SLO en fonction du ratio cible des demandes réussies sur le nombre total de demandes (différents du temps et du temps de service plus traditionnel).
+
+Par exemple :
+
+99,99 % des demandes seront satisfaites pendant un certain temps.
+--
+
+=
+
+== Créer un tableau de bord de Grafana
+
+`*Cliquez sur le bouton 'Grafana' ci-dessous*`.
+
+[link={GRAFANA_URL}]
+[window="_blank"]
+[role='params-link']
+image:grafana-button.png[Grafana- Button, 300]
+
+Ensuite, `*log in with OpenShift as 'user{USER_ID}/{OPENSHIFT_PASSWORD}* `
+
+image:grafana-home.png[Grafana - Home,900]
+
+Maintenant, créons un tableau de bord pour surveiller le Chaos Metrics.
+
+`*Cliquez sur le signe 'plus (+)' dans le menu de gauche* `
+
+image:grafana-create-dashboard.png[Grafana - À la maison, 200.
+
+== Créer le volume de demande global
+
+Créons le premier **métrique qui définit le nombre total de requêtes dans votre espace de nom**.
+
+`*Cliquez sur le bouton 'Add Query'* `
+
+image:grafana-panel-actions.png[Grafana - Home,500]
+
+Vous allez définir la mesure en utilisant un langage de requête appelé Prometheus Query Language (**PromQL**).
+Cette langue vous permettra de sélectionner et d'agréger les données de séries chronologiques en temps réel.
+
+Vous utiliserez l'approche incrémentale suivante pour comprendre et traduire la première métrique aux expressions PromQL.
+
+*Créer progressivement l'expression PromQL en suivant les 4 prochaines étapes et entrer l'expression dans le champ 'Metrics' pour la requête 'A'*':
+
+image:grafana-add-query.png[Grafana - Home,700]
+
+[Tabs]
+=
+Étape1:
++
+--
+
+[source, promql,subs="{markup-in-source}",role=copypaste]
+. PromQL
+---
+**istio_requests_total**
+---
+
+Ceci est un https://istio.io/latest/docs/reference/config/metrics/[Istio standard metric^] exporté par défaut vers Prometheus.
+C'est un compteur qui mesure le nombre total de demandes qui ont été reçues par le service Entire Mesh. Cette métrique a plusieurs
+dimensions, par série chronologique dans une gamme de vecteurs
+--
+
+Étape2:
++
+--
+
+[source, promql,subs="{markup-in-source}",role=copypaste]
+. PromQL
+---
+istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}**
+---
+
+Filtrer la mesure pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
+--
+
+Étape3:
++
+--
+
+[source, promql,subs="{markup-in-source}",role=copypaste]
+. PromQL
+---
+**increase(**istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"**[1m])**
+---
+
+Ajout de la fonction **increase()**, la requête renvoie le seul nombre de requêtes mesurées sur la dernière minute par série chronologique.
+--
+
+Étape4:
++
+--
+
+[source, promql,subs="{markup-in-source}",role=copypaste]
+. PromQL
+---
+**sum(**increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])**)
+---
+
+Ajout de la fonction **sum()**, la requête retourne le total des requêtes dans l'espace de nom
+--
+
+=
+
+[TIP]
+=
+**Grafana** permet d &apos; utiliser https://prometheus.io/docs/prometheus/latest/querying/functions/#functions[Fonctions like rate or increase, etc...]
+=
+
+À la fin, vous devriez avoir l'expression suivante dans le champ 'Métrique' pour la requête 'A'.
+
+image:grafana-number-total-promql.png[Grafana - Nombre total de demandes PromQL,900]
+
+Par conséquent, vous devriez être un graphique temporel semblable à celui suivant:
+
+image:grafana-number-total-graph.png[Grafana - Maison, 700]
+
+Ensuite, `*cliquez sur l'icône « Paramètres de visualisation » sur la barre latérale gauche et saisissez les paramètres suivants:* `
+
+. Réglages Singlestat
+[%header,cols=3*]
+|MISUMI
+|Paramètre
+|Value
+|MISUMI
+
+|Visualisation
+|**Singlestat**
+|MISUMI|
+
+|Unit
+*/min (opm)**
+|MISUMI|
+
+|Spark Lines
+|MISUMI
+|MISUMI|
+
+|MISUMI
+
+image:grafana-visualization-settings.png[Grafana - Home,500]
+
+Ensuite, cliquez sur l'icône « Paramètres généraux » et saisissez les paramètres suivants :* `
+
+. Réglages généraux
+[%header,cols=3*]
+|MISUMI
+|Paramètre
+|Value
+|MISUMI
+
+|Title
+* Volume de demande global* *
+|MISUMI|
+
+|MISUMI
+
+image:grafana-general-settings.png[Grafana - Home,500]
+
+Enfin, `*cliquez sur l'icône 'flèche arrière' au coin supérieur gauche* `
+
+image:grafana-back-arrow.png[Grafana - Home,700]
+
+**Félicitations!!!** Vous venez de créer votre premier Chaos Metric dans un tableau de bord de Grafana !
+
+image:grafana-number-total-singlestat.png[Grafana - Maison, 700]
+
+`*Cliquez sur l'icône 'disk' pour sauver votre travail.
+
+== Créer le taux de réussite global (optionnel)
+
+Après avoir créé la mesure de toutes les requêtes, vous allez définir une **métrique de toutes les requêtes réussies** (~ code d'erreur 5XX) pour 1 minute :
+
+Total des demandes : sum(rate(istio_requests_total{}[$time_interval]))
+
+Demandes réussies: sum(rate(istio_requests_total{response_code!~"5.*"}[$time_interval]))
+dans notre cas :
+
+_sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}
+
+image:grafana-global-success-rate-step-1.png[Grafana - À la maison, 900.
+
+Maintenant créons ce nouveau **Global Success Rate (non 5xx réponses) ** METRIC value
+
+Cliquez sur le bouton « Ajouter le panneau »* `
+
+image:grafana-add-panel.png[Grafana - Ajouter le panneau,100]
+
+et
+
+&lt; &lt; *Cliquez sur l &apos; icône Ajouter une requête &gt; &gt;
+
+image:grafana-add-query-step1.png[Grafana - Ajouter Query,200]
+
+Ajouter l'expression suivante dans le champ 'Metrics' pour la requête 'A'*:
+
+image:grafana-add-query.png[Grafana - Home,700]
+
+
+[source, promql,subs="{markup-in-source}",role=copypaste]
+. PromQL
+---
+sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]
+---
+
+[TIP]
+=
+**Global Success Rate** est un ratio pariwen le nombre de requêtes réussies et le nombre de requêtes http.
+=
+
+
+
+Ensuite, `*cliquez sur l'icône « Paramètres de visualisation » sur la barre latérale gauche et saisissez les paramètres suivants:* `
+
+. Réglages Singlestat
+[%header,cols=3*]
+|MISUMI
+|Paramètre
+|Value
+|MISUMI
+
+|Visualisation
+|**Singlestat**
+|MISUMI|
+
+|Unit
+***pourcent (0.0-1.0)**
+|MISUMI|
+
+|Seuils
+|**95,99,99.5**
+|MISUMI|
+
+|Spark Lines
+|MISUMI
+|MISUMI|
+
+
+|MISUMI
+
+image:grafana-gsr-step2.png[Grafana - GSR setup ,900]
+
+Ensuite, cliquez sur l'icône « Paramètres généraux » et saisissez les paramètres suivants :* `
+
+. Réglages généraux
+[%header,cols=3*]
+|MISUMI
+|Paramètre
+|Value
+|MISUMI
+
+|Title
+|**Global Success Rate (non 5xx responses)* *
+|MISUMI|
+
+|MISUMI
+
+image:grafana-general-settings-step3.png[Grafana - Maison, 700]
+
+Enfin, `*cliquez sur l'icône 'flèche arrière' au coin supérieur gauche puis sur l'icône 'disk'*' pour sauvegarder votre travail.
+
+**Félicitations !** Vous venez de créer votre deuxième Chaos Metric **Global Success Rate (non 5xx réponses)** dans un tableau de bord de Grafana!
+
+
+== Importer le tableau de bord d'ingénierie Chaos
+
+Vous venez d'apprendre à créer un tableau de bord Grafana. Maintenant, importons le tableau de bord complet de Grafana nécessaire aux expériences de chaos.
+
+Cliquez sur le bouton suivant et copiez le contenu* `
+
+[link={DASHBOARD_GIT_URL}]
+[window="_blank"]
+[role='params-link']
+image:chaos-dashboard-button.png[Chaos Dashboard - Button, 300]
+
+
+Dans {GRAFANA_URL}[Grafana^, role='params-link'], `*Cliquez sur 'plus (+) signe' ACIA 'Import Dashboard' dans le menu de gauche* `
+
+image:grafana-import-dashboard.png[Grafana - À la maison, 200.
+
+Ensuite, `* collez le contenu JSON et cliquez sur 'Load' "Import"
+
+image:grafana-load-dashboard.png[Grafana - Home,700]
+
+
+[RIRE]
+=
+Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*please add 'user{USER_ID}' in the name*`.
+
+image:error-import-grafana.png[Grafana import Error - Home,900]
+=
+
+Vous avez maintenant accès au tableau de bord de Chaos Engineering.
+
+image:grafana-chaos-engineering-dashboard.png[Grafana - Maison, 700]
+
+== Explorer le tableau de bord de l'ingénierie Chaos
+
+Retrouvez ici le tableau de bord complet de Grafana importé
+
+image:full-grafana-dashboard.png[Grafana - Home,900]
+
+Pour explorer ce tableau de bord on peut le voir comme :
+
+* [Red] un bloc de sélection de filtres dans lequel nous sélectionnons un espace de nom [Pink] ici le chaos-ingénierie {USER_ID} et un service [Cyan] de l'application Travel
+* [Blue] Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
+* [Yellow] Block B toutes les mesures relatives à un service spécifié
+
+image::dashboard-explained.png[Grafana - Home,900]
+
+Si nous zoomons dans le bloc A par rapport à l'ingénierie du chaos **NAMESPACE {USER_ID}** nous pouvons voir :
+
+image:grafana-block-A.png[Grafana - À la maison, 900.
+
+* [Red] Global Request Volume = le nombre total de demandes
+* [Yellow] Global Success Rate = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
+* [Blue] 4xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
+* [Cyan] liste de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
+* Nombre de demandes de services
+* [Brown] Latence par service
+* [Green] Succès des demandes par services = Rapport de la demande réussie associée au service
+
+
+
+
+Si nous zoomons dans le bloc B par rapport au **SERVICE** sélectionné, nous pouvons voir :
+
+image:grafana-block-B.png[Grafana - Home,900]
+
+* [Brown] Taux d'erreur dans le service sélectionné = Rapport d'erreur associé au service sélectionné
+* [Pink] Le taux de réussite = Cancer pour identifier l'erreur HTTP WHEN survienne dans l'appel de service
+* [Blue] Valeur de latence pour le service
+* [Green] Demande Durée du service
+
+
+[IMPORTANT]
+=
+Toutes les métriques doivent être mesurées sur une fenêtre temporelle (généralement un mois) mais surtout pour cet atelier ici nous prenons la minute [1m] pour voir quelques changements dans le tableau de bord.
+=

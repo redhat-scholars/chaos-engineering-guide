@@ -1,0 +1,213 @@
+:markup-in-source: verbatim,attributes,quotes
+:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
+:USER_ID: %USER_ID%
+:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
+:OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
+:APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
+:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
+
+= Explorer l'application
+
+_10 MINUTE PRACTICE_
+
+image::explore-discover.png[explore-discover, 800]
+
+== Qu'est-ce que OpenShift Service Mesh?
+
+[barre de côté]
+. OpenShift Service Mesh
+♪♪
+
+**OpenShift Service Mesh** est également un service disponible sur OpenShift.
+
+À mesure que les applications deviennent des collections de services décentralisés, la gestion des communications et de la sécurité entre ces services devient plus difficile.
+
+**Red Hat OpenShift Service Mesh** est un service qui fournit un aperçu comportemental et un contrôle opérationnel sur le Service Mesh, fournissant un moyen uniforme de connecter, de sécuriser et de surveiller les applications microservice.
+
+Qu’y a-t-il ?
+
+[Tabs]
+=
+Service Mesh:
++
+--
+image:istio-logo.png[Istio, 200]
+
+**Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les plans de contrôle sur une application distribuée.
+--
+
+Observabilité :
++
+--
+image:kiali-logo.png [Kiali, 200]
+
+L’observation aide les utilisateurs à voir les voies de communication entre les services, comment ils sont gérés et comment le trafic circule dans un temps quasi réel pour faciliter la gestion et le dépannage.
+
+OpenShift Service Mesh utilise **Kiali**, un projet open source, pour visualiser la configuration, surveiller le trafic et analyser les traces.
+--
+
+Surveillance:
++
+--
+image:grafana-logo.png[Grafana, 200]
+image:prometheus-logo.png[Prometheus, 200]
+
+OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques de boîte et de surveillance pour tous les services.
+--
+
+Tracing:
++
+--
+image:jaeger-logo.png[Istio, 200]
+image:elastic-search-logo-color-horizontal.png[Elastic Recherche, 200]
+
+Tracing vous permet de suivre une seule demande car elle fait son chemin entre différents services - ou même à l'intérieur d'un service - fournissant un aperçu de l'ensemble du processus de demande du début à la fin.
+OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et distribué et **Elasticsearch**, un moteur de recherche et d'analyse distribué, libre et ouvert pour capturer des traces distribuées offrant une vue «par demande» pour isoler les goulets d'étranglement entre les services.
+--
+=
+
+♪♪
+
+== Observabilité avec Kiali
+
+**Kiali** offre une vue graphique interactive de votre espace de nom en temps réel, en mesure d'afficher les interactions à plusieurs niveaux (applications, versions, charges de travail), avec des informations contextuelles et des graphiques sur le nœud ou le bord du graphique sélectionné.
+
+Cliquez sur le bouton 'Kiali' ci-dessous* `
+
+[link={KIALI_URL}]
+[window="_blank"]
+[role='params-link']
+image:kiali-button.png[Kiali - Button, 300]
+
+Ensuite, `*log in with OpenShift as user{ USER_ID}/{OPENSHIFT_PASSWORD}* `
+
+image:kiali-login.png [Kiali- Log In,300]
+
+Sélectionnez la vue **'Graph'**, depuis la barre de menus latérales et `*enter la configuration suivante*`:
+
+
+image:kiali-graph.png[Kiali- Graph,900]
+Le résultat est un graphique avec tous les services, connectés par les demandes qui les traversent.
+Vous pouvez voir comment les services interagissent entre eux.
+
+
+. Paramètres de graphique
+[%header,cols=2*]
+|MISUMI
+|Paramètre
+|Value
+
+|Namespace
+****
+
+|Type Graph
+|MISUMI
+
+|Affichage
+|MISUMI
+
+"Traffic Animation"
+
+|Hide...
+***service*=svc.cluster.local**
+
+|MISUMI
+
+
+
+
+== Comprendre l'application
+
+Avant de poursuivre, nous décrivons l'application utilisée dans cet atelier.
+
+Cette application de démonstration déploie plusieurs services dans 1 espace de nom.
+
+* **'chaos-engineering{USER_ID}** namespace
+
+A l'intérieur de l'espace de nom ** 'chaos-engineering{USER_ID}', nous voyons 3 parties
+
+* Travel-portal
+* Travel-agency
+* Travel-control
+
+image:Application-travel-description.png[Application Travel Description- Graph,900]
+
+L'application Travels Demo simule deux domaines d'activité :
+
+= Portail de voyage
+
+Dans une première partie appelée **travel-portal** il y aura déployé plusieurs magasins de voyage, où les utilisateurs peuvent chercher et réserver des vols, hôtels, voitures ou assurances.
+
+Les applications de magasin peuvent se comporter différemment selon les caractéristiques de la demande comme le canal (web ou mobile) ou l'utilisateur (nouveau ou existant).
+
+Ces charges de travail peuvent générer différents types de trafic pour imiter différents scénarios réels.
+
+Tous les portails consomment un service appelé voyages.
+
+= Travel Agency
+
+Une deuxième partie, **travel-agency**, accueillera un ensemble de services créés pour fournir des devis de voyage.
+
+Un service de voyage principal sera le point d'entrée pour l'agence de voyage. Il reçoit une ville de destination et un utilisateur comme paramètres et calcule tous les éléments qui composent un budget de voyage: airfare, logement, réservation de voiture et assurance voyage.
+
+Chaque service peut fournir une citation indépendante et le service de voyages doit ensuite les regrouper en une seule réponse.
+
+De plus, certains utilisateurs, comme les utilisateurs enregistrés, peuvent avoir accès à des réductions spéciales, gérées aussi bien par un service externe.
+
+Les relations de service entre les services des applications peuvent être décrites dans le diagramme suivant:
+
+image::travels-demo-design.png[travel-demo-design - Démo de voyage Projet déployé par Argo CD , 800]
+
+= Portail de voyage et flux de l'agence de voyage
+
+Un flux typique se compose des étapes suivantes:
+
+. Un portail demande le service de voyages pour les destinations disponibles.
+. Voyages service demande les hôtels disponibles et retourne à la boutique portail.
+. Un utilisateur choisit une destination et un type de voyage, qui peut inclure un vol et/ou une voiture, hôtel et assurance.
+. Voitures, Hôtels et Vols peuvent avoir des réductions disponibles selon le type d'utilisateur.
+
+= Contrôle des voyages
+
+Le **travel-control** gère un tableau de bord **-business** avec deux caractéristiques clés:
+
+* Permettre des changements pour chaque simulateur de magasin de voyage (ratio de trafic, appareil, utilisateur et type de voyage).
+
+* Fournir une vue **-business** sur le total des demandes générées du service **-contrôle** aux services **travel-agency**, organisés selon des critères d'affaires groupés par magasin, par type de trafic et par ville.
+
+== Accès à la demande
+
+Pour accéder au tableau de bord (UI) de l'application, nous devons créer un composant Istio Ingress spécifique.
+
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services'**, `*cliquez sur le service de contrôle 'Actions' `
+
+image:kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
+
+&lt; &lt; *Cliquez sur le bouton &gt; &gt; pour rediriger tout le trafic d &apos; entrée vers le service de contrôle*:
+
+image:kiali-control-add-rule.png[Kiali - Contrôle Ajouter la règle , 500]
+
+Puis `*cliquez sur 'Afficher les Options Avancées' et saisissez les informations suivantes*`:
+
+. Réglages Gateways
+[%header,cols=3*]
+|MISUMI
+|Paramètre
+|Value
+|MISUMI
+
+|Add Gateway
+|MISUMI
+|MISUMI|
+
+
+|Gateway Hosts
+{APPS_HOSTNAME_SUFFIX}**
+|MISUMI|
+|MISUMI
+
+image:kiali-control-create-ingress.png[Kiali - Contrôle Créer l'entrée , 500]
+
+Enfin, `*cliquez sur le bouton 'Create'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
+
+image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]

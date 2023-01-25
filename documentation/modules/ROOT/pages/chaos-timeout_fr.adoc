@@ -1,0 +1,90 @@
+:markup-in-source: verbatim,attributes,quotes
+:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
+:USER_ID: %USER_ID%
+:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
+:OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
+:APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
+:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
+:GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
+
+= Expérience Chaos 1: Injecting Timeout
+
+_XX MINUTE PRACTICE_
+
+== TODO
+
+Pour minimiser l'impact de la latence, vous pouvez utiliser le modèle **timeout** qui est probablement le modèle de résilience le plus courant pour les systèmes distribués.
+L'objectif est d'échouer une demande après une certaine période de temps pour éviter le verrouillage de code et de ressources lorsque le service attend une réponse qui prend trop de temps ou qui pourrait ne jamais arriver.
+
+Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services'**, `*cliquez sur les 'voyages' Correspondance 'Actions' `
+
+image:kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
+
+`*Add HTTP Timeout en entrant les paramètres suivants:* `
+
+. Réglages de timeout HTTP
+[%header,cols=3*]
+|MISUMI
+|Paramètre
+|Value
+|MISUMI
+
+|Add HTTP Timeout
+|MISUMI
+|MISUMI|
+
+|Timeout
+|**50ms**
+|MISUMI|
+
+|MISUMI
+
+image:kiali-configure-timeout.png[Kiali - Configurer Timeout,400]
+
+Dans {GRAFANA_URL}[Grafana^], à partir du tableau de bord ** de l'Ingénierie de Chaos**, `* faire défiler et voir les métriques de latence* `
+
+Après un certain temps, vous pouvez voir l'impact de notre configuration. En effet, la latence du service **Voyages** a diminué et
+les métriques de latence deviennent vertes à nouveau.
+
+image:grafana-timeout-details-1.png[Grafana - Détails d'heure,900]
+
+image:grafana-timeout-details-2.png[Grafana - Détails d'heure,900]
+
+Les problèmes de latence ont été corrigés mais le calendrier introduit des erreurs pour les demandes qui dépassent le seuil.
+`*Scrouler et voir les paramètres du taux d'erreur* `
+
+image:grafana-timeout-error.png[Grafana - Erreur d'heure, 900]
+
+== TODO
+
+Vous avez mis en œuvre des délais pour le service de voyages.
+Mettons en œuvre une stratégie de retry pour atténuer ces erreurs transitoires.
+
+Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
+`*cliquez sur les 'travels' ACIA 'Actions' et ajoutez HTTP Retry en entrant les paramètres suivants:* `
+
+. Réglages de rentrée HTTP
+[%header,cols=3*]
+|MISUMI
+|Paramètre
+|Value
+|MISUMI
+
+|Add HTTP Retry
+|MISUMI
+|MISUMI|
+
+|Attempts
+|**3**
+|MISUMI|
+
+|Per Try Timeout
+|**10ms**
+|MISUMI|
+
+|MISUMI
+
+image:kiali-configure-retry.png[Kiali - Configurer Retry,400]
+
+&lt; &lt; Retour à {GRAFANA_URL}[Grafana^]* &gt; &gt; , vous pouvez indiquer que le motif de rentrée réduit les taux d &apos; erreur sans affecter la latence.
+

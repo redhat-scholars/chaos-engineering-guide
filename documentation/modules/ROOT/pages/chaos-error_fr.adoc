@@ -1,0 +1,129 @@
+:markup-in-source: verbatim,attributes,quotes
+:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
+:USER_ID: %USER_ID%
+:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
+:OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
+:APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
+:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
+:GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
+:GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
+
+= Expérience Chaos 2: Service non disponible
+
+_10 MINUTE PRACTICE_
+
+Auparavant, vous avez vu combien l'impact est important sur l'application lorsqu'un petit problème de latence de réseau se produit sur un service non essentiel.
+Voyons comment la demande se produira lorsque ce même service n'est pas disponible. Pour cette deuxième expérience, nous allons tester l'hypothèse suivante:
+
+_**Un service de décompte disponible ne devrait pas avoir d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
+
+== Définir l'état stable
+
+Comme dans le laboratoire précédent, nous garderons le même état stable
+
+**99 % des demandes sont satisfaites et servies dans les 50 ms* *
+
+image:grafana-service-overview-configured-2.png[Grafana - Aperçu du service Configurer,700]
+
+Nous pourrons voir comment un autre type de défaillance du même service pourrait avoir un impact sur le comportement de notre application.
+
+== Exécuter l'expérience Chaos
+
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*right-click sur le service 'discounts' et sélectionnez 'Details'* `
+
+image:kiali-right-click-service.png[Kiali - Right Click Service,400]
+
+Vous serez redirigé vers la page Détails du service.
+
+*Cliquez sur les 'Actions' `
+
+image:kiali-add-fault-injection.png[Kiali - Ajouter l'injection par défaut,900]
+
+`*Add HTTP Avorter en entrant les paramètres suivants:*
+
+. Réglages HTTP Abort
+[%header,cols=3*]
+|MISUMI
+|Paramètre
+|Value
+|MISUMI
+
+|Add HTTP Delay
+|**Disabled* *
+|MISUMI|
+
+|Add HTTP Abort
+|MISUMI
+|MISUMI|
+
+|Abort Pourcentage
+|**10**
+|MISUMI|
+
+|HTTP Status Code
+|**503**
+|MISUMI|
+
+|MISUMI
+
+image:kiali-configure-error.png[Kiali - Configurer Erreur,300]
+
+`*Cliquez sur le bouton 'Update'*`.
+
+**10% du trafic du service 'discounts' échoue avec un code HTTP 503**. Voyons maintenant l'impact de l'application.
+
+== Analyser le résultat Chaos
+
+Dans le {GRAFANA_URL}[Chaos Engineering Dashboard], vous pouvez voir le résultat de l'expérience de chaos.
+
+image:grafana-error-fault-overview.png[Grafana - Aperçu des erreurs,900]
+
+**Tous les services, à l'exception du service 'discounts', fonctionnent très bien sans erreurs (100% de succès)**.
+
+Vous pouvez augmenter le pourcentage d'injection d'erreur jusqu'à ce que le service de « décomptes » soit complètement indisponible.
+
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort strategy of the 'discounts' service as follows:* `
+
+`*Add HTTP Avorter en entrant les paramètres suivants:*
+
+. Réglages HTTP Abort
+[%header,cols=3*]
+|MISUMI
+|Paramètre
+|Value
+|MISUMI
+
+|Add HTTP Delay
+|Disabled
+|MISUMI|
+
+|Add HTTP Abort
+|Enabled
+|MISUMI|
+
+|Abort Pourcentage
+***100**
+|MISUMI|
+
+|HTTP Status Code
+|503
+|MISUMI|
+
+|MISUMI
+
+image:grafana-error-fault-overview-2.png[Grafana - Aperçu des erreurs,900]
+
+Contrairement à l'issue de l'expérience Latency, vous dites que l'application est résiliente lorsque le service 'discounts' est complètement en panne (non disponible).
+Donc votre hypothèse est validée:
+
+_** Les services « décomptes » non disponibles n'ont pas d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
+
+== Retourner l'expérience Chaos
+
+Dans {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*.
+
+image:argocd-rollback-sync.png[Argo CD - Sync Application, 900]
+
+Enfin, dans le {GRAFANA_URL}[Chaos Engineering Dashboard], ` *veuillez vérifier que l'application est de retour dans l'état stable.
+
+image:grafana-steady-state.png[Grafana - Steady State, 700]
