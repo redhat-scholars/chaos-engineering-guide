@@ -8,7 +8,7 @@ site:
 
 content:
   sources:
-    - url: git@github.com:redhat-scholars/chaos-engineering-guide.git
+    - url: git@github.com:Dave-c-Ross/chaos-engineering-guide.git
       tags: []
       branches: ["5.0"]
       start_path: documentation

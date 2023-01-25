@@ -5,7 +5,7 @@
 : expérimental :
 
 
-inclure::_attributes.adoc[]
+include::_attributes.adoc[]
 
 == Explication de l ' atelier
 ** Résumé** :
