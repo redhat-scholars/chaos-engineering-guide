@@ -362,13 +362,13 @@ Si nous zoomons dans le bloc A par rapport à l'ingénierie du chaos **NAMESPACE
 
 image::grafana-block-A.png[Grafana - Home,900]
 
-* [Red] Global Request Volume = le nombre total de demandes
+* [Red]  Volume de demande global = le nombre total de demandes
 * [Yellow]  Taux de réussite global = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
-*<MISSING TTKN11914>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
-* [Cyan] list de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
-* [Pink] Nombre de demandes de services
-* [Brown]  Latence par service
-* [Green] Résultat de demandes par services = Rapport de la demande réussie associée au service
+*<MISSING TTKN11924>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
+* [Cyan] list of all services name available in the namespace chaos-engineering{USER_ID}
+* [Pink]  Nombre de demandes de services
+* [Brown] Latence par service
+* [Green]  Succès des demandes par services = Rapport de la demande réussie associée au service
 
 
 
@@ -377,13 +377,13 @@ Si nous zoomons dans le bloc B par rapport au **SERVICE** sélectionné, nous po
 
 image::grafana-block-B.png[Grafana - Home,900]
 
-* [Brown]  Erreur Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
+* [Brown] Error Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
 * [Pink]  Le taux de réussite = Virus pour identifier l'erreur HTTP WHEN survienne dans l'appel de service
-* [Blue] Latency value for the service
+* [Blue]  Valeur de latence pour le service
 * [Green] Durée de demande pour le service
 
 
 [IMPORTANT]
 =
-Toutes les métriques doivent être mesurées sur une fenêtre temporelle (généralement un mois) mais surtout pour cet atelier, nous prenons la minute [1m]  pour voir quelques changements dans le tableau de bord.
+Toutes les métriques doivent être mesurées sur une fenêtre temporelle (généralement un mois) mais surtout pour cet atelier ici nous prenons la minute [1m]  pour voir quelques changements dans le tableau de bord.
 =

@@ -26,7 +26,7 @@ image::Logo-Red_Hat-OpenShift.png[Red Hat OpenShift, 300]
 
 **Red Hat® OpenShift®** permet aux entreprises de construire des architectures très agiles et évolutives avec une sécurité de cluster améliorée qui peut être déployée à n'importe quel endroit.
 
-**Red Hat® OpenShift®** propose une installation automatisée, des mises à niveau et une gestion du cycle de vie dans toute la pile de conteneurs – le système d'exploitation, https://www.openshift.com/learn/topics/kubernetes/?hsLang=en-us[Kubernetes] et les services de cluster et applications – sur tout nuage.
+**Red Hat® OpenShift®** propose une installation automatisée, des mises à niveau et la gestion du cycle de vie dans toute la pile de conteneurs – le système d'exploitation, https://www.openshift.com/learn/topics/kubernetes/?hsLang=en-us[Kubernetes] et les services de cluster et applications – sur tout nuage.
 --
 
 == Connectez-vous à la console Web OpenShift

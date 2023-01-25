@@ -5,7 +5,7 @@
 :OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
 :APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
-:GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
+<MISSING TTKN12>
 
 = Expérience Chaos 1: Injecting Timeout
 
@@ -18,7 +18,7 @@ L'objectif est d'échouer une demande après une certaine période de temps pour
 
 Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services'**, `*cliquez sur les 'voyages' Correspondance 'Actions' `
 
-<MISSING TTKN12>
+image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
 `*Add HTTP Timeout en entrant les paramètres suivants:* `
 

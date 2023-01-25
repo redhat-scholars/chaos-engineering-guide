@@ -1,2 +1,2 @@
-: expérimental :
+:experimental:
 :source-highlighter: highlightjs

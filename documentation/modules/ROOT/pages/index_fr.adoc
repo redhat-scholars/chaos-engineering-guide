@@ -2,10 +2,10 @@
 :navtitle: Introduction
 :page-layout: home
 :markup-in-source: verbatim,attributes,quotes
-: expérimental :
+:experimental:
 
 
-include::_attributes.adoc[]
+include:::_attributes_fr.adoc[]
 
 == Explication de l ' atelier
 ** Résumé** :
