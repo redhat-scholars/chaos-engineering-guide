@@ -5,7 +5,7 @@
 :experimental:
 
 
-include:::_attributes_fr.adoc[]
+include::_attributes_fr.adoc[]
 
 == Explication de l ' atelier
 ** Résumé** :
@@ -21,8 +21,8 @@ Apportez votre ordinateur portable et rejoignez-nous pour faire votre **Expérie
 Dans cet atelier pratique, les participants se familiariseront avec le concept de **Chaos Engineering** et apprendront comment le mettre en pratique en utilisant des capacités avancées de OpenShift comme OpenShift Service Mesh. En guise de décollage, les participants pourront :
 
 * Déployer une application en utilisant **ArgoCD**
-* Visualiser et surveiller un système distribué en utilisant **Openshift Service Mesh* *
-* Définir et surveiller les paramètres de Chaos en utilisant **Grafana* *
+* Visualiser et surveiller un système distribué en utilisant **Openshift Service Mesh**
+* Définir et surveiller les paramètres de Chaos en utilisant **Grafana**
 * Apportez le chaos en injectant des échecs et des retards à travers **Kiali's** avancées
 * Trouver et corriger les faiblesses découvertes dans les modèles modernes utilisés ici aujourd’hui
 

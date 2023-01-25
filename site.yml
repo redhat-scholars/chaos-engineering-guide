@@ -2,7 +2,7 @@ runtime:
   cache_dir: ./.cache/antora
 
 site:
-  title: OpenShift Chaos Engineering Workshop
+  title: Atelier d'ingénierie du chaos OpenShift
   url: https://redhat-scholars.github.io/course-template
   start_page: chaos-engineering::index_fr.adoc
 

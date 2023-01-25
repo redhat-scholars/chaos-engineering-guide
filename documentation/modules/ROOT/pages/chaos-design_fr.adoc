@@ -75,9 +75,9 @@ image::Chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
 
 Après le **Chaos Engineering Learning Loop** l'étape initiale est de **Explore** le système cible, c'est-à-dire notre application, pour tenter de surfacer ou **découvrir** toutes les faiblesses. Les **Experiments** que nous utiliserons sont déjà écrits pour vous, en utilisant (xref:chaos-latency_fr.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error_fr.adoc [6. Expérience Chaos 2: Service non disponible]).
 
-**Kiali** et **Openshift Developer Console** (xref:chaos-explore_fr.adoc [3. Explorer l'application]) vous permettra de **explore** et de **découvrir** l'application. **Grafana** (xref:chaos-metrics_fr.adoc [4. Définir et surveiller les paramètres Chaos] fait partie de la Découverte de l'application aussi.
+**Kiali** et **Openshift Developer Console** (xref:chaos-explore_fr.adoc[3. Explorer l'application]) vous permettra de **explore** et de **découvrir** l'application. **Grafana** (xref:chaos-metrics_fr.adoc [4. Définir et surveiller les paramètres Chaos] fait partie de la Découverte de l'application aussi.
 
-Lorsque vous serez prêt à exécuter votre expérience (xref:chaos-latency_fr.adoc [5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error_fr.adoc [6. Chaos Experiment 2: Unavailable Service]) vous verrez comment le système cible réagit. Vous entrez dans les phases **découverte** et **analyse** de la boucle d'apprentissage en génie ** et après l'analyse **** vous serez **Improve** et **Validate** la correction faite.
+Lorsque vous serez prêt à exécuter votre expérience (xref:chaos-latency_fr.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error_fr.adoc [6. Chaos Experiment 2: Unavailable Service]) vous verrez comment le système cible réagit. Vous entrez dans les phases **découverte** et **analyse** de la boucle d'apprentissage en génie ** et après l'analyse **** vous serez **Improve** et **Validate** la correction faite.
 
 
 .
