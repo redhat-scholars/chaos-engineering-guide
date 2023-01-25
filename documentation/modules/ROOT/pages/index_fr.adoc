@@ -7,7 +7,7 @@
 
 inclure::_attributes.adoc[]
 
-== Explication de l &apos; atelier
+== Explication de l ' atelier
 ** Résumé** :
 
 La construction de systèmes à grande échelle et distribués change le jeu pour l'ingénierie logicielle moderne. Comment nos applications se comportent-elles face à l'échec? C'est le défi crucial que nous devons résoudre car les échecs sont inévitables.
@@ -26,7 +26,7 @@ Dans cet atelier pratique, les participants se familiariseront avec le concept d
 * Apportez le chaos en injectant des échecs et des retards à travers **Kiali's** avancées
 * Trouver et corriger les faiblesses découvertes dans les modèles modernes utilisés ici aujourd’hui
 
-[quote, de Sidney Dekker, David Woods et Richard Cook]
+[quote, from Sidney Dekker, David Woods, and Richard Cook]
 Je ne sais pas.
 La résilience ne consiste pas à réduire les erreurs. Il s'agit d'améliorer les capacités positives des personnes et des organisations qui leur permettent de s'adapter efficacement et en toute sécurité sous pression.
 Je ne sais pas.
@@ -36,5 +36,5 @@ L'environnement OpenShift créé pour vous est la version 4.7 de la plate-forme 
 Nous utilisons sur **Openshift Cluster 4.7** fourni sur le système RHPDS dans lequel nous avons installé plusieurs opérateurs comme prérequis pour cet atelier :
 
 * https://www.openshift.com/learn/topics/service-mesh[Openshift Service Mesh]
-* https://www.openshift.com/blog/announcing-openshift-gitops [Openshift GitOps]
+* https://www.openshift.com/blog/announcing-openshift-gitops[Openshift GitOps]
 

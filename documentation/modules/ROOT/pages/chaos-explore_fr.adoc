@@ -14,7 +14,7 @@ image::explore-discover.png[explore-discover, 800]
 
 == Qu'est-ce que OpenShift Service Mesh?
 
-[barre de côté]
+[sidebar]
 . OpenShift Service Mesh
 ♪♪
 
@@ -26,12 +26,12 @@ image::explore-discover.png[explore-discover, 800]
 
 Qu’y a-t-il ?
 
-[Tabs]
+[tabs]
 =
 Service Mesh:
 +
 --
-image:istio-logo.png[Istio, 200]
+image::istio-logo.png[Istio, 200]
 
 **Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les plans de contrôle sur une application distribuée.
 --
@@ -39,7 +39,7 @@ image:istio-logo.png[Istio, 200]
 Observabilité :
 +
 --
-image:kiali-logo.png [Kiali, 200]
+image::kiali-logo.png[Kiali, 200]
 
 L’observation aide les utilisateurs à voir les voies de communication entre les services, comment ils sont gérés et comment le trafic circule dans un temps quasi réel pour faciliter la gestion et le dépannage.
 
@@ -77,16 +77,16 @@ Cliquez sur le bouton 'Kiali' ci-dessous* `
 [link={KIALI_URL}]
 [window="_blank"]
 [role='params-link']
-image:kiali-button.png[Kiali - Button, 300]
+image::kiali-button.png[Kiali - Button, 300]
 
 Ensuite, `*log in with OpenShift as user{ USER_ID}/{OPENSHIFT_PASSWORD}* `
 
-image:kiali-login.png [Kiali- Log In,300]
+image::kiali-login.png[Kiali- Log In,300]
 
 Sélectionnez la vue **'Graph'**, depuis la barre de menus latérales et `*enter la configuration suivante*`:
 
 
-image:kiali-graph.png[Kiali- Graph,900]
+image::kiali-graph.png[Kiali- Graph,900]
 Le résultat est un graphique avec tous les services, connectés par les demandes qui les traversent.
 Vous pouvez voir comment les services interagissent entre eux.
 
@@ -130,7 +130,7 @@ A l'intérieur de l'espace de nom ** 'chaos-engineering{USER_ID}', nous voyons 3
 * Travel-agency
 * Travel-control
 
-image:Application-travel-description.png[Application Travel Description- Graph,900]
+image::Application-travel-description.png[Application Travel Description- Graph,900]
 
 L'application Travels Demo simule deux domaines d'activité :
 
@@ -156,7 +156,7 @@ De plus, certains utilisateurs, comme les utilisateurs enregistrés, peuvent avo
 
 Les relations de service entre les services des applications peuvent être décrites dans le diagramme suivant:
 
-image::travels-demo-design.png[travel-demo-design - Démo de voyage Projet déployé par Argo CD , 800]
+image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed by Argo CD , 800]
 
 = Portail de voyage et flux de l'agence de voyage
 
@@ -181,11 +181,11 @@ Pour accéder au tableau de bord (UI) de l'application, nous devons créer un co
 
 Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services'**, `*cliquez sur le service de contrôle 'Actions' `
 
-image:kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
+image::kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
 
-&lt; &lt; *Cliquez sur le bouton &gt; &gt; pour rediriger tout le trafic d &apos; entrée vers le service de contrôle*:
+< < *Cliquez sur le bouton > > pour rediriger tout le trafic d ' entrée vers le service de contrôle*:
 
-image:kiali-control-add-rule.png[Kiali - Contrôle Ajouter la règle , 500]
+image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 
 Puis `*cliquez sur 'Afficher les Options Avancées' et saisissez les informations suivantes*`:
 
@@ -206,7 +206,7 @@ Puis `*cliquez sur 'Afficher les Options Avancées' et saisissez les information
 |MISUMI|
 |MISUMI
 
-image:kiali-control-create-ingress.png[Kiali - Contrôle Créer l'entrée , 500]
+image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
 Enfin, `*cliquez sur le bouton 'Create'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
 

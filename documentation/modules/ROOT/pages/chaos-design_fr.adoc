@@ -14,18 +14,18 @@ _2 MINUTE PRACTICE_
 
 == Qu'est-ce que Chaos Engineering ?
 
-[barre de côté]
+[sidebar]
 . Principes de Chaos Engineering
 --
-According to the Principles of Chaos Engineering (https://principlesofchaos.org/[https://principlesofchaos.org/^]),
+Selon les principes de l'ingénierie du chaos (https://principlesofchaos.org/[https://principlesofchaos.org/^]),
 
 * **Chaos Engineering** est la discipline de l'expérimentation sur un système afin de renforcer la confiance dans la capacité du système à résister aux conditions turbulentes dans la production.
-* ** Le seul but de Chaos Engineering** est de fournir des preuves des faiblesses du système (parfois appelée https://snafucatchers.github.io/#4_6_Dark_Debt [Dark Debt^]
+* ** Le seul but de Chaos Engineering** est de fournir des preuves des faiblesses du système (parfois appelé https://snafucatchers.github.io/#4_6_Dark_Debt[Dark Debt^])
 --
 
 Prenez un exemple où vous avez deux services qui communiquent entre eux.
 
-image:simple-2-service.png[simple-2-service - Un simple système à deux services, 700]
+image::simple-2-service.png[simple-2-service - A simple two-service system, 700]
 
 * Que devrait-il se passer si le service Y** meurt ?
 
@@ -48,7 +48,7 @@ Vous pouvez croire que vous avez conçu les services et l'infrastructure parfait
 ** « Savons-nous ce que le système pourrait faire dans ce cas ? »* *
 
 
-image:process-chaos.png[process-chaos, 800]
+image::process-chaos.png[process-chaos, 800]
 
 Le processus général d'ingénierie du chaos ressemble à :
 
@@ -70,13 +70,14 @@ image::chaos-engineering-process.png[chaos-engineering-process, 600]
 Plus tard sur cet atelier nous utiliserons ** Openshift Service Mesh** pour injecter des défaillances dans notre **Experiment** .
 
 
-image:Chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
+image::Chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
 
 
-Après le **Chaos Engineering Learning Loop** l'étape initiale est de **Explore** le système cible, c'est-à-dire notre application, pour tenter de surfacer ou **découvrir** toutes les faiblesses. Les **Experiments** que nous utiliserons sont déjà écrits pour vous, en utilisant (xref:chaos-latency.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error.adoc[6. Expérience Chaos 2: Service non disponible]).
+Après le **Chaos Engineering Learning Loop** l'étape initiale est de **Explore** le système cible, c'est-à-dire notre application, pour tenter de surfacer ou **découvrir** toutes les faiblesses. Les **Experiments** que nous utiliserons sont déjà écrits pour vous, en utilisant (xref:chaos-latency_fr.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error_fr.adoc [6. Expérience Chaos 2: Service non disponible]).
 
-**Kiali** et **Openshift Developer Console** (xref:chaos-explore.adoc [3. Explorer la demande]) vous permettra d'explorer** et de **découvrir** la demande. **Grafana** (xref:chaos-metrics.adoc [4. Définir et surveiller les paramètres Chaos] fait partie de la Découverte de l'application aussi.
+**Kiali** et **Openshift Developer Console** (xref:chaos-explore_fr.adoc [3. Explorer l'application]) vous permettra de **explore** et de **découvrir** l'application. **Grafana** (xref:chaos-metrics_fr.adoc [4. Définir et surveiller les paramètres Chaos] fait partie de la Découverte de l'application aussi.
 
-Quand vous serez prêt à exécuter votre expérience (xref:chaos-latency.adoc [5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error.adoc[6. Chaos Experiment 2: Unavailable Service]) vous verrez comment le système cible réagit. Vous entrez dans les phases **découverte** et **analyse** de la boucle d'apprentissage en génie ** et après l'analyse **** vous serez **Improve** et **Validate** la correction faite.
+Lorsque vous serez prêt à exécuter votre expérience (xref:chaos-latency_fr.adoc [5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error_fr.adoc [6. Chaos Experiment 2: Unavailable Service]) vous verrez comment le système cible réagit. Vous entrez dans les phases **découverte** et **analyse** de la boucle d'apprentissage en génie ** et après l'analyse **** vous serez **Improve** et **Validate** la correction faite.
 
 
+.

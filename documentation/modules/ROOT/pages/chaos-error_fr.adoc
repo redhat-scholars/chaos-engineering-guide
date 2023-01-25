@@ -23,7 +23,7 @@ Comme dans le laboratoire précédent, nous garderons le même état stable
 
 **99 % des demandes sont satisfaites et servies dans les 50 ms* *
 
-image:grafana-service-overview-configured-2.png[Grafana - Aperçu du service Configurer,700]
+image::grafana-service-overview-configured-2.png[Grafana - Service Overview Configured,700]
 
 Nous pourrons voir comment un autre type de défaillance du même service pourrait avoir un impact sur le comportement de notre application.
 
@@ -31,13 +31,13 @@ Nous pourrons voir comment un autre type de défaillance du même service pourra
 
 Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*right-click sur le service 'discounts' et sélectionnez 'Details'* `
 
-image:kiali-right-click-service.png[Kiali - Right Click Service,400]
+image::kiali-right-click-service.png[Kiali - Right Click Service,400]
 
 Vous serez redirigé vers la page Détails du service.
 
 *Cliquez sur les 'Actions' `
 
-image:kiali-add-fault-injection.png[Kiali - Ajouter l'injection par défaut,900]
+image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
 `*Add HTTP Avorter en entrant les paramètres suivants:*
 
@@ -66,7 +66,7 @@ image:kiali-add-fault-injection.png[Kiali - Ajouter l'injection par défaut,900]
 
 |MISUMI
 
-image:kiali-configure-error.png[Kiali - Configurer Erreur,300]
+image::kiali-configure-error.png[Kiali - Configure Error,300]
 
 `*Cliquez sur le bouton 'Update'*`.
 
@@ -76,7 +76,7 @@ image:kiali-configure-error.png[Kiali - Configurer Erreur,300]
 
 Dans le {GRAFANA_URL}[Chaos Engineering Dashboard], vous pouvez voir le résultat de l'expérience de chaos.
 
-image:grafana-error-fault-overview.png[Grafana - Aperçu des erreurs,900]
+image::grafana-error-fault-overview.png[Grafana - Error Fault Overview,900]
 
 **Tous les services, à l'exception du service 'discounts', fonctionnent très bien sans erreurs (100% de succès)**.
 
@@ -111,7 +111,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort
 
 |MISUMI
 
-image:grafana-error-fault-overview-2.png[Grafana - Aperçu des erreurs,900]
+image::grafana-error-fault-overview-2.png[Grafana - Error Fault Overview,900]
 
 Contrairement à l'issue de l'expérience Latency, vous dites que l'application est résiliente lorsque le service 'discounts' est complètement en panne (non disponible).
 Donc votre hypothèse est validée:
@@ -122,8 +122,8 @@ _** Les services « décomptes » non disponibles n'ont pas d'incidence sur l'ob
 
 Dans {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*.
 
-image:argocd-rollback-sync.png[Argo CD - Sync Application, 900]
+image::argocd-rollback-sync.png[Argo CD - Sync Application, 900]
 
 Enfin, dans le {GRAFANA_URL}[Chaos Engineering Dashboard], ` *veuillez vérifier que l'application est de retour dans l'état stable.
 
-image:grafana-steady-state.png[Grafana - Steady State, 700]
+image::grafana-steady-state.png[Grafana - Steady State,700]
