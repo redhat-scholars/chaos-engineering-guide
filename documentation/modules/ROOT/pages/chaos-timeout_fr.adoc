@@ -5,7 +5,7 @@
 :OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
 :APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
-<MISSING TTKN12>
+:GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
 = Expérience Chaos 1: Injecting Timeout
 
@@ -16,7 +16,7 @@ _XX MINUTE PRACTICE_
 Pour minimiser l'impact de la latence, vous pouvez utiliser le modèle **timeout** qui est probablement le modèle de résilience le plus courant pour les systèmes distribués.
 L'objectif est d'échouer une demande après une certaine période de temps pour éviter le verrouillage de code et de ressources lorsque le service attend une réponse qui prend trop de temps ou qui pourrait ne jamais arriver.
 
-Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services'**, `*cliquez sur les 'voyages' Correspondance 'Actions' `
+Dans le {KIALI_URL}[Kiali Console^], à partir de la vue **'Services'**, `*cliquez sur les 'voyages' `
 
 image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
@@ -41,7 +41,7 @@ image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
 image::kiali-configure-timeout.png[Kiali - Configure Timeout,400]
 
-Dans {GRAFANA_URL}[Grafana^], à partir du tableau de bord **de l'Ingénierie de Chaos**, `* faire défiler et voir les métriques de latence* `
+Dans {GRAFANA_URL}[Grafana^], à partir du tableau de bord **de l'ingénierie de Chaos**, `* faire défiler et voir les paramètres de latence* `
 
 Après un certain temps, vous pouvez voir l'impact de notre configuration. En effet, la latence du service **Voyages** a diminué et
 les métriques de latence deviennent vertes à nouveau.
@@ -86,6 +86,6 @@ Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
 
 image::kiali-configure-retry.png[Kiali - Configure Retry,400]
 
-< < Retour à {GRAFANA_URL}[Grafana^]* > > , vous pouvez indiquer que le motif de rentrée réduit les taux d'erreur sans affecter la latence.
+`* Retour à {GRAFANA_URL}[Grafana^]*`, vous pouvez dire que le motif de réécriture réduit les taux d'erreur sans impacter la latence.
 
 .

@@ -19,7 +19,7 @@ _**Une petite latence de réseau ne devrait pas affecter l'objectif de niveau de
 == Définir l'état stable
 
 
-Dans le {GRAFANA_URL}[Chaos Engineering Dashboard, role='params-link'], vous pouvez analyser les différentes mesures et définir l'État Steady pour notre expérience de chaos.
+Dans le {GRAFANA_URL}[Chaos Engineering Dashboard, role='params-link'], vous pouvez analyser les différentes métriques et définir l'État Steady pour notre expérience de chaos.
 En premier lieu, sélectionner les variables suivantes sur le tableau de bord*:
 
 . Paramètres de tableau de bord
@@ -30,7 +30,7 @@ En premier lieu, sélectionner les variables suivantes sur le tableau de bord*:
 |MISUMI
 
 |Namespace
-****
+|**chaos-engineering{USER_ID}**
 |MISUMI|
 
 |Service
@@ -109,7 +109,7 @@ image::grafana-service-overview-configured.png[Grafana - Service Overview Config
 
 == Exécuter l'expérience Chaos
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*right-click on the 'discounts' service (triangle symbol) et sélectionnez 'Details'* `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph**, `*right-click on the 'discounts' service (triangle symbol) et sélectionnez 'Details'* `
 
 image::kiali-right-click-service.png[Kiali - Right Click Service,600]
 
@@ -182,7 +182,7 @@ Au lieu de manquer directement ou d'attendre trop longtemps, nous pourrions rée
 voitures:
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services'**, `*click on the 'cars' service ACIA 'Actions' `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], à partir de la vue **'Services'**, `*cliquez sur le service 'cars' > Actions' ی 'Request Timeouts'* `
 
 `*Add HTTP Entrée en entrant les paramètres suivants:* `
 
@@ -215,7 +215,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 vols:
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services'**, `*click on the 'flights' service Λ 'Actions' `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], à partir de la vue **'Services'**, `*cliquez sur le service 'flights' ACIA 'Actions' `
 
 `*Add HTTP Entrée en entrant les paramètres suivants:* `
 
@@ -248,7 +248,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 hotels:
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services'**, `*click on the 'hotels' service ACIA 'Actions' `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], à partir de la vue **'Services'**, `*cliquez sur le service 'hôtels' ACIA 'Actions' ی 'Request Timeouts'* `
 
 `*Add HTTP Entrée en entrant les paramètres suivants:* `
 
@@ -281,7 +281,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 assurances:
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services'**, `*cliquez sur le service d'assurances ''Actions' ^ `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], à partir de la vue **'Services'**, `*cliquez sur le service d'assurances ''Actions' 'Request Timeouts'* `
 
 `*Add HTTP Entrée en entrant les paramètres suivants:* `
 
@@ -326,10 +326,10 @@ image::grafana-latency-contained-details.png[Grafana - Latency Contained Details
 
 Il n'y a rien de plus simple que de retourner toutes les configurations que vous avez faites pendant ce laboratoire avec Argo CD.
 
-Dans {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*.
+Dans {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*`.
 
 image::argocd-rollback-sync.png[Argo CD - Sync Application, 900]
 
-Enfin, dans le {GRAFANA_URL}[Chaos Engineering Dashboard], ` *veuillez vérifier que l'application est de retour dans l'état stable*.
+Enfin, dans le {GRAFANA_URL}[Chaos Engineering Dashboard], ` *veuillez vérifier que l'application est de retour dans l'état stable*`.
 
 image::grafana-steady-state.png[Grafana - Steady State,700]

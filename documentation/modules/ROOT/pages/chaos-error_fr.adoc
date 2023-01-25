@@ -29,7 +29,7 @@ Nous pourrons voir comment un autre type de défaillance du même service pourra
 
 == Exécuter l'expérience Chaos
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*right-click sur le service 'discounts' et sélectionnez 'Details'* `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph**, `*right-click sur le service 'discounts' et sélectionnez 'Details'* `
 
 image::kiali-right-click-service.png[Kiali - Right Click Service,400]
 
@@ -82,7 +82,7 @@ image::grafana-error-fault-overview.png[Grafana - Error Fault Overview,900]
 
 Vous pouvez augmenter le pourcentage d'injection d'erreur jusqu'à ce que le service de « décomptes » soit complètement indisponible.
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort strategy of the 'discounts' service as follows:* `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update la stratégie HTTP Abort du service 'discounts' comme suit:* `
 
 `*Add HTTP Avorter en entrant les paramètres suivants:*
 
@@ -120,7 +120,7 @@ _**Les services « décomptes » non disponibles n'ont pas d'incidence sur l'obj
 
 == Retourner l'expérience Chaos
 
-Dans {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*.
+Dans {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*`.
 
 image::argocd-rollback-sync.png[Argo CD - Sync Application, 900]
 

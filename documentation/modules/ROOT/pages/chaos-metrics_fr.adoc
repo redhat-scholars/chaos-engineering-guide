@@ -60,12 +60,12 @@ Par exemple :
 
 `*Cliquez sur le bouton 'Grafana' ci-dessous*`.
 
-[link={GRAFANA_URL}]
+[link=TTKN1200]
 [window="_blank"]
 [role='params-link']
 image::grafana-button.png[Grafana- Button, 300]
 
-Ensuite, `*log in with OpenShift as 'user{USER_ID}/{OPENSHIFT_PASSWORD}* `
+Ensuite, `*log in with OpenShift as 'user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
 
 image::grafana-home.png[Grafana - Home,900]
 
@@ -98,7 +98,7 @@ image::grafana-add-query.png[Grafana - Home,700]
 +
 --
 
-[source,promql,subs="{markup-in-source}",role=copypaste]
+[source,promql,subs="TTKN1202",role=copypaste]
 . PromQL
 ---
 **istio_requests_total**
@@ -113,7 +113,7 @@ dimensions, par série chronologique dans une gamme de vecteurs
 +
 --
 
-[source,promql,subs="{markup-in-source}",role=copypaste]
+[source,promql,subs="TTKN1203",role=copypaste]
 . PromQL
 ---
 istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}**
@@ -126,10 +126,10 @@ Filtrer la mesure pour utiliser uniquement les requêtes entrantes (_reporter="s
 +
 --
 
-[source,promql,subs="{markup-in-source}",role=copypaste]
+[source,promql,subs="TTKN1206",role=copypaste]
 . PromQL
 ---
-**increase(**istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"**[1m])**
+**augmentation(**istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}**[1m])**
 ---
 
 Ajout de la fonction **increase()**, la requête renvoie le seul nombre de requêtes mesurées sur la dernière minute par série chronologique.
@@ -139,10 +139,10 @@ Ajout de la fonction **increase()**, la requête renvoie le seul nombre de requ�
 +
 --
 
-[source,promql,subs="{markup-in-source}",role=copypaste]
+[source,promql,subs="TTKN1208",role=copypaste]
 . PromQL
 ---
-**sum(**increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])**)
+**sum(**increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])**)**
 ---
 
 Ajout de la fonction **sum()**, la requête retourne le total des requêtes dans l'espace de nom
@@ -224,7 +224,7 @@ Total des demandes : sum(rate(istio_requests_total{}[$time_interval]))
 Demandes réussies: sum(rate(istio_requests_total{response_code!~"5.*"}[$time_interval]))
 dans notre cas :
 
-_sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}
+_sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])_
 
 image::grafana-global-success-rate-step-1.png[Grafana - Home,900]
 
@@ -245,10 +245,10 @@ Ajouter l'expression suivante dans le champ 'Metrics' pour la requête 'A'*:
 image::grafana-add-query.png[Grafana - Home,700]
 
 
-[source,promql,subs="{markup-in-source}",role=copypaste]
+[source,promql,subs="TTKN1213",role=copypaste]
 . PromQL
 ---
-sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]
+sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))
 ---
 
 [TIP]
@@ -316,7 +316,7 @@ Vous venez d'apprendre à créer un tableau de bord Grafana. Maintenant, importo
 
 Cliquez sur le bouton suivant et copiez le contenu* `
 
-[link={DASHBOARD_GIT_URL}]
+[link=TTKN1215]
 [window="_blank"]
 [role='params-link']
 image::chaos-dashboard-button.png[Chaos Dashboard - Button, 300]
@@ -333,7 +333,7 @@ image::grafana-load-dashboard.png[Grafana - Home,700]
 
 [WARNING]
 =
-Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*please add 'user{USER_ID}' in the name*`.
+Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*s'il vous plaît ajouter 'user{USER_ID}' dans le nom*`.
 
 image::error-import-grafana.png[Grafana import Error - Home,900]
 =
@@ -350,23 +350,23 @@ image::full-grafana-dashboard.png[Grafana - Home,900]
 
 Pour explorer ce tableau de bord on peut le voir comme :
 
-* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] here chaos-ingénierie {USER_ID} et un service [Cyan]  de l'application Travel
+* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] here chaos-ingénierie{USER_ID} et un service [Cyan]  de l'application Travel
 * [Blue] Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
-* [Yellow] Block B toutes les mesures relatives à un service spécifié
+* [Yellow]  Block B toutes les mesures relatives à un service spécifié
 
 image::dashboard-explained.png[Grafana - Home,900]
 
-Si nous zoomons dans le bloc A par rapport à l'ingénierie du chaos **NAMESPACE {USER_ID}** nous pouvons voir :
+Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-ingénierie{USER_ID}** nous pouvons voir :
 
 image::grafana-block-A.png[Grafana - Home,900]
 
 * [Red]  Volume de demande global = le nombre total de demandes
 * [Yellow]  Taux de réussite global = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
-*<MISSING TTKN11924>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
-* [Cyan] list of all services name available in the namespace chaos-engineering{USER_ID}
-* [Pink]  Nombre de demandes de services
-* [Brown] Latence par service
-* [Green]  Succès des demandes par services = Rapport de la demande réussie associée au service
+*<MISSING TTKN12494>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
+* [Cyan] list de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
+* [Pink] Nombre de demandes de services
+* [Brown]  Latence par service
+* [Green] Succès des demandes par services = Rapport de la demande réussie associée au service
 
 
 
@@ -376,7 +376,7 @@ Si nous zoomons dans le bloc B par rapport au **SERVICE** sélectionné, nous po
 image::grafana-block-B.png[Grafana - Home,900]
 
 * [Brown] Error Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
-* [Pink]  Le taux de réussite = Virus pour identifier l'erreur HTTP WHEN survienne dans l'appel de service
+* [Pink]  Taux de réussite = > pour identifier l'erreur HTTP WHEN survenant dans l'appel de service
 * [Blue]  Valeur de latence pour le service
 * [Green] Durée de demande pour le service
 

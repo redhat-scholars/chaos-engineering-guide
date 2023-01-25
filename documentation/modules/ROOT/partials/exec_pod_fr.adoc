@@ -11,7 +11,7 @@ kubectl va chercher des pods
 [source,bash,subs="+macros,+attributes"]
 ---
 NAME READY STATUS RESTARTS AGE
-{podname} 1/1 Running 0 5s
+{podname} 1/1 Courant 0 5s
 ---
 
 Alors, allons dans le jeu pour exécuter quelques commandes:

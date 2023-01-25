@@ -74,12 +74,12 @@ OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et dis
 
 Cliquez sur le bouton 'Kiali' ci-dessous* `
 
-[link={KIALI_URL}]
+[link=TTKN1101]
 [window="_blank"]
 [role='params-link']
 image::kiali-button.png[Kiali - Button, 300]
 
-Ensuite, `*log in with OpenShift as user{ USER_ID}/{OPENSHIFT_PASSWORD}* `
+Ensuite, `*log in with OpenShift as user{USER_ID}/{OPENSHIFT_PASSWORD}'* `
 
 image::kiali-login.png[Kiali- Log In,300]
 
@@ -98,7 +98,7 @@ Vous pouvez voir comment les services interagissent entre eux.
 |Value
 
 |Namespace
-****
+|**chaos-engineering{USER_ID}**
 
 |Type Graph
 |MISUMI
@@ -122,9 +122,9 @@ Avant de poursuivre, nous décrivons l'application utilisée dans cet atelier.
 
 Cette application de démonstration déploie plusieurs services dans 1 espace de nom.
 
-***'chaos-engineering{USER_ID}** namespace
+***'chaos-engineering{USER_ID}'** namespace
 
-A l'intérieur de l'espace de nom ** 'chaos-engineering{USER_ID}', nous voyons 3 parties
+A l'intérieur du **'chaos-engineering{USER_ID}' namespace** nous voyons 3 parties
 
 * Travel-portal
 * Travel-agency
@@ -179,7 +179,7 @@ Le **travel-control** gère un tableau de bord **-business** avec deux caractér
 
 Pour accéder au tableau de bord (UI) de l'application, nous devons créer un composant Istio Ingress spécifique.
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services'**, `*cliquez sur le service de contrôle 'Actions' `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], à partir de la vue **'Services'**, `*cliquez sur le service 'contrôle' évangélis 'Actions' ё 'Request Routing'* `
 
 image::kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
 
@@ -202,12 +202,12 @@ Puis `*cliquez sur 'Afficher les Options Avancées' et saisissez les information
 
 
 |Gateway Hosts
-{APPS_HOSTNAME_SUFFIX}**
+|**control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}**
 |MISUMI|
 |MISUMI
 
 image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
-Enfin, `*cliquez sur le bouton 'Create'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
+Enfin, `*cliquez sur le bouton 'Create'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineeringTTKN1108[^, role='params-link'].
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]
