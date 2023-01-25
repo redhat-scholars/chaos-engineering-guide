@@ -20,7 +20,7 @@ image::explore-discover.png[explore-discover, 800]
 == What is Red Hat OpenShift?
 
 [sidebar]
--- 
+--
 
 image::Logo-Red_Hat-OpenShift.png[Red Hat OpenShift, 300]
 
