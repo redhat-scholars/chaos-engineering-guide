@@ -34,7 +34,7 @@ Premièrement, `*sélectionner les variables suivantes sur le tableau de bord*`:
 |
 
 |Service
-|**travels.chaos-engineering{USER_ID}.svc.cluster.local**
+|**voyages.chaos-engineering{USER_ID}.svc.cluster.local**
 |
 
 |===

@@ -119,7 +119,7 @@ Step2::
 istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}**
 ----
 
-Filtrer la métrique pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
+Filtrer la mesure pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
 --
 
 Step3::
@@ -219,7 +219,7 @@ image::grafana-number-total-singlestat.png[Grafana - Home,700]
 
 Après avoir créé la mesure de toutes les requêtes, vous allez définir une **métrique de toutes les requêtes réussies** (~ code d'erreur 5XX) pour 1 minute :
 
-Total des demandes : sum(rate(istio_requests_total{}[$time_interval]))
+Total des demandes: sum(rate(istio_requests_total{}[$time_interval]))
 
 Demandes réussies: sum(rate(istio_requests_total{response_code!~"5.*"}[$time_interval]))
 dans notre cas :
@@ -350,20 +350,20 @@ image::full-grafana-dashboard.png[Grafana - Home,900]
 
 Pour explorer ce tableau de bord on peut le voir comme :
 
-* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] ici le chaos-ingénierie{USER_ID} et un service [Cyan]  de l'application Travel
+* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] ici chaos-engineering{USER_ID} et un service  [Cyan]  de la demande de voyage
 * [Blue]  Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
 * [Yellow]  Block B toutes les mesures relatives à un service spécifié
 
 image::dashboard-explained.png[Grafana - Home,900]
 
-Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-ingénierie{USER_ID}** nous pouvons voir :
+Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-engineering{USER_ID}** nous pouvons voir :
 
 image::grafana-block-A.png[Grafana - Home,900]
 
 * [Red] Global Request Volume = le nombre total de demandes
 * [Yellow]  Taux de réussite global = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
 *<MISSING <MISSING TTKN15054>>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
-* [Cyan] liste de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
+* [Cyan] liste de tous les noms de services disponibles dans l'espace de nom chaos-engineering{USER_ID}
 * [Pink] Nombre de demandes de services
 * [Brown]  Latence par service
 * [Green]  Succès des demandes par services = Rapport de la demande réussie associée au service

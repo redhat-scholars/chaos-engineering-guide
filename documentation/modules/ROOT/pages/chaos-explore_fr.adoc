@@ -79,7 +79,7 @@ OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et dis
 [role='params-link']
 image::kiali-button.png[Kiali - Button, 300]
 
-Puis, `*connectez-vous avec OpenShift comme utilisateur {USER_ID}/{OPENSHIFT_PASSWORD} '*`
+Puis, `*connectez-vous avec OpenShift comme user{USER_ID}/{OPENSHIFT_PASSWORD} '*`
 
 image::kiali-login.png[Kiali- Log In,300]
 
@@ -124,7 +124,7 @@ Cette application de démonstration déploie plusieurs services dans 1 espace de
 
 ***'chaos-engineering{USER_ID}'** namespace
 
-A l'intérieur du **'chaos-engineering{USER_ID}' namespace** nous voyons 3 parties
+A l'intérieur du **'chaos-engineering{USER_ID}' espace de nom** nous voyons 3 parties
 
 * Travel-portal
 * Travel-agency
@@ -202,7 +202,7 @@ Puis `*cliquez sur 'Afficher les options avancées' et saisissez les information
 
 
 |Gateway Hosts
-|**contrôle-chaos-ingénierie{USER_ID}.{APPS_HOSTNAME_SUFFIX}**
+|**control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}**
 |
 |===
 

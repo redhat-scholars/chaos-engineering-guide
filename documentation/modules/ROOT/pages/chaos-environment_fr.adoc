@@ -86,18 +86,18 @@ image::argocd-features.png[argo features- Button, 400]
 [role='params-link']
 image::openshift-gitops-button.png[OpenShift GitOps - Button^, 300]
 
-Puis `*s'identifier comme utilisateur {USER_ID}/{OPENSHIFT_PASSWORD}*`. Une fois terminé, vous serez redirigé vers la page suivante qui liste les **Argo CD Applications**.
+Puis `*log in as user{USER_ID}/{OPENSHIFT_PASSWORD}*`. Une fois terminé, vous serez redirigé vers la page suivante qui liste les **Argo CD Applications**.
 
 image::argocd-home.png[Argo CD - Home Page, 500]
 
-Une application CD **Argo** représente une instance d'application déployée dans un environnement donné. Elle est définie par deux éléments clés d'information :***source**référence à l'état désiré dans Git (répositoire, révision, chemin, environnement): **{GITOPS_WORKSHOP_GIT_URL}*****destination**référence au cluster cible et à l'espace de nom: **'chaos-engineering{USER_ID}' espace de nom de l'actuel cluster OpenShift (in-cluster)**
+Une application CD **Argo** représente une instance d'application déployée dans un environnement donné. Elle est définie par deux éléments clés d'information :***source**référence à l'état désiré dans Git (répositoire, révision, chemin, environnement): **{GITOPS_WORKSHOP_GIT_URL}*****destination**référence au cluster cible et à l'espace de nom: **'chaos-engineering{USER_ID}' namespace from the current OpenShift cluster (in-cluster)**
 
 Le statut **Argo CD Application** est d'abord en jaune, moyen **OutOfSync** état, puisque la demande n'a pas encore été présentée
-déployée dans l'ingénierie **{USER_ID}'**, et aucune ressource Kubernetes n'a été créée.
+Déployé dans l'espace-nom **'chaos-engineering{USER_ID}'**, et aucune ressource Kubernetes n'a été créée.
 
 == Sync/Deployez l'application
 
-Pour déployer l'application, `*cliquez sur la case 'chaos-engineering{USER_ID}' puis sur 'Sync phy Synchronisation '*`.
+Pour déployer l'application, `*cliquez sur la case 'chaos-engineering{USER_ID}' puis sur 'Sync > Synchronize' '*`.
 
 image::argocd-sync.png[Argo CD - Sync Application, 900]
 
