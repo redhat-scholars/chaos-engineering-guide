@@ -7,7 +7,7 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Chaos Experiment 1: Injecting Timeout
+= Expérience Chaos 1: Injecting Timeout
 
 _XX MINUTE PRACTICE_
 
@@ -86,6 +86,6 @@ Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
 
 image::kiali-configure-retry.png[Kiali - Configure Retry,400]
 
-`*Back to TTKN1406[Grafana^]*`, vous pouvez dire que le modèle de rétry réduit les taux d'erreur sans impacter la latence.
+`*Back to TTKN1413[Grafana^]*`, vous pouvez dire que le modèle de rétry réduit les taux d'erreur sans impacter la latence.
 
 .

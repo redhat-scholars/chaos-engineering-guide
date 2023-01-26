@@ -23,7 +23,7 @@ Dans le {GRAFANA_URL}[Chaos Engineering Dashboard, role='params-link'], vous pou
 Premièrement, `*select the following variables on the dashboard*`:
 
 . Paramètres de tableau de bord
-<MISSING TTKN12>
+[%header,cols=3*]
 |MISUMI
 |Paramètre
 |Value
@@ -248,7 +248,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 hotels::
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*click on the 'hotels' service > 'Actions' > 'Request Timeouts'*`
+Dans le <MISSING TTKN12>[Kiali Console^, role='params-link'], de l'avis **'Services**, `*click on the 'hotels' service > 'Actions' > 'Request Timeouts'*`
 
 `*Add HTTP Retry by entering the following settings:*`
 

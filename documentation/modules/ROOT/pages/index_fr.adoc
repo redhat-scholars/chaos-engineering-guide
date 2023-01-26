@@ -1,4 +1,4 @@
-= Bienvenue à Chaos Engineering Workshop
+= Welcome to Chaos Engineering Workshop
 :navtitle: Introduction
 :page-layout: home
 :markup-in-source: verbatim,attributes,quotes
