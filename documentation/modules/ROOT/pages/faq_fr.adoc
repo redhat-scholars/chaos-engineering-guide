@@ -9,7 +9,7 @@
 
 = FAQ
 
-Contenu supplémentaire pour aller plus loin ::
+Contenu supplémentaire pour aller plus loin :
 
 == Formation et vidéos
 ***Openshift Gitops** https://learn.openshift.com/gitops***Qu'est-ce qu'il y a de nouveau dans OpenShift Pipelines et OpenShift GitOps - Jaafar Chraibi/Christian Hernandez**https://www.youtube.com/watch?v=YvtRXFzRHeI[YouTube Video]***Pourquoi Service Mesh?**https://www.youtube.com/watch?v=F_t3WDhMuwU[YouTube Video]***Apprendre Openshift Service Mesh**https://learn.openshift.com/servicemesh*** Services de surveillance comme un SRE dans OpenShift ServiceMesh**https://www.youtube.com/watch?v=Gu-g_yg0Q1g[YouTube Video]** Tutoriel de Kali** https://kiali.io/documentation/latest/tutorial/

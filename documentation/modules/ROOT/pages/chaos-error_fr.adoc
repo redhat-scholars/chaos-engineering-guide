@@ -13,7 +13,7 @@
 _10 MINUTE PRACTICE_
 
 Auparavant, vous avez vu combien l'impact est important sur l'application lorsqu'un petit problème de latence de réseau se produit sur un service non essentiel.
-Voyons comment la demande se produira lorsque ce même service n'est pas disponible. Pour cette deuxième expérience, nous allons tester l'hypothèse suivante::
+Voyons comment la demande se produira lorsque ce même service n'est pas disponible. Pour cette deuxième expérience, nous allons tester l'hypothèse suivante:
 
 _**Un service de décompte disponible ne devrait pas avoir d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
 
@@ -114,7 +114,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort
 image::grafana-error-fault-overview-2.png[Grafana - Error Fault Overview,900]
 
 Contrairement à l'issue de l'expérience Latency, vous dites que l'application est résiliente lorsque le service 'discounts' est complètement en panne (non disponible).
-Donc votre hypothèse est validée::
+Donc votre hypothèse est validée:
 
 _**Les services « décomptes » non disponibles n'ont pas d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
 

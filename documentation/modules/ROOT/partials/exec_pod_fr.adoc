@@ -1,4 +1,4 @@
-Vérifiez que la gousse est en marche::
+Vérifiez que la gousse est en marche:
 
 [.lines_space]
 [.console-input]
@@ -14,7 +14,7 @@ NAME                        READY   STATUS    RESTARTS   AGE
 {podname}   1/1     Running   0          5s
 ----
 
-Alors, allons dans le jeu pour exécuter quelques commandes::
+Alors, allons dans le jeu pour exécuter quelques commandes:
 
 [.console-input]
 [source,bash, subs="+macros,+attributes"]

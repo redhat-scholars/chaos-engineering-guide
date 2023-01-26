@@ -12,7 +12,7 @@
 
 _30 MINUTE PRACTICE_
 
-En production, il est plus fréquent d'avoir des services lents que des services rompus. **Latence** mesure le retard entre une action et une réponse. Pour cette première expérience, nous allons tester l'hypothèse suivante::
+En production, il est plus fréquent d'avoir des services lents que des services rompus. **Latence** mesure le retard entre une action et une réponse. Pour cette première expérience, nous allons tester l'hypothèse suivante:
 
 _**Une petite latence de réseau ne devrait pas affecter l'objectif de niveau de service (SLO) du Service de voyage**_
 
@@ -20,10 +20,10 @@ _**Une petite latence de réseau ne devrait pas affecter l'objectif de niveau de
 
 
 Dans le {GRAFANA_URL}[Chaos Engineering Dashboard, role='params-link'], vous pouvez analyser les différentes métriques et définir l'État Steady pour notre expérience de chaos.
-Premièrement, `*select the following variables on the dashboard*`::
+Premièrement, `*select the following variables on the dashboard*`:
 
 . Paramètres de tableau de bord
-[%header,cols=3*]
+<MISSING TTKN12>
 |MISUMI
 |Paramètre
 |Value
@@ -156,129 +156,129 @@ Dans le {GRAFANA_URL}[Chaos Engineering Dashboard], vous pouvez voir le résulta
 
 image::grafana-latency-fault-overview.png[Grafana - Latency Fault Overview,900]
 
-Depuis le panel **'Service Aperçu'** ou **'Request Durée'** pour le service 'voyages', vous pouvez dire ce qui suit sur la petite latence réseau basée sur notre hypothèse::
+Depuis le panel **'Service Aperçu'** ou **'Request Durée'** pour le service 'voyages', vous pouvez dire ce qui suit sur la petite latence réseau basée sur notre hypothèse:
 
-- il n'y a pas d'impact sur le taux de réussite des demandes globales (100%)
-- il y a un impact énorme sur la performance de l'application.
+- there is no impact on the Success Rate of the overall requests (100%)
+- there is a huge impact on the performance of the application. 
 
-En effet, seulement 1 seconde de retard sur 5% du trafic d'un service à charge induit **une propagation de latence de ~2 secondes dans l'ensemble du système**.
+Indeed, just 1 second of delay on 5% of the traffic of one dependant service induces **a latency propagation of ~2 seconds across the entire system**.
 
-image::grafana-latency-fault-details.png[Grafana - Latency Fault Details,900]
+TTKN1191
 
-En conclusion, vous pouvez dire **l'application n'est pas résiliente à une petite latence réseau**. Pour réduire ou réparer ce phénomène, vous pouvez configurer l'autoscaling ou mettre en place un mécanisme de cache dans les différents services des applications.
+In conclusion, you can tell **the application is not resilient to a small network latency**. To reduce or fix this phenomenon, you could configure the autoscaling or implement a cache mechanism across the different services of the applications.
 
-== Améliorer la résilience
+TTKN1225 Improve the Resiliency
 
-Pour contenir cette propagation de latence, vous allez appliquer le modèle *Retry* à tous les services appelant les services différés.
+To contain this latency propagation, you are going to apply the *Retry* pattern to all services calling the delayed 'discounts' services.
 
-Les entrées peuvent améliorer la résilience de l'application contre des problèmes transscientifiques comme un service ou un réseau temporairement surchargé comme nous simulons dans notre expérience.
+Retries can improve the application resiliency against transcient problems such as  a temporarily overloaded service or network like we simulate in our experiment.
 
-Au lieu de manquer directement ou d'attendre trop longtemps, nous pourrions réessayer N nombre de fois pour obtenir la sortie souhaitée avec le temps de réponse souhaité avant de considérer comme échoué.
+Instead of failing directly or waiting too long, we could retry N number of times to get the desired output with the desired response time before considering as failed.
 
-`*Configure the Retry pattern for the following services*`
+TTKN1239
 
-<MISSING TTKN12>
-====
-voitures::
+TTKN1216
+TTKN1226
+cars::
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*click on the 'cars' service > 'Actions' > 'Request Timeouts'*`
+In the TTKN1205[Kiali Console^, role='params-link'], from the **'Services' view**, TTKN1240
 
-`*Add HTTP Retry by entering the following settings:*`
+TTKN1241
 
-. Réglages de rentrée HTTP
-[%header,cols=3*]
-|MISUMI
-|Paramètre
+.HTTP Retry Settings
+TTKN1217
+|===
+|Parameter
 |Value
-|MISUMI
+|Description
 
-|Add HTTP Retry
-|MISUMI
-|MISUMI|
+|Add HTTP Retry 
+|**Enabled**
+|
 
 |Attempts
 |**5**
-|MISUMI|
+|
 
 |Per Try Timeout
 |**20ms**
-|MISUMI|
+|
 
-|MISUMI
+|===
 
-image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
+TTKN1192
 
-`*Click on the 'Update' button*`.
+TTKN1242.
 --
 
-vols::
+flights::
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*click on the 'flights' service > 'Actions' > 'Request Timeouts'*`
+In the TTKN1206[Kiali Console^, role='params-link'], from the **'Services' view**, TTKN1243
 
-`*Add HTTP Retry by entering the following settings:*`
+TTKN1244
 
-. Réglages de rentrée HTTP
-[%header,cols=3*]
-|MISUMI
-|Paramètre
+.HTTP Retry Settings
+TTKN1218
+|===
+|Parameter
 |Value
-|MISUMI
+|Description
 
-|Add HTTP Retry
-|MISUMI
-|MISUMI|
+|Add HTTP Retry 
+|**Enabled**
+|
 
 |Attempts
 |**5**
-|MISUMI|
+|
 
 |Per Try Timeout
 |**20ms**
-|MISUMI|
+|
 
-|MISUMI
+|===
 
-image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
+TTKN1193
 
-`*Click on the 'Update' button*`.
+TTKN1245.
 --
 
 hotels::
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*click on the 'hotels' service > 'Actions' > 'Request Timeouts'*`
+In the TTKN1207[Kiali Console^, role='params-link'], from the **'Services' view**, TTKN1246
 
-`*Add HTTP Retry by entering the following settings:*`
+TTKN1247
 
-. Réglages de rentrée HTTP
-[%header,cols=3*]
-|MISUMI
-|Paramètre
+.HTTP Retry Settings
+TTKN1219
+|===
+|Parameter
 |Value
-|MISUMI
+|Description
 
-|Add HTTP Retry
-|MISUMI
-|MISUMI|
+|Add HTTP Retry 
+|**Enabled**
+|
 
 |Attempts
 |**5**
-|MISUMI|
+|
 
 |Per Try Timeout
 |**20ms**
-|MISUMI|
+|
 
-|MISUMI
+|===
 
-image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
+TTKN1194
 
-`*Click on the 'Update' button*`.
+TTKN1248.
 --
 
-assurances::
+insurances::
 +
 --
 Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*click on the 'insurances' service > 'Actions' > 'Request Timeouts'*`

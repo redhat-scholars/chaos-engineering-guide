@@ -1,58 +1,56 @@
-:markup-in-source: verbatim,attributes,quotes
-:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
-:USER_ID: %USER_ID%
-:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
-:OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
-:APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
-:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
+TTKN1115
+TTKN1116
+TTKN1117
+TTKN1118
+TTKN1119
+TTKN1120
+TTKN1121
 
-= Explorer la demande
+TTKN1150 Explore the Application
 
 _10 MINUTE PRACTICE_
 
-image::explore-discover.png[explore-discover, 800]
+TTKN1122
 
-== Qu'est-ce que OpenShift Service Mesh?
+TTKN1151 What is OpenShift Service Mesh?
 
-[sidebar]
-. OpenShift Service Mesh
-♪♪
+TTKN1142
+.OpenShift Service Mesh
+******OpenShift Service Mesh** is also a service available on top of OpenShift.
 
-**OpenShift Service Mesh** est également un service disponible sur OpenShift.
+As applications evolve into collections of decentralized services, managing communications and security between those services becomes more difficult. 
 
-À mesure que les applications deviennent des collections de services décentralisés, la gestion des communications et de la sécurité entre ces services devient plus difficile.
+**Red Hat OpenShift Service Mesh** is a service that provides behavioral insight and operational control over the Service Mesh, providing a uniform way to connect, secure, and monitor microservice applications.
 
-**Red Hat OpenShift Service Mesh** est un service qui fournit un aperçu comportemental et un contrôle opérationnel sur le Service Mesh, fournissant un moyen uniforme de connecter, de sécuriser et de surveiller les applications microservice.
+What’s in it?
 
-Qu’y a-t-il ?
-
-[tabs]
-====
+TTKN1143
+TTKN1152
 Service Mesh::
 +
 --
-image::istio-logo.png[Istio, 200]
+TTKN1123
 
-**Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les plans de contrôle sur une application distribuée.
+**Istio** is an open-source project for integrating and managing traffic flow across services. It works in concert with an underlying cluster manager (like Kubernetes). Centralized components, sidecar proxies, and node agents work together to create the data and control planes over a distributed application.
 --
 
-Observabilité ::
+Observability::
 +
 --
-image::kiali-logo.png[Kiali, 200]
+TTKN1124
 
-L’observation aide les utilisateurs à voir les voies de communication entre les services, comment ils sont gérés et comment le trafic circule dans un temps quasi réel pour faciliter la gestion et le dépannage.
+Observability helps users see communication pathways between services, how they’re being managed, and how traffic is flowing in near-real time for easier management and troubleshooting. 
 
-OpenShift Service Mesh utilise **Kiali**, un projet open source, pour visualiser la configuration, surveiller le trafic et analyser les traces.
+OpenShift Service Mesh uses **Kiali**, an open source project, to view configuration, monitor traffic, and analyze traces.
 --
 
-Surveillance::
+Monitoring::
 +
 --
 image:grafana-logo.png[Grafana, 200]
 image:prometheus-logo.png[Prometheus, 200]
 
-OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques de boîte et de surveillance pour tous les services.
+OpenShift Service Mesh uses **Grafana** and **Prometheus** to provide out of the box metrics and monitoring for all services.
 --
 
 Tracing::
@@ -83,7 +81,7 @@ Puis, `*log in with OpenShift as userTTKN1135'*`
 
 image::kiali-login.png[Kiali- Log In,300]
 
-Sélectionnez la vue **'Graph'**, depuis la barre de menus côté et `*enter the following configuration*`::
+Sélectionnez la vue **'Graph'**, depuis la barre de menus côté et `*enter the following configuration*`:
 
 
 image::kiali-graph.png[Kiali- Graph,900]
@@ -132,7 +130,7 @@ A l'intérieur du **'chaos-engineering{USER_ID}' namespace** nous voyons 3 parti
 
 image::Application-travel-description.png[Application Travel Description- Graph,900]
 
-L'application Travels Demo simule deux domaines d'activité ::
+L'application Travels Demo simule deux domaines d'activité :
 
 === Portail de voyage
 
@@ -154,13 +152,13 @@ Chaque service peut fournir une citation indépendante et le service de voyages 
 
 De plus, certains utilisateurs, comme les utilisateurs enregistrés, peuvent avoir accès à des réductions spéciales, gérées aussi bien par un service externe.
 
-Les relations de service entre les services des applications peuvent être décrites dans le diagramme suivant::
+Les relations de service entre les services des applications peuvent être décrites dans le diagramme suivant:
 
 image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed by Argo CD , 800]
 
 === Débit du portail de voyage et de l'agence de voyage
 
-Un flux typique se compose des étapes suivantes::
+Un flux typique se compose des étapes suivantes:
 
 . Un portail demande le service de voyages pour les destinations disponibles.
 . Voyages service demande les hôtels disponibles et retourne à la boutique portail.
@@ -169,7 +167,7 @@ Un flux typique se compose des étapes suivantes::
 
 === Contrôle des voyages
 
-Le **travel-control** gère un tableau de bord **-business** avec deux caractéristiques clés::
+Le **travel-control** gère un tableau de bord **-business** avec deux caractéristiques clés:
 
 * Permettre des changements pour chaque simulateur de magasin de voyage (ratio de trafic, appareil, utilisateur et type de voyage).
 
@@ -183,11 +181,11 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 
 image::kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
 
-`*Click on 'Add Rule' button*` to redirect all the ingress traffic to the 'control' service*`::
+`*Click on 'Add Rule' button*` to redirect all the ingress traffic to the 'control' service*`:
 
 image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 
-Puis `*click on 'Show Advanced Options' and entering the following information*`::
+Puis `*click on 'Show Advanced Options' and entering the following information*`:
 
 . Réglages Gateways
 [%header,cols=3*]

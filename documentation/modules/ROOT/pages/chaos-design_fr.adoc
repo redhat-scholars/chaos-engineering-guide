@@ -41,7 +41,7 @@ Vous pouvez croire que vous avez conçu les services et l'infrastructure parfait
 
 image::process-chaos.png[process-chaos, 800]
 
-Le processus général d'ingénierie du chaos ressemble à ::
+Le processus général d'ingénierie du chaos ressemble à :
 
 1. **Définir une hypothèse stable :** Vous devez commencer par une idée de ce qui peut aller mal. Commencez par un échec à injecter et prédire un résultat pour quand il tourne en direct.
 
