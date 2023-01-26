@@ -7,7 +7,7 @@
 :GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
 :GITOPS_WORKSHOP_GIT_URL: %WORKSHOP_GIT_REPO%/tree/%WORKSHOP_GIT_REF%/gitops
 
-=  Va te chercher. Environnement Chaos
+=  Découvrez Votre Environnement Chaos
 
 _10 MINUTE EXERCISE_
 
