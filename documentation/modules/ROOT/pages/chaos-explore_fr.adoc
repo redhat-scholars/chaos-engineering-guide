@@ -36,7 +36,7 @@ image::istio-logo.png[Istio, 200]
 **Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les plans de contrôle sur une application distribuée.
 --
 
-Observability::
+<MISSING <MISSING TTKN12>>
 +
 --
 image::kiali-logo.png[Kiali, 200]
@@ -72,17 +72,18 @@ OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et dis
 
 **Kiali** offre une vue graphique interactive de votre espace de nom en temps réel, en mesure d'afficher les interactions à plusieurs niveaux (applications, versions, charges de travail), avec des informations contextuelles et des graphiques sur le nœud ou le bord du graphique sélectionné.
 
-Cliquez sur le bouton 'Kiali' ci-dessous
+`*Cliquez sur le bouton 'Kiali' ci-dessous*`
 
 [link={KIALI_URL}]
 [window="_blank"]
 [role='params-link']
 image::kiali-button.png[Kiali - Button, 300]
 
-Puis, connectez-vous avec OpenShift comme utilisateur {USER_ID}/{OPENSHIFT_PASSWORD}'
+Puis, `*connectez-vous avec OpenShift comme utilisateur {USER_ID}/{OPENSHIFT_PASSWORD} '*`
+
 image::kiali-login.png[Kiali- Log In,300]
 
-Sélectionnez la vue **'Graph'**, depuis la barre de menu latérale et saisissez la configuration suivante:
+Sélectionnez la vue **'Graph'**, depuis la barre de menus côté et `*saisissez la configuration suivante*`:
 
 
 image::kiali-graph.png[Kiali- Graph,900]
@@ -102,7 +103,7 @@ Vous pouvez voir comment les services interagissent entre eux.
 | Graphique de type
 |**Graphique d'application vérifié**
 
-| Afficher
+|Display
 |**'Response Time'** vérifié
 
 "Traffic Animation"
@@ -115,7 +116,7 @@ Vous pouvez voir comment les services interagissent entre eux.
 
 
 
-== Comprendre la demande
+== Comprendre l'application
 
 Avant de poursuivre, nous décrivons l'application utilisée dans cet atelier.
 
@@ -174,18 +175,19 @@ Le **travel-control** gère un tableau de bord **-business** avec deux caractér
 
 * Fournir une vue **-business** sur le total des demandes générées du service **-contrôle** aux services **travel-agency**, organisés selon des critères d'affaires groupés par magasin, par type de trafic et par ville.
 
-== Accéder à la demande
+== Accès à la demande
 
 Pour accéder au tableau de bord (UI) de l'application, nous devons créer un composant Istio Ingress spécifique.
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services'**, cliquez sur le service 'contrôle' Actions'
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*cliquez sur le service 'contrôle' > Actions' > '*`
+
 image::kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
 
-Cliquez sur le bouton « Ajouter la règle »* pour rediriger tout le trafic d'entrée vers le service « contrôle »:
+`*Cliquez sur le bouton « Ajouter la règle »* pour rediriger tout le trafic d'entrée vers le service « contrôle »*`:
 
 image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 
-Puis cliquez sur 'Afficher les options avancées' et saisissez les informations suivantes:
+Puis `*cliquez sur 'Afficher les options avancées' et saisissez les informations suivantes*`:
 
 .Réglages Gateways
 [%header,cols=3*]
@@ -194,18 +196,18 @@ Puis cliquez sur 'Afficher les options avancées' et saisissez les informations 
 |Value
 |Description
 
-| Ajouter Gateway
+|Add Gateway
 |**Enabled**
 |
 
 
 |Gateway Hosts
 |**contrôle-chaos-ingénierie{USER_ID}.{APPS_HOSTNAME_SUFFIX}**
-<MISSING <MISSING TTKN12>>
+|
 |===
 
 image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
-Enfin, cliquez sur le bouton 'Créer'. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
+Enfin, `*cliquez sur le bouton 'Créer'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]

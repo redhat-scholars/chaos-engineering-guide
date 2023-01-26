@@ -32,18 +32,18 @@ image::Logo-Red_Hat-OpenShift.png[Red Hat OpenShift, 300]
 OpenShift embarque avec une console web qui permettra aux utilisateurs de
 effectuer diverses tâches via un navigateur.
 
-Cliquez sur le bouton "OpenShift Console" ci-dessous
+`*Cliquez sur le bouton "OpenShift Console" ci-dessous*`
 
 [link={OPENSHIFT_CONSOLE_URL}]
 [window="_blank"]
 [role='params-link']
 image::openshift-console-button.png[OpenShift Console - Button, 300]
 
-Entrez votre nom d'utilisateur et votre mot de passe (user{USER_ID}/{OPENSHIFT_PASSWORD}) et
+`*Entrez votre nom d'utilisateur et votre mot de passe (user{USER_ID}/{OPENSHIFT_PASSWORD})*` et
 puis connectez-vous. Après avoir authentifié la console web, vous serez présenté avec une
 liste des projets avec lesquels votre utilisateur a la permission de travailler.
 
-Sélectionnez 'Developer View' puis votre 'chaos-engineering{USER_ID}'à prendre à la page d'aperçu du projet
+`*Sélectionnez 'Developer View' puis votre 'chaos-engineering{USER_ID} '*` à prendre à la page d'aperçu du projet
 qui listera tous les itinéraires, services, déploiements et pods que vous avez
 courir dans le cadre de votre projet. Il n'y a rien, mais c'est sur le point de le faire.
 changement.
@@ -79,14 +79,14 @@ image::argocd-features.png[argo features- Button, 400]
 
 == Connectez-vous à OpenShift GitOps (Argo CD)
 
-Cliquez sur le bouton 'OpenShift GitOps' ci-dessous
+`*Cliquez sur le bouton 'OpenShift GitOps' ci-dessous*`
 
 [link={GITOPS_URL}]
 [window="_blank"]
 [role='params-link']
 image::openshift-gitops-button.png[OpenShift GitOps - Button^, 300]
 
-Puis s'identifier comme {USER_ID}/{OPENSHIFT_PASSWORD}. Une fois terminé, vous serez redirigé vers la page suivante qui liste les **Argo CD Applications**.
+Puis `*s'identifier comme utilisateur {USER_ID}/{OPENSHIFT_PASSWORD}*`. Une fois terminé, vous serez redirigé vers la page suivante qui liste les **Argo CD Applications**.
 
 image::argocd-home.png[Argo CD - Home Page, 500]
 
@@ -97,7 +97,7 @@ déployée dans l'ingénierie **{USER_ID}'**, et aucune ressource Kubernetes n'a
 
 == Sync/Deployez l'application
 
-Pour déployer l'application, cliquez sur la case 'chaos-engineering{USER_ID}' puis sur 'Sync phy Synchronisation'.
+Pour déployer l'application, `*cliquez sur la case 'chaos-engineering{USER_ID}' puis sur 'Sync phy Synchronisation '*`.
 
 image::argocd-sync.png[Argo CD - Sync Application, 900]
 
@@ -112,7 +112,7 @@ Après quelques secondes, vous devriez voir **tout en vert**. Votre demande est 
 image::argocd-synced-application.png[Argo CD - Synced Application, 600]
 
 Dans le lien:{OPENSHIFT_CONSOLE_URL}[OpenShift Web Console^, role='params-link'], à partir de la vue **Developer**,
-sélectionnez la page d'aperçu du projet *chaos-engineering{USER_ID}*.
+sélectionnez le `**chaos-engineering{USER_ID}**` à prendre à la page d'aperçu du projet.
 
 image::openshift-app-deployed-by-argocd.png[OpenShift - Coolstore Project Deployed by Argo CD , 700]
 
