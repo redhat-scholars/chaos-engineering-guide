@@ -60,12 +60,12 @@ Par exemple :
 
 `*Click on the 'Grafana' button below*`.
 
-[link=TTKN1302]
+[link={GRAFANA_URL}]
 [window="_blank"]
 [role='params-link']
 image::grafana-button.png[Grafana- Button, 300]
 
-Puis, `*log in with OpenShift as 'userTTKN1303/TTKN1304'*`
+Puis, `*log in with OpenShift as 'user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
 
 image::grafana-home.png[Grafana - Home,900]
 
@@ -316,7 +316,7 @@ Vous venez d'apprendre à créer un tableau de bord Grafana. Maintenant, importo
 
 `*Click on the following button and copy the content*`
 
-[link=TTKN1310]
+[link={DASHBOARD_GIT_URL}]
 [window="_blank"]
 [role='params-link']
 image::chaos-dashboard-button.png[Chaos Dashboard - Button, 300]
@@ -333,7 +333,7 @@ image::grafana-load-dashboard.png[Grafana - Home,700]
 
 [WARNING]
 ====
-Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*please add 'userTTKN1312' in the name*`.
+Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*please add 'user{USER_ID}' in the name*`.
 
 image::error-import-grafana.png[Grafana import Error - Home,900]
 ====
@@ -362,7 +362,7 @@ image::grafana-block-A.png[Grafana - Home,900]
 
 * [Red]  Volume de demande global = le nombre total de demandes
 * [Yellow]  Taux de réussite global = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
-*<MISSING TTKN13394>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
+*<MISSING <MISSING TTKN13394>>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
 * [Cyan] list de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
 * [Pink] Nombre de demandes de services
 * [Brown]  Latence par service

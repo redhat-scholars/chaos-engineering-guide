@@ -248,7 +248,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 hotels::
 +
 --
-Dans le <MISSING TTKN12>[Kiali Console^, role='params-link'], de l'avis **'Services**, `*click on the 'hotels' service > 'Actions' > 'Request Timeouts'*`
+Dans le <MISSING <MISSING TTKN12>>[Kiali Console^, role='params-link'], de l'avis **'Services**, `*click on the 'hotels' service > 'Actions' > 'Request Timeouts'*`
 
 `*Add HTTP Retry by entering the following settings:*`
 

@@ -74,12 +74,12 @@ OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et dis
 
 `*Click on the 'Kiali' button below*`
 
-[link=TTKN1136]
+[link={KIALI_URL}]
 [window="_blank"]
 [role='params-link']
 image::kiali-button.png[Kiali - Button, 300]
 
-Puis, `*log in with OpenShift as userTTKN1137/TTKN1138'*`
+Puis, `*log in with OpenShift as user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
 
 image::kiali-login.png[Kiali- Log In,300]
 
@@ -208,6 +208,6 @@ Puis `*click on 'Show Advanced Options' and entering the following information*`
 
 image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
-Enfin, `*click on the 'Create' button*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineeringTTKN1145.TTKN1146[^, role='params-link'].
+Enfin, `*click on the 'Create' button*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]
