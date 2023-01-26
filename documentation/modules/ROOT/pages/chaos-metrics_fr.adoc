@@ -165,7 +165,7 @@ image::grafana-number-total-graph.png[Grafana - Home,700]
 
 Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:*`
 
-. Réglages Singlestat
+.Réglages Singlestat
 [%header,cols=3*]
 |===
 |Paramètre
@@ -190,7 +190,7 @@ image::grafana-visualization-settings.png[Grafana - Home,500]
 
 Ensuite, `*click on the 'General Settings' icon and enter the following parameters:*`
 
-. Réglages généraux
+.Réglages généraux
 [%header,cols=3*]
 |===
 |Paramètre
@@ -260,7 +260,7 @@ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{US
 
 Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:*`
 
-. Réglages Singlestat
+.Réglages Singlestat
 [%header,cols=3*]
 |===
 |Paramètre
@@ -290,7 +290,7 @@ image::grafana-gsr-step2.png[Grafana - GSR setup ,900]
 
 Suivant, `*click on the 'General Settings' icon and enter the following parameters:*`
 
-. Réglages généraux
+.Réglages généraux
 [%header,cols=3*]
 |===
 |Paramètre
