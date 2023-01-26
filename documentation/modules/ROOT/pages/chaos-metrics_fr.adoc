@@ -167,7 +167,7 @@ Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 
 . Réglages Singlestat
 [%header,cols=3*]
-|====
+|===
 |Paramètre
 |Value
 |Description
@@ -177,14 +177,14 @@ Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 |
 
 |Unit
-|**Proces de croissance/min (opm)**
+|**Procédures/min (opm)**
 |
 
 |Spark Lines
 |**Show** activé
 |
 
-|====
+|===
 
 image::grafana-visualization-settings.png[Grafana - Home,500]
 
@@ -192,7 +192,7 @@ Ensuite, `*click on the 'General Settings' icon and enter the following paramete
 
 . Réglages généraux
 [%header,cols=3*]
-|====
+|===
 |Paramètre
 |Value
 |Description
@@ -201,7 +201,7 @@ Ensuite, `*click on the 'General Settings' icon and enter the following paramete
 |**Volume de demande global**
 |
 
-|====
+|===
 
 image::grafana-general-settings.png[Grafana - Home,500]
 
@@ -262,7 +262,7 @@ Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 
 . Réglages Singlestat
 [%header,cols=3*]
-|====
+|===
 |Paramètre
 |Value
 |Description
@@ -271,7 +271,7 @@ Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 |**Singlestat**
 |
 
-| Unité
+|Unit
 |**pourcent (0.0-1.0)**
 |
 
@@ -284,24 +284,24 @@ Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 |
 
 
-|====
+|===
 
 image::grafana-gsr-step2.png[Grafana - GSR setup ,900]
 
-Ensuite, `*click on the 'General Settings' icon and enter the following parameters:*`
+Suivant, `*click on the 'General Settings' icon and enter the following parameters:*`
 
 . Réglages généraux
 [%header,cols=3*]
-|====
+|===
 |Paramètre
-|Value
+| Valeur
 |Description
 
-|Title
-|**Taux mondial de réussite (réponses non 5xx)**
+| Titre
+|**Taux de réussite global (réponses non 5xx)**
 |
 
-|====
+|===
 
 image::grafana-general-settings-step3.png[Grafana - Home,700]
 

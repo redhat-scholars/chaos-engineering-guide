@@ -43,7 +43,7 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
 . Réglages HTTP Abort
 [%header,cols=3*]
-|====
+|===
 |Paramètre
 |Value
 |Description
@@ -64,7 +64,7 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 |**503**
 |
 
-|====
+|===
 
 image::kiali-configure-error.png[Kiali - Configure Error,300]
 
@@ -88,13 +88,13 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort
 
 . Réglages HTTP Abort
 [%header,cols=3*]
-|====
+|===
 |Paramètre
 |Value
 |Description
 
 |Add HTTP Delay
-|Disabled
+|Disableduit
 |
 
 |Add HTTP Abort
@@ -106,10 +106,10 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort
 |
 
 |HTTP Code d'état civil
-<MISSING <MISSING TTKN1148503>>
+<MISSING <MISSING TTKN1149503>>
 |
 
-|====
+|===
 
 image::grafana-error-fault-overview-2.png[Grafana - Error Fault Overview,900]
 

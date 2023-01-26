@@ -24,7 +24,7 @@ image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
 . Réglages de timeout HTTP
 [%header,cols=3*]
-|====
+|===
 |Paramètre
 |Value
 |Description
@@ -37,7 +37,7 @@ image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 |**50ms**
 |
 
-|====
+|===
 
 image::kiali-configure-timeout.png[Kiali - Configure Timeout,400]
 
@@ -65,7 +65,7 @@ Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
 
 . Réglages de rentrée HTTP
 [%header,cols=3*]
-|====
+|===
 |Paramètre
 |Value
 |Description
@@ -82,7 +82,7 @@ Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
 |**10ms**
 |
 
-|====
+|===
 
 image::kiali-configure-retry.png[Kiali - Configure Retry,400]
 
