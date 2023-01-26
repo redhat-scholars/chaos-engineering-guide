@@ -22,7 +22,7 @@ Nous posons la question: **combien de demandes sommes-nous efficaces pour un tem
 
 [tabs]
 ====
-Service Level Indicator (SLI)::
+Indicateur de niveau de service (SLI)::
 +
 --
 Un **SLI** est un indicateur de niveau de service – une mesure quantitative soigneusement définie de certains aspects du niveau de service qui est fourni. Nous vous recommandons de lire ce grand livre SRE plus tard https://sre.google/sre-book/service-level-objectives/[Chapter 4- Service Level objectives (Google SRE book)]
@@ -35,7 +35,7 @@ Par exemple :
 * Latence inférieure à X
 --
 
-Service Level Objective (SLO)::
+Objectif du niveau de service (SLO)::
 +
 --
 Un **SLO** est un objectif de niveau de service : une valeur cible ou une gamme de valeurs pour un niveau de service mesuré par un **SLI**.
@@ -94,7 +94,7 @@ image::grafana-add-query.png[Grafana - Home,700]
 
 [tabs]
 ====
-Step1::
+Étape1::
 +
 --
 
@@ -109,7 +109,7 @@ C'est un compteur qui mesure le nombre total de demandes qui ont été reçues p
 dimensions, par série chronologique dans une gamme de vecteurs
 --
 
-Step2::
+Étape2::
 +
 --
 
@@ -122,7 +122,7 @@ istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"
 Filtrer la mesure pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
 --
 
-Step3::
+Étape3::
 +
 --
 
@@ -135,7 +135,7 @@ Step3::
 Ajout de la fonction **increase()**, la requête renvoie le seul nombre de requêtes mesurées sur la dernière minute par série chronologique.
 --
 
-Step4::
+Étape4::
 +
 --
 

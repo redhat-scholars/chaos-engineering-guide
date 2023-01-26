@@ -46,7 +46,7 @@ L’observation aide les utilisateurs à voir les voies de communication entre l
 OpenShift Service Mesh utilise **Kiali**, un projet open source, pour visualiser la configuration, surveiller le trafic et analyser les traces.
 --
 
-Monitoring::
+Surveillance::
 +
 --
 image:grafana-logo.png[Grafana, 200]
@@ -55,7 +55,7 @@ image:prometheus-logo.png[Prometheus, 200]
 OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques de boîte et de surveillance pour tous les services.
 --
 
-Tracing::
+Traçage::
 +
 --
 image:jaeger-logo.png[Istio, 200]
