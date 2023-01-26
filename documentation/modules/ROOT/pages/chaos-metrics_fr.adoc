@@ -7,12 +7,12 @@
 :COOLSTORE_HOMEPAGE: http://web-chaos-engineering{USER_ID}.%APPS_HOSTNAME_SUFFIX%
 :DASHBOARD_GIT_URL: https://raw.githubusercontent.com/mcouliba/chaos-engineering-workshop/%WORKSHOP_GIT_REF%/grafana/chaos-engineering-dashboard.json
 
-= Définir et surveiller les métriques de Chaos
+= Définir et surveiller Chaos metrics
 
 _20 MINUTE PRACTICE_
 
 
-== Pourquoi tu as besoin de Métrique ?
+==  Pourquoi tu as besoin de Métrique ?
 
 Comme décrit dans le processus d'ingénierie du chaos **nous sommes actuellement dans une hypothèse de l'état normal**. Cela signifie que nous devons définir **mesures** pour indiquer que le système fonctionne d'une manière prévue du point de vue commercial, et dans un ensemble donné de tolérances.**État normal**signifie que vous pouvez mesurer que le système fonctionne d'une manière prévue. Dans ce cas, ce comportement normal est que le système rencontrera son **SLO** ( **S**ervice **L**evel **O**bjective).
 
@@ -21,8 +21,8 @@ Au lieu de poser la question: le service est-il en place ou en bas?
 Nous posons la question: **combien de demandes sommes-nous efficaces pour un temps donné? **
 
 [tabs]
-====
-Indicateur de niveau de service (SLI)::
+Indicateur de niveau de service ====
+ (SLI)::
 +
 --
 Un **SLI** est un indicateur de niveau de service – une mesure quantitative soigneusement définie de certains aspects du niveau de service qui est fourni. Nous vous recommandons de lire ce grand livre SRE plus tard https://sre.google/sre-book/service-level-objectives/[Chapter 4- Service Level objectives (Google SRE book)]
@@ -56,7 +56,7 @@ Par exemple :
 
 ====
 
-== Créer un tableau de bord Grafana
+== Créer un tableau de bord de Grafana
 
 `*Cliquez sur le bouton 'Grafana' ci-dessous*`.
 
@@ -94,7 +94,7 @@ image::grafana-add-query.png[Grafana - Home,700]
 
 [tabs]
 ====
-Étape1::
+Step1::
 +
 --
 
@@ -119,7 +119,7 @@ dimensions, par série chronologique dans une gamme de vecteurs
 istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}**
 ----
 
-Filtrer la mesure pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
+Filtrer la métrique pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
 --
 
 Étape3::
@@ -197,7 +197,7 @@ Ensuite, `*cliquez sur l'icône « Paramètres généraux » et saisissez les pa
 |Value
 |Description
 
-|Title
+| Titre
 |**Volume de demande global**
 |
 
@@ -253,7 +253,7 @@ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{US
 
 [TIP]
 ====
-**Global Success Rate** est un ratio pariwen le nombre de requêtes réussies et le nombre de requêtes http.
+**Global Success Rate** is a ratio betwen the number of successfull request and the number of http requests.
 ====
 
 
@@ -264,7 +264,7 @@ Puis, `*cliquez sur l'icône « Paramètres de visualisation » sur la barre lat
 [%header,cols=3*]
 |===
 |Paramètre
-|Value
+| Valeur
 |Description
 
 |Visualisation
@@ -288,13 +288,13 @@ Puis, `*cliquez sur l'icône « Paramètres de visualisation » sur la barre lat
 
 image::grafana-gsr-step2.png[Grafana - GSR setup ,900]
 
-Suivant, `*cliquez sur l'icône « Paramètres généraux » et saisissez les paramètres suivants :*`
+Ensuite, `*cliquez sur l'icône « Paramètres généraux » et saisissez les paramètres suivants :*`
 
 .Réglages généraux
 [%header,cols=3*]
 |===
 |Paramètre
-| Valeur
+|Value
 |Description
 
 | Titre
@@ -310,7 +310,7 @@ Enfin, `*cliquez sur l'icône 'back' au coin supérieur gauche puis sur l'icône
 **Félicitations !** Vous venez de créer votre deuxième Chaos Metric **Global Success Rate (non 5xx réponses)** dans un tableau de bord de Grafana!
 
 
-== Importer le tableau de bord d'ingénierie Chaos
+== Porter le tableau de bord d'ingénierie Chaos
 
 Vous venez d'apprendre à créer un tableau de bord Grafana. Maintenant, importons le tableau de bord complet de Grafana nécessaire aux expériences de chaos.
 
@@ -333,7 +333,7 @@ image::grafana-load-dashboard.png[Grafana - Home,700]
 
 [WARNING]
 ====
-Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*s'il vous plaît ajouter 'user{USER_ID}' dans le nom*`.
+ Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*s'il vous plaît ajouter 'user{USER_ID}' dans le nom*`.
 
 image::error-import-grafana.png[Grafana import Error - Home,900]
 ====
@@ -342,7 +342,7 @@ Vous avez maintenant accès au tableau de bord de Chaos Engineering.
 
 image::grafana-chaos-engineering-dashboard.png[Grafana - Home,700]
 
-== Explorez le tableau de bord de l'ingénierie Chaos
+== Explore le tableau de bord d'ingénierie Chaos
 
 Retrouvez ici le tableau de bord complet de Grafana importé
 
@@ -350,20 +350,20 @@ image::full-grafana-dashboard.png[Grafana - Home,900]
 
 Pour explorer ce tableau de bord on peut le voir comme :
 
-* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] ici chaos-engineering{USER_ID} et un service  [Cyan]  de la demande de voyage
-* [Blue]  Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
+* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace de nom  [Pink] ici chaos-engineering{USER_ID} et un service [Cyan]  de la demande de voyage
+* [Blue] Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
 * [Yellow]  Block B toutes les mesures relatives à un service spécifié
 
 image::dashboard-explained.png[Grafana - Home,900]
 
-Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-engineering{USER_ID}** nous pouvons voir :
+Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-engineering{USER_ID}**, nous pouvons voir :
 
 image::grafana-block-A.png[Grafana - Home,900]
 
-* [Red] Global Request Volume = le nombre total de demandes
+* [Red]  Volume de demande global = le nombre total de demandes
 * [Yellow]  Taux de réussite global = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
-*<MISSING <MISSING TTKN15054>>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
-* [Cyan] liste de tous les noms de services disponibles dans l'espace de nom chaos-engineering{USER_ID}
+*<MISSING <MISSING TTKN14934>>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
+* [Cyan] list de tous les noms de services disponibles dans l'espace de nom chaos-engineering{USER_ID}
 * [Pink] Nombre de demandes de services
 * [Brown]  Latence par service
 * [Green]  Succès des demandes par services = Rapport de la demande réussie associée au service
@@ -375,13 +375,13 @@ Si nous zoomons dans le bloc B par rapport au **SERVICE** sélectionné, nous po
 
 image::grafana-block-B.png[Grafana - Home,900]
 
-* [Brown] Error Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
-* [Pink]  Le taux de réussite = Virus pour identifier l'erreur HTTP WHEN survienne dans l'appel de service
+* [Brown]  Erreur Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
+* [Pink]  Taux de succès = Virus pour identifier l'erreur HTTP WHEN survenant dans l'appel de service
 * [Blue]  Valeur de latence pour le service
 * [Green] Durée de demande pour le service
 
 
 [IMPORTANT]
 ====
-Toutes les métriques doivent être mesurées sur une fenêtre temporelle (généralement un mois) mais surtout pour cet atelier ici nous prenons la minute [1m]  pour voir quelques changements dans le tableau de bord.
+ Toutes les métriques doivent être mesurées sur une fenêtre temporelle (généralement un mois) mais surtout pour cet atelier, nous prenons la minute [1m]  pour voir quelques changements dans le tableau de bord.
 ====

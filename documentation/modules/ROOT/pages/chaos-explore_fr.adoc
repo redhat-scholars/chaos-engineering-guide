@@ -6,7 +6,7 @@
 :APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Explorer la demande
+= Explore la demande
 
 _10 MINUTE PRACTICE_
 
@@ -36,7 +36,7 @@ image::istio-logo.png[Istio, 200]
 **Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les plans de contrôle sur une application distribuée.
 --
 
-<MISSING <MISSING TTKN12>>
+Observabilité::
 +
 --
 image::kiali-logo.png[Kiali, 200]
@@ -55,7 +55,7 @@ image:prometheus-logo.png[Prometheus, 200]
 OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques de boîte et de surveillance pour tous les services.
 --
 
-Traçage::
+<MISSING <MISSING TTKN12>>
 +
 --
 image:jaeger-logo.png[Istio, 200]
@@ -68,7 +68,7 @@ OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et dis
 
 ♪♪
 
-== Observabilité avec Kiali
+==  Observabilité avec Kiali
 
 **Kiali** offre une vue graphique interactive de votre espace de nom en temps réel, en mesure d'afficher les interactions à plusieurs niveaux (applications, versions, charges de travail), avec des informations contextuelles et des graphiques sur le nœud ou le bord du graphique sélectionné.
 
@@ -83,7 +83,7 @@ Puis, `*connectez-vous avec OpenShift comme user{USER_ID}/{OPENSHIFT_PASSWORD} '
 
 image::kiali-login.png[Kiali- Log In,300]
 
-Sélectionnez la vue **'Graph'**, depuis la barre de menus côté et `*saisissez la configuration suivante*`:
+Sélectionnez la vue **'Graph'**, depuis la barre de menus latérales et `*saisissez la configuration suivante*`:
 
 
 image::kiali-graph.png[Kiali- Graph,900]
@@ -100,10 +100,10 @@ Vous pouvez voir comment les services interagissent entre eux.
 |Namespace
 |**chaos-engineering{USER_ID}**
 
-| Graphique de type
+Graphique de type |
 |**Graphique d'application vérifié**
 
-|Display
+|Affichage
 |**'Response Time'** vérifié
 
 "Traffic Animation"
@@ -116,7 +116,7 @@ Vous pouvez voir comment les services interagissent entre eux.
 
 
 
-== Comprendre l'application
+==  Comprendre l'application
 
 Avant de poursuivre, nous décrivons l'application utilisée dans cet atelier.
 
@@ -124,7 +124,7 @@ Cette application de démonstration déploie plusieurs services dans 1 espace de
 
 ***'chaos-engineering{USER_ID}'** namespace
 
-A l'intérieur du **'chaos-engineering{USER_ID}' espace de nom** nous voyons 3 parties
+A l'intérieur du **'chaos-engineering{USER_ID}' namespace** nous voyons 3 parties
 
 * Travel-portal
 * Travel-agency
@@ -134,7 +134,7 @@ image::Application-travel-description.png[Application Travel Description- Graph,
 
 L'application Travels Demo simule deux domaines d'activité :
 
-=== Portail de voyage
+=== Travel Portal
 
 Dans une première partie appelée **travel-portal** il y aura déployé plusieurs magasins de voyage, où les utilisateurs peuvent chercher et réserver des vols, hôtels, voitures ou assurances.
 
@@ -144,7 +144,7 @@ Ces charges de travail peuvent générer différents types de trafic pour imiter
 
 Tous les portails consomment un service appelé voyages.
 
-=== Agence de voyages
+=== Travel Agency
 
 Une deuxième partie, **travel-agency**, accueillera un ensemble de services créés pour fournir des devis de voyage.
 
@@ -158,7 +158,7 @@ Les relations de service entre les services des applications peuvent être décr
 
 image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed by Argo CD , 800]
 
-=== Travel Portal and Travel Agency flow
+=== Flux de portails de voyage et d'agence de voyage
 
 Un flux typique se compose des étapes suivantes:
 
@@ -167,7 +167,7 @@ Un flux typique se compose des étapes suivantes:
 .Un utilisateur choisit une destination et un type de voyage, qui peut inclure un vol et/ou une voiture, hôtel et assurance.
 .Voitures, Hôtels et Vols peuvent avoir des réductions disponibles selon le type d'utilisateur.
 
-=== Contrôle des voyages
+=== Commande de route
 
 Le **travel-control** gère un tableau de bord **-business** avec deux caractéristiques clés:
 
@@ -175,7 +175,7 @@ Le **travel-control** gère un tableau de bord **-business** avec deux caractér
 
 * Fournir une vue **-business** sur le total des demandes générées du service **-contrôle** aux services **travel-agency**, organisés selon des critères d'affaires groupés par magasin, par type de trafic et par ville.
 
-== Accès à la demande
+==  Accès à la demande
 
 Pour accéder au tableau de bord (UI) de l'application, nous devons créer un composant Istio Ingress spécifique.
 
@@ -196,7 +196,7 @@ Puis `*cliquez sur 'Afficher les options avancées' et saisissez les information
 |Value
 |Description
 
-|Add Gateway
+| Ajouter Gateway
 |**Enabled**
 |
 

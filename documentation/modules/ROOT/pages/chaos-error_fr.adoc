@@ -8,7 +8,7 @@
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
 
-= Expérience Chaos 2: Service non disponible
+= Expérience des chaos 2: Service non disponible
 
 _10 MINUTE PRACTICE_
 
@@ -17,7 +17,7 @@ Voyons comment la demande se produira lorsque ce même service n'est pas disponi
 
 _**Un service de décompte disponible ne devrait pas avoir d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
 
-== Définir l'état stable
+==  Définir l'état stable
 
 Comme dans le laboratoire précédent, nous garderons le même état stable
 
@@ -27,7 +27,7 @@ image::grafana-service-overview-configured-2.png[Grafana - Service Overview Conf
 
 Nous pourrons voir comment un autre type de défaillance du même service pourrait avoir un impact sur le comportement de notre application.
 
-== Exécutez l'expérience Chaos
+==  Exécutez l'expérience Chaos
 
 Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*clic droit sur le service 'discounts' et sélectionnez 'Details'*`
 
@@ -72,7 +72,7 @@ image::kiali-configure-error.png[Kiali - Configure Error,300]
 
 **10% du trafic du service 'discounts' échoue avec un code HTTP 503**. Voyons maintenant l'impact de l'application.
 
-== Analyser le résultat Chaos
+==  Analyser le résultat Chaos
 
 Dans le {GRAFANA_URL}[Chaos Engineering Dashboard], vous pouvez voir le résultat de l'expérience de chaos.
 
@@ -106,7 +106,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*mettre à jour la str
 |
 
 |HTTP Code d'état civil
-<MISSING <MISSING TTKN1149503>>
+<MISSING <MISSING TTKN1147503>>
 |
 
 |===
@@ -118,7 +118,7 @@ Donc votre hypothèse est validée:
 
 _**Les services « décomptes » non disponibles n'ont pas d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
 
-== Retourner l'expérience Chaos
+== Rollback l'expérience Chaos
 
 Dans {GITOPS_URL}[Argo CD^, role='params-link'], `*cliquez sur 'Sync > Synchronize '*`.
 

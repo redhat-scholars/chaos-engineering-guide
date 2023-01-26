@@ -7,12 +7,12 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Conception expériences Chaos
+= Design Expériences de Chaos
 
 _2 MINUTE PRACTICE_
 
 
-== Qu'est-ce que Chaos Engineering ?
+==  Qu'est-ce que Chaos Engineering ?
 
 [sidebar]
 .Principes de Chaos Engineering
@@ -36,7 +36,7 @@ image::simple-2-service.png[simple-2-service - A simple two-service system, 700]
 
 * Que se passe-t-il si le CPU utilisé par **Service Y** est maxi? et surtout, que signifie tout cela pour l'utilisateur?
 
-Vous pouvez croire que vous avez conçu les services et l'infrastructure parfaitement pour accueillir tous ces cas, mais _**comment savoir**_ ? Même dans un système aussi simple, il est probable qu'il y ait quelques surprises --certaines dettes noires** -- présentes.**L'ingénierie du système fournit une façon d'explorer ces incertitudes pour savoir si vos hypothèses de la résilience du système contiennent de l'eau dans le monde réel. **== Planifier une expérience Chaos**Chaos Engineering**commence par poser la question :** « Savons-nous ce que le système pourrait faire dans ce cas ? »* *
+Vous pouvez croire que vous avez conçu les services et l'infrastructure parfaitement pour accueillir tous ces cas, mais _**comment savoir**_ ? Même dans un système aussi simple, il est probable qu'il y ait quelques surprises --certaines dettes noires** -- présentes.**L'ingénierie du système fournit une façon d'explorer ces incertitudes pour savoir si vos hypothèses de la résilience du système contiennent de l'eau dans le monde réel. **==  Planifier une expérience Chaos**Chaos Engineering**commence par poser la question :** « Savons-nous ce que le système pourrait faire dans ce cas ? »* *
 
 
 image::process-chaos.png[process-chaos, 800]

@@ -8,7 +8,7 @@
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
 
-= Expérience Chaos 1: Latence du réseau
+= Expérience de Chaos 1: Latence du réseau
 
 _30 MINUTE PRACTICE_
 
@@ -26,7 +26,7 @@ Premièrement, `*sélectionner les variables suivantes sur le tableau de bord*`:
 [%header,cols=3*]
 |===
 |Paramètre
-| Valeur
+|Value
 |Description
 
 | Namespace
@@ -85,7 +85,7 @@ image::grafana-p99-latency-threholds.png[Grafana - P99 Latency Threholds,700]
 |Value
 |Description
 
-|Seuils
+|
 |**0.95,0.99**
 |
 
@@ -107,7 +107,7 @@ image::grafana-service-overview-configured.png[Grafana - Service Overview Config
 
 `*Cliquez sur l'icône 'Disk' pour enregistrer et retourner au tableau de bord.*`
 
-== Exécutez l'expérience Chaos
+== Run l'expérience Chaos
 
 Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*clic droit sur le service 'discounts' (le symbole triangle) et sélectionnez 'Details'*`
 
@@ -132,7 +132,7 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 |**Enabled**
 |
 
-| Pourcentage de retard
+|
 |**5**
 |
 
@@ -148,7 +148,7 @@ image::kiali-configure-latency.png[Kiali - Configure Latency,400]
 
 **5% du trafic du service des « comptes » a maintenant 1 seconde de retard. **
 
-== Analyser le résultat Chaos
+==  Analyser le résultat Chaos
 
 Voyons maintenant l'impact de l'application.
 
@@ -179,7 +179,7 @@ Au lieu de manquer directement ou d'attendre trop longtemps, nous pourrions rée
 
 [tabs]
 ====
-voitures::
+cars::
 +
 --
 Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*cliquez sur le service 'cars' > Actions' >'Request Timeouts '*`
@@ -197,11 +197,11 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 |**Enabled**
 |
 
-|Attempts
+|Tents
 |**5**
 |
 
-|P Essayez le timeout
+|Per Try Timeout
 |**20ms**
 |
 
@@ -223,7 +223,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 [%header,cols=3*]
 |===
 |Paramètre
-| Valeur
+|Value
 |Description
 
 |Add HTTP Retry
@@ -234,7 +234,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 |**5**
 |
 
-| Per Essayez le timeout
+| per Essayez le timeout
 |**20ms**
 |
 
@@ -263,7 +263,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 |**Enabled**
 |
 
-|Attempts
+| Tentatives
 |**5**
 |
 
@@ -300,7 +300,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 |**5**
 |
 
-|Per Essayez le timeout
+|per Essayez le timeout
 |**20ms**
 |
 
@@ -312,7 +312,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 --
 ====
 
-== Valider l'amélioration
+==  Valider l'amélioration
 
 Retour dans le {GRAFANA_URL}[Chaos Engineering Dashboard], vous pouvez dire que nous parvenons à contenir la propagation de latence de **ne dépassant pas 100 ms en général** en utilisant le modèle Retry tandis que le service 'discounts' a toujours le problème de latence 1s.
 
@@ -322,7 +322,7 @@ Vous pouvez voir plus de détails sur le panneau 'Request Durée' pour le servic
 
 image::grafana-latency-contained-details.png[Grafana - Latency Contained Details,900]
 
-== Retourner l'expérience Chaos
+==  Retourner l'expérience Chaos
 
 Il n'y a rien de plus simple que de retourner toutes les configurations que vous avez faites pendant ce laboratoire avec Argo CD.
 

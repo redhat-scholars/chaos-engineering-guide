@@ -7,7 +7,7 @@
 :GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
 :GITOPS_WORKSHOP_GIT_URL: %WORKSHOP_GIT_REPO%/tree/%WORKSHOP_GIT_REF%/gitops
 
-= Va te chercher. Environnement Chaos
+=  Va te chercher. Environnement Chaos
 
 _10 MINUTE EXERCISE_
 
@@ -17,7 +17,7 @@ Dans cette section, vous explorerez OpenShift et déployerez une application en 
 
 image::explore-discover.png[explore-discover, 800]
 
-== Qu'est-ce que Red Hat OpenShift?
+==  Qu'est-ce que Red Hat OpenShift?
 
 [sidebar]
 --
@@ -27,7 +27,7 @@ image::Logo-Red_Hat-OpenShift.png[Red Hat OpenShift, 300]
 **Red Hat® OpenShift®** permet aux entreprises de construire des architectures très agiles et évolutives avec une sécurité de cluster améliorée qui peut être déployée à n'importe quel endroit.**Red Hat® OpenShift®** propose une installation automatisée, des mises à niveau et la gestion du cycle de vie dans toute la pile de conteneurs – le système d'exploitation, https://www.openshift.com/learn/topics/kubernetes/?hsLang=en-us[Kubernetes] et les services de cluster et applications – sur tout nuage.
 --
 
-== Connectez-vous à la console Web OpenShift
+==  Connectez-vous à la console Web OpenShift
 
 OpenShift embarque avec une console web qui permettra aux utilisateurs de
 effectuer diverses tâches via un navigateur.
@@ -50,7 +50,7 @@ changement.
 
 image::openshift-empty-project.png[OpenShift - Empty Project, 700]
 
-== Qu'est-ce que OpenShift GitOps?
+==  Qu'est-ce que OpenShift GitOps?
 
 [sidebar]
 --
@@ -64,7 +64,7 @@ image::gitops-model.png[gitops-model, 500]
 
 
 
-=== Argo CD propose
+Caractéristiques CD === Argo
 
 * Configuration du cluster et de l'application en version Git
 * Configuration de synchronisation automatique de Git aux clusters
@@ -77,7 +77,7 @@ image::gitops-model.png[gitops-model, 500]
 image::argocd-features.png[argo features- Button, 400]
 
 
-== Connectez-vous à OpenShift GitOps (Argo CD)
+==  Connectez-vous à OpenShift GitOps (Argo CD)
 
 `*Cliquez sur le bouton 'OpenShift GitOps' ci-dessous*`
 
@@ -95,7 +95,7 @@ Une application CD **Argo** représente une instance d'application déployée da
 Le statut **Argo CD Application** est d'abord en jaune, moyen **OutOfSync** état, puisque la demande n'a pas encore été présentée
 Déployé dans l'espace-nom **'chaos-engineering{USER_ID}'**, et aucune ressource Kubernetes n'a été créée.
 
-== Sync/Deployez l'application
+== Sync/ Déployer la demande
 
 Pour déployer l'application, `*cliquez sur la case 'chaos-engineering{USER_ID}' puis sur 'Sync > Synchronize' '*`.
 
@@ -103,7 +103,7 @@ image::argocd-sync.png[Argo CD - Sync Application, 900]
 
 [TIP]
 ====
-Cette tâche récupère les manifestes du répertoire Git et exécute la commande _kubectl apply_ de
+ Cette tâche récupère les manifestes du répertoire Git et exécute la commande _kubectl apply_ de
 les manifestes.
 ====
 
