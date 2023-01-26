@@ -15,7 +15,7 @@ image::explore-discover.png[explore-discover, 800]
 == Qu'est-ce que OpenShift Service Mesh?
 
 [sidebar]
-. OpenShift Service Mesh
+.OpenShift Service Mesh
 ♪♪
 
 **OpenShift Service Mesh** est également un service disponible sur OpenShift.
@@ -91,7 +91,7 @@ Le résultat est un graphique avec tous les services, connectés par les demande
 Vous pouvez voir comment les services interagissent entre eux.
 
 
-. Paramètres de graphique
+.Paramètres de graphique
 [%header,cols=2*]
 |===
 |Paramètre
@@ -162,10 +162,10 @@ image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed
 
 Un flux typique se compose des étapes suivantes:
 
-. Un portail demande le service de voyages pour les destinations disponibles.
-. Voyages service demande les hôtels disponibles et retourne à la boutique portail.
-. Un utilisateur choisit une destination et un type de voyage, qui peut inclure un vol et/ou une voiture, hôtel et assurance.
-. Voitures, Hôtels et Vols peuvent avoir des réductions disponibles selon le type d'utilisateur.
+.Un portail demande le service de voyages pour les destinations disponibles.
+.Voyages service demande les hôtels disponibles et retourne à la boutique portail.
+.Un utilisateur choisit une destination et un type de voyage, qui peut inclure un vol et/ou une voiture, hôtel et assurance.
+.Voitures, Hôtels et Vols peuvent avoir des réductions disponibles selon le type d'utilisateur.
 
 === Contrôle des voyages
 
@@ -189,7 +189,7 @@ image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 
 Puis `*click on 'Show Advanced Options' and entering the following information*`:
 
-. Réglages Gateways
+.Réglages Gateways
 [%header,cols=3*]
 |===
 |Paramètre

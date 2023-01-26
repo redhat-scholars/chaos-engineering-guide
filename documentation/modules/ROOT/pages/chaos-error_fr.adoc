@@ -41,7 +41,7 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
 `*Add HTTP Abort by entering the following settings:*`
 
-. Réglages HTTP Abort
+.Réglages HTTP Abort
 [%header,cols=3*]
 |===
 |Paramètre
@@ -86,7 +86,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort
 
 `*Add HTTP Abort by entering the following settings:*`
 
-. Réglages HTTP Abort
+.Réglages HTTP Abort
 [%header,cols=3*]
 |===
 |Paramètre

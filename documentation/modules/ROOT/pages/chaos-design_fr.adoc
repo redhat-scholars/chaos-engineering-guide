@@ -15,7 +15,7 @@ _2 MINUTE PRACTICE_
 == Qu'est-ce que Chaos Engineering ?
 
 [sidebar]
-. Principes de Chaos Engineering
+.Principes de Chaos Engineering
 --
 Selon les principes de l'ingénierie du chaos (https://principlesofchaos.org/[https://principlesofchaos.org/^]),
 

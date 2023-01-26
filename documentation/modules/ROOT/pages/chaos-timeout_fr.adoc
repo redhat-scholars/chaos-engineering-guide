@@ -22,7 +22,7 @@ image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
 `*Add HTTP Timeout by entering the following settings:*`
 
-. Réglages de timeout HTTP
+.Réglages de timeout HTTP
 [%header,cols=3*]
 |===
 |Paramètre
@@ -63,7 +63,7 @@ Mettons en œuvre une stratégie de retry pour atténuer ces erreurs transitoire
 Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
 `*click on the 'travels' > 'Actions' > 'Request Timeouts' and add HTTP Retry by entering the following settings:*`
 
-. Réglages de rentrée HTTP
+.Réglages de rentrée HTTP
 [%header,cols=3*]
 |===
 |Paramètre

@@ -22,7 +22,7 @@ _**Une petite latence de réseau ne devrait pas affecter l'objectif de niveau de
 Dans le {GRAFANA_URL}[Chaos Engineering Dashboard, role='params-link'], vous pouvez analyser les différentes métriques et définir l'État Steady pour notre expérience de chaos.
 Premièrement, `*select the following variables on the dashboard*`:
 
-. Paramètres de tableau de bord
+.Paramètres de tableau de bord
 [%header,cols=3*]
 |===
 |Paramètre
@@ -78,7 +78,7 @@ image::grafana-p99-latency-threholds.png[Grafana - P99 Latency Threholds,700]
 
 `*Scroll down again and to find the 'Success Rate (Value #E)' rule and enter the following information for Thresholds*`
 
-. Success Rate Thresholds Paramètres
+.Success Rate Thresholds Paramètres
 [%header,cols=3*]
 |===
 |Paramètre
@@ -121,7 +121,7 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
 `*Add HTTP Delay by entering the following settings:*`
 
-. Paramètres de retard HTTP
+.Paramètres de retard HTTP
 [%header,cols=3*]
 |===
 |Paramètre
@@ -186,7 +186,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 
 `*Add HTTP Retry by entering the following settings:*`
 
-. Réglages de rentrée HTTP
+.Réglages de rentrée HTTP
 [%header,cols=3*]
 |===
 |Paramètre
@@ -219,7 +219,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 
 `*Add HTTP Retry by entering the following settings:*`
 
-. Réglages de rentrée HTTP
+.Réglages de rentrée HTTP
 [%header,cols=3*]
 |===
 |Paramètre
@@ -252,7 +252,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 
 `*Add HTTP Retry by entering the following settings:*`
 
-. Réglages de rentrée HTTP
+.Réglages de rentrée HTTP
 [%header,cols=3*]
 |===
 |Paramètre
@@ -285,7 +285,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 
 `*Add HTTP Retry by entering the following settings:*`
 
-. Réglages de rentrée HTTP
+.Réglages de rentrée HTTP
 [%header,cols=3*]
 |===
 |Paramètre
