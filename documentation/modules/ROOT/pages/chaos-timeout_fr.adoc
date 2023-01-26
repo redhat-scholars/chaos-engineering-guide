@@ -16,11 +16,11 @@ _XX MINUTE PRACTICE_
 Pour minimiser l'impact de la latence, vous pouvez utiliser le modèle **timeout** qui est probablement le modèle de résilience le plus courant pour les systèmes distribués.
 L'objectif est d'échouer une demande après une certaine période de temps pour éviter le verrouillage de code et de ressources lorsque le service attend une réponse qui prend trop de temps ou qui pourrait ne jamais arriver.
 
-Dans le {KIALI_URL}[Kiali Console^], à partir de la vue **'Services'**, `*cliquez sur les 'voyages' `
+Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**, `*click on the 'travels' > 'Actions' > 'Request Timeouts'*`
 
 image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
-`*Add HTTP Timeout en entrant les paramètres suivants:* `
+`*Add HTTP Timeout by entering the following settings:*`
 
 . Réglages de timeout HTTP
 [%header,cols=3*]
@@ -41,7 +41,7 @@ image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
 image::kiali-configure-timeout.png[Kiali - Configure Timeout,400]
 
-Dans {GRAFANA_URL}[Grafana^], à partir du tableau de bord **de l'ingénierie de Chaos**, `* faire défiler et voir les paramètres de latence* `
+Dans {GRAFANA_URL}[Grafana^], à partir du tableau de bord **, `*scroll down and see the latency metrics*`
 
 Après un certain temps, vous pouvez voir l'impact de notre configuration. En effet, la latence du service **Voyages** a diminué et
 les métriques de latence deviennent vertes à nouveau.
@@ -51,7 +51,7 @@ image::grafana-timeout-details-1.png[Grafana - Timeout Details,900]
 image::grafana-timeout-details-2.png[Grafana - Timeout Details,900]
 
 Les problèmes de latence ont été corrigés mais le calendrier introduit des erreurs pour les demandes qui dépassent le seuil.
-`*Scrouler et voir les paramètres du taux d'erreur* `
+`*Scroll up and see the error rate metrics*`
 
 image::grafana-timeout-error.png[Grafana - Timeout Error,900]
 
@@ -61,7 +61,7 @@ Vous avez mis en œuvre des délais pour le service de voyages.
 Mettons en œuvre une stratégie de retry pour atténuer ces erreurs transitoires.
 
 Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
-`*cliquez sur les 'travels' ACIA 'Actions' et ajoutez HTTP Retry en entrant les paramètres suivants:* `
+`*click on the 'travels' > 'Actions' > 'Request Timeouts' and add HTTP Retry by entering the following settings:*`
 
 . Réglages de rentrée HTTP
 [%header,cols=3*]
@@ -86,6 +86,6 @@ Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
 
 image::kiali-configure-retry.png[Kiali - Configure Retry,400]
 
-`*Retour à {GRAFANA_URL}[Grafana^]*`, vous pouvez dire que le motif de réécriture réduit les taux d'erreur sans impacter la latence.
+`*Back to TTKN1352[Grafana^]*`, vous pouvez dire que le motif de rétry réduit les taux d'erreur sans impacter la latence.
 
 .

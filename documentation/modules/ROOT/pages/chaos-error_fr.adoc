@@ -13,7 +13,7 @@
 _10 MINUTE PRACTICE_
 
 Auparavant, vous avez vu combien l'impact est important sur l'application lorsqu'un petit problème de latence de réseau se produit sur un service non essentiel.
-Voyons comment la demande se produira lorsque ce même service n'est pas disponible. Pour cette deuxième expérience, nous allons tester l'hypothèse suivante:
+Voyons comment la demande se produira lorsque ce même service n'est pas disponible. Pour cette deuxième expérience, nous allons tester l'hypothèse suivante::
 
 _**Un service de décompte disponible ne devrait pas avoir d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
 
@@ -29,17 +29,17 @@ Nous pourrons voir comment un autre type de défaillance du même service pourra
 
 == Exécuter l'expérience Chaos
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph**, `*right-click sur le service 'discounts' et sélectionnez 'Details'* `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*right-click on the 'discounts' service and select 'Details'*`
 
 image::kiali-right-click-service.png[Kiali - Right Click Service,400]
 
 Vous serez redirigé vers la page Détails du service.
 
-*Cliquez sur les 'Actions' `
+`*Click on the 'Actions' > 'Fault Injection'*`
 
 image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
-`*Add HTTP Avorter en entrant les paramètres suivants:*
+`*Add HTTP Abort by entering the following settings:*`
 
 . Réglages HTTP Abort
 [%header,cols=3*]
@@ -68,7 +68,7 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
 image::kiali-configure-error.png[Kiali - Configure Error,300]
 
-`*Cliquez sur le bouton 'Update'*`.
+`*Click on the 'Update' button*`.
 
 **10% du trafic du service 'discounts' échoue avec un code HTTP 503**. Voyons maintenant l'impact de l'application.
 
@@ -82,9 +82,9 @@ image::grafana-error-fault-overview.png[Grafana - Error Fault Overview,900]
 
 Vous pouvez augmenter le pourcentage d'injection d'erreur jusqu'à ce que le service de « décomptes » soit complètement indisponible.
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update la stratégie HTTP Abort du service 'discounts' comme suit:* `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort strategy of the 'discounts' service as follows:*`
 
-`*Add HTTP Avorter en entrant les paramètres suivants:*
+`*Add HTTP Abort by entering the following settings:*`
 
 . Réglages HTTP Abort
 [%header,cols=3*]
@@ -114,7 +114,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update la stratégie 
 image::grafana-error-fault-overview-2.png[Grafana - Error Fault Overview,900]
 
 Contrairement à l'issue de l'expérience Latency, vous dites que l'application est résiliente lorsque le service 'discounts' est complètement en panne (non disponible).
-Donc votre hypothèse est validée:
+Donc votre hypothèse est validée::
 
 _**Les services « décomptes » non disponibles n'ont pas d'incidence sur l'objectif de niveau de service (SLO) du Service de voyage**_
 

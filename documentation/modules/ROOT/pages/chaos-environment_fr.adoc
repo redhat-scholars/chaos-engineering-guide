@@ -32,18 +32,18 @@ image::Logo-Red_Hat-OpenShift.png[Red Hat OpenShift, 300]
 OpenShift embarque avec une console web qui permettra aux utilisateurs de
 effectuer diverses tâches via un navigateur.
 
-`*Cliquez sur le bouton 'OpenShift Console' ci-dessous* `
+`*Click on the 'OpenShift Console' button below*`
 
 [link=TTKN1037]
 [window="_blank"]
 [role='params-link']
 image::openshift-console-button.png[OpenShift Console - Button, 300]
 
-`*Entrez votre nom d'utilisateur et votre mot de passe (utilisateur{USER_ID}/{OPENSHIFT_PASSWORD})*
+`*Enter your username and password (userTTKN1038)*` et
 puis connectez-vous. Après avoir authentifié la console web, vous serez présenté avec une
 liste des projets avec lesquels votre utilisateur a la permission de travailler.
 
-`*Sélectionnez 'Developer View' puis votre 'chaos-engineering{USER_ID}'*' à prendre à la page d'aperçu du projet
+`*Select the 'Developer View' then your 'chaos-engineeringTTKN1039'*` à prendre à la page d'aperçu du projet
 qui listera tous les itinéraires, services, déploiements et pods que vous avez
 courir dans le cadre de votre projet. Il n'y a rien, mais c'est sur le point de le faire.
 changement.
@@ -79,14 +79,14 @@ image::argocd-features.png[argo features- Button, 400]
 
 == Connectez-vous à OpenShift GitOps (Argo CD)
 
-`*Cliquez sur le bouton 'OpenShift GitOps' ci-dessous* `
+`*Click on the 'OpenShift GitOps' button below*`
 
 [link=TTKN1040]
 [window="_blank"]
 [role='params-link']
 image::openshift-gitops-button.png[OpenShift GitOps - Button^, 300]
 
-Puis `*log in as user{USER_ID}/{OPENSHIFT_PASSWORD}*`. Une fois terminé, vous serez redirigé vers la page suivante qui liste les **Argo CD Applications**.
+Puis `*log in as userTTKN1041*`. Une fois terminé, vous serez redirigé vers la page suivante qui liste les **Argo CD Applications**.
 
 image::argocd-home.png[Argo CD - Home Page, 500]
 
@@ -97,7 +97,7 @@ déployée dans l'ingénierie **{USER_ID}'** espace de nom, et aucune ressource 
 
 == Sync/Deploy the application
 
-Pour déployer l'application, cliquez sur '*cliquez sur votre boîte d'application 'chaos-engineering{USER_ID}', puis cliquez sur 'Sync > Synchronize'*'.
+Pour déployer l'application, `*click on your 'chaos-engineeringTTKN1045' application box then, click on 'Sync > Synchronize'*`.
 
 image::argocd-sync.png[Argo CD - Sync Application, 900]
 
@@ -112,7 +112,7 @@ Après quelques secondes, vous devriez voir **tout en vert**. Votre demande est 
 image::argocd-synced-application.png[Argo CD - Synced Application, 600]
 
 Dans le lien:{OPENSHIFT_CONSOLE_URL}[OpenShift Web Console^, role='params-link'], à partir de la vue **Developer**,
-sélectionner le `**chaos-engineering{USER_ID}**` à prendre à la page d`aperçu du projet.
+sélectionnez le `**chaos-engineeringTTKN1047**` à prendre à la page d'aperçu du projet.
 
 image::openshift-app-deployed-by-argocd.png[OpenShift - Coolstore Project Deployed by Argo CD , 700]
 

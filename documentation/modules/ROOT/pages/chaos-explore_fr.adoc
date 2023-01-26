@@ -28,7 +28,7 @@ Qu’y a-t-il ?
 
 [tabs]
 ====
-Service Mesh:
+Service Mesh::
 +
 --
 image::istio-logo.png[Istio, 200]
@@ -36,7 +36,7 @@ image::istio-logo.png[Istio, 200]
 **Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les plans de contrôle sur une application distribuée.
 --
 
-Observabilité :
+Observabilité ::
 +
 --
 image::kiali-logo.png[Kiali, 200]
@@ -46,7 +46,7 @@ L’observation aide les utilisateurs à voir les voies de communication entre l
 OpenShift Service Mesh utilise **Kiali**, un projet open source, pour visualiser la configuration, surveiller le trafic et analyser les traces.
 --
 
-Surveillance:
+Surveillance::
 +
 --
 image:grafana-logo.png[Grafana, 200]
@@ -55,7 +55,7 @@ image:prometheus-logo.png[Prometheus, 200]
 OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques de boîte et de surveillance pour tous les services.
 --
 
-Tracing:
+Tracing::
 +
 --
 image:jaeger-logo.png[Istio, 200]
@@ -72,18 +72,18 @@ OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et dis
 
 **Kiali** offre une vue graphique interactive de votre espace de nom en temps réel, en mesure d'afficher les interactions à plusieurs niveaux (applications, versions, charges de travail), avec des informations contextuelles et des graphiques sur le nœud ou le bord du graphique sélectionné.
 
-Cliquez sur le bouton 'Kiali' ci-dessous* `
+`*Click on the 'Kiali' button below*`
 
-[link=TTKN1103]
+[link=TTKN1117]
 [window="_blank"]
 [role='params-link']
 image::kiali-button.png[Kiali - Button, 300]
 
-Ensuite, `*log in with OpenShift as user{USER_ID}/{OPENSHIFT_PASSWORD}'* `
+Puis, `*log in with OpenShift as userTTKN1118'*`
 
 image::kiali-login.png[Kiali- Log In,300]
 
-Sélectionnez la vue **'Graph'**, depuis la barre de menus latérales et `*enter la configuration suivante*`:
+Sélectionnez la vue **'Graph'**, depuis la barre de menus côté et `*enter the following configuration*`::
 
 
 image::kiali-graph.png[Kiali- Graph,900]
@@ -132,7 +132,7 @@ A l'intérieur du **'chaos-engineering{USER_ID}' namespace** nous voyons 3 parti
 
 image::Application-travel-description.png[Application Travel Description- Graph,900]
 
-L'application Travels Demo simule deux domaines d'activité :
+L'application Travels Demo simule deux domaines d'activité ::
 
 = Portail de voyage
 
@@ -154,13 +154,13 @@ Chaque service peut fournir une citation indépendante et le service de voyages 
 
 De plus, certains utilisateurs, comme les utilisateurs enregistrés, peuvent avoir accès à des réductions spéciales, gérées aussi bien par un service externe.
 
-Les relations de service entre les services des applications peuvent être décrites dans le diagramme suivant:
+Les relations de service entre les services des applications peuvent être décrites dans le diagramme suivant::
 
 image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed by Argo CD , 800]
 
 = Portail de voyage et flux de l'agence de voyage
 
-Un flux typique se compose des étapes suivantes:
+Un flux typique se compose des étapes suivantes::
 
 . Un portail demande le service de voyages pour les destinations disponibles.
 . Voyages service demande les hôtels disponibles et retourne à la boutique portail.
@@ -169,7 +169,7 @@ Un flux typique se compose des étapes suivantes:
 
 = Contrôle des voyages
 
-Le **travel-control** gère un tableau de bord **-business** avec deux caractéristiques clés:
+Le **travel-control** gère un tableau de bord **-business** avec deux caractéristiques clés::
 
 * Permettre des changements pour chaque simulateur de magasin de voyage (ratio de trafic, appareil, utilisateur et type de voyage).
 
@@ -179,15 +179,15 @@ Le **travel-control** gère un tableau de bord **-business** avec deux caractér
 
 Pour accéder au tableau de bord (UI) de l'application, nous devons créer un composant Istio Ingress spécifique.
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], à partir de la vue **'Services'**, `*cliquez sur le service 'contrôle' évangélis 'Actions' ё 'Request Routing'* `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*click on the 'control' service > 'Actions' > 'Request Routing'*`
 
 image::kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
 
-< < *Cliquez sur le bouton > > pour rediriger tout le trafic d'entrée vers le service de contrôle*:
+`*Click on 'Add Rule' button*` to redirect all the ingress traffic to the 'control' service*`::
 
 image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 
-Puis `*cliquez sur 'Afficher les Options Avancées' et saisissez les informations suivantes*`:
+Puis `*click on 'Show Advanced Options' and entering the following information*`::
 
 . Réglages Gateways
 [%header,cols=3*]
@@ -208,6 +208,6 @@ Puis `*cliquez sur 'Afficher les Options Avancées' et saisissez les information
 
 image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
-Enfin, `*cliquez sur le bouton 'Create'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineeringTTKN1110[^, role='params-link'].
+Enfin, `*click on the 'Create' button*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineeringTTKN1124[^, role='params-link'].
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]
