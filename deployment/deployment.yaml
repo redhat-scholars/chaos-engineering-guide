@@ -14,10 +14,9 @@ spec:
     metadata:
       labels:
         app: chaos-engineering-guide-workshop-app
-        deploymentconfig: chaos-engineering-guide-workshop-deployment
     spec:
       containers:
       - image: image-registry.openshift-image-registry.svc:5000/redhat-ocp-demo/simple-webapp-php:latest
         imagePullPolicy: Always
-        name: webserver
+        name: chaos-engineering-guide-workshop-app
         resources: {}
