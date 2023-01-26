@@ -74,16 +74,16 @@ OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et dis
 
 `*Click on the 'Kiali' button below*`
 
-[link=TTKN1117]
+[link=TTKN1120]
 [window="_blank"]
 [role='params-link']
 image::kiali-button.png[Kiali - Button, 300]
 
-Puis, `*log in with OpenShift as userTTKN1118'*`
+Puis, `*log in with OpenShift as userTTKN1121'*`
 
 image::kiali-login.png[Kiali- Log In,300]
 
-Sélectionnez la vue **'Graph'**, depuis la barre de menus côté et `*enter the following configuration*`::
+Sélectionnez la vue **'Graph'**, depuis la barre de menus latérales et `*enter the following configuration*`::
 
 
 image::kiali-graph.png[Kiali- Graph,900]
@@ -134,7 +134,7 @@ image::Application-travel-description.png[Application Travel Description- Graph,
 
 L'application Travels Demo simule deux domaines d'activité ::
 
-= Portail de voyage
+=== Portail de voyage
 
 Dans une première partie appelée **travel-portal** il y aura déployé plusieurs magasins de voyage, où les utilisateurs peuvent chercher et réserver des vols, hôtels, voitures ou assurances.
 
@@ -144,7 +144,7 @@ Ces charges de travail peuvent générer différents types de trafic pour imiter
 
 Tous les portails consomment un service appelé voyages.
 
-= Travel Agency
+=== Agence de voyages
 
 Une deuxième partie, **travel-agency**, accueillera un ensemble de services créés pour fournir des devis de voyage.
 
@@ -158,7 +158,7 @@ Les relations de service entre les services des applications peuvent être décr
 
 image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed by Argo CD , 800]
 
-= Portail de voyage et flux de l'agence de voyage
+=== Travel Portal and Travel Agency flow
 
 Un flux typique se compose des étapes suivantes::
 
@@ -167,7 +167,7 @@ Un flux typique se compose des étapes suivantes::
 . Un utilisateur choisit une destination et un type de voyage, qui peut inclure un vol et/ou une voiture, hôtel et assurance.
 . Voitures, Hôtels et Vols peuvent avoir des réductions disponibles selon le type d'utilisateur.
 
-= Contrôle des voyages
+=== Contrôle des voyages
 
 Le **travel-control** gère un tableau de bord **-business** avec deux caractéristiques clés::
 
@@ -208,6 +208,6 @@ Puis `*click on 'Show Advanced Options' and entering the following information*`
 
 image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
-Enfin, `*click on the 'Create' button*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineeringTTKN1124[^, role='params-link'].
+Enfin, `*click on the 'Create' button*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineeringTTKN1127[^, role='params-link'].
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]

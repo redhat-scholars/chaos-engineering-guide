@@ -60,12 +60,12 @@ Par exemple ::
 
 `*Click on the 'Grafana' button below*`.
 
-[link=TTKN1256]
+[link=TTKN1263]
 [window="_blank"]
 [role='params-link']
 image::grafana-button.png[Grafana- Button, 300]
 
-Puis, `*log in with OpenShift as 'userTTKN1257'*`
+Puis, `*log in with OpenShift as 'userTTKN1264'*`
 
 image::grafana-home.png[Grafana - Home,900]
 
@@ -316,7 +316,7 @@ Vous venez d'apprendre à créer un tableau de bord Grafana. Maintenant, importo
 
 `*Click on the following button and copy the content*`
 
-[link=TTKN1262]
+[link=TTKN1269]
 [window="_blank"]
 [role='params-link']
 image::chaos-dashboard-button.png[Chaos Dashboard - Button, 300]
@@ -333,7 +333,7 @@ image::grafana-load-dashboard.png[Grafana - Home,700]
 
 [WARNING]
 ====
-Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*please add 'userTTKN1264' in the name*`.
+Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*please add 'userTTKN1271' in the name*`.
 
 image::error-import-grafana.png[Grafana import Error - Home,900]
 ====
@@ -351,8 +351,8 @@ image::full-grafana-dashboard.png[Grafana - Home,900]
 Pour explorer ce tableau de bord on peut le voir comme ::
 
 * [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] here chaos-ingénierie{USER_ID} et un service [Cyan]  de l'application Travel
-* [Blue] Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
-* [Yellow] Block B toutes les mesures relatives à un service spécifié
+* [Blue]  Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
+* [Yellow]  Block B toutes les mesures relatives à un service spécifié
 
 image::dashboard-explained.png[Grafana - Home,900]
 
@@ -360,13 +360,13 @@ Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-ingénierie{USER
 
 image::grafana-block-A.png[Grafana - Home,900]
 
-* [Red] Global Request Volume = le nombre total de demandes
+* [Red]  Volume de demande global = le nombre total de demandes
 * [Yellow]  Taux de réussite global = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
-*<MISSING TTKN12914>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
-* [Cyan] list de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
+*<MISSING TTKN12984>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
+* [Cyan] liste de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
 * [Pink] Nombre de demandes de services
-* [Brown]  Latence par service
-* [Green] Succès des demandes par services = Rapport de la demande réussie associée au service
+* [Brown] Latence par service
+* [Green]  Succès des demandes par services = Rapport de la demande réussie associée au service
 
 
 
@@ -377,8 +377,8 @@ image::grafana-block-B.png[Grafana - Home,900]
 
 * [Brown]  Erreur Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
 * [Pink]  Le taux de réussite = Virus pour identifier l'erreur HTTP WHEN survienne dans l'appel de service
-* [Blue]  Valeur de latence pour le service
-* [Green] Durée de demande pour le service
+* [Blue] Latency value for the service
+* [Green]  Demande Durée du service
 
 
 [IMPORTANT]
