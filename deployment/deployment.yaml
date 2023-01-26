@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: chaos-engineering-guide-workshop
+  name: chaos-engineering-guide-workshop-deployment
+  namespace: chaos-engineering-guide-workshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chaos-engineering-guide-workshop-app
+  template:
+    metadata:
+      labels:
+        app: chaos-engineering-guide-workshop-app
+        deploymentconfig: chaos-engineering-guide-workshop-deployment
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/redhat-ocp-demo/simple-webapp-php:latest
+        imagePullPolicy: Always
+        name: webserver
+        resources: {}

@@ -1,0 +1,19 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: chaos-engineering-guide-workshop-route
+  namespace: chaos-engineering-guide-workshop
+  labels:
+    app.kubernetes.io/instance: chaos-engineering-guide-workshop-app
+spec:
+  host: chaos-engineering-guide-workshop.apps.wingman.laby.cc
+  to:
+    kind: Service
+    name: chaos-engineering-guide-workshop-service
+    weight: 100
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
