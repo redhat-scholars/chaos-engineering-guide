@@ -20,8 +20,8 @@ Au lieu de poser la question: le service est-il en place ou en bas?
 
 Nous posons la question: **combien de demandes sommes-nous efficaces pour un temps donné? **
 
-TTKN1309
-TTKN1347
+[tabs]
+====
 Service Level Indicator (SLI)::
 +
 --
@@ -31,8 +31,8 @@ Un ensemble de caractéristiques observables et mesurables convenues qui déterm
 
 Par exemple :
 
-* HTTP Code not equal 5xx
-* Latency lower than X
+* Code HTTP pas égal 5xx
+* Latence inférieure à X
 --
 
 Service Level Objective (SLO)::
@@ -90,37 +90,49 @@ Vous utiliserez l'approche incrémentale suivante pour comprendre et traduire la
 
 `*Create incrementally the PromQL expression by following the 4 next steps and enter the expression into the 'Metrics' field for the Query 'A'*`:
 
-TTKN1275
+image::grafana-add-query.png[Grafana - Home,700]
 
-TTKN1313
-TTKN1351
+[tabs]
+====
 Step1::
 +
 --
 
-TTKN1258
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
+**istio_requests_total**
+----
 
-This is an TTKN1343 exported to Prometheus by default.
-It is a Counter measuring the total number of requests that have come through the Entire Service Mesh. This metric has several 
-dimensions, per time series in a range vector
+C'est un https://istio.io/latest/docs/reference/config/metrics/[Istio standard metric^] exporté par défaut vers Prometheus.
+C'est un compteur qui mesure le nombre total de demandes qui ont été reçues par le service Entire Mesh. Cette métrique a plusieurs
+dimensions, par série chronologique dans une gamme de vecteurs
 --
 
 Step2::
 +
 --
 
-TTKN1259
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
+istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}**
+----
 
-Filter the metric to use only the inbound requests (_reporter="source"_) from your environment (_namespace="chaos-engineeringTTKN1299"_)
+Filtrer la métrique pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
 --
 
 Step3::
 +
 --
 
-TTKN1260
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
+**increase(**istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}**[1m])**
+----
 
-Adding **increase()** function, the query returns the only number of requests as measured over the last minute per time series.
+Ajout de la fonction **increase()**, la requête renvoie le seul nombre de requêtes mesurées sur la dernière minute par série chronologique.
 --
 
 Step4::

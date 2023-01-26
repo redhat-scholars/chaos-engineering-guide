@@ -1,47 +1,49 @@
-TTKN1115
-TTKN1116
-TTKN1117
-TTKN1118
-TTKN1119
-TTKN1120
-TTKN1121
+:markup-in-source: verbatim,attributes,quotes
+:CHE_URL: http://codeready-workspaces.%APPS_HOSTNAME_SUFFIX%
+:USER_ID: %USER_ID%
+:OPENSHIFT_PASSWORD: %OPENSHIFT_PASSWORD%
+:OPENSHIFT_CONSOLE_URL: https://console-openshift-console.%APPS_HOSTNAME_SUFFIX%/topology/ns/chaos-engineering{USER_ID}/graph
+:APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
+:KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-TTKN1150 Explore the Application
+= Explorer la demande
 
 _10 MINUTE PRACTICE_
 
-TTKN1122
+image::explore-discover.png[explore-discover, 800]
 
-TTKN1151 What is OpenShift Service Mesh?
+== Qu'est-ce que OpenShift Service Mesh?
 
-TTKN1142
-.OpenShift Service Mesh
-******OpenShift Service Mesh** is also a service available on top of OpenShift.
+[sidebar]
+. OpenShift Service Mesh
+♪♪
 
-As applications evolve into collections of decentralized services, managing communications and security between those services becomes more difficult. 
+**OpenShift Service Mesh** est également un service disponible sur OpenShift.
 
-**Red Hat OpenShift Service Mesh** is a service that provides behavioral insight and operational control over the Service Mesh, providing a uniform way to connect, secure, and monitor microservice applications.
+À mesure que les applications deviennent des collections de services décentralisés, la gestion des communications et de la sécurité entre ces services devient plus difficile.
 
-What’s in it?
+**Red Hat OpenShift Service Mesh** est un service qui fournit un aperçu comportemental et un contrôle opérationnel sur le Service Mesh, fournissant un moyen uniforme de connecter, de sécuriser et de surveiller les applications microservice.
 
-TTKN1143
-TTKN1152
+Qu’y a-t-il ?
+
+[tabs]
+====
 Service Mesh::
 +
 --
-TTKN1123
+image::istio-logo.png[Istio, 200]
 
-**Istio** is an open-source project for integrating and managing traffic flow across services. It works in concert with an underlying cluster manager (like Kubernetes). Centralized components, sidecar proxies, and node agents work together to create the data and control planes over a distributed application.
+**Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les plans de contrôle sur une application distribuée.
 --
 
 Observability::
 +
 --
-TTKN1124
+image::kiali-logo.png[Kiali, 200]
 
-Observability helps users see communication pathways between services, how they’re being managed, and how traffic is flowing in near-real time for easier management and troubleshooting. 
+L’observation aide les utilisateurs à voir les voies de communication entre les services, comment ils sont gérés et comment le trafic circule dans un temps quasi réel pour faciliter la gestion et le dépannage.
 
-OpenShift Service Mesh uses **Kiali**, an open source project, to view configuration, monitor traffic, and analyze traces.
+OpenShift Service Mesh utilise **Kiali**, un projet open source, pour visualiser la configuration, surveiller le trafic et analyser les traces.
 --
 
 Monitoring::
@@ -50,7 +52,7 @@ Monitoring::
 image:grafana-logo.png[Grafana, 200]
 image:prometheus-logo.png[Prometheus, 200]
 
-OpenShift Service Mesh uses **Grafana** and **Prometheus** to provide out of the box metrics and monitoring for all services.
+OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques de boîte et de surveillance pour tous les services.
 --
 
 Tracing::
