@@ -22,7 +22,7 @@ Nous posons la question: **combien de demandes sommes-nous efficaces pour un tem
 
 [tabs]
 ====
-Indicateur de niveau de service (SLI)::
+Indicateur de niveau de service (SLI):
 +
 --
 Un **SLI** est un indicateur de niveau de service – une mesure quantitative soigneusement définie de certains aspects du niveau de service qui est fourni. Nous vous recommandons de lire ce grand livre SRE plus tard https://sre.google/sre-book/service-level-objectives/[Chapter 4- Service Level objectives (Google SRE book)]
@@ -35,7 +35,7 @@ Par exemple :
 * Latence inférieure à X
 --
 
-Objectif du niveau de service::
+Objectif du niveau de service :
 +
 --
 Un **SLO** est un objectif de niveau de service : une valeur cible ou une gamme de valeurs pour un niveau de service mesuré par un **SLI**.
