@@ -12,7 +12,7 @@
 _20 MINUTE PRACTICE_
 
 
-== Pourquoi tu as besoin de Métrique ?
+== Pourquoi tux as besoin de Métrique ?
 
 Comme décrit dans le processus d'ingénierie du chaos **nous sommes actuellement dans une hypothèse de l'état normal**. Cela signifie que nous devons définir **mesures** pour indiquer que le système fonctionne d'une manière prévue du point de vue commercial, et dans un ensemble donné de tolérances.**État normal**signifie que vous pouvez mesurer que le système fonctionne d'une manière prévue. Dans ce cas, ce comportement normal est que le système rencontrera son **SLO** ( **S**ervice **L**evel **O**bjective).
 
