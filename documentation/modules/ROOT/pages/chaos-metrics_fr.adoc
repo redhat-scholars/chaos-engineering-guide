@@ -7,7 +7,7 @@
 :COOLSTORE_HOMEPAGE: http://web-chaos-engineering{USER_ID}.%APPS_HOSTNAME_SUFFIX%
 :DASHBOARD_GIT_URL: https://raw.githubusercontent.com/mcouliba/chaos-engineering-workshop/%WORKSHOP_GIT_REF%/grafana/chaos-engineering-dashboard.json
 
-= Définir et surveiller les paramètres de Chaos
+= Définir et surveiller les métriques de Chaos
 
 _20 MINUTE PRACTICE_
 
@@ -56,16 +56,16 @@ Par exemple ::
 
 ====
 
-== Créer un tableau de bord de Grafana
+== Créer un tableau de bord Grafana
 
 `*Click on the 'Grafana' button below*`.
 
-[link=TTKN1263]
+[link=TTKN1289]
 [window="_blank"]
 [role='params-link']
 image::grafana-button.png[Grafana- Button, 300]
 
-Puis, `*log in with OpenShift as 'userTTKN1264'*`
+Puis, `*log in with OpenShift as 'userTTKN1290'*`
 
 image::grafana-home.png[Grafana - Home,900]
 
@@ -119,7 +119,7 @@ dimensions, par série chronologique dans une gamme de vecteurs
 istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}**
 ----
 
-Filtrer la métrique pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
+Filtrer la mesure pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
 --
 
 Étape3::
@@ -288,7 +288,7 @@ Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 
 image::grafana-gsr-step2.png[Grafana - GSR setup ,900]
 
-Ensuite, `*click on the 'General Settings' icon and enter the following parameters:*`
+Suivant, `*click on the 'General Settings' icon and enter the following parameters:*`
 
 . Réglages généraux
 [%header,cols=3*]
@@ -316,7 +316,7 @@ Vous venez d'apprendre à créer un tableau de bord Grafana. Maintenant, importo
 
 `*Click on the following button and copy the content*`
 
-[link=TTKN1269]
+[link=TTKN1295]
 [window="_blank"]
 [role='params-link']
 image::chaos-dashboard-button.png[Chaos Dashboard - Button, 300]
@@ -333,7 +333,7 @@ image::grafana-load-dashboard.png[Grafana - Home,700]
 
 [WARNING]
 ====
-Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*please add 'userTTKN1271' in the name*`.
+Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*please add 'userTTKN1297' in the name*`.
 
 image::error-import-grafana.png[Grafana import Error - Home,900]
 ====
@@ -342,7 +342,7 @@ Vous avez maintenant accès au tableau de bord de Chaos Engineering.
 
 image::grafana-chaos-engineering-dashboard.png[Grafana - Home,700]
 
-== Explorer le tableau de bord de l'ingénierie Chaos
+== Explorez le tableau de bord de l'ingénierie Chaos
 
 Retrouvez ici le tableau de bord complet de Grafana importé
 
@@ -350,9 +350,9 @@ image::full-grafana-dashboard.png[Grafana - Home,900]
 
 Pour explorer ce tableau de bord on peut le voir comme ::
 
-* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] here chaos-ingénierie{USER_ID} et un service [Cyan]  de l'application Travel
+* [Red] one filter selection block dans lequel nous sélectionnons un nomspace [Pink] here chaos-ingénierie{USER_ID} et un service [Cyan]  de l'application Travel
 * [Blue]  Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
-* [Yellow]  Block B toutes les mesures relatives à un service spécifié
+* [Yellow] Block B toutes les mesures relatives à un service spécifié
 
 image::dashboard-explained.png[Grafana - Home,900]
 
@@ -360,13 +360,13 @@ Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-ingénierie{USER
 
 image::grafana-block-A.png[Grafana - Home,900]
 
-* [Red]  Volume de demande global = le nombre total de demandes
+* [Red] Global Request Volume = le nombre total de demandes
 * [Yellow]  Taux de réussite global = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
-*<MISSING TTKN12984>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
-* [Cyan] liste de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
+*<MISSING TTKN13244>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
+* [Cyan] list de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
 * [Pink] Nombre de demandes de services
-* [Brown] Latence par service
-* [Green]  Succès des demandes par services = Rapport de la demande réussie associée au service
+* [Brown]  Latence par service
+* [Green] Succès des demandes par services = Rapport de la demande réussie associée au service
 
 
 
@@ -376,7 +376,7 @@ Si nous zoomons dans le bloc B par rapport au **SERVICE** sélectionné, nous po
 image::grafana-block-B.png[Grafana - Home,900]
 
 * [Brown]  Erreur Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
-* [Pink]  Le taux de réussite = Virus pour identifier l'erreur HTTP WHEN survienne dans l'appel de service
+* [Pink]  Taux de réussite = > pour identifier l'erreur HTTP WHEN survienne dans l'appel de service
 * [Blue] Latency value for the service
 * [Green]  Demande Durée du service
 

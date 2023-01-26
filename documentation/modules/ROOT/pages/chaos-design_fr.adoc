@@ -7,7 +7,7 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Conception des expériences Chaos
+= Conception expériences Chaos
 
 _2 MINUTE PRACTICE_
 
@@ -54,9 +54,9 @@ Le processus général d'ingénierie du chaos ressemble à ::
 5. **Make changes and fix issues:** Après avoir mené une expérience, vous devriez avoir une bonne idée de ce qui fonctionne et ce qui doit être modifié. Maintenant, nous pouvons identifier ce qui mènera à une panne, et nous savons exactement ce qui casse le système. Donc, allez le réparer et essayez à nouveau avec une nouvelle expérience.
 
 
-========
+=======
 image::chaos-engineering-process.png[chaos-engineering-process, 600]
-=========
+=======
 
 Plus tard sur cet atelier nous utiliserons **Openshift Service Mesh** pour injecter des défaillances dans notre **Experiment** .
 

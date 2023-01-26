@@ -27,7 +27,7 @@ image::grafana-service-overview-configured-2.png[Grafana - Service Overview Conf
 
 Nous pourrons voir comment un autre type de défaillance du même service pourrait avoir un impact sur le comportement de notre application.
 
-== Exécuter l'expérience Chaos
+== Exécutez l'expérience Chaos
 
 Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*right-click on the 'discounts' service and select 'Details'*`
 

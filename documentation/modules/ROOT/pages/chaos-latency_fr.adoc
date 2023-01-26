@@ -107,7 +107,7 @@ image::grafana-service-overview-configured.png[Grafana - Service Overview Config
 
 `*Click on the 'Disk' icon to save and go back to the Dashboard.*`
 
-== Exécuter l'expérience Chaos
+== Exécutez l'expérience Chaos
 
 Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*right-click on the 'discounts' service (triangle symbol) and select 'Details'*`
 
@@ -177,7 +177,7 @@ Au lieu de manquer directement ou d'attendre trop longtemps, nous pourrions rée
 
 `*Configure the Retry pattern for the following services*`
 
-[tabs]
+<MISSING TTKN12>
 ====
 voitures::
 +
@@ -209,13 +209,13 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**
 
 image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 
-<MISSING TTKN12>.
+`*Click on the 'Update' button*`.
 --
 
 vols::
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de l'avis **'Services**, `*click on the 'flights' service > 'Actions' > 'Request Timeouts'*`
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*click on the 'flights' service > 'Actions' > 'Request Timeouts'*`
 
 `*Add HTTP Retry by entering the following settings:*`
 

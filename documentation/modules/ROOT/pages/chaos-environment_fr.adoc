@@ -7,7 +7,7 @@
 :GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
 :GITOPS_WORKSHOP_GIT_URL: %WORKSHOP_GIT_REPO%/tree/%WORKSHOP_GIT_REF%/gitops
 
-= Obtenez votre Environnement Chaos
+= Va te chercher. Environnement Chaos
 
 _10 MINUTE EXERCISE_
 
@@ -27,23 +27,23 @@ image::Logo-Red_Hat-OpenShift.png[Red Hat OpenShift, 300]
 **Red Hat® OpenShift®** permet aux entreprises de construire des architectures très agiles et évolutives avec une sécurité de cluster améliorée qui peut être déployée à n'importe quel endroit.**Red Hat® OpenShift®** propose une installation automatisée, des mises à niveau et la gestion du cycle de vie dans toute la pile de conteneurs – le système d'exploitation, https://www.openshift.com/learn/topics/kubernetes/?hsLang=en-us[Kubernetes] et les services de cluster et applications – sur tout nuage.
 --
 
-== Connectez-vous à la console Web OpenShift
+== Connectez-vous à la Console Web OpenShift
 
 OpenShift embarque avec une console web qui permettra aux utilisateurs de
 effectuer diverses tâches via un navigateur.
 
 `*Click on the 'OpenShift Console' button below*`
 
-[link=TTKN1039]
+[link=TTKN1042]
 [window="_blank"]
 [role='params-link']
 image::openshift-console-button.png[OpenShift Console - Button, 300]
 
-`*Enter your username and password (userTTKN1040)*` et
+`*Enter your username and password (userTTKN1043)*` et
 puis connectez-vous. Après avoir authentifié la console web, vous serez présenté avec une
 liste des projets avec lesquels votre utilisateur a la permission de travailler.
 
-`*Select the 'Developer View' then your 'chaos-engineeringTTKN1041'*` à prendre à la page d'aperçu du projet
+`*Select the 'Developer View' then your 'chaos-engineeringTTKN1044'*` à prendre à la page d'aperçu du projet
 qui listera tous les itinéraires, services, déploiements et pods que vous avez
 courir dans le cadre de votre projet. Il n'y a rien, mais c'est sur le point de le faire.
 changement.
@@ -64,7 +64,7 @@ image::gitops-model.png[gitops-model, 500]
 
 
 
-=== Argo CD propose
+=== Argo CD caractéristiques
 
 * Configuration du cluster et de l'application en version Git
 * Configuration de synchronisation automatique de Git aux clusters
@@ -81,23 +81,23 @@ image::argocd-features.png[argo features- Button, 400]
 
 `*Click on the 'OpenShift GitOps' button below*`
 
-[link=TTKN1042]
+[link=TTKN1045]
 [window="_blank"]
 [role='params-link']
 image::openshift-gitops-button.png[OpenShift GitOps - Button^, 300]
 
-Puis `*log in as userTTKN1043*`. Une fois terminé, vous serez redirigé vers la page suivante qui liste les **Argo CD Applications**.
+Puis `*log in as userTTKN1046*`. Une fois terminé, vous serez redirigé vers la page suivante qui liste les **Argo CD Applications**.
 
 image::argocd-home.png[Argo CD - Home Page, 500]
 
 Une application CD **Argo** représente une instance d'application déployée dans un environnement donné. Elle est définie par deux éléments clés d'information :***source**référence à l'état désiré dans Git (répositoire, révision, chemin, environnement): **{GITOPS_WORKSHOP_GIT_URL}*****destination**référence au cluster cible et à l'espace de nom : **'chaos-engineering{USER_ID}' namespace from the current OpenShift cluster (in-cluster)**
 
 Le statut **Argo CD Application** est d'abord en jaune, moyen **OutOfSync** état, puisque la demande n'a pas encore été présentée
-déployée dans l'ingénierie **{USER_ID}'**, et aucune ressource Kubernetes n'a été créée.
+déployée dans l'ingénierie **{USER_ID}'** espace de nom, et aucune ressource Kubernetes n'a été créée.
 
-== Sync/Deploy the application
+== Sync/Deployez l'application
 
-Pour déployer l'application, `*click on your 'chaos-engineeringTTKN1047' application box then, click on 'Sync > Synchronize'*`.
+Pour déployer l'application, `*click on your 'chaos-engineeringTTKN1050' application box then, click on 'Sync > Synchronize'*`.
 
 image::argocd-sync.png[Argo CD - Sync Application, 900]
 
@@ -112,7 +112,7 @@ Après quelques secondes, vous devriez voir **tout en vert**. Votre demande est 
 image::argocd-synced-application.png[Argo CD - Synced Application, 600]
 
 Dans le lien:{OPENSHIFT_CONSOLE_URL}[OpenShift Web Console^, role='params-link'], à partir de la vue **Developer**,
-sélectionnez le `**chaos-engineeringTTKN1049**` à la page d'aperçu du projet.
+sélectionnez le `**chaos-engineeringTTKN1052**` à la page d'aperçu du projet.
 
 image::openshift-app-deployed-by-argocd.png[OpenShift - Coolstore Project Deployed by Argo CD , 700]
 
