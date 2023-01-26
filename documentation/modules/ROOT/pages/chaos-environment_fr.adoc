@@ -102,10 +102,10 @@ Pour déployer l'application, cliquez sur '*cliquez sur votre boîte d'applicati
 image::argocd-sync.png[Argo CD - Sync Application, 900]
 
 [TIP]
-=
+====
 Cette tâche récupère les manifestes du répertoire Git et exécute la commande _kubectl apply_ de
 les manifestes.
-=
+====
 
 Après quelques secondes, vous devriez voir **tout en vert**. Votre demande est en cours. Vous pouvez maintenant voir ses éléments de ressources, ses journaux, ses événements et son état de santé évalué.
 

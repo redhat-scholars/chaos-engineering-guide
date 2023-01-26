@@ -86,6 +86,6 @@ Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
 
 image::kiali-configure-retry.png[Kiali - Configure Retry,400]
 
-`* Retour à {GRAFANA_URL}[Grafana^]*`, vous pouvez dire que le motif de réécriture réduit les taux d'erreur sans impacter la latence.
+`*Retour à {GRAFANA_URL}[Grafana^]*`, vous pouvez dire que le motif de réécriture réduit les taux d'erreur sans impacter la latence.
 
 .

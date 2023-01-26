@@ -27,7 +27,7 @@ image::explore-discover.png[explore-discover, 800]
 Qu’y a-t-il ?
 
 [tabs]
-=
+====
 Service Mesh:
 +
 --
@@ -64,7 +64,7 @@ image:elastic-search-logo-color-horizontal.png[Elastic Recherche, 200]
 Tracing vous permet de suivre une seule demande car elle fait son chemin entre différents services - ou même à l'intérieur d'un service - fournissant un aperçu de l'ensemble du processus de demande du début à la fin.
 OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et distribué et **Elasticsearch**, un moteur de recherche et d'analyse distribué, libre et ouvert pour capturer des traces distribuées offrant une vue «par demande» pour isoler les goulets d'étranglement entre les services.
 --
-=
+====
 
 ♪♪
 
@@ -74,7 +74,7 @@ OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et dis
 
 Cliquez sur le bouton 'Kiali' ci-dessous* `
 
-[link=TTKN1101]
+[link=TTKN1103]
 [window="_blank"]
 [role='params-link']
 image::kiali-button.png[Kiali - Button, 300]
@@ -208,6 +208,6 @@ Puis `*cliquez sur 'Afficher les Options Avancées' et saisissez les information
 
 image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
-Enfin, `*cliquez sur le bouton 'Create'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineeringTTKN1108[^, role='params-link'].
+Enfin, `*cliquez sur le bouton 'Create'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineeringTTKN1110[^, role='params-link'].
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]

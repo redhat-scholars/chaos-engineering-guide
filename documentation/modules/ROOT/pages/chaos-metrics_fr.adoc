@@ -21,7 +21,7 @@ Au lieu de poser la question: le service est-il en place ou en bas?
 Nous posons la question: **combien de demandes sommes-nous efficaces pour un temps donné? **
 
 [tabs]
-=
+====
 Indicateur de niveau de service (SLI):
 +
 --
@@ -54,18 +54,18 @@ Par exemple :
 99,99 % des demandes seront satisfaites pendant un certain temps.
 --
 
-=
+====
 
 == Créer un tableau de bord de Grafana
 
 `*Cliquez sur le bouton 'Grafana' ci-dessous*`.
 
-[link=TTKN1200]
+[link=TTKN1211]
 [window="_blank"]
 [role='params-link']
 image::grafana-button.png[Grafana- Button, 300]
 
-Ensuite, `*log in with OpenShift as 'user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
+Ensuite, `*log in with OpenShift as 'user<MISSING TTKN12>'*`
 
 image::grafana-home.png[Grafana - Home,900]
 
@@ -93,16 +93,16 @@ Vous utiliserez l'approche incrémentale suivante pour comprendre et traduire la
 image::grafana-add-query.png[Grafana - Home,700]
 
 [tabs]
-=
+====
 Étape1:
 +
 --
 
-[source,promql,subs="TTKN1202",role=copypaste]
-. PromQL
----
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
 **istio_requests_total**
----
+----
 
 C'est un https://istio.io/latest/docs/reference/config/metrics/[Istio standard metric^] exporté par défaut vers Prometheus.
 C'est un compteur qui mesure le nombre total de demandes qui ont été reçues par le service Entire Mesh. Cette métrique a plusieurs
@@ -113,24 +113,24 @@ dimensions, par série chronologique dans une gamme de vecteurs
 +
 --
 
-[source,promql,subs="TTKN1203",role=copypaste]
-. PromQL
----
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
 istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}**
----
+----
 
-Filtrer la mesure pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
+Filtrer la métrique pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
 --
 
 Étape3:
 +
 --
 
-[source,promql,subs="TTKN1206",role=copypaste]
-. PromQL
----
-**augmentation(**istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}**[1m])**
----
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
+**increase(**istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}**[1m])**
+----
 
 Ajout de la fonction **increase()**, la requête renvoie le seul nombre de requêtes mesurées sur la dernière minute par série chronologique.
 --
@@ -139,21 +139,21 @@ Ajout de la fonction **increase()**, la requête renvoie le seul nombre de requ�
 +
 --
 
-[source,promql,subs="TTKN1208",role=copypaste]
-. PromQL
----
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
 **sum(**increase(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])**)**
----
+----
 
 Ajout de la fonction **sum()**, la requête retourne le total des requêtes dans l'espace de nom
 --
 
-=
+====
 
 [TIP]
-=
+====
 **Grafana** permet d'utiliser https://prometheus.io/docs/prometheus/latest/querying/functions/#functions[Functions like rate or increase, etc...]
-=
+====
 
 À la fin, vous devriez avoir l'expression suivante dans le champ 'Métrique' pour la requête 'A'.
 
@@ -245,16 +245,16 @@ Ajouter l'expression suivante dans le champ 'Metrics' pour la requête 'A'*:
 image::grafana-add-query.png[Grafana - Home,700]
 
 
-[source,promql,subs="TTKN1213",role=copypaste]
-. PromQL
----
+[source,promql,subs="{markup-in-source}",role=copypaste]
+.PromQL
+----
 sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m]))
----
+----
 
 [TIP]
-=
+====
 **Global Success Rate** est un ratio pariwen le nombre de requêtes réussies et le nombre de requêtes http.
-=
+====
 
 
 
@@ -316,7 +316,7 @@ Vous venez d'apprendre à créer un tableau de bord Grafana. Maintenant, importo
 
 Cliquez sur le bouton suivant et copiez le contenu* `
 
-[link=TTKN1215]
+[link=TTKN1217]
 [window="_blank"]
 [role='params-link']
 image::chaos-dashboard-button.png[Chaos Dashboard - Button, 300]
@@ -332,11 +332,11 @@ image::grafana-load-dashboard.png[Grafana - Home,700]
 
 
 [WARNING]
-=
+====
 Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*s'il vous plaît ajouter 'user{USER_ID}' dans le nom*`.
 
 image::error-import-grafana.png[Grafana import Error - Home,900]
-=
+====
 
 Vous avez maintenant accès au tableau de bord de Chaos Engineering.
 
@@ -350,8 +350,8 @@ image::full-grafana-dashboard.png[Grafana - Home,900]
 
 Pour explorer ce tableau de bord on peut le voir comme :
 
-* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] here chaos-ingénierie{USER_ID} et un service [Cyan]  de l'application Travel
-* [Blue] Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
+* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] ici le chaos-ingénierie{USER_ID} et un service [Cyan]  de l'application Travel
+* [Blue]  Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
 * [Yellow]  Block B toutes les mesures relatives à un service spécifié
 
 image::dashboard-explained.png[Grafana - Home,900]
@@ -360,10 +360,10 @@ Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-ingénierie{USER
 
 image::grafana-block-A.png[Grafana - Home,900]
 
-* [Red]  Volume de demande global = le nombre total de demandes
-* [Yellow]  Taux de réussite global = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
-*<MISSING TTKN12494>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
-* [Cyan] list de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
+* [Red] Global Request Volume = le nombre total de demandes
+* [Yellow] Global Success Rate = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
+*<MISSING TTKN12464>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
+* [Cyan] liste de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
 * [Pink] Nombre de demandes de services
 * [Brown]  Latence par service
 * [Green] Succès des demandes par services = Rapport de la demande réussie associée au service
@@ -376,12 +376,12 @@ Si nous zoomons dans le bloc B par rapport au **SERVICE** sélectionné, nous po
 image::grafana-block-B.png[Grafana - Home,900]
 
 * [Brown] Error Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
-* [Pink]  Taux de réussite = > pour identifier l'erreur HTTP WHEN survenant dans l'appel de service
-* [Blue]  Valeur de latence pour le service
+* [Pink]  Le taux de réussite = Virus pour identifier l'erreur HTTP WHEN se produit dans l'appel de service
+* [Blue] Latency value for the service
 * [Green] Durée de demande pour le service
 
 
 [IMPORTANT]
-=
+====
 Toutes les métriques doivent être mesurées sur une fenêtre temporelle (généralement un mois) mais surtout pour cet atelier ici nous prenons la minute [1m]  pour voir quelques changements dans le tableau de bord.
-=
+====

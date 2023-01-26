@@ -178,7 +178,7 @@ Au lieu de manquer directement ou d'attendre trop longtemps, nous pourrions rée
 < < *Configurer le modèle de rentrée pour les services suivants* `
 
 [tabs]
-=
+====
 voitures:
 +
 --
@@ -248,7 +248,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 hotels:
 +
 --
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], à partir de la vue **'Services'**, `*cliquez sur le service 'hôtels' ACIA 'Actions' ی 'Request Timeouts'* `
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], à partir de la vue **'Services'**, `*cliquez sur le service 'hôtels' ACIA 'Actions' `
 
 `*Add HTTP Entrée en entrant les paramètres suivants:* `
 
@@ -310,7 +310,7 @@ image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 
 `*Cliquez sur le bouton 'Update'*`.
 --
-=
+====
 
 == Valider l'amélioration
 

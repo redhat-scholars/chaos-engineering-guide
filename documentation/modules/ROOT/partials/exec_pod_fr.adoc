@@ -3,23 +3,23 @@ Vérifiez que la gousse est en marche:
 [.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
----
-kubectl va chercher des pods
----
+----
+kubectl get pods
+----
 
 [.console-output]
 [source,bash,subs="+macros,+attributes"]
----
-NAME READY STATUS RESTARTS AGE
-{podname} 1/1 Courant 0 5s
----
+----
+NAME                        READY   STATUS    RESTARTS   AGE
+{podname}   1/1     Running   0          5s
+----
 
 Alors, allons dans le jeu pour exécuter quelques commandes:
 
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
----
+----
 kubectl exec -ti {podname} /bin/bash
----
+----
 
 NOTE: Changez le nom de la gousse avec votre nom de gousse.
