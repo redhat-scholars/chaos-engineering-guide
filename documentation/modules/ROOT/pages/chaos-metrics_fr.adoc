@@ -58,20 +58,19 @@ Par exemple :
 
 == Créer un tableau de bord Grafana
 
-`*Click on the 'Grafana' button below*`.
+Cliquez sur le bouton 'Grafana' ci-dessous.
 
 [link={GRAFANA_URL}]
 [window="_blank"]
 [role='params-link']
 image::grafana-button.png[Grafana- Button, 300]
 
-Puis, `*log in with OpenShift as 'user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
-
+Puis, connectez-vous avec OpenShift comme 'user{USER_ID}/{OPENSHIFT_PASSWORD}'
 image::grafana-home.png[Grafana - Home,900]
 
 Maintenant, créons un tableau de bord pour surveiller le Chaos Metrics.
 
-`*Click on  'plus (+) sign' > 'Create Dashboard' in the left hand side menu*`
+Cliquez sur 'plus (+) signe' 'Create Dashboard' dans le menu de gauche
 
 image::grafana-create-dashboard.png[Grafana - Home,200]
 
@@ -79,7 +78,7 @@ image::grafana-create-dashboard.png[Grafana - Home,200]
 
 Créons le premier **métrique qui définit le nombre total de requêtes dans votre espace de nom**.
 
-`*Click on the 'Add Query'*`
+Cliquez sur « Ajouter une requête »
 
 image::grafana-panel-actions.png[Grafana - Home,500]
 
@@ -88,7 +87,7 @@ Cette langue vous permettra de sélectionner et d'agréger les données de séri
 
 Vous utiliserez l'approche incrémentale suivante pour comprendre et traduire la première métrique aux expressions PromQL.
 
-`*Create incrementally the PromQL expression by following the 4 next steps and enter the expression into the 'Metrics' field for the Query 'A'*`:
+Créez progressivement l'expression PromQL en suivant les 4 prochaines étapes et entrez l'expression dans le champ 'Metrics' pour la requête 'A':
 
 image::grafana-add-query.png[Grafana - Home,700]
 
@@ -119,7 +118,7 @@ Step2::
 istio_requests_total**{reporter="source", namespace="chaos-engineering{USER_ID}"}**
 ----
 
-Filtrer la métrique pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
+Filtrer la mesure pour utiliser uniquement les requêtes entrantes (_reporter="source"_) de votre environnement (_namespace="chaos-engineering{USER_ID}"_)
 --
 
 Step3::
@@ -163,16 +162,16 @@ Par conséquent, vous devriez être un graphique temporel semblable à celui sui
 
 image::grafana-number-total-graph.png[Grafana - Home,700]
 
-Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:*`
+Ensuite, cliquez sur l'icône « Paramètres de visualisation » sur la barre latérale gauche et saisissez les paramètres suivants :
 
 .Réglages Singlestat
 [%header,cols=3*]
 |===
 |Paramètre
-|Value
+| Valeur
 |Description
 
-|Visualisation
+| Visualisation
 |**Singlestat**
 |
 
@@ -188,7 +187,7 @@ Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 
 image::grafana-visualization-settings.png[Grafana - Home,500]
 
-Ensuite, `*click on the 'General Settings' icon and enter the following parameters:*`
+Ensuite, cliquez sur l'icône « Paramètres généraux » et saisissez les paramètres suivants :
 
 .Réglages généraux
 [%header,cols=3*]
@@ -205,7 +204,7 @@ Ensuite, `*click on the 'General Settings' icon and enter the following paramete
 
 image::grafana-general-settings.png[Grafana - Home,500]
 
-Enfin, `*click on the 'back arrow' icon at the top left-hand corner*`
+Enfin, cliquez sur l'icône « flèche arrière » au coin supérieur gauche
 
 image::grafana-back-arrow.png[Grafana - Home,700]
 
@@ -213,7 +212,7 @@ image::grafana-back-arrow.png[Grafana - Home,700]
 
 image::grafana-number-total-singlestat.png[Grafana - Home,700]
 
-`*Click on the 'disk' icon*` pour sauver votre travail.
+Cliquez sur l'icône 'disk' pour sauver votre travail.
 
 == Créer le taux de réussite global (optionnel)
 
@@ -224,23 +223,22 @@ Total des demandes : sum(rate(istio_requests_total{}[$time_interval]))
 Demandes réussies: sum(rate(istio_requests_total{response_code!~"5.*"}[$time_interval]))
 dans notre cas :
 
-_sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])_
+_sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])_
 
 image::grafana-global-success-rate-step-1.png[Grafana - Home,900]
 
 Maintenant créons ce nouveau **Global Success Rate (non 5xx réponses) ** METRIC value
 
-`*Click on the (1) 'Add Panel' button*`
+Cliquez sur le bouton « Ajouter le panneau »
 
 image::grafana-add-panel.png[Grafana - Add Panel,100]
 
 et
 
-`*Click on the (2) 'Add Query' icon*`
-
+Cliquez sur l'icône (2) 'Add Query'
 image::grafana-add-query-step1.png[Grafana - Add Query,200]
 
-`*Enter the following expression into the 'Metrics' field for the Query 'A'*`:
+Entrez l'expression suivante dans le champ 'Métrique' pour la requête 'A':
 
 image::grafana-add-query.png[Grafana - Home,700]
 
@@ -258,7 +256,7 @@ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{US
 
 
 
-Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and enter the following parameters:*`
+Ensuite, cliquez sur l'icône « Paramètres de visualisation » sur la barre latérale gauche et saisissez les paramètres suivants :
 
 .Réglages Singlestat
 [%header,cols=3*]
@@ -288,13 +286,13 @@ Puis, `*click on 'Visualization Settings' icon on the left hand sidebar and ente
 
 image::grafana-gsr-step2.png[Grafana - GSR setup ,900]
 
-Suivant, `*click on the 'General Settings' icon and enter the following parameters:*`
+Ensuite, cliquez sur l'icône « Paramètres généraux » et saisissez les paramètres suivants :
 
 .Réglages généraux
 [%header,cols=3*]
 |===
 |Paramètre
-| Valeur
+|Value
 |Description
 
 | Titre
@@ -305,7 +303,7 @@ Suivant, `*click on the 'General Settings' icon and enter the following paramete
 
 image::grafana-general-settings-step3.png[Grafana - Home,700]
 
-Enfin, `*click on the 'back arrow' icon at the top left-hand corner then on the 'disk' icon*` pour sauver votre travail.
+Enfin, cliquez sur l'icône 'back' au coin supérieur puis gauche sur l'icône 'disk' pour sauver votre travail.
 
 **Félicitations !** Vous venez de créer votre deuxième Chaos Metric **Global Success Rate (non 5xx réponses)** dans un tableau de bord de Grafana!
 
@@ -314,7 +312,7 @@ Enfin, `*click on the 'back arrow' icon at the top left-hand corner then on the 
 
 Vous venez d'apprendre à créer un tableau de bord Grafana. Maintenant, importons le tableau de bord complet de Grafana nécessaire aux expériences de chaos.
 
-`*Click on the following button and copy the content*`
+Cliquez sur le bouton suivant et copiez le contenu
 
 [link={DASHBOARD_GIT_URL}]
 [window="_blank"]
@@ -322,18 +320,17 @@ Vous venez d'apprendre à créer un tableau de bord Grafana. Maintenant, importo
 image::chaos-dashboard-button.png[Chaos Dashboard - Button, 300]
 
 
-Dans {GRAFANA_URL}[Grafana^, role='params-link'], `*Click on  'plus (+) sign' > 'Import Dashboard' in the left hand side menu*`
+Dans {GRAFANA_URL}[Grafana^, role='params-link'], Cliquez sur 'plus (+) signe' Λ 'Import Dashboard' dans le menu de gauche
 
 image::grafana-import-dashboard.png[Grafana - Home,200]
 
-Puis, `*paste the JSON content and click on 'Load' > 'Import'*`
-
+Puis, coller le contenu JSON et cliquer sur 'Load' phy Import'
 image::grafana-load-dashboard.png[Grafana - Home,700]
 
 
 [WARNING]
 ====
-Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, `*please add 'user{USER_ID}' in the name*`.
+Si vous recevez une erreur mentionnant **"Un tableau de bord dans ce dossier avec le même nom existe déjà"**, s'il vous plaît ajouter 'user{USER_ID}' dans le nom.
 
 image::error-import-grafana.png[Grafana import Error - Home,900]
 ====
@@ -350,9 +347,9 @@ image::full-grafana-dashboard.png[Grafana - Home,900]
 
 Pour explorer ce tableau de bord on peut le voir comme :
 
-* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] ici le chaos-ingénierie{USER_ID} et un service [Cyan]  de l'application Travel
-* [Blue]  Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
-* [Yellow]  Block B toutes les mesures relatives à un service spécifié
+* [Red] one bloc de sélection de filtres dans lequel nous sélectionnons un espace nom  [Pink] here chaos-ingénierie{USER_ID} et un service [Cyan]  de l'application Travel
+* [Blue] Block Tous les paramètres relatifs à l'espace de nom sur lequel l'application est déployée
+* [Yellow] Block B toutes les mesures relatives à un service spécifié
 
 image::dashboard-explained.png[Grafana - Home,900]
 
@@ -362,10 +359,10 @@ image::grafana-block-A.png[Grafana - Home,900]
 
 * [Red] Global Request Volume = le nombre total de demandes
 * [Yellow]  Taux de réussite global = Un ratio cible de demandes réussies par rapport au nombre total de demandes.
-*<MISSING <MISSING TTKN15054>>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
-* [Cyan] liste de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
-* [Pink] Nombre de demandes de services
-* [Brown]  Latence par service
+*<MISSING <MISSING TTKN14604>>xx et 5xx = Total des requêtes dans Erreur HTTP 4xx et 5xx
+* [Cyan] list de tous les noms de services disponibles dans le nomspace chaos-ingénierie {USER_ID}
+* [Pink]  Nombre de demandes de services
+* [Brown] Latence par service
 * [Green]  Succès des demandes par services = Rapport de la demande réussie associée au service
 
 

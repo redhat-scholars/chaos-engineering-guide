@@ -27,19 +27,18 @@ image::grafana-service-overview-configured-2.png[Grafana - Service Overview Conf
 
 Nous pourrons voir comment un autre type de défaillance du même service pourrait avoir un impact sur le comportement de notre application.
 
-== Exécutez l'expérience Chaos
+== Lancez l'expérience Chaos
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*right-click on the 'discounts' service and select 'Details'*`
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, clic droit sur le service 'discounts' et ‘Details'
 
 image::kiali-right-click-service.png[Kiali - Right Click Service,400]
 
 Vous serez redirigé vers la page Détails du service.
 
-`*Click on the 'Actions' > 'Fault Injection'*`
-
+Cliquez sur les 'Actions' Injection par défaut'
 image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
-`*Add HTTP Abort by entering the following settings:*`
+Ajouter HTTP Avorter en entrant les paramètres suivants:
 
 .Réglages HTTP Abort
 [%header,cols=3*]
@@ -68,7 +67,7 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
 image::kiali-configure-error.png[Kiali - Configure Error,300]
 
-`*Click on the 'Update' button*`.
+Cliquez sur le bouton « Mise à jour ».
 
 **10% du trafic du service 'discounts' échoue avec un code HTTP 503**. Voyons maintenant l'impact de l'application.
 
@@ -82,9 +81,9 @@ image::grafana-error-fault-overview.png[Grafana - Error Fault Overview,900]
 
 Vous pouvez augmenter le pourcentage d'injection d'erreur jusqu'à ce que le service de « décomptes » soit complètement indisponible.
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort strategy of the 'discounts' service as follows:*`
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], mettre à jour la stratégie HTTP Abort du service 'discounts' comme suit:
 
-`*Add HTTP Abort by entering the following settings:*`
+Ajouter HTTP Avorter en entrant les paramètres suivants:
 
 .Réglages HTTP Abort
 [%header,cols=3*]
@@ -98,7 +97,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort
 |
 
 |Add HTTP Abort
-|Enabled
+| Enabled
 |
 
 |Abort Pourcentage
@@ -106,7 +105,7 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort
 |
 
 |HTTP Code d'état civil
-<MISSING <MISSING TTKN1149503>>
+<MISSING <MISSING TTKN1135503>>
 |
 
 |===
@@ -120,7 +119,7 @@ _**Les services « décomptes » non disponibles n'ont pas d'incidence sur l'obj
 
 == Retourner l'expérience Chaos
 
-Dans {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*`.
+Dans {GITOPS_URL}[Argo CD^, role='params-link'], cliquez sur 'Sync > Synchronize '.
 
 image::argocd-rollback-sync.png[Argo CD - Sync Application, 900]
 

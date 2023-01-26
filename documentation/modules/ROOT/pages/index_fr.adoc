@@ -1,4 +1,4 @@
-= Bienvenue à Chaos Engineering Workshop
+= Bienvenue à l'atelier d'ingénierie de Chaos
 :navtitle: Introduction
 :page-layout: home
 :markup-in-source: verbatim,attributes,quotes
@@ -7,7 +7,7 @@
 
 include::_attributes_fr.adoc[]
 
-==
+== explication de l'atelier
 **Résumé** :
 
 La construction de systèmes à grande échelle et distribués change le jeu pour l'ingénierie logicielle moderne. Comment nos applications se comportent-elles face à l'échec? C'est le défi crucial que nous devons résoudre car les échecs sont inévitables.
@@ -31,7 +31,7 @@ Je ne sais pas.
 La résilience ne consiste pas à réduire les erreurs. Il s'agit d'améliorer les capacités positives des personnes et des organisations qui leur permettent de s'adapter efficacement et en toute sécurité sous pression.
 Je ne sais pas.
 
-== Installation et infrastructure utilisées
+== Configuration et infrastructure utilisées
 L'environnement OpenShift créé pour vous est la version 4.7 de la plate-forme de conteneurs OpenShift. Ce déploiement est un environnement autonome qui fournit tout ce dont vous avez besoin pour apprendre la plateforme.
 Nous utilisons sur **Openshift Cluster 4.7** fourni sur le système RHPDS dans lequel nous avons installé plusieurs opérateurs comme prérequis pour cet atelier :
 
