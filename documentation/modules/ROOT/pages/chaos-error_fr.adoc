@@ -43,28 +43,28 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
 . Réglages HTTP Abort
 [%header,cols=3*]
-|MISUMI
+|====
 |Paramètre
 |Value
-|MISUMI
+|Description
 
 |Add HTTP Delay
 |**Disabled**
-|MISUMI|
+|
 
 |Add HTTP Abort
-|MISUMI
-|MISUMI|
+|**Enabled**
+|
 
 |Abort Pourcentage
 |**10**
-|MISUMI|
+|
 
-|HTTP Status Code
+|HTTP Code d'état civil
 |**503**
-|MISUMI|
+|
 
-|MISUMI
+|====
 
 image::kiali-configure-error.png[Kiali - Configure Error,300]
 
@@ -88,28 +88,28 @@ Dans le {KIALI_URL}[Kiali Console^, role='params-link'], `*update the HTTP Abort
 
 . Réglages HTTP Abort
 [%header,cols=3*]
-|MISUMI
+|====
 |Paramètre
 |Value
-|MISUMI
+|Description
 
 |Add HTTP Delay
 |Disabled
-|MISUMI|
+|
 
 |Add HTTP Abort
 |Enabled
-|MISUMI|
+|
 
 |Abort Pourcentage
-***100**
-|MISUMI|
+|**100**
+|
 
-|HTTP Status Code
-|503
-|MISUMI|
+|HTTP Code d'état civil
+<MISSING <MISSING TTKN1148503>>
+|
 
-|MISUMI
+|====
 
 image::grafana-error-fault-overview-2.png[Grafana - Error Fault Overview,900]
 

@@ -1,4 +1,4 @@
-= Welcome to Chaos Engineering Workshop
+= Bienvenue à Chaos Engineering Workshop
 :navtitle: Introduction
 :page-layout: home
 :markup-in-source: verbatim,attributes,quotes
@@ -7,7 +7,7 @@
 
 include::_attributes_fr.adoc[]
 
-== explication de l'atelier
+==
 **Résumé** :
 
 La construction de systèmes à grande échelle et distribués change le jeu pour l'ingénierie logicielle moderne. Comment nos applications se comportent-elles face à l'échec? C'est le défi crucial que nous devons résoudre car les échecs sont inévitables.

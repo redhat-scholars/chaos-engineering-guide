@@ -24,20 +24,20 @@ image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
 . Réglages de timeout HTTP
 [%header,cols=3*]
-|MISUMI
+|====
 |Paramètre
 |Value
-|MISUMI
+|Description
 
 |Add HTTP Timeout
-|MISUMI
-|MISUMI|
+|**Enabled**
+|
 
 |Timeout
 |**50ms**
-|MISUMI|
+|
 
-|MISUMI
+|====
 
 image::kiali-configure-timeout.png[Kiali - Configure Timeout,400]
 
@@ -65,24 +65,24 @@ Dans le {KIALI_URL}[Kiali Console^], de la vue **'Services**,
 
 . Réglages de rentrée HTTP
 [%header,cols=3*]
-|MISUMI
+|====
 |Paramètre
 |Value
-|MISUMI
+|Description
 
 |Add HTTP Retry
-|MISUMI
-|MISUMI|
+|**Enabled**
+|
 
 |Attempts
 |**3**
-|MISUMI|
+|
 
-|Per Try Timeout
+|P Essayez le timeout
 |**10ms**
-|MISUMI|
+|
 
-|MISUMI
+|====
 
 image::kiali-configure-retry.png[Kiali - Configure Retry,400]
 
